@@ -1,0 +1,17 @@
+ultralytics
+opencv-python
+numpy
+pandas
+matplotlib
+scikit-learn
+pyyaml
+tqdm
+pytest
+ruff
+mypy
+streamlit
+torch
+torchvision
+torchaudio
+onnx
+onnxruntime
