@@ -10,7 +10,7 @@ Data de criacao: 29/07/2026
 | OE-002 | Implementar um pipeline de leitura, validacao e processamento frame a frame. | TCC-014, TCC-035 | Modulos em `src/`, CLI em `app/cli`, relatorio de compatibilidade |
 | OE-003 | Detectar jogadores, bola e evidencias visuais nos clipes selecionados. | TCC-015, TCC-016, TCC-017, TCC-018 | Resultados estruturados e frames anotados em `outputs/frames` |
 | OE-004 | Rastrear a trajetoria da bola e relaciona-la com a regiao do gol. | TCC-019, TCC-020, TCC-021, TCC-022 | Arquivos de trajetoria, configuracoes de gol e relatorios |
-| OE-005 | Implementar e avaliar a abordagem heuristica de evento de gol. | TCC-023, TCC-024, TCC-025, TCC-031 | Saidas da Abordagem A e metricas finais |
+| OE-005 | Implementar e avaliar a abordagem heuristica de evento de gol. | TCC-007, TCC-023, TCC-024, TCC-025, TCC-031 | Definicao formal do evento, saidas da Abordagem A e metricas finais |
 | OE-006 | Implementar uma segunda abordagem comparavel, temporal ou hibrida. | TCC-026, TCC-027, TCC-028, TCC-029, TCC-032 | Saidas da Abordagem B e evidencias visuais |
 | OE-007 | Comparar cientificamente as abordagens e documentar limitacoes. | TCC-008, TCC-030, TCC-033, TCC-034, TCC-045 | `docs/protocolo-avaliacao.md`, `outputs/reports/comparacao_final.md` |
 | OE-008 | Entregar uma demonstracao reproduzivel para a banca. | TCC-035, TCC-036, TCC-037, TCC-038, TCC-040, TCC-041, TCC-048, TCC-049, TCC-051 | Interface, guia de instalacao, video, slides e pacote final |
@@ -27,7 +27,7 @@ Data de criacao: 29/07/2026
 | RF-006 | TCC-015, TCC-016, TCC-018 | Medir taxa de frames com bola detectada. | Relatorio baseline |
 | RF-007 | TCC-019 | Exportar trajetoria com frame, timestamp e centro da bola. | CSV/JSON de tracking |
 | RF-008 | TCC-020, TCC-021 | Carregar configuracao de poligono do gol. | Arquivos em `configs/` |
-| RF-009 | TCC-023, TCC-024, TCC-025 | Rodar regras da Abordagem A em clipes anotados. | Relatorio da Abordagem A |
+| RF-009 | TCC-007, TCC-023, TCC-024, TCC-025 | Rodar regras da Abordagem A em clipes anotados. | Definicao formal e relatorio da Abordagem A |
 | RF-010 | TCC-026, TCC-027, TCC-028, TCC-029 | Rodar Abordagem B no mesmo formato de saida. | Relatorio da Abordagem B |
 | RF-011 | TCC-025, TCC-029 | Conferir frame representativo para cada evento candidato. | `outputs/frames/approach_a`, `outputs/frames/approach_b` |
 | RF-012 | TCC-008, TCC-031, TCC-032, TCC-033 | Conferir metricas exportadas e calculos. | `outputs/reports` |
