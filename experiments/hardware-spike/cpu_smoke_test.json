@@ -1,0 +1,18 @@
+{
+  "video": "experiments\\hardware-spike\\artifacts\\synthetic_100_frames.mp4",
+  "device": "cpu",
+  "frames_requested": 100,
+  "frames_processed": 100,
+  "elapsed_seconds": 0.4707,
+  "fps": 212.46,
+  "memory_before_mb": 210.11,
+  "memory_after_mb": 221.0,
+  "memory_delta_mb": 10.89,
+  "checksum": 4754.8973,
+  "synthetic_video": true,
+  "python": "3.11.9",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "processor": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+  "torch_version": "2.13.0+cpu",
+  "cuda_available": false
+}

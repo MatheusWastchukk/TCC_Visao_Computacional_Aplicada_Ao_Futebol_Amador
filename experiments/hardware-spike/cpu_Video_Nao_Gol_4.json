@@ -1,0 +1,18 @@
+{
+  "video": "data\\clips\\Video_Nao_Gol_4.mp4",
+  "device": "cpu",
+  "frames_requested": 100,
+  "frames_processed": 100,
+  "elapsed_seconds": 0.7825,
+  "fps": 127.79,
+  "memory_before_mb": 198.27,
+  "memory_after_mb": 215.52,
+  "memory_delta_mb": 17.25,
+  "checksum": 10155.3491,
+  "synthetic_video": false,
+  "python": "3.11.9",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "processor": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+  "torch_version": "2.13.0+cpu",
+  "cuda_available": false
+}

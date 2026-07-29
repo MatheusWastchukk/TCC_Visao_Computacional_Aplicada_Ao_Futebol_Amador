@@ -1,0 +1,32 @@
+{
+  "date": "2026-07-29",
+  "status": "available_with_separate_directml_environment",
+  "reason": "The main .venv is CPU-only, but a separate .venv-dml environment was created and validated with torch-directml.",
+  "checks": {
+    "main_environment_torch_version": "2.13.0+cpu",
+    "main_environment_torch_cuda_available": false,
+    "main_environment_torch_cuda_device_count": 0,
+    "main_environment_torch_directml_installed": false,
+    "directml_environment_torch_version": "2.4.1+cpu",
+    "directml_environment_torch_directml_installed": true,
+    "directml_environment_device": "privateuseone:0",
+    "directml_environment_device_count": 1,
+    "onnxruntime_available_providers": [
+      "AzureExecutionProvider",
+      "CPUExecutionProvider"
+    ]
+  },
+  "attempted_command": ".\\.venv\\Scripts\\python.exe scripts\\hardware_smoke_test.py --video data\\clips\\Video_Gol_1.mp4 --device cuda --frames 100 --output experiments\\hardware-spike\\gpu_Video_Gol_1.json",
+  "observed_error": "RuntimeError: Device 'cuda' requested, but CUDA is not available",
+  "directml_validation_command": ".\\.venv-dml\\Scripts\\python.exe -c \"import torch, torch_directml; print('torch', torch.__version__); print('dml_device', torch_directml.device()); print('device_count', torch_directml.device_count())\"",
+  "directml_validation_result": {
+    "torch": "2.4.1+cpu",
+    "dml_device": "privateuseone:0",
+    "device_count": 1
+  },
+  "next_steps": [
+    "Keep .venv as the stable CPU environment.",
+    "Use .venv-dml only for AMD DirectML experiments.",
+    "For NVIDIA RTX 3060, install a CUDA-compatible PyTorch build and rerun the same 100-frame test."
+  ]
+}

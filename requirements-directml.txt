@@ -1,0 +1,6 @@
+torch-directml==0.2.5.dev240914
+torch==2.4.1
+torchvision==0.19.1
+opencv-python==5.0.0.93
+numpy==2.4.6
+psutil==7.2.2
