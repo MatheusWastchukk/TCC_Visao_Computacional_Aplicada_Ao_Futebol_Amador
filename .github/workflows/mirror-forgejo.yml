@@ -38,14 +38,14 @@ jobs:
             "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
           git fetch --prune github \
-            "+refs/heads/:refs/heads/" \
-            "+refs/tags/:refs/tags/"
+            "+refs/heads/*:refs/heads/*" \
+            "+refs/tags/*:refs/tags/*"
 
           git remote add forgejo \
             "https://${FORGEJO_USUARIO}:${FORGEJO_TOKEN}@${FORGEJO_HOST}/${FORGEJO_REPOSITORIO}"
 
           git push forgejo --prune \
-            "+refs/heads/:refs/heads/"
+            "+refs/heads/*:refs/heads/*"
 
           git push forgejo --prune \
-            "+refs/tags/:refs/tags/"
+            "+refs/tags/*:refs/tags/*"
