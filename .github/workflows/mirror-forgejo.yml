@@ -24,11 +24,10 @@ jobs:
       GITHUB_TOKEN: ${{ github.token }}
 
     steps:
-      
-name: Copiar branches e tags para o Forgejo
-      shell: bash
-      run: |
-        set -euo pipefail
+      - name: Copiar branches e tags para o Forgejo
+        shell: bash
+        run: |
+          set -euo pipefail
 
           mkdir mirror.git
           cd mirror.git
@@ -36,14 +35,14 @@ name: Copiar branches e tags para o Forgejo
           git init --bare
 
           git remote add github \
-            "https://github.com/$%7BGITHUB_REPOSITORY%7D.git"
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
           git fetch --prune github \
             "+refs/heads/:refs/heads/" \
             "+refs/tags/:refs/tags/"
 
           git remote add forgejo \
-            "https://${forgejo_host}/$%7BFORGEJO_REPOSITORIO%7D"
+            "https://${FORGEJO_USUARIO}:${FORGEJO_TOKEN}@${FORGEJO_HOST}/${FORGEJO_REPOSITORIO}"
 
           git push forgejo --prune \
             "+refs/heads/:refs/heads/"
