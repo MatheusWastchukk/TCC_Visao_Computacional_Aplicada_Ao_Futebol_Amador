@@ -1,0 +1,52 @@
+name: Espelhar no Forgejo
+
+on:
+  push:
+  delete:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mirror-forgejo
+  cancel-in-progress: true
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    env:
+      FORGEJO_HOST: www.forge.uricer.edu.br
+      FORGEJO_USUARIO: 104000
+      FORGEJO_REPOSITORIO: neilor/tcc-104000-matheus.git
+      FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
+      GITHUB_TOKEN: ${{ github.token }}
+
+    steps:
+      
+name: Copiar branches e tags para o Forgejo
+      shell: bash
+      run: |
+        set -euo pipefail
+
+          mkdir mirror.git
+          cd mirror.git
+
+          git init --bare
+
+          git remote add github \
+            "https://github.com/$%7BGITHUB_REPOSITORY%7D.git"
+
+          git fetch --prune github \
+            "+refs/heads/:refs/heads/" \
+            "+refs/tags/:refs/tags/"
+
+          git remote add forgejo \
+            "https://${forgejo_host}/$%7BFORGEJO_REPOSITORIO%7D"
+
+          git push forgejo --prune \
+            "+refs/heads/:refs/heads/"
+
+          git push forgejo --prune \
+            "+refs/tags/:refs/tags/"
