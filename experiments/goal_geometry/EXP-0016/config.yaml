@@ -1,0 +1,27 @@
+threshold:
+  mode: gray_fixed
+  value: 190
+  max_saturation: 70
+morphology:
+  operation: none
+  kernel: 0
+hough:
+  threshold: 30
+  min_line_length: 40
+  max_line_gap: 15
+  vertical_tolerance: 15
+  horizontal_tolerance: 15
+merge:
+  angle_tolerance: 8
+  distance_tolerance: 18
+geometry:
+  connection_tolerance: 0.05
+  min_connection_score: 0.4
+  max_angle_difference: 15
+  min_angle_score: 0.7
+  min_height_score: 0.7
+  ratio_min: 0.5
+  ratio_max: 4.5
+  min_relative_height: 0.04
+  min_white_support: 0.5
+  min_score: 0.65

@@ -1,0 +1,11 @@
+experiment_id,date,stage,version_name,git_commit,dataset_version,config_file,hardware,status,precision,recall,f1,false_positives,false_positive_rate,fps,execution_seconds,notes
+EXP-0021,2026-08-09,goal_geometry,V8.5_learned_geometry,working-tree,dataset_frames_v1,EXP-0021/config.yaml,CPU,pilot_caveat,1.0000,1.0000,1.0000,0,0.0000,,,"Melhor modelo logístico; resultado preliminar com representacoes manual/Hough diferentes."
+EXP-0001,2026-08-09,baseline,gray_fixed__none,2dce5ba,dataset_frames_v1,experiments/baselines/EXP-0001/config.yaml,CPU,completed,0.4688,1.0000,0.6383,34,0.9714,50.22,1.294,Baseline inicial; preservado como referencia histórica.
+EXP-0013,2026-08-09,goal_geometry,V1,working-tree,dataset_frames_v1,EXP-0013/config.yaml,CPU,completed,0.4074,0.7333,0.5238,32,0.9143,20.34,3.196,Comparacao incremental V1-V7; metricas de FP/h e IoU pendentes.
+EXP-0014,2026-08-09,goal_geometry,V2,working-tree,dataset_frames_v1,EXP-0014/config.yaml,CPU,completed,0.4545,0.6667,0.5405,24,0.6857,19.89,3.268,Comparacao incremental V1-V7; metricas de FP/h e IoU pendentes.
+EXP-0015,2026-08-09,goal_geometry,V3,working-tree,dataset_frames_v1,EXP-0015/config.yaml,CPU,completed,0.3871,0.4000,0.3934,19,0.5429,20.20,3.218,Comparacao incremental V1-V7; metricas de FP/h e IoU pendentes.
+EXP-0016,2026-08-09,goal_geometry,V4,working-tree,dataset_frames_v1,EXP-0016/config.yaml,CPU,completed,0.4000,0.2000,0.2667,9,0.2571,19.93,3.262,Comparacao incremental V1-V7; metricas de FP/h e IoU pendentes.
+EXP-0017,2026-08-09,goal_geometry,V5,working-tree,dataset_frames_v1,EXP-0017/config.yaml,CPU,completed,0.3750,0.1000,0.1579,5,0.1429,20.01,3.249,Comparacao incremental V1-V7; metricas de FP/h e IoU pendentes.
+EXP-0018,2026-08-09,goal_geometry,V6,working-tree,dataset_frames_v1,EXP-0018/config.yaml,CPU,completed,1.0000,0.0667,0.1250,0,0.0000,19.94,3.260,Comparacao incremental V1-V7; metricas de FP/h e IoU pendentes.
+EXP-0019,2026-08-09,goal_geometry,V7,working-tree,dataset_frames_v1,EXP-0019/config.yaml,CPU,completed,1.0000,0.0667,0.1250,0,0.0000,19.84,3.276,Comparacao incremental V1-V7; metricas de FP/h e IoU pendentes.
+EXP-0020,2026-08-09,goal_geometry,V8_soft_geometry,working-tree,dataset_frames_v1,EXP-0020/config.yaml,CPU,completed,0.5814,0.7143,0.6410,18,0.6000,66.88,0.972,Avaliacao principal goal_structure; threshold calibrado no sweep.

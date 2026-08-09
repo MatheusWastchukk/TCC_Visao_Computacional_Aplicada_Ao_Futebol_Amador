@@ -1,0 +1,5 @@
+model,precision,recall,f1,folds
+logistic_regression,1.0,1.0,1.0,3
+decision_tree,1.0,1.0,1.0,3
+random_forest,1.0,1.0,1.0,3
+svm,1.0,0.9777777777777779,0.9885057471264368,3

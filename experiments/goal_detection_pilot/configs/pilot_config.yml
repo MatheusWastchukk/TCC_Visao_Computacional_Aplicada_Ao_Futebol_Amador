@@ -1,0 +1,53 @@
+video:
+  sample_fps: 2
+  candidate_min_seconds: 1.0
+  candidate_merge_gap_seconds: 2.0
+  ignored_regions: []
+
+threshold:
+  variants:
+    - id: gray_fixed
+      color_space: gray
+      method: fixed
+      min_value: 190
+    - id: hsv_white
+      color_space: hsv
+      method: fixed
+      min_value: 190
+      max_saturation: 70
+    - id: gray_adaptive
+      color_space: gray
+      method: adaptive
+
+morphology:
+  variants:
+    - id: none
+      operation: none
+      kernel: 0
+    - id: open_3
+      operation: open
+      kernel: 3
+    - id: close_5
+      operation: close
+      kernel: 5
+    - id: open_close_5
+      operation: open_close
+      kernel: 5
+
+lines:
+  min_line_length: 40
+  max_line_gap: 15
+  vertical_angle_tolerance: 15
+  horizontal_angle_tolerance: 15
+
+geometry:
+  min_confidence: 0.65
+  min_confirmations: 3
+  temporal_window_frames: 5
+  min_iou_reference: 0.50
+
+decision_reference:
+  min_f1: 0.70
+  max_false_candidates_per_hour: 10
+  min_temporal_detection_rate: 0.70
+  min_mean_iou: 0.50

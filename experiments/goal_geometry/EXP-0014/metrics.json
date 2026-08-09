@@ -1,0 +1,31 @@
+{
+  "experiment_id": "EXP-0014",
+  "version": "V2",
+  "evaluation_main_goal": {
+    "precision": 0.45454545454545453,
+    "recall": 0.6666666666666666,
+    "f1": 0.5405405405405405,
+    "tp": 20,
+    "fp": 24,
+    "tn": 11,
+    "fn": 10
+  },
+  "evaluation_goal_structure": {
+    "precision": 0.5681818181818182,
+    "recall": 0.7142857142857143,
+    "f1": 0.6329113924050633,
+    "tp": 25,
+    "fp": 19,
+    "tn": 11,
+    "fn": 10
+  },
+  "performance": {
+    "fps": 19.888583542782378,
+    "execution_seconds": 3.2682066000415944
+  },
+  "frames": 65,
+  "limitations": [
+    "IoU requires bounding-box annotations.",
+    "False candidates per hour requires continuous video segments."
+  ]
+}

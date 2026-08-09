@@ -1,0 +1,8 @@
+{
+  "python": "3.11.9",
+  "opencv": "5.0.0",
+  "numpy": "2.4.6",
+  "sklearn": "installed",
+  "git_commit": "2dce5ba",
+  "date": "2026-08-09"
+}

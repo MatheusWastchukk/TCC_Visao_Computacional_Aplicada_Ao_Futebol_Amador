@@ -16,6 +16,9 @@ Este documento transforma o escopo do TCC em requisitos testaveis para o prototi
 | RF-006 | O sistema deve tentar detectar a bola nos frames processados. | Registrar taxa de frames com bola detectada e exemplos visuais. |
 | RF-007 | O sistema deve rastrear a trajetoria da bola ao longo do tempo. | Exportar uma sequencia temporal com frame, timestamp e posicao estimada da bola. |
 | RF-008 | O sistema deve permitir definir ou carregar uma regiao do gol. | Carregar um arquivo de configuracao com coordenadas da regiao e validar seu formato. |
+| RF-018 | O sistema deve tentar localizar automaticamente a estrutura principal do gol em partidas completas. | Executar o piloto em 3 partidas e registrar precisao, revocacao, F1, IoU e falsos candidatos por hora. |
+| RF-019 | O sistema deve gerar janelas candidatas quando a estrutura do gol for confirmada temporalmente. | Registrar intervalos com inicio, fim, confianca media e criterio de agrupamento. |
+| RF-020 | O sistema deve retornar `NOT_EVALUABLE` quando nao houver condicao visual suficiente para decidir. | Testar casos com gol invisivel, bola ocluida, baixa confianca ou rastreamento perdido. |
 | RF-009 | O sistema deve executar a Abordagem A, baseada em regras espaciais e temporais. | Rodar a abordagem em clipes de teste e exportar resultado, confianca e frame de evidencia. |
 | RF-010 | O sistema deve executar a Abordagem B, baseada em classificacao temporal ou alternativa hibrida documentada. | Rodar a segunda abordagem no mesmo formato de entrada e saida da Abordagem A. |
 | RF-011 | O sistema deve gerar pelo menos um frame representativo anotado para cada evento candidato. | Conferir arquivo de imagem salvo em `outputs/frames`. |
@@ -41,7 +44,7 @@ Este documento transforma o escopo do TCC em requisitos testaveis para o prototi
 | RNF-004 | Os experimentos devem ser reproduziveis. | Versionar configuracoes, dependencias e comandos usados em cada experimento. |
 | RNF-005 | As configuracoes do pipeline devem ficar em arquivos externos ao codigo. | Conferir arquivos em `configs/` usados pela execucao. |
 | RNF-006 | O sistema nao deve depender de transmissao ao vivo. | Executar somente com arquivos de video locais. |
-| RNF-007 | O sistema deve processar trechos de aproximadamente 1 a 2 minutos. | Rodar validacao de duracao nos clipes selecionados. |
+| RNF-007 | O sistema deve suportar o estudo com partidas completas e permitir amostragem ou recorte para reduzir custo. | Validar metadados de partidas completas e registrar taxa de amostragem usada no piloto. |
 | RNF-008 | Videos brutos, clipes grandes, pesos de modelo e saidas geradas nao devem ser versionados por engano. | Conferir `.gitignore` e `git status` antes dos commits. |
 
 ## Requisitos Nao Funcionais Opcionais

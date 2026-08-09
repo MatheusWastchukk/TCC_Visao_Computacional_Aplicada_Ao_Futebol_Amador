@@ -1,0 +1,18 @@
+{
+  "experiment_id": "EXP-0001",
+  "dataset_version": "dataset_frames_v1",
+  "evaluation_main_goal": {
+    "precision": 0.4688,
+    "recall": 1.0,
+    "f1": 0.6383,
+    "tp": 30,
+    "fp": 34,
+    "tn": 1,
+    "fn": 0
+  },
+  "performance": {
+    "fps": 50.22,
+    "execution_seconds": 1.294
+  },
+  "status": "historical_summary"
+}

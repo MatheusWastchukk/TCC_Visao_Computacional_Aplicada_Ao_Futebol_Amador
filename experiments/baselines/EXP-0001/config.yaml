@@ -1,0 +1,11 @@
+threshold:
+  mode: gray_fixed
+  value: 190
+morphology:
+  operation: none
+  kernel: 0
+hough:
+  min_line_length: 40
+  max_line_gap: 15
+geometry:
+  min_confidence: 0.65

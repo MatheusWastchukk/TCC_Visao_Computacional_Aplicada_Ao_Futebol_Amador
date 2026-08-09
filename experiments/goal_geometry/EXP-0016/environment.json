@@ -1,0 +1,8 @@
+{
+  "python": "3.11.9",
+  "opencv": "5.0.0",
+  "numpy": "2.4.6",
+  "os": "Windows-10-10.0.26200-SP0",
+  "git_commit": "2dce5ba",
+  "date": "2026-08-09"
+}

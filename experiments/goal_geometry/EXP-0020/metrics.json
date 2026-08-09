@@ -1,0 +1,39 @@
+{
+  "experiment_id": "EXP-0020",
+  "version": "V8",
+  "method": "soft_geometry_scoring",
+  "frames": 65,
+  "candidates": 1001,
+  "best_threshold": {
+    "threshold": "0.30",
+    "main_precision": 0.46511627906976744,
+    "main_recall": 0.6666666666666666,
+    "main_f1": 0.547945205479452,
+    "main_tp": 20,
+    "main_fp": 23,
+    "main_tn": 12,
+    "main_fn": 10,
+    "structure_precision": 0.5813953488372093,
+    "structure_recall": 0.7142857142857143,
+    "structure_f1": 0.6410256410256411,
+    "structure_tp": 25,
+    "structure_fp": 18,
+    "structure_tn": 12,
+    "structure_fn": 10
+  },
+  "performance": {
+    "fps": 66.87668001909685,
+    "execution_seconds": 0.9719382000039332
+  },
+  "weights": {
+    "connection": 0.2,
+    "angle": 0.15,
+    "height": 0.15,
+    "ratio": 0.2,
+    "white_support": 0.15,
+    "size": 0.15
+  },
+  "limitations": [
+    "IoU requires bounding-box annotations; four-point labels are used for calibration."
+  ]
+}

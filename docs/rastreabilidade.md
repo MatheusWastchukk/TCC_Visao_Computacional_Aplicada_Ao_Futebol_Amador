@@ -14,6 +14,7 @@ Data de criacao: 29/07/2026
 | OE-006 | Implementar uma segunda abordagem comparavel, temporal ou hibrida. | TCC-026, TCC-027, TCC-028, TCC-029, TCC-032 | Saidas da Abordagem B e evidencias visuais |
 | OE-007 | Comparar cientificamente as abordagens e documentar limitacoes. | TCC-008, TCC-030, TCC-033, TCC-034, TCC-045 | `docs/protocolo-avaliacao.md`, `outputs/reports/comparacao_final.md` |
 | OE-008 | Entregar uma demonstracao reproduzivel para a banca. | TCC-035, TCC-036, TCC-037, TCC-038, TCC-040, TCC-041, TCC-048, TCC-049, TCC-051 | Interface, guia de instalacao, video, slides e pacote final |
+| OE-009 | Validar se a localizacao classica da estrutura do gol e viavel antes da migracao completa para partidas completas. | TCC-008A, TCC-009, TCC-010, TCC-011 | `docs/teste-piloto-localizacao-traves.md`, `experiments/goal_detection_pilot/REPORT.md` |
 
 ## Requisitos obrigatorios
 
@@ -27,6 +28,9 @@ Data de criacao: 29/07/2026
 | RF-006 | TCC-015, TCC-016, TCC-018 | Medir taxa de frames com bola detectada. | Relatorio baseline |
 | RF-007 | TCC-019 | Exportar trajetoria com frame, timestamp e centro da bola. | CSV/JSON de tracking |
 | RF-008 | TCC-020, TCC-021 | Carregar configuracao de poligono do gol. | Arquivos em `configs/` |
+| RF-018 | TCC-008A | Executar piloto em 3 partidas completas e medir localizacao do gol. | `experiments/goal_detection_pilot/REPORT.md` |
+| RF-019 | TCC-008A, TCC-020, TCC-021 | Gerar intervalos candidatos apos confirmacao temporal da estrutura do gol. | CSV/JSON de janelas candidatas |
+| RF-020 | TCC-007, TCC-008A, TCC-023, TCC-028 | Conferir casos sem condicao visual suficiente e retorno `NOT_EVALUABLE`. | Relatorio de avaliacao e erros |
 | RF-009 | TCC-007, TCC-023, TCC-024, TCC-025 | Rodar regras da Abordagem A em clipes anotados. | Definicao formal e relatorio da Abordagem A |
 | RF-010 | TCC-026, TCC-027, TCC-028, TCC-029 | Rodar Abordagem B no mesmo formato de saida. | Relatorio da Abordagem B |
 | RF-011 | TCC-025, TCC-029 | Conferir frame representativo para cada evento candidato. | `outputs/frames/approach_a`, `outputs/frames/approach_b` |
@@ -38,7 +42,7 @@ Data de criacao: 29/07/2026
 | RNF-004 | TCC-003, TCC-004, TCC-030, TCC-040 | Versionar dependencias, configuracoes e manifests. | Git, `requirements.txt`, documentos |
 | RNF-005 | TCC-020, TCC-021, TCC-024, TCC-041 | Validar uso de arquivos em `configs/`. | Configuracoes versionadas |
 | RNF-006 | TCC-011, TCC-014, TCC-038 | Executar somente com arquivos locais. | Checklist de demonstracao |
-| RNF-007 | TCC-011, TCC-014 | Validar duracao dos clipes selecionados. | `data/metadata.csv` |
+| RNF-007 | TCC-008A, TCC-011, TCC-014 | Validar metadados de partidas completas e registrar taxa de amostragem. | `experiments/goal_detection_pilot/matches.csv` |
 | RNF-008 | TCC-001, TCC-030, TCC-051 | Conferir `git status` e `.gitignore` antes de commits. | Historico Git |
 
 ## Metricas
@@ -54,6 +58,9 @@ Data de criacao: 29/07/2026
 | Tempo total | TCC-005, TCC-031, TCC-032 | Cronometragem da execucao por clipe e hardware. | Relatorios de experimento |
 | FPS de processamento | TCC-005, TCC-031, TCC-032 | Frames processados / tempo total. | Relatorios de experimento |
 | Uso aproximado de memoria | TCC-005, TCC-031, TCC-032 | Registro do sistema ou biblioteca de monitoramento. | Relatorio de hardware |
+| F1 de localizacao do gol | TCC-008A | Matriz de confusao frame a frame contra anotacao do piloto. | `experiments/goal_detection_pilot/REPORT.md` |
+| IoU medio da estrutura do gol | TCC-008A | Comparar bbox ou poligono automatico com anotacao manual. | `experiments/goal_detection_pilot/REPORT.md` |
+| Falsos candidatos por hora | TCC-008A | Executar trechos continuos e revisar candidatos manualmente. | `experiment_matrix.csv` e `REPORT.md` |
 
 ## Checklist de aceite da TCC-003
 

@@ -1,0 +1,4 @@
+match_id,file_name,duration,fps,resolution,file_size,stadium,camera_position,lighting,goal_color,other_goal_structures,notes
+match_01,match_01_A.mp4,01:24:36,30,1920x1080,1.22GB,campo_a,arquibancada_central,diurna_com_sombra,branca,nao, iluminacao varia durante o video com momentos de sol e de sombra no campo; camera acompanha a bola e nao ha replay
+match_02,match_02_A.mp4,01:33:07,30,1920x1080,2.85GB,campo_b,arquibancada_central,diurna,branca,sim, ha trave secundaria atras de um dos gols; camera acompanha a bola e nao ha replay
+match_03,match_03_A.mp4,01:35:53,30,1920x1080,2.17GB,campo_c,arquibancada_central,diurna,branca,nao, camera acompanha a bola e nao ha replay

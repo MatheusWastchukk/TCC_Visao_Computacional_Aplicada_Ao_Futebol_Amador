@@ -36,6 +36,23 @@ outputs/reports/*
 outputs/videos/*
 models/*
 experiments/**/artifacts/*
+experiments/goal_detection_pilot/data/*
+experiments/goal_detection_pilot/outputs/masks/*
+experiments/goal_detection_pilot/outputs/edges/*
+experiments/goal_detection_pilot/outputs/lines/*
+experiments/goal_detection_pilot/outputs/candidates/*
+experiments/goal_detection_pilot/outputs/report_examples/*
+experiments/goal_detection_pilot/outputs/reports/*
+
+# Narrative reports and article-oriented analysis kept locally
+docs/relatorio-*.md
+docs/experiment_decisions.md
+docs/mini-software-validacao-geometrica.md
+docs/nova-abordagem-*.md
+experiments/**/REPORT.md
+experiments/goal_geometry/EXP-*/README.md
+experiments/baselines/EXP-*/README.md
+results/
 
 # Keep directory placeholders
 !**/.gitkeep
