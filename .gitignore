@@ -64,9 +64,8 @@ models/
 runs/
 yolo11n.pt
 experiments/goal_geometry/evolution_visuals/
-# Overlays dos experimentos sao evidencias visuais versionadas.
-!experiments/goal_geometry/EXP-*/overlays/
-!experiments/goal_geometry/EXP-*/overlays/**
+# Overlays dos experimentos sao artefatos visuais locais e nao sao versionados.
+experiments/goal_geometry/EXP-*/overlays/
 results/
 
 # Keep directory placeholders
