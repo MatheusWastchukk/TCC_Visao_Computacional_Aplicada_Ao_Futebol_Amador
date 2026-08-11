@@ -1,0 +1,26 @@
+{
+  "experiment_id": "EXP-0035",
+  "version": "V8.6",
+  "limits": {
+    "relative_width_min": 0.017765625000000007,
+    "relative_width_max": 0.19124479166666664,
+    "relative_height_min": 0.014083333333333344,
+    "relative_height_max": 0.1441944444444444,
+    "relative_area_min": 0.0,
+    "relative_area_max": 0.02629942129629629
+  },
+  "development": {
+    "frames": 35,
+    "proposal_recall_iou_030": 0.45714285714285713,
+    "proposal_recall_iou_050": 0.34285714285714286,
+    "mean_candidates": 386.1142857142857,
+    "mean_best_iou": 0.37543883242906273
+  },
+  "external": {
+    "frames": 15,
+    "proposal_recall_iou_030": 0.4,
+    "proposal_recall_iou_050": 0.3333333333333333,
+    "mean_candidates": 225.53333333333333,
+    "mean_best_iou": 0.42599204794980994
+  }
+}

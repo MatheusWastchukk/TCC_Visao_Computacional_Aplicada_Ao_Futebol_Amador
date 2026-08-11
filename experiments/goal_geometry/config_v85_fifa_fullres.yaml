@@ -1,0 +1,52 @@
+# Medidas regulamentares FIFA usadas como prior geometrico suave.
+fifa_prior:
+  goal_width_m: 7.32
+  goal_height_m: 2.44
+  target_ratio: 3.0
+  use_as_soft_feature: true
+processing:
+  max_dimension: 1920
+# Logo da competicao: nao deve gerar candidatos.
+exclusion_zones:
+  - name: competition_logo_bottom_right
+    x_min: 0.80
+    y_min: 0.78
+    x_max: 1.00
+    y_max: 1.00
+threshold:
+  mode: gray_fixed
+  value: 180
+  max_saturation: 80
+morphology:
+  operation: close
+  kernel: 3
+hough:
+  threshold: 20
+  min_line_length: 25
+  max_line_gap: 30
+  vertical_tolerance: 25
+  horizontal_tolerance: 25
+merge:
+  angle_tolerance: 12
+  distance_tolerance: 30
+topology:
+  mode: soft
+  min_endpoint_tolerance: 20
+  endpoint_tolerance_ratio: 0.20
+  top_alignment_ratio: 0.50
+  min_post_drop_ratio: 0.25
+  max_bar_slope_ratio: 0.20
+proposal_selection:
+  max_candidates: 50
+  nms_iou_threshold: 0.70
+geometry:
+  connection_tolerance: 0.10
+  min_connection_score: 0.20
+  max_angle_difference: 30
+  min_angle_score: 0.40
+  min_height_score: 0.50
+  ratio_min: 0.25
+  ratio_max: 8.0
+  min_relative_height: 0.02
+  min_white_support: 0.20
+  min_score: 0.20

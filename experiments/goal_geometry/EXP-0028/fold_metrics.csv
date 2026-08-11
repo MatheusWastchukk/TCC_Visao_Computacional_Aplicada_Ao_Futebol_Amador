@@ -1,0 +1,7 @@
+model,test_match,precision,recall,f1,tp,fp,tn,fn
+logistic_regression,match_01,0.625,1.0,0.7692307692307693,5,3,2,0
+logistic_regression,match_02,0.5,1.0,0.6666666666666666,5,5,0,0
+logistic_regression,match_03,0.5,1.0,0.6666666666666666,5,5,0,0
+decision_tree,match_01,0.625,1.0,0.7692307692307693,5,3,2,0
+decision_tree,match_02,0.5,1.0,0.6666666666666666,5,5,0,0
+decision_tree,match_03,0.5,1.0,0.6666666666666666,5,5,0,0

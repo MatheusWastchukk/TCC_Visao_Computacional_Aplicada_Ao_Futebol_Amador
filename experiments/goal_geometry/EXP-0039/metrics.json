@@ -1,0 +1,29 @@
+{
+  "experiment_id": "EXP-0039",
+  "version": "V8.6_learned_ranker",
+  "training_candidates": 13514,
+  "logistic_regression": {
+    "frames": 15,
+    "top1_recall_iou_030": 0.3333333333333333,
+    "top5_recall_iou_030": 0.3333333333333333,
+    "top10_recall_iou_030": 0.4,
+    "top1_recall_iou_050": 0.26666666666666666,
+    "top5_recall_iou_050": 0.26666666666666666,
+    "top10_recall_iou_050": 0.26666666666666666,
+    "mean_candidates": 32.4,
+    "mean_top1_iou": 0.30155971299952966,
+    "mean_top5_iou": 0.33840980435555396
+  },
+  "random_forest": {
+    "frames": 15,
+    "top1_recall_iou_030": 0.2,
+    "top5_recall_iou_030": 0.4,
+    "top10_recall_iou_030": 0.4,
+    "top1_recall_iou_050": 0.13333333333333333,
+    "top5_recall_iou_050": 0.26666666666666666,
+    "top10_recall_iou_050": 0.26666666666666666,
+    "mean_candidates": 31.866666666666667,
+    "mean_top1_iou": 0.20734494016110824,
+    "mean_top5_iou": 0.3490301119219867
+  }
+}

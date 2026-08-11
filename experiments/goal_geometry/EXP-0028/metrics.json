@@ -1,0 +1,33 @@
+{
+  "experiment_id": "EXP-0028",
+  "version": "V8.5_candidate_level",
+  "training_frames": 35,
+  "training_candidates": 111094,
+  "external_frames": 30,
+  "iou_threshold": 0.3,
+  "models": [
+    {
+      "model": "logistic_regression",
+      "precision": 0.5416666666666666,
+      "recall": 1.0,
+      "f1": 0.7008547008547009,
+      "folds": 3
+    },
+    {
+      "model": "decision_tree",
+      "precision": 0.5416666666666666,
+      "recall": 1.0,
+      "f1": 0.7008547008547009,
+      "folds": 3
+    }
+  ],
+  "best_model": {
+    "model": "logistic_regression",
+    "precision": 0.5416666666666666,
+    "recall": 1.0,
+    "f1": 0.7008547008547009,
+    "folds": 3
+  },
+  "evaluation": "leave_one_match_out_on_external_frames",
+  "execution_seconds": 2.65345740000339
+}

@@ -1,0 +1,47 @@
+{
+  "experiment_id": "EXP-0023",
+  "version": "V8.5_candidate_level",
+  "training_frames": 35,
+  "training_candidates": 582,
+  "external_frames": 30,
+  "iou_threshold": 0.3,
+  "models": [
+    {
+      "model": "logistic_regression",
+      "precision": 0.16666666666666666,
+      "recall": 0.06666666666666667,
+      "f1": 0.09523809523809525,
+      "folds": 3
+    },
+    {
+      "model": "decision_tree",
+      "precision": 0.27777777777777773,
+      "recall": 0.13333333333333333,
+      "f1": 0.1785714285714286,
+      "folds": 3
+    },
+    {
+      "model": "random_forest",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "folds": 3
+    },
+    {
+      "model": "svm",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "folds": 3
+    }
+  ],
+  "best_model": {
+    "model": "decision_tree",
+    "precision": 0.27777777777777773,
+    "recall": 0.13333333333333333,
+    "f1": 0.1785714285714286,
+    "folds": 3
+  },
+  "evaluation": "leave_one_match_out_on_external_frames",
+  "execution_seconds": 0.31067630008328706
+}

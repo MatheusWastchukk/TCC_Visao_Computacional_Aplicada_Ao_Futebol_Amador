@@ -1,0 +1,32 @@
+{
+  "experiment_id": "EXP-0042",
+  "version": "V8.7_hybrid_visual_classifier",
+  "training_crops": 1080,
+  "positive_training_crops": 82,
+  "negative_training_crops": 998,
+  "positive_rule": "candidate IoU >= 0.30",
+  "logistic_visual_color": {
+    "frames": 15,
+    "top1_recall_iou_030": 0.4,
+    "top5_recall_iou_030": 0.4,
+    "top10_recall_iou_030": 0.4,
+    "top1_recall_iou_050": 0.3333333333333333,
+    "top5_recall_iou_050": 0.3333333333333333,
+    "top10_recall_iou_050": 0.3333333333333333,
+    "mean_candidates": 32.06666666666667,
+    "mean_top1_iou": 0.34922264119500235,
+    "mean_top5_iou": 0.3838192774394476
+  },
+  "svm_visual_color": {
+    "frames": 15,
+    "top1_recall_iou_030": 0.4,
+    "top5_recall_iou_030": 0.4,
+    "top10_recall_iou_030": 0.4,
+    "top1_recall_iou_050": 0.26666666666666666,
+    "top5_recall_iou_050": 0.26666666666666666,
+    "top10_recall_iou_050": 0.3333333333333333,
+    "mean_candidates": 32.13333333333333,
+    "mean_top1_iou": 0.33411084890737136,
+    "mean_top5_iou": 0.36317130044294976
+  }
+}

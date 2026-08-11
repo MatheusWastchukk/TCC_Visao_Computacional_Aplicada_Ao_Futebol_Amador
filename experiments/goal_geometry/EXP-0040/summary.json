@@ -1,0 +1,17 @@
+{
+  "experiment_id": "EXP-0040",
+  "version": "V8.7_crop_preparation",
+  "source_frames": 35,
+  "crops": 1080,
+  "positive_crops": 82,
+  "negative_crops": 998,
+  "negative_categories": {
+    "sky_like": 14,
+    "field_like": 354,
+    "scene_or_player_like": 15,
+    "geometry_false_positive": 615
+  },
+  "positive_rule": "candidate IoU >= 0.30",
+  "negative_rule": "candidate IoU < 0.30",
+  "crop_size": 224
+}

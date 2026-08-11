@@ -1,0 +1,18 @@
+frame_id,target_id,match_id,timestamp,label,target_type,lt_x,lt_y,rt_x,rt_y,lb_x,lb_y,rb_x,rb_y,annotation_status,annotator,notes
+match_01_000197.530,target_01,match_01,197.530,main_goal,goal_structure,1388,424,1634,430,1388,518,1632,532,completed,manual,
+match_01_003167.497,target_01,match_01,3167.497,main_goal,goal_structure,796,442,1036,436,798,537,1038,530,completed,manual,
+match_01_003405.101,target_01,match_01,3405.101,main_goal,goal_structure,1138,428,1364,423,1136,514,1360,507,completed,manual,
+match_01_004193.222,target_01,match_01,4193.222,main_goal,goal_structure,1546,414,1786,420,1550,502,1785,512,completed,manual,
+match_01_004554.516,target_01,match_01,4554.516,main_goal,goal_structure,272,422,470,417,270,506,471,486,completed,manual,
+match_02_000963.829,target_01,match_02,963.829,main_goal,goal_structure,363,380,632,375,364,480,632,468,completed,manual,
+match_02_001282.848,target_01,match_02,1282.848,main_goal,goal_structure,736,261,912,267,736,322,910,330,completed,manual,
+match_02_003662.358,target_01,match_02,3662.358,main_goal,goal_structure,888,386,1148,378,892,480,1152,468,completed,manual,
+match_02_004735.430,target_01,match_02,4735.430,main_goal,goal_structure,734,334,956,342,734,416,958,426,completed,manual,
+match_02_004804.833,target_01,match_02,4804.833,secondary_goal,goal_structure,794,350,1029,357,796,430,1032,447,completed,manual,Anotar uma das tres estruturas visiveis
+match_02_004804.833,target_02,match_02,4804.833,secondary_goal,goal_structure,456,334,590,339,454,398,588,404,completed,manual,Anotar uma das tres estruturas visiveis
+match_02_004804.833,target_03,match_02,4804.833,secondary_goal,goal_structure,1568,316,1668,315,1568,345,1665,346,completed,manual,Anotar uma das tres estruturas visiveis
+match_03_000560.593,target_01,match_03,560.593,main_goal,goal_structure,712,226,852,228,716,274,852,282,completed,manual,
+match_03_001376.842,target_01,match_03,1376.842,main_goal,goal_structure,850,291,1032,288,856,368,1034,351,completed,manual,
+match_03_002533.797,target_01,match_03,2533.797,main_goal,goal_structure,1478,196,1620,200,1472,246,1612,256,completed,manual,
+match_03_002966.229,target_01,match_03,2966.229,main_goal,goal_structure,285,266,466,258,291,339,474,326,completed,manual,
+match_03_004687.549,target_01,match_03,4687.549,main_goal,goal_structure,1398,410,1664,408,1395,507,1666,520,completed,manual,

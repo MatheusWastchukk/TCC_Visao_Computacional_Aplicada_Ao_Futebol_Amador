@@ -12,6 +12,8 @@ from pathlib import Path
 
 import cv2
 
+from experiments.goal_geometry.run_geometry_versions import frame_path
+
 POINT_NAMES = ["lt", "rt", "lb", "rb"]
 
 
@@ -19,6 +21,16 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Annotate four goal points.")
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--frames-dir",
+        type=Path,
+        help="Diretorio das imagens quando o CSV usa match_id/timestamp em vez de image_path.",
+    )
+    parser.add_argument(
+        "--pending-only",
+        action="store_true",
+        help="Anota somente linhas que ainda nao estao completed.",
+    )
     parser.add_argument("--max-preview-width", type=int, default=1280)
     return parser.parse_args()
 
@@ -34,7 +46,12 @@ def write_rows(path: Path, rows: list[dict[str, str]]) -> None:
 
 def main() -> int:
     args = parse_args()
-    rows = list(csv.DictReader(args.input.open(newline="", encoding="utf-8")))
+    all_rows = list(csv.DictReader(args.input.open(newline="", encoding="utf-8")))
+    rows = (
+        [row for row in all_rows if row.get("annotation_status") != "completed"]
+        if args.pending_only
+        else all_rows
+    )
     index = 0
     points: list[tuple[int, int]] = []
     scale = 1.0
@@ -48,7 +65,14 @@ def main() -> int:
     cv2.setMouseCallback(window, mouse_callback)
     while index < len(rows):
         row = rows[index]
-        image_path = Path(row["image_path"])
+        if row.get("image_path"):
+            image_path = Path(row["image_path"])
+        else:
+            if args.frames_dir is None:
+                raise ValueError("Use --frames-dir quando o CSV nao possui image_path")
+            timestamp_row = dict(row)
+            timestamp_row["timestamp_seconds"] = row.get("timestamp_seconds") or row["timestamp"]
+            image_path = frame_path(args.frames_dir, timestamp_row)
         image = cv2.imread(str(image_path))
         if image is None:
             raise FileNotFoundError(f"Nao foi possivel abrir: {image_path}")
@@ -81,7 +105,7 @@ def main() -> int:
                     row[f"{name}_y"] = str(y)
                 row["annotation_status"] = "completed"
                 row["annotator"] = row.get("annotator", "") or "manual"
-                write_rows(args.output, rows)
+                write_rows(args.output, all_rows)
                 print(f"Salvo: {row['frame_id']} ({index + 1}/{len(rows)})")
                 index += 1
                 break
@@ -90,7 +114,7 @@ def main() -> int:
                 index += 1
                 break
             elif key in {ord("q"), 27}:
-                write_rows(args.output, rows)
+                write_rows(args.output, all_rows)
                 cv2.destroyAllWindows()
                 print(f"Progresso salvo em: {args.output}")
                 return 0

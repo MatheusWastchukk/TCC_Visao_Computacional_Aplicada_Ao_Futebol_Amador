@@ -113,6 +113,19 @@ def morphology(mask: np.ndarray, config: dict[str, Any]) -> np.ndarray:
     return result
 
 
+def apply_exclusion_zones(mask: np.ndarray, config: dict[str, Any]) -> np.ndarray:
+    """Remove configured image regions that are known non-field artifacts."""
+    height, width = mask.shape[:2]
+    result = mask.copy()
+    for zone in config.get("exclusion_zones", []):
+        x_min = max(0, min(width, int(float(zone["x_min"]) * width)))
+        y_min = max(0, min(height, int(float(zone["y_min"]) * height)))
+        x_max = max(x_min, min(width, int(float(zone["x_max"]) * width)))
+        y_max = max(y_min, min(height, int(float(zone["y_max"]) * height)))
+        result[y_min:y_max, x_min:x_max] = 0
+    return result
+
+
 def make_segments(mask: np.ndarray, config: dict[str, Any]) -> tuple[np.ndarray, list[Segment]]:
     edges = cv2.Canny(mask, 50, 150)
     lines = cv2.HoughLinesP(

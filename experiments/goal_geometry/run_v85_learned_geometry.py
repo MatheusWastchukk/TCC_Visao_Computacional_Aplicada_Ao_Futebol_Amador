@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 import platform
 import subprocess
 import time
@@ -34,6 +35,7 @@ from experiments.goal_geometry.run_geometry_versions import (
 
 FEATURES = [
     "width_height_ratio",
+    "fifa_ratio_score",
     "left_post_angle",
     "right_post_angle",
     "post_angle_difference",
@@ -46,6 +48,14 @@ FEATURES = [
     "connection_score",
     "white_support",
 ]
+
+FIFA_GOAL_RATIO = 7.32 / 2.44
+FIFA_RATIO_LOG_TOLERANCE = 0.75
+
+
+def fifa_ratio_score(ratio: float) -> float:
+    """Soft similarity to the FIFA 7.32/2.44 projected-shape prior."""
+    return math.exp(-abs(math.log(max(ratio, 1e-6) / FIFA_GOAL_RATIO) / FIFA_RATIO_LOG_TOLERANCE))
 
 
 def parse_args() -> argparse.Namespace:
@@ -90,6 +100,7 @@ def point_features(
     right_angle = float(np.degrees(np.arctan2(rb[1] - rt[1], rb[0] - rt[0])))
     return {
         "width_height_ratio": width / mean_height,
+        "fifa_ratio_score": fifa_ratio_score(width / mean_height),
         "left_post_angle": left_angle,
         "right_post_angle": right_angle,
         "post_angle_difference": abs(left_angle - right_angle),
@@ -111,6 +122,7 @@ def candidate_features(candidate: Any, frame_width: int, frame_height: int) -> d
     mean_height = max((left.length + right.length) / 2, 1.0)
     return {
         "width_height_ratio": candidate.width_height_ratio,
+        "fifa_ratio_score": fifa_ratio_score(candidate.width_height_ratio),
         "left_post_angle": left.angle,
         "right_post_angle": right.angle,
         "post_angle_difference": abs(left.angle - right.angle),
@@ -157,6 +169,7 @@ def main() -> int:
         raise ValueError("V8.5 exige 35 anotacoes completas")
     args.output.mkdir(parents=True, exist_ok=True)
     samples: list[dict[str, Any]] = []
+    evaluation_candidates: list[dict[str, Any]] = []
     for annotation in annotations:
         image = cv2.imread(annotation["image_path"])
         if image is None:
@@ -173,8 +186,6 @@ def main() -> int:
             }
         )
     for row in timestamps:
-        if row["label"] != "not_goal":
-            continue
         image = cv2.imread(str(frame_path(args.frames_dir, row)))
         if image is None:
             raise FileNotFoundError(frame_path(args.frames_dir, row))
@@ -186,16 +197,17 @@ def main() -> int:
         candidates = candidate_pool(mask, segments, config, merged=True)
         frame_id = f"{row['match_id']}_{float(row['timestamp_seconds']):010.3f}"
         for index, candidate in enumerate(candidates):
-            samples.append(
-                {
-                    "sample_id": f"{frame_id}_c{index + 1:03d}",
-                    "frame_id": frame_id,
-                    "match_id": row["match_id"],
-                    "label": "not_goal",
-                    "source": "hough_candidate",
-                    **candidate_features(candidate, image.shape[1], image.shape[0]),
-                }
-            )
+            candidate_row = {
+                "sample_id": f"{frame_id}_c{index + 1:03d}",
+                "frame_id": frame_id,
+                "match_id": row["match_id"],
+                "label": "not_goal",
+                "source": "hough_candidate",
+                **candidate_features(candidate, image.shape[1], image.shape[0]),
+            }
+            evaluation_candidates.append(candidate_row)
+            if row["label"] == "not_goal":
+                samples.append(candidate_row)
     with (args.output / "goal_geometry_features.csv").open(
         "w", newline="", encoding="utf-8"
     ) as file:
@@ -235,9 +247,9 @@ def main() -> int:
     for model_name, model in models.items():
         for test_match in match_ids:
             train = [row for row in samples if row["match_id"] != test_match]
-            test = [row for row in samples if row["match_id"] == test_match]
             x_train = np.array([[row[feature] for feature in FEATURES] for row in train])
             y_train = np.array([row["label"] for row in train])
+            test = [row for row in evaluation_candidates if row["match_id"] == test_match]
             x_test = np.array([[row[feature] for feature in FEATURES] for row in test])
             model.fit(x_train, y_train)
             probabilities = model.predict_proba(x_test)[
@@ -286,17 +298,20 @@ def main() -> int:
         writer.writerows(prediction_rows)
     best = max(model_rows, key=lambda row: float(str(row["f1"])))
     report = {
-        "experiment_id": "EXP-0021",
+        "experiment_id": args.output.name,
         "version": "V8.5",
         "task": "goal_structure",
         "samples": len(samples),
         "models": model_rows,
         "best_model": best,
         "evaluation": "leave_one_match_out",
+        "evaluation_frames": len(frame_truth),
+        "training_manual_annotations": len(annotations),
         "execution_seconds": time.perf_counter() - start,
         "limitations": [
             "O dataset de features ainda é pequeno; resultados são piloto.",
-            "Negativos são candidatos Hough dos frames not_goal.",
+            "Os 30 timestamps externos não participam do treinamento.",
+            "A avaliação usa candidatos Hough e não pontos manuais nos frames externos.",
         ],
     }
     (args.output / "metrics.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
@@ -327,7 +342,7 @@ def main() -> int:
         "Classificadores tabulares avaliados com leave-one-match-out.\n",
         encoding="utf-8",
     )
-    print(json.dumps({"experiment_id": "EXP-0021", "best_model": best}, ensure_ascii=False))
+    print(json.dumps({"experiment_id": args.output.name, "best_model": best}, ensure_ascii=False))
     return 0
 
 
