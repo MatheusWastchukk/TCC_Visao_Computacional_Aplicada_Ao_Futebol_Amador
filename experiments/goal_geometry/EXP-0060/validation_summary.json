@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP-0060",
+  "version": "V10_validation_positive_negative_by_match",
+  "evaluation": {
+    "positive_frames": 15,
+    "negative_frames": 15,
+    "negative_frames_per_match": 5,
+    "confidence": 0.25,
+    "iou_thresholds": [0.3, 0.5]
+  },
+  "folds": [
+    {
+      "model_experiment": "EXP-0057",
+      "training_fold": "sem match_03",
+      "positive_recall_iou_030": 0.3333333333,
+      "positive_recall_iou_050": 0.3333333333,
+      "negative_true_rate": 1.0,
+      "negative_false_positive_rate": 0.0
+    },
+    {
+      "model_experiment": "EXP-0058",
+      "training_fold": "sem match_01",
+      "positive_recall_iou_030": 0.9333333333,
+      "positive_recall_iou_050": 0.9333333333,
+      "negative_true_rate": 1.0,
+      "negative_false_positive_rate": 0.0
+    },
+    {
+      "model_experiment": "EXP-0059",
+      "training_fold": "sem match_02",
+      "positive_recall_iou_030": 0.2666666667,
+      "positive_recall_iou_050": 0.2666666667,
+      "negative_true_rate": 1.0,
+      "negative_false_positive_rate": 0.0
+    }
+  ],
+  "conclusion": "Os modelos nao produziram falsos positivos nos 15 frames not_goal avaliados, mas a variacao de recall positivo entre folds permanece alta. A avaliacao negativa e preliminar devido ao pequeno numero de frames."
+}

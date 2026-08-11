@@ -37,7 +37,7 @@ def create_synthetic_video(path: Path, frame_count: int = 100) -> None:
     )
 
     if not writer.isOpened():
-        raise RuntimeError(f"Could not create synthetic video at {path}")
+        raise RuntimeError(f"Não foi possível criar o vídeo sintético em {path}")
 
     for frame_index in range(frame_count):
         frame = np.zeros((height, width, 3), dtype=np.uint8)
@@ -81,23 +81,23 @@ def resolve_torch_device(device_name: str) -> Any:
 
     if device_name == "cuda":
         if not torch.cuda.is_available():
-            raise RuntimeError("Device 'cuda' requested, but CUDA is not available")
+            raise RuntimeError("O dispositivo 'cuda' foi solicitado, mas o CUDA não está disponível")
         return torch.device("cuda")
 
     if device_name == "dml":
         try:
             import torch_directml
         except ImportError as exc:
-            message = "Device 'dml' requested, but torch-directml is not installed"
+            message = "O dispositivo 'dml' foi solicitado, mas o torch-directml não está instalado"
             raise RuntimeError(message) from exc
         return torch_directml.device()
 
-    raise RuntimeError(f"Unsupported device: {device_name}")
+    raise RuntimeError(f"Dispositivo não suportado: {device_name}")
 
 
 def process_frames(video_path: Path, frame_limit: int, device_name: str) -> dict[str, Any]:
     if device_name == "cuda" and not torch.cuda.is_available():
-        raise RuntimeError(f"Device {device_name!r} requested, but CUDA is not available")
+        raise RuntimeError(f"O dispositivo {device_name!r} foi solicitado, mas o CUDA não está disponível")
 
     device = resolve_torch_device(device_name)
     process = psutil.Process()
@@ -105,7 +105,7 @@ def process_frames(video_path: Path, frame_limit: int, device_name: str) -> dict
 
     capture = cv2.VideoCapture(str(video_path))
     if not capture.isOpened():
-        raise RuntimeError(f"Could not open video: {video_path}")
+        raise RuntimeError(f"Não foi possível abrir o vídeo: {video_path}")
 
     start = perf_counter()
     frame_count = 0

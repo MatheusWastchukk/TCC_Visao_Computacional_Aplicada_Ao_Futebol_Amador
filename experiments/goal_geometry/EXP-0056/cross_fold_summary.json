@@ -1,0 +1,27 @@
+{
+  "experiment_id": "EXP-0056",
+  "version": "V10_cross_fold_external_summary",
+  "folds": [
+    {
+      "validation_match": "match_03",
+      "external_recall_iou_030": 0.3333333333,
+      "external_recall_iou_050": 0.3333333333,
+      "external_mean_best_iou": 0.2921797229
+    },
+    {
+      "validation_match": "match_01",
+      "external_recall_iou_030": 0.9333333333,
+      "external_recall_iou_050": 0.9333333333,
+      "external_mean_best_iou": 0.8124251543
+    },
+    {
+      "validation_match": "match_02",
+      "external_recall_iou_030": 0.2666666667,
+      "external_recall_iou_050": 0.2666666667,
+      "external_mean_best_iou": 0.2446832320
+    }
+  ],
+  "fold_mean_recall_iou_030": 0.5111111111,
+  "fold_mean_recall_iou_050": 0.5111111111,
+  "interpretation": "Grande variacao entre folds; o melhor fold nao deve ser tratado como desempenho geral."
+}

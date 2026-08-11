@@ -1,9 +1,9 @@
-"""Run the classical goal-structure baseline on the pilot frames.
+"""Executa o baseline clássico da estrutura da goleira nos frames do piloto.
 
-The baseline is intentionally explainable: bright-pixel thresholding, optional
-morphology, Canny edges and Hough line geometry.  It classifies ``main_goal``
-against ``not_goal`` and ``secondary_goal`` labels; it does not claim to prove
-that a ball crossed the official goal line.
+O baseline é intencionalmente explicável: limiarização de pixels claros,
+morfologia opcional, bordas de Canny e geometria de linhas de Hough. Ele
+classifica os rótulos ``main_goal``, ``not_goal`` e ``secondary_goal``; não
+afirma provar que a bola cruzou a linha oficial do gol.
 """
 
 from __future__ import annotations
@@ -40,7 +40,7 @@ class Metrics:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run the classical goal baseline.")
+    parser = argparse.ArgumentParser(description="Executa o baseline clássico da goleira.")
     parser.add_argument("--timestamps", type=Path, required=True)
     parser.add_argument("--frames-dir", type=Path, required=True)
     parser.add_argument("--config", type=Path, required=True)
@@ -95,7 +95,7 @@ def apply_morphology(mask: np.ndarray, variant: dict[str, Any]) -> np.ndarray:
     if operation == "open_close":
         opened = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
         return cv2.morphologyEx(opened, cv2.MORPH_CLOSE, kernel)
-    raise ValueError(f"Unknown morphology operation: {operation}")
+    raise ValueError(f"Operação morfológica desconhecida: {operation}")
 
 
 def _line_features(mask: np.ndarray, config: dict[str, Any]) -> tuple[int, int, float]:
@@ -129,7 +129,7 @@ def _line_features(mask: np.ndarray, config: dict[str, Any]) -> tuple[int, int, 
             horizontal += 1
             horizontal_lengths.append(length)
 
-    # Two posts plus a crossbar is the minimum interpretable structure.
+    # Duas traves verticais e uma trave horizontal formam a estrutura mínima interpretável.
     post_score = min(1.0, vertical / 2.0)
     bar_score = min(1.0, horizontal / 1.0)
     length_score = min(1.0, (sum(vertical_lengths) + sum(horizontal_lengths)) / 500.0)
@@ -198,7 +198,7 @@ def main() -> int:
             path = frame_path(args.frames_dir, row)
             image = cv2.imread(str(path))
             if image is None:
-                raise FileNotFoundError(f"Frame not found or unreadable: {path}")
+                raise FileNotFoundError(f"Frame não encontrado ou ilegível: {path}")
             result = detect(image, threshold, morphology, config["lines"] | config["geometry"])
             evaluated.append({
                 "match_id": row["match_id"],
@@ -233,8 +233,8 @@ def main() -> int:
                 "false_candidates_per_hour": "",
                 "processing_fps": f"{len(rows) / elapsed:.2f}",
                 "notes": (
-                    "IoU/FP-hour dependem de anotacoes temporais e caixas; "
-                    "baseline avalia classificacao de frame."
+                    "IoU/FP-hour dependem de anotações temporais e caixas; "
+                    "o baseline avalia a classificação de frames."
                 ),
             })
         report_variants.append({
@@ -261,12 +261,12 @@ def main() -> int:
         "best_variant": best,
         "variants": report_variants,
         "limitations": [
-            "No bounding-box annotations were available, so mean IoU was not calculated.",
+            "Não havia anotações de caixas delimitadoras; portanto, o IoU médio não foi calculado.",
             (
-                "The timestamp sample is not a continuous video segment, so false candidates "
-                "per hour were not calculated."
+                "A amostra de timestamps não é um segmento contínuo de vídeo; portanto, os "
+                "falsos candidatos por hora não foram calculados."
             ),
-            "Labels are frame-level references and do not establish official goal-line crossing.",
+            "Os rótulos são referências no nível de frame e não comprovam a transposição da linha oficial do gol.",
         ],
     }
     args.report_output.parent.mkdir(parents=True, exist_ok=True)

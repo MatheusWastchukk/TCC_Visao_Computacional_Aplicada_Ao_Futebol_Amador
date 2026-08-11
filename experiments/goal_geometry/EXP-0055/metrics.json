@@ -1,0 +1,10 @@
+{
+  "experiment_id": "EXP-0055",
+  "version": "V10_external_evaluation",
+  "confidence": 0.25,
+  "frames": 15,
+  "recall_iou_030": 0.26666666666666666,
+  "recall_iou_050": 0.26666666666666666,
+  "mean_best_iou": 0.24468323295603703,
+  "mean_predictions": 0.26666666666666666
+}

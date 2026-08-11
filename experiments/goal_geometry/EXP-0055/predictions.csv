@@ -1,0 +1,16 @@
+frame_id,match_id,predictions,best_iou,iou_ge_0_30,iou_ge_0_50
+match_01_000197.530,match_01,1,0.9389964967374819,True,True
+match_01_003167.497,match_01,1,0.8683619969760892,True,True
+match_01_003405.101,match_01,0,0.0,False,False
+match_01_004193.222,match_01,1,0.9549875622097183,True,True
+match_01_004554.516,match_01,0,0.0,False,False
+match_02_000963.829,match_02,0,0.0,False,False
+match_02_001282.848,match_02,0,0.0,False,False
+match_02_003662.358,match_02,0,0.0,False,False
+match_02_004735.430,match_02,0,0.0,False,False
+match_02_004804.833,match_02,0,0.0,False,False
+match_03_000560.593,match_03,0,0.0,False,False
+match_03_001376.842,match_03,0,0.0,False,False
+match_03_002533.797,match_03,0,0.0,False,False
+match_03_002966.229,match_03,0,0.0,False,False
+match_03_004687.549,match_03,1,0.907902438417266,True,True

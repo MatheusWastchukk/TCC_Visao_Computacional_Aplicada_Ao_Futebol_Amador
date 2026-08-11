@@ -1,6 +1,6 @@
-"""Extract pilot frames from timestamp manifests.
+"""Extrai frames do piloto a partir de manifestos de timestamps.
 
-Expected CSV columns:
+Colunas esperadas no CSV:
 match_id,video_path,timestamp_seconds,label
 """
 
@@ -14,13 +14,13 @@ import cv2
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Extract frames for the goal detection pilot.")
-    parser.add_argument("--timestamps", required=True, type=Path, help="CSV with frame timestamps.")
+    parser = argparse.ArgumentParser(description="Extrai frames para o piloto de detecção da goleira.")
+    parser.add_argument("--timestamps", required=True, type=Path, help="CSV com os timestamps dos frames.")
     parser.add_argument(
         "--output-dir",
         required=True,
         type=Path,
-        help="Directory where frames will be saved.",
+        help="Diretório onde os frames serão salvos.",
     )
     return parser.parse_args()
 
@@ -34,17 +34,17 @@ def format_timestamp(timestamp_seconds: float) -> str:
 def extract_frame(video_path: Path, timestamp_seconds: float, output_path: Path) -> None:
     capture = cv2.VideoCapture(str(video_path))
     if not capture.isOpened():
-        raise ValueError(f"Could not open video: {video_path}")
+        raise ValueError(f"Não foi possível abrir o vídeo: {video_path}")
 
     try:
         capture.set(cv2.CAP_PROP_POS_MSEC, timestamp_seconds * 1000)
         ok, frame = capture.read()
         if not ok or frame is None:
-            raise ValueError(f"Could not read frame at {timestamp_seconds:.3f}s from {video_path}")
+            raise ValueError(f"Não foi possível ler o frame em {timestamp_seconds:.3f}s de {video_path}")
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         if not cv2.imwrite(str(output_path), frame):
-            raise ValueError(f"Could not write frame: {output_path}")
+            raise ValueError(f"Não foi possível gravar o frame: {output_path}")
     finally:
         capture.release()
 
@@ -59,7 +59,7 @@ def main() -> int:
         missing_columns = required_columns.difference(reader.fieldnames or [])
         if missing_columns:
             missing = ", ".join(sorted(missing_columns))
-            raise ValueError(f"Missing required columns: {missing}")
+            raise ValueError(f"Colunas obrigatórias ausentes: {missing}")
 
         for row in reader:
             match_id = row["match_id"].strip()

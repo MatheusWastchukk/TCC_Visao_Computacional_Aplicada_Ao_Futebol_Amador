@@ -1,4 +1,4 @@
-"""Calibrate the V8.6 proposal ranking with development annotations."""
+"""Calibra o ranqueamento de propostas da V8.6 com as anotações de desenvolvimento."""
 
 from __future__ import annotations
 
@@ -38,7 +38,7 @@ RANK_FEATURES = [
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run learned V8.6 proposal ranking.")
+    parser = argparse.ArgumentParser(description="Executa o ranqueamento aprendido de propostas da V8.6.")
     parser.add_argument("--development-annotations", type=Path, required=True)
     parser.add_argument("--external-annotations", type=Path, required=True)
     parser.add_argument("--external-timestamps", type=Path, required=True)

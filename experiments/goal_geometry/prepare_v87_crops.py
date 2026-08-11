@@ -1,4 +1,4 @@
-"""Prepare image crops and labels for the short V8.7 hybrid experiment."""
+"""Prepara recortes de imagens e rótulos para o experimento híbrido curto da V8.7."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ from experiments.goal_geometry.run_v86_proposal_generator import (
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Prepare V8.7 proposal crops.")
+    parser = argparse.ArgumentParser(description="Prepara os recortes de propostas da V8.7.")
     parser.add_argument("--development-annotations", type=Path, required=True)
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -66,7 +66,28 @@ def crop_with_padding(
     x2 = min(width, max(x1 + 1, int(right + padding_x)))
     y2 = min(height, max(y1 + 1, int(bottom + padding_y)))
     crop = image[y1:y2, x1:x2]
-    return cv2.resize(crop, (size, size), interpolation=cv2.INTER_AREA)
+    scale = min(size / crop.shape[1], size / crop.shape[0])
+    resized_width = max(1, int(round(crop.shape[1] * scale)))
+    resized_height = max(1, int(round(crop.shape[0] * scale)))
+    resized = cv2.resize(crop, (resized_width, resized_height), interpolation=cv2.INTER_AREA)
+    canvas = np.full((size, size, 3), 114, dtype=np.uint8)
+    offset_x = (size - resized_width) // 2
+    offset_y = (size - resized_height) // 2
+    canvas[offset_y : offset_y + resized_height, offset_x : offset_x + resized_width] = resized
+    return canvas
+
+
+def intersection_over_truth(
+    candidate: tuple[float, float, float, float],
+    truth: tuple[float, float, float, float],
+) -> float:
+    left = max(candidate[0], truth[0])
+    top = max(candidate[1], truth[1])
+    right = min(candidate[2], truth[2])
+    bottom = min(candidate[3], truth[3])
+    intersection = max(0.0, right - left) * max(0.0, bottom - top)
+    truth_area = max(0.0, truth[2] - truth[0]) * max(0.0, truth[3] - truth[1])
+    return intersection / truth_area if truth_area else 0.0
 
 
 def negative_category(features: dict[str, float]) -> str:
@@ -91,6 +112,7 @@ def main() -> int:
     crop_root = args.output / "crops"
     crop_root.mkdir(parents=True, exist_ok=True)
     manifest: list[dict[str, Any]] = []
+    discarded_negative_goal_overlap = 0
     for group in grouped(annotations):
         annotation = group[0]
         image = cv2.imread(annotation["image_path"])
@@ -110,8 +132,19 @@ def main() -> int:
             key=lambda item: item[0],
             reverse=True,
         )[: args.max_positive_crops]
+        negative_candidates = []
+        for item in scored:
+            if item[0] >= 0.30:
+                continue
+            candidate_box_values = candidate_box(item[1]["candidate"])
+            if any(
+                intersection_over_truth(candidate_box_values, truth) >= 0.15 for truth in truths
+            ):
+                discarded_negative_goal_overlap += 1
+                continue
+            negative_candidates.append(item)
         negatives = sorted(
-            [item for item in scored if item[0] < 0.30],
+            negative_candidates,
             key=lambda item: item[1]["proposal_score"],
             reverse=True,
         )[: args.max_negative_crops]
@@ -152,6 +185,7 @@ def main() -> int:
         "crops": len(manifest),
         "positive_crops": sum(row["label"] == "goal_structure" for row in manifest),
         "negative_crops": sum(row["label"] == "not_goal" for row in manifest),
+        "discarded_negative_goal_overlap": discarded_negative_goal_overlap,
         "negative_categories": {
             category: sum(row["negative_category"] == category for row in manifest)
             for category in [
@@ -164,6 +198,7 @@ def main() -> int:
         "positive_rule": "candidate IoU >= 0.30",
         "negative_rule": "candidate IoU < 0.30",
         "crop_size": args.crop_size,
+        "resize_mode": "letterbox_preserving_aspect_ratio",
     }
     (args.output / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False))

@@ -28,7 +28,7 @@ from experiments.goal_geometry.run_v85_learned_geometry import candidate_feature
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run V8.6 spatial proposal generator.")
+    parser = argparse.ArgumentParser(description="Executa o gerador espacial de propostas da V8.6.")
     parser.add_argument("--development-annotations", type=Path, required=True)
     parser.add_argument("--external-annotations", type=Path, required=True)
     parser.add_argument("--external-timestamps", type=Path, required=True)
@@ -401,7 +401,7 @@ def draw_overlay(
     cv2.rectangle(output, (0, 0), (output.shape[1], 80), (0, 0, 0), -1)
     cv2.putText(
         output,
-        f"V8.6 {frame_id} selected={summary['selected_candidate_id']}",
+        f"V8.6 {frame_id} candidato selecionado={summary['selected_candidate_id']}",
         (15, 30),
         cv2.FONT_HERSHEY_SIMPLEX,
         0.7,
@@ -411,9 +411,9 @@ def draw_overlay(
     cv2.putText(
         output,
         (
-            f"candidates={summary['num_candidates']} "
-            f"best_iou={summary['best_iou']:.3f} "
-            f"selected_iou={summary['selected_iou']:.3f}"
+            f"candidatos={summary['num_candidates']} "
+            f"melhor_iou={summary['best_iou']:.3f} "
+            f"iou_selecionado={summary['selected_iou']:.3f}"
         ),
         (15, 62),
         cv2.FONT_HERSHEY_SIMPLEX,

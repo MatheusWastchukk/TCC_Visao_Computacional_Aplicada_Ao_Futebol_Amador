@@ -1,0 +1,15 @@
+{
+  "experiment_id": "EXP-0050",
+  "version": "V10_training_smoke",
+  "validation_match": "match_03",
+  "epochs": 1,
+  "image_size": 320,
+  "device": "cpu",
+  "train_images": 138,
+  "validation_images": 65,
+  "precision": 0.00142,
+  "recall": 0.49091,
+  "map50": 0.00078,
+  "map50_95": 0.00014,
+  "status": "pipeline_smoke_test_not_final_result"
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "test_match": "match_01",
+    "train_matches": [
+      "match_02",
+      "match_03"
+    ]
+  },
+  {
+    "test_match": "match_02",
+    "train_matches": [
+      "match_01",
+      "match_03"
+    ]
+  },
+  {
+    "test_match": "match_03",
+    "train_matches": [
+      "match_01",
+      "match_02"
+    ]
+  }
+]

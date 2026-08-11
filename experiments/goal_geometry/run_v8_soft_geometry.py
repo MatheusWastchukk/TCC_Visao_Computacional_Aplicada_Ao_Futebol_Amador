@@ -1,4 +1,4 @@
-"""Run V8 using continuous geometry scores calibrated from four-point labels."""
+"""Executa a V8 usando pontuações geométricas contínuas calibradas com rótulos de quatro pontos."""
 
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ from experiments.goal_geometry.run_geometry_versions import (
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run V8 soft geometry scoring.")
+    parser = argparse.ArgumentParser(description="Executa a pontuação de geometria suave da V8.")
     parser.add_argument("--timestamps", type=Path, required=True)
     parser.add_argument("--frames-dir", type=Path, required=True)
     parser.add_argument("--annotations", type=Path, required=True)
@@ -118,7 +118,7 @@ def main() -> int:
     if len(annotations) != 35 or any(
         row["annotation_status"] != "completed" for row in annotations
     ):
-        raise ValueError("V8 exige 35 anotacoes completas com annotation_status=completed")
+        raise ValueError("A V8 exige 35 anotações completas com annotation_status=completed")
     stats = calibration(annotations)
     output = args.output
     output.mkdir(parents=True, exist_ok=True)
@@ -270,7 +270,7 @@ def main() -> int:
     )
     (output / "README.md").write_text(
         "# EXP-0020 - V8 Soft Geometry\n\n"
-        "Score continuo calibrado com as 35 anotacoes de quatro pontos. "
+            "Score contínuo calibrado com as 35 anotações de quatro pontos. "
         "O threshold escolhido maximiza F1 de goal_structure no sweep.\n",
         encoding="utf-8",
     )

@@ -1,4 +1,4 @@
-"""Build the immutable frame manifest used by geometry experiments."""
+"""Cria o manifesto imutável de frames usado pelos experimentos geométricos."""
 
 from __future__ import annotations
 

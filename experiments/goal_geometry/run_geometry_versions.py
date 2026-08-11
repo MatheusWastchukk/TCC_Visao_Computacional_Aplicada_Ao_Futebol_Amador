@@ -1,9 +1,10 @@
-"""Run the incremental Goal Geometry Detector V2 and persist every result.
+"""Executa o Detector Geométrico da Goleira V2 de forma incremental e persiste todos os resultados.
 
-The seven versions are cumulative engineering checkpoints:
-V1 baseline, V2 merged segments, V3 connectivity, V4 angle/height coherence,
-V5 width/height proportions, V6 white-pixel support and V7 weighted score.
-Each execution writes reproducible predictions and candidate geometry details.
+As sete versões são marcos cumulativos de engenharia:
+V1 baseline, V2 segmentos mesclados, V3 conectividade, V4 coerência de
+ângulo/altura, V5 proporções de largura/altura, V6 suporte de pixels brancos e
+V7 pontuação ponderada. Cada execução grava predições reproduzíveis e detalhes
+da geometria dos candidatos.
 """
 
 from __future__ import annotations
@@ -59,7 +60,7 @@ class Candidate:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run geometry detector versions V1-V7.")
+    parser = argparse.ArgumentParser(description="Executa as versões V1–V7 do detector geométrico.")
     parser.add_argument("--timestamps", type=Path, required=True)
     parser.add_argument("--frames-dir", type=Path, required=True)
     parser.add_argument("--config", type=Path, required=True)
@@ -367,7 +368,7 @@ def filter_stage(
         return [
             item for item in candidates if item.geometry_score >= config["geometry"]["min_score"]
         ]
-    raise ValueError(f"Unknown geometry stage: {stage}")
+    raise ValueError(f"Etapa geométrica desconhecida: {stage}")
 
 
 def candidates_by_stage(
@@ -683,7 +684,7 @@ def run_version(
         json.dumps(environment, indent=2), encoding="utf-8"
     )
     readme = (
-        f"# {experiment_id}\n\nVersao: V{version}\n\n"
+        f"# {experiment_id}\n\nVersão: V{version}\n\n"
         f"Dataset: {args.dataset_version}\n\n"
         "Resultado principal em `metrics.json`; candidatos instrumentados em "
         "`candidates.csv`.\n"

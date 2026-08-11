@@ -1,4 +1,4 @@
-"""Train interpretable learned geometry models with leave-one-match-out folds."""
+"""Treina modelos interpretáveis de geometria aprendida com validação deixando uma partida de fora."""
 
 from __future__ import annotations
 
@@ -54,12 +54,12 @@ FIFA_RATIO_LOG_TOLERANCE = 0.75
 
 
 def fifa_ratio_score(ratio: float) -> float:
-    """Soft similarity to the FIFA 7.32/2.44 projected-shape prior."""
+    """Similaridade suave com o prior de forma projetada da FIFA 7,32/2,44."""
     return math.exp(-abs(math.log(max(ratio, 1e-6) / FIFA_GOAL_RATIO) / FIFA_RATIO_LOG_TOLERANCE))
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run V8.5 learned geometry.")
+    parser = argparse.ArgumentParser(description="Executa a geometria aprendida da V8.5.")
     parser.add_argument("--timestamps", type=Path, required=True)
     parser.add_argument("--frames-dir", type=Path, required=True)
     parser.add_argument("--annotations", type=Path, required=True)
@@ -166,7 +166,7 @@ def main() -> int:
     if len(annotations) != 35 or any(
         row["annotation_status"] != "completed" for row in annotations
     ):
-        raise ValueError("V8.5 exige 35 anotacoes completas")
+        raise ValueError("A V8.5 exige 35 anotações completas")
     args.output.mkdir(parents=True, exist_ok=True)
     samples: list[dict[str, Any]] = []
     evaluation_candidates: list[dict[str, Any]] = []

@@ -12,6 +12,7 @@ ENV/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+*.cache
 .coverage
 htmlcov/
 
@@ -52,6 +53,20 @@ docs/nova-abordagem-*.md
 experiments/**/REPORT.md
 experiments/goal_geometry/EXP-*/README.md
 experiments/baselines/EXP-*/README.md
+# Artefatos visuais e tabelas derivadas de experimentos.
+experiments/goal_geometry/EXP-*/crops/
+experiments/goal_geometry/EXP-*/**/*.jpg
+experiments/goal_geometry/EXP-*/candidate_training.csv
+experiments/goal_geometry/EXP-*/images/
+experiments/goal_geometry/EXP-*/runs/
+experiments/goal_geometry/EXP-*/weights/
+models/
+runs/
+yolo11n.pt
+experiments/goal_geometry/evolution_visuals/
+# Overlays dos experimentos sao evidencias visuais versionadas.
+!experiments/goal_geometry/EXP-*/overlays/
+!experiments/goal_geometry/EXP-*/overlays/**
 results/
 
 # Keep directory placeholders

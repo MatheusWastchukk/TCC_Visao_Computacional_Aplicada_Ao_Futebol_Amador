@@ -1,4 +1,4 @@
-"""Calibrate V8.5 decision thresholds on development data, then score external predictions."""
+"""Calibra os limiares de decisão da V8.5 nos dados de desenvolvimento e avalia as predições externas."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ from experiments.goal_geometry.run_v85_candidate_level import (
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Calibrate V8.5 thresholds.")
+    parser = argparse.ArgumentParser(description="Calibra os limiares da V8.5.")
     parser.add_argument("--training-candidates", type=Path, required=True)
     parser.add_argument("--annotations", type=Path, required=True)
     parser.add_argument("--calibration-timestamps", type=Path, required=True)

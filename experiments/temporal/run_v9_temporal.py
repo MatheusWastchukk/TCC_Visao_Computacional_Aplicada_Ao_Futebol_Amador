@@ -1,4 +1,4 @@
-"""Evaluate persistence and spatial consistency on real video sequences."""
+"""Avalia persistência e consistência espacial em sequências reais de vídeo."""
 
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ from experiments.goal_geometry.run_v8_soft_geometry import calibration, soft_sco
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run V9 temporal validation.")
+    parser = argparse.ArgumentParser(description="Executa a validação temporal da V9.")
     parser.add_argument("--sequences", type=Path, required=True)
     parser.add_argument("--annotations", type=Path, required=True)
     parser.add_argument("--config", type=Path, required=True)
@@ -45,7 +45,7 @@ def main() -> int:
     args = parse_args()
     sequences = list(csv.DictReader(args.sequences.open(newline="", encoding="utf-8")))
     if any(not row["start_seconds"] or not row["end_seconds"] for row in sequences):
-        raise ValueError("V9 exige start_seconds e end_seconds preenchidos em todas as sequencias")
+        raise ValueError("A V9 exige start_seconds e end_seconds preenchidos em todas as sequências")
     annotations = list(csv.DictReader(args.annotations.open(newline="", encoding="utf-8")))
     config = yaml.safe_load(args.config.read_text(encoding="utf-8"))
     stats = calibration(annotations)

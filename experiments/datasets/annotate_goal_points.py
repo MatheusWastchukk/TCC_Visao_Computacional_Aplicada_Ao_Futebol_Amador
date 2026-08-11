@@ -1,7 +1,7 @@
-"""Interactively annotate four goal-structure points in the pilot frames.
+"""Anota interativamente quatro pontos da estrutura da goleira nos frames do piloto.
 
-Click order: LT, RT, LB, RB. Coordinates are stored in the original image
-resolution even when the preview is resized for the screen.
+Ordem dos cliques: LT, RT, LB, RB. As coordenadas são armazenadas na resolução
+original da imagem, mesmo quando a visualização é redimensionada para a tela.
 """
 
 from __future__ import annotations
@@ -18,18 +18,18 @@ POINT_NAMES = ["lt", "rt", "lb", "rb"]
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Annotate four goal points.")
+    parser = argparse.ArgumentParser(description="Anota quatro pontos da goleira.")
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument(
         "--frames-dir",
         type=Path,
-        help="Diretorio das imagens quando o CSV usa match_id/timestamp em vez de image_path.",
+        help="Diretório das imagens quando o CSV usa match_id/timestamp em vez de image_path.",
     )
     parser.add_argument(
         "--pending-only",
         action="store_true",
-        help="Anota somente linhas que ainda nao estao completed.",
+        help="Anota somente linhas que ainda não estão com status completed.",
     )
     parser.add_argument("--max-preview-width", type=int, default=1280)
     return parser.parse_args()
@@ -60,7 +60,7 @@ def main() -> int:
         if event == cv2.EVENT_LBUTTONDOWN and len(points) < len(POINT_NAMES):
             points.append((round(x / scale), round(y / scale)))
 
-    window = "Goal points: LT RT LB RB | S=salvar N=proximo R=limpar Q=sair"
+    window = "Pontos da goleira: LT RT LB RB | S=salvar N=próximo R=limpar Q=sair"
     cv2.namedWindow(window, cv2.WINDOW_NORMAL)
     cv2.setMouseCallback(window, mouse_callback)
     while index < len(rows):
@@ -69,13 +69,13 @@ def main() -> int:
             image_path = Path(row["image_path"])
         else:
             if args.frames_dir is None:
-                raise ValueError("Use --frames-dir quando o CSV nao possui image_path")
+                raise ValueError("Use --frames-dir quando o CSV não possuir image_path")
             timestamp_row = dict(row)
             timestamp_row["timestamp_seconds"] = row.get("timestamp_seconds") or row["timestamp"]
             image_path = frame_path(args.frames_dir, timestamp_row)
         image = cv2.imread(str(image_path))
         if image is None:
-            raise FileNotFoundError(f"Nao foi possivel abrir: {image_path}")
+            raise FileNotFoundError(f"Não foi possível abrir: {image_path}")
         scale = min(1.0, args.max_preview_width / image.shape[1])
         points = []
         while True:
@@ -98,11 +98,14 @@ def main() -> int:
                 points = []
             elif key == ord("s") or key == 13:
                 if len(points) != 4:
-                    print("Clique exatamente LT, RT, LB e RB antes de salvar.")
+                    print("Clique exatamente em LT, RT, LB e RB antes de salvar.")
                     continue
                 for name, (x, y) in zip(POINT_NAMES, points, strict=True):
                     row[f"{name}_x"] = str(x)
                     row[f"{name}_y"] = str(y)
+                if row.get("original_label") == "pending":
+                    row["original_label"] = "goal_structure"
+                    row["label"] = "goal_structure"
                 row["annotation_status"] = "completed"
                 row["annotator"] = row.get("annotator", "") or "manual"
                 write_rows(args.output, all_rows)
@@ -110,7 +113,14 @@ def main() -> int:
                 index += 1
                 break
             elif key == ord("n"):
-                print(f"Pulado: {row['frame_id']}")
+                if row.get("original_label") == "pending":
+                    row["original_label"] = "not_goal"
+                    row["label"] = "not_goal"
+                row["annotation_status"] = "completed"
+                row["annotator"] = row.get("annotator", "") or "manual"
+                row["notes"] = (row.get("notes", "") + "; marcado como not_goal").lstrip("; ")
+                write_rows(args.output, all_rows)
+                print(f"Marcado como not_goal: {row['frame_id']} ({index + 1}/{len(rows)})")
                 index += 1
                 break
             elif key in {ord("q"), 27}:
@@ -119,7 +129,7 @@ def main() -> int:
                 print(f"Progresso salvo em: {args.output}")
                 return 0
     cv2.destroyAllWindows()
-    print(f"Anotacao concluida: {args.output}")
+    print(f"Anotação concluída: {args.output}")
     return 0
 
 

@@ -1,4 +1,4 @@
-"""Sweep Hough parameters using manual annotations as a development set."""
+"""Varre parâmetros de Hough usando anotações manuais como conjunto de desenvolvimento."""
 
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ from experiments.goal_geometry.run_v85_candidate_level import bbox, bbox_iou, ca
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Sweep V8.5 Hough coverage parameters.")
+    parser = argparse.ArgumentParser(description="Varre os parâmetros de cobertura Hough da V8.5.")
     parser.add_argument("--annotations", type=Path, required=True)
     parser.add_argument("--base-config", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)

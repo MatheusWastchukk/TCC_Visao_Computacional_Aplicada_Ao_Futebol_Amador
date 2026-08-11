@@ -1,4 +1,4 @@
-"""Audit whether V8.5 positive frames contain the correctly localized goal."""
+"""Audita se os frames positivos da V8.5 contêm a goleira corretamente localizada."""
 
 from __future__ import annotations
 
@@ -26,7 +26,7 @@ FEATURE_EXCLUDE = {"sample_id", "frame_id", "match_id", "label", "candidate_iou"
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run spatial audit of V8.5 positives.")
+    parser = argparse.ArgumentParser(description="Executa a auditoria espacial dos positivos da V8.5.")
     parser.add_argument("--annotations", type=Path, required=True)
     parser.add_argument("--timestamps", type=Path, required=True)
     parser.add_argument("--frames-dir", type=Path, required=True)
@@ -48,7 +48,7 @@ def main() -> int:
     args = parse_args()
     annotations = read_rows(args.annotations)
     if any(row["annotation_status"] != "completed" for row in annotations):
-        raise ValueError("As 15 anotações externas precisam estar completed")
+        raise ValueError("As 15 anotações externas precisam estar com status completed")
     timestamps = {
         row["match_id"] + "_" + f"{float(row['timestamp_seconds']):010.3f}": row
         for row in read_rows(args.timestamps)

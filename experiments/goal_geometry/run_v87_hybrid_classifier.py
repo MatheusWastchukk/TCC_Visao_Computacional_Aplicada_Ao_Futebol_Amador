@@ -1,4 +1,4 @@
-"""Train and evaluate a lightweight visual classifier on V8.6 proposal crops."""
+"""Treina e avalia um classificador visual leve nos recortes de propostas da V8.6."""
 
 from __future__ import annotations
 
@@ -27,7 +27,7 @@ from experiments.goal_geometry.run_v86_proposal_generator import (
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run V8.7 hybrid visual classifier.")
+    parser = argparse.ArgumentParser(description="Executa o classificador visual híbrido da V8.7.")
     parser.add_argument("--development-annotations", type=Path, required=True)
     parser.add_argument("--external-annotations", type=Path, required=True)
     parser.add_argument("--external-timestamps", type=Path, required=True)

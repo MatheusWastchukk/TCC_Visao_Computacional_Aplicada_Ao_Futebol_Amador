@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP-0049",
+  "version": "V10_dataset_preparation",
+  "class_names": [
+    "goal_structure"
+  ],
+  "development_frames": 203,
+  "development_structures": 153,
+  "development_negative_frames": 50,
+  "external_frames": 15,
+  "external_structures": 17,
+  "matches": [
+    "match_01",
+    "match_02",
+    "match_03"
+  ],
+  "folds": [
+    {
+      "test_match": "match_01",
+      "train_matches": [
+        "match_02",
+        "match_03"
+      ]
+    },
+    {
+      "test_match": "match_02",
+      "train_matches": [
+        "match_01",
+        "match_03"
+      ]
+    },
+    {
+      "test_match": "match_03",
+      "train_matches": [
+        "match_01",
+        "match_02"
+      ]
+    }
+  ],
+  "source_resolution": "1920x1080 esperado e verificado por manifesto",
+  "partial_visibility_policy": "use the annotated visible extent without inventing occluded points",
+  "negative_frames": "ainda n\u00e3o inclu\u00eddos; ser\u00e3o ampliados com negativos dif\u00edceis"
+}

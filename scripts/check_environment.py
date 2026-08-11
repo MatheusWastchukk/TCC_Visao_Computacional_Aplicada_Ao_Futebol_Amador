@@ -1,4 +1,4 @@
-"""Check the local development environment for the TCC project."""
+"""Verifica o ambiente local de desenvolvimento do projeto de TCC."""
 
 from __future__ import annotations
 
@@ -41,7 +41,7 @@ def _module_version(module: object) -> str | None:
 def check_module(import_name: str, package_name: str) -> ModuleCheck:
     try:
         module = importlib.import_module(import_name)
-    except Exception as exc:  # pragma: no cover - exact import errors vary by machine.
+    except Exception as exc:  # pragma: no cover - os erros exatos de importação variam por máquina.
         return ModuleCheck(import_name, package_name, False, error=str(exc))
 
     return ModuleCheck(import_name, package_name, True, version=_module_version(module))
@@ -113,15 +113,15 @@ def main() -> int:
 
     if missing_modules or missing_tools:
         print()
-        print("Environment check failed.")
+        print("A verificação do ambiente falhou.")
         if missing_modules:
-            print("Missing Python packages:", ", ".join(missing_modules))
+            print("Pacotes Python ausentes:", ", ".join(missing_modules))
         if missing_tools:
-            print("Missing system tools:", ", ".join(missing_tools))
+            print("Ferramentas do sistema ausentes:", ", ".join(missing_tools))
         return 1
 
     print()
-    print("Environment check passed.")
+    print("A verificação do ambiente foi concluída com sucesso.")
     return 0
 
 

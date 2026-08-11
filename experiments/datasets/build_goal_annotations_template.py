@@ -1,4 +1,4 @@
-"""Create the four-point annotation template for the 35 goal structures."""
+"""Cria o modelo de anotação de quatro pontos para as 35 estruturas de goleira."""
 
 from __future__ import annotations
 
@@ -49,7 +49,7 @@ def main() -> int:
                     "annotation_status": "pending",
                 }
             )
-    print(f"created={len(structures)}")
+    print(f"estruturas_criadas={len(structures)}")
     return 0
 
 

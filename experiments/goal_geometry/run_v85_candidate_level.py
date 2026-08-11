@@ -1,4 +1,4 @@
-"""Train V8.5 on Hough candidates labeled by manual quadrilateral overlap."""
+"""Treina a V8.5 com candidatos Hough rotulados pela sobreposição com quadriláteros manuais."""
 
 from __future__ import annotations
 
@@ -37,7 +37,7 @@ from experiments.goal_geometry.run_v85_learned_geometry import (
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run V8.5 with candidate-level labels.")
+    parser = argparse.ArgumentParser(description="Executa a V8.5 com rótulos no nível de candidato.")
     parser.add_argument("--annotations", type=Path, required=True)
     parser.add_argument("--timestamps", type=Path, required=True)
     parser.add_argument("--frames-dir", type=Path, required=True)
@@ -47,7 +47,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--models",
         default="logistic_regression,decision_tree,random_forest,svm",
-        help="Comma-separated model names to execute.",
+        help="Nomes dos modelos a executar, separados por vírgula.",
     )
     return parser.parse_args()
 
