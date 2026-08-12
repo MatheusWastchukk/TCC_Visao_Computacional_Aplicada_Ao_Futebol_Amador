@@ -1,0 +1,46 @@
+{
+  "experiment_id": "EXP-0065",
+  "version": "V10_external_validation_expanded_hard_negatives",
+  "evaluation": {
+    "positive_frames": 15,
+    "negative_frames": 37,
+    "negative_frames_by_match": {
+      "match_01": 14,
+      "match_02": 13,
+      "match_03": 10
+    },
+    "confidence": 0.25,
+    "iou_thresholds": [0.3, 0.5],
+    "negative_sources": [
+      "experiments/datasets/v85_frames_template.csv",
+      "experiments/datasets/v10_hard_negative_annotations.csv"
+    ]
+  },
+  "folds": [
+    {
+      "model_experiment": "EXP-0062",
+      "training_fold": "sem match_03",
+      "positive_recall_iou_030": 0.3333333333,
+      "positive_recall_iou_050": 0.3333333333,
+      "negative_true_rate": 1.0,
+      "negative_false_positive_rate": 0.0
+    },
+    {
+      "model_experiment": "EXP-0063",
+      "training_fold": "sem match_01",
+      "positive_recall_iou_030": 0.9333333333,
+      "positive_recall_iou_050": 0.9333333333,
+      "negative_true_rate": 0.9459459459,
+      "negative_false_positive_rate": 0.0540540541
+    },
+    {
+      "model_experiment": "EXP-0064",
+      "training_fold": "sem match_02",
+      "positive_recall_iou_030": 0.2666666667,
+      "positive_recall_iou_050": 0.2666666667,
+      "negative_true_rate": 1.0,
+      "negative_false_positive_rate": 0.0
+    }
+  ],
+  "conclusion": "A ampliacao dos negativos revelou 2 falsos positivos no melhor fold, ambos em hard negatives. A avaliacao negativa anterior com 15 frames era otimista; o conjunto ampliado e mais informativo. A variacao de recall positivo entre folds permanece alta."
+}

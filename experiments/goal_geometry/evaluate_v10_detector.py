@@ -22,12 +22,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--annotations", type=Path, required=True)
     parser.add_argument("--timestamps", type=Path, required=True)
     parser.add_argument("--frames-dir", type=Path, required=True)
+    parser.add_argument(
+        "--negative-frames-dir",
+        type=Path,
+        help="Diretório das imagens dos CSVs informados em --negative-timestamps.",
+    )
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--conf", type=float, default=0.25)
     parser.add_argument(
         "--negative-timestamps",
         type=Path,
-        help="CSV com match_id e timestamp_seconds dos frames not_goal.",
+        nargs="+",
+        help="Um ou mais CSVs com match_id e timestamp_seconds dos frames not_goal.",
     )
     parser.add_argument("--overlays", action="store_true")
     return parser.parse_args()
@@ -100,13 +106,12 @@ def main() -> int:
         row["match_id"] + "_" + f"{float(row['timestamp_seconds']):010.3f}": row
         for row in rows(args.timestamps)
     }
-    negative_rows = []
+    negative_rows: list[dict[str, str]] = []
     if args.negative_timestamps:
-        negative_rows = [
-            row
-            for row in rows(args.negative_timestamps)
-            if row.get("label") == "not_goal"
-        ]
+        for negative_path in args.negative_timestamps:
+            negative_rows.extend(
+                row for row in rows(negative_path) if row.get("label") == "not_goal"
+            )
     annotation_frame_ids = {group[0]["frame_id"] for group in grouped(annotations)}
     negative_rows = [
         row
@@ -114,6 +119,9 @@ def main() -> int:
         if row["match_id"] + "_" + f"{float(row['timestamp_seconds']):010.3f}"
         not in annotation_frame_ids
     ]
+    for row in negative_rows:
+        negative_frame_id = row["match_id"] + "_" + f"{float(row['timestamp_seconds']):010.3f}"
+        timestamps.setdefault(negative_frame_id, row)
     result_rows: list[dict[str, Any]] = []
     evaluation_groups: list[tuple[str, list[dict[str, str]], bool]] = [
         (group[0]["frame_id"], group, True) for group in grouped(annotations)
@@ -129,7 +137,14 @@ def main() -> int:
     for frame_id, group, has_goal in evaluation_groups:
         annotation = group[0]
         timestamp_row = timestamps[frame_id]
-        image_path = frame_path(args.frames_dir, timestamp_row)
+        frames_dir = (
+            args.negative_frames_dir
+            if not has_goal and args.negative_frames_dir
+            else args.frames_dir
+        )
+        image_path = frame_path(frames_dir, timestamp_row)
+        if not image_path.exists() and not has_goal and args.negative_frames_dir:
+            image_path = frame_path(args.frames_dir, timestamp_row)
         truths = [truth_box(row) for row in group] if has_goal else []
         predictions = cast(Any, model.predict(str(image_path), conf=args.conf, verbose=False))
         prediction = cast(Any, predictions[0])

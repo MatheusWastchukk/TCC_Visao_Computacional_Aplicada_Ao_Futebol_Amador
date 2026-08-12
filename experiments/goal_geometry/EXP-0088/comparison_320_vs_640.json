@@ -1,0 +1,32 @@
+{
+  "experiment_id": "EXP-0088",
+  "version": "V10_resolution_comparison",
+  "dataset": "EXP-0067",
+  "epochs": 10,
+  "threshold": 0.05,
+  "external_evaluation": {
+    "positive_frames": 15,
+    "negative_frames": 94,
+    "iou_threshold": 0.5
+  },
+  "resolution_320": {
+    "experiments": ["EXP-0078", "EXP-0079", "EXP-0080"],
+    "fold_recalls": [0.8, 0.7333333333, 0.6666666667],
+    "mean_recall": 0.7333333333,
+    "min_recall": 0.6666666667,
+    "max_recall": 0.8,
+    "range_recall": 0.1333333333,
+    "negative_false_positive_rate": 0.0
+  },
+  "resolution_640": {
+    "experiments": ["EXP-0085", "EXP-0086", "EXP-0087"],
+    "fold_recalls": [0.8666666667, 1.0, 0.9333333333],
+    "mean_recall": 0.9333333333,
+    "min_recall": 0.8666666667,
+    "max_recall": 1.0,
+    "range_recall": 0.1333333333,
+    "negative_false_positive_rate": 0.0212765957,
+    "negative_false_positives": 2
+  },
+  "interpretation": "Com o mesmo dataset, 10 epocas e threshold 0.05, imgsz=640 aumentou o recall medio externo de 73.3% para 93.3%. A taxa de falsos positivos aumentou de 0/94 para 2/94, ambos no fold validado em match_03. A resolucao 640 e a melhor configuracao provisoria, mas precisa de nova avaliacao apos completar os negativos por partida e revisar os dois falsos positivos."
+}

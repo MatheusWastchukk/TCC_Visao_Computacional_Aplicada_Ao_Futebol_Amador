@@ -1,0 +1,40 @@
+{
+  "experiment_id": "EXP-0074",
+  "version": "V10_augmented_threshold_sweep",
+  "training_dataset": "EXP-0067",
+  "training_config": {
+    "model": "YOLO11n",
+    "image_size": 320,
+    "epochs": 10,
+    "device": "CPU"
+  },
+  "evaluation": {
+    "positive_frames": 15,
+    "negative_frames": 37,
+    "note": "A varredura no conjunto externo e exploratoria; o threshold final deve ser calibrado na validacao interna."
+  },
+  "folds": {
+    "sem_match_03": {
+      "model_experiment": "EXP-0071",
+      "confidence_0_01": {"positive_recall_iou_050": 0.9333333333, "negative_false_positive_rate": 1.0},
+      "confidence_0_05": {"positive_recall_iou_050": 0.8, "negative_false_positive_rate": 0.0},
+      "confidence_0_10": {"positive_recall_iou_050": 0.4, "negative_false_positive_rate": 0.0},
+      "confidence_0_25": {"positive_recall_iou_050": 0.0, "negative_false_positive_rate": 0.0}
+    },
+    "sem_match_01": {
+      "model_experiment": "EXP-0072",
+      "confidence_0_01": {"positive_recall_iou_050": 0.9333333333, "negative_false_positive_rate": 1.0},
+      "confidence_0_05": {"positive_recall_iou_050": 0.7333333333, "negative_false_positive_rate": 0.0},
+      "confidence_0_10": {"positive_recall_iou_050": 0.3333333333, "negative_false_positive_rate": 0.0},
+      "confidence_0_25": {"positive_recall_iou_050": 0.0, "negative_false_positive_rate": 0.0}
+    },
+    "sem_match_02": {
+      "model_experiment": "EXP-0073",
+      "confidence_0_01": {"positive_recall_iou_050": 0.9333333333, "negative_false_positive_rate": 1.0},
+      "confidence_0_05": {"positive_recall_iou_050": 0.6666666667, "negative_false_positive_rate": 0.0},
+      "confidence_0_10": {"positive_recall_iou_050": 0.4, "negative_false_positive_rate": 0.0},
+      "confidence_0_25": {"positive_recall_iou_050": 0.0, "negative_false_positive_rate": 0.0}
+    }
+  },
+  "exploratory_interpretation": "Com confidence 0.05, o recall entre folds ficou mais equilibrado (80.0%, 73.3% e 66.7%) e nao houve falso positivo nos 37 negativos. Esse threshold nao deve ser congelado antes de calibracao na validacao interna."
+}

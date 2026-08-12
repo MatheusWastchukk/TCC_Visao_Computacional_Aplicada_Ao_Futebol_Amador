@@ -1,0 +1,18 @@
+{
+  "experiment_id": "EXP-0061",
+  "version": "V10_hard_negative_annotation_pool",
+  "status": "pending_manual_annotation",
+  "purpose": "Ampliar a validacao externa de frames not_goal para pelo menos 30 por partida.",
+  "new_candidates": 75,
+  "candidates_per_match": {
+    "match_01": 25,
+    "match_02": 25,
+    "match_03": 25
+  },
+  "existing_external_negatives_per_match": 5,
+  "target_external_negatives_per_match_after_annotation": 30,
+  "selection_spacing_seconds": 10.0,
+  "template": "experiments/datasets/v10_hard_negative_template.csv",
+  "frames_dir": "experiments/goal_detection_pilot/data/frames_v10_hard_negatives",
+  "annotation_rule": "Revisar cada frame e marcar not_goal somente quando nenhuma estrutura de gol estiver visivel; registrar hard_negative quando houver elemento visualmente parecido com uma goleira."
+}

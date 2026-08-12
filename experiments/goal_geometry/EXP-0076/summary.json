@@ -1,0 +1,26 @@
+{
+  "experiment_id": "EXP-0076",
+  "version": "V10_hard_negative_annotation_pool_batch2",
+  "status": "pending_manual_annotation",
+  "purpose": "Completar a meta de pelo menos 30 negativos externos por partida.",
+  "new_candidates": 180,
+  "candidates_per_match": {
+    "match_01": 60,
+    "match_02": 60,
+    "match_03": 60
+  },
+  "current_confirmed_negatives": {
+    "match_01": 14,
+    "match_02": 13,
+    "match_03": 10
+  },
+  "remaining_target": {
+    "match_01": 16,
+    "match_02": 17,
+    "match_03": 20
+  },
+  "template": "experiments/datasets/v10_hard_negative_template_batch2.csv",
+  "frames_dir": "experiments/goal_detection_pilot/data/frames_v10_hard_negatives_batch2",
+  "selection_spacing_seconds": 10.0,
+  "annotation_rule": "Marcar not_goal somente quando nenhuma estrutura de gol estiver visivel; estruturas reais devem ser anotadas como goal_structure e podem ser aproveitadas no desenvolvimento."
+}

@@ -1,0 +1,5 @@
+path: C:\Users\mathe\Documents\tcc_deteccao_analise_de_videos_de _futebol\experiments\goal_geometry\EXP-0070
+train: images/train
+val: images/val
+nc: 1
+names: [goal_structure]

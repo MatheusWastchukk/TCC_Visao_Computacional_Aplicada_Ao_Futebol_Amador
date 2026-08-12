@@ -1,0 +1,47 @@
+{
+  "experiment_id": "EXP-0081",
+  "version": "V10_final_provisional_validation_94_negatives",
+  "training_dataset": "EXP-0067",
+  "threshold": 0.05,
+  "evaluation": {
+    "positive_frames": 15,
+    "negative_frames": 94,
+    "negative_frames_by_match": {
+      "match_01": 38,
+      "match_02": 27,
+      "match_03": 29
+    },
+    "iou_thresholds": [0.3, 0.5]
+  },
+  "folds": [
+    {
+      "model_experiment": "EXP-0078",
+      "validation_match": "match_01",
+      "positive_recall_iou_030": 0.8,
+      "positive_recall_iou_050": 0.8,
+      "negative_false_positive_rate": 0.0
+    },
+    {
+      "model_experiment": "EXP-0079",
+      "validation_match": "match_02",
+      "positive_recall_iou_030": 0.7333333333,
+      "positive_recall_iou_050": 0.7333333333,
+      "negative_false_positive_rate": 0.0
+    },
+    {
+      "model_experiment": "EXP-0080",
+      "validation_match": "match_03",
+      "positive_recall_iou_030": 0.6666666667,
+      "positive_recall_iou_050": 0.6666666667,
+      "negative_false_positive_rate": 0.0
+    }
+  ],
+  "stability": {
+    "mean_recall_iou_050": 0.7333333333,
+    "min_recall_iou_050": 0.6666666667,
+    "max_recall_iou_050": 0.8,
+    "std_recall_iou_050_population": 0.0544331054,
+    "range_recall_iou_050": 0.1333333333
+  },
+  "conclusion": "Com confidence 0.05, o detector apresentou recall positivo mais equilibrado entre os folds e nenhum falso positivo nos 94 frames not_goal avaliados. A meta formal de 30 negativos por partida ainda nao foi atingida em match_02 e match_03, mas a evidencia atual e substancialmente mais robusta que a rodada anterior."
+}

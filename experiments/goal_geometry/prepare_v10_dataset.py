@@ -22,6 +22,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--external-timestamps", type=Path, required=True)
     parser.add_argument("--external-frames-dir", type=Path, required=True)
     parser.add_argument("--additional-development-annotations", type=Path, nargs="+")
+    parser.add_argument(
+        "--additional-development-label",
+        help="Mantém somente este label nos CSVs adicionais de desenvolvimento.",
+    )
+    parser.add_argument(
+        "--filtered-development-annotations",
+        type=Path,
+        nargs="+",
+        help="CSV adicionais que serão filtrados por --filtered-development-label.",
+    )
+    parser.add_argument("--filtered-development-label")
     parser.add_argument("--additional-frames-dir", type=Path, nargs="+")
     parser.add_argument("--output", type=Path, required=True)
     return parser.parse_args()
@@ -91,7 +102,23 @@ def main() -> int:
     args = parse_args()
     development = rows(args.development_annotations)
     for additional_path in args.additional_development_annotations or []:
-        development.extend(rows(additional_path))
+        additional_rows = rows(additional_path)
+        if args.additional_development_label:
+            additional_rows = [
+                row
+                for row in additional_rows
+                if row.get("label") == args.additional_development_label
+            ]
+        development.extend(additional_rows)
+    for filtered_path in args.filtered_development_annotations or []:
+        filtered_rows = rows(filtered_path)
+        if args.filtered_development_label:
+            filtered_rows = [
+                row
+                for row in filtered_rows
+                if row.get("label") == args.filtered_development_label
+            ]
+        development.extend(filtered_rows)
     external = rows(args.external_annotations)
     timestamps = {
         row["match_id"] + "_" + f"{float(row['timestamp_seconds']):010.3f}": row

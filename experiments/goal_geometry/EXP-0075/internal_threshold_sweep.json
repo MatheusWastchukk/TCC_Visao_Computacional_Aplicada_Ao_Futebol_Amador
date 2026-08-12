@@ -1,0 +1,117 @@
+{
+  "experiment_id": "EXP-0075",
+  "version": "V10_internal_threshold_calibration",
+  "selection_rule": "Escolher threshold comum usando somente validacoes internas; conjunto externo permanece reservado.",
+  "selected_confidence_provisional": 0.05,
+  "selection_note": "Limiar provisoriamente escolhido pelo equilibrio medio entre precisao e recall nos tres folds internos; deve ser reavaliado apos completar os negativos por partida.",
+  "results": [
+    {
+      "model_experiment": "EXP-0068",
+      "data": "experiments\\goal_geometry\\EXP-0068\\data.yaml",
+      "confidence": 0.01,
+      "precision": 0.9365376004728221,
+      "recall": 0.49204416390866296,
+      "map50": 0.8619599994666484,
+      "map50_95": 0.552334831323837
+    },
+    {
+      "model_experiment": "EXP-0068",
+      "data": "experiments\\goal_geometry\\EXP-0068\\data.yaml",
+      "confidence": 0.05,
+      "precision": 0.9428571428571428,
+      "recall": 0.55,
+      "map50": 0.528357142857143,
+      "map50_95": 0.34204983726950605
+    },
+    {
+      "model_experiment": "EXP-0068",
+      "data": "experiments\\goal_geometry\\EXP-0068\\data.yaml",
+      "confidence": 0.1,
+      "precision": 1.0,
+      "recall": 0.18333333333333332,
+      "map50": 0.185,
+      "map50_95": 0.13092424242424242
+    },
+    {
+      "model_experiment": "EXP-0068",
+      "data": "experiments\\goal_geometry\\EXP-0068\\data.yaml",
+      "confidence": 0.25,
+      "precision": 0.0,
+      "recall": 0.0,
+      "map50": 0.0,
+      "map50_95": 0.0
+    },
+    {
+      "model_experiment": "EXP-0069",
+      "data": "experiments\\goal_geometry\\EXP-0069\\data.yaml",
+      "confidence": 0.01,
+      "precision": 0.6811853741922416,
+      "recall": 0.4815340705899789,
+      "map50": 0.6162799506710397,
+      "map50_95": 0.38729861812314476
+    },
+    {
+      "model_experiment": "EXP-0069",
+      "data": "experiments\\goal_geometry\\EXP-0069\\data.yaml",
+      "confidence": 0.05,
+      "precision": 0.9090909090909091,
+      "recall": 0.28169014084507044,
+      "map50": 0.27499999999999997,
+      "map50_95": 0.18160526315789471
+    },
+    {
+      "model_experiment": "EXP-0069",
+      "data": "experiments\\goal_geometry\\EXP-0069\\data.yaml",
+      "confidence": 0.1,
+      "precision": 1.0,
+      "recall": 0.04225352112676056,
+      "map50": 0.045,
+      "map50_95": 0.031083333333333334
+    },
+    {
+      "model_experiment": "EXP-0069",
+      "data": "experiments\\goal_geometry\\EXP-0069\\data.yaml",
+      "confidence": 0.25,
+      "precision": 0.0,
+      "recall": 0.0,
+      "map50": 0.0,
+      "map50_95": 0.0
+    },
+    {
+      "model_experiment": "EXP-0070",
+      "data": "experiments\\goal_geometry\\EXP-0070\\data.yaml",
+      "confidence": 0.01,
+      "precision": 0.20180722891566266,
+      "recall": 0.8933333333333333,
+      "map50": 0.858323446348759,
+      "map50_95": 0.43355023821676897
+    },
+    {
+      "model_experiment": "EXP-0070",
+      "data": "experiments\\goal_geometry\\EXP-0070\\data.yaml",
+      "confidence": 0.05,
+      "precision": 1.0,
+      "recall": 0.28,
+      "map50": 0.275,
+      "map50_95": 0.18544683600713013
+    },
+    {
+      "model_experiment": "EXP-0070",
+      "data": "experiments\\goal_geometry\\EXP-0070\\data.yaml",
+      "confidence": 0.1,
+      "precision": 1.0,
+      "recall": 0.02666666666666667,
+      "map50": 0.025,
+      "map50_95": 0.021500000000000002
+    },
+    {
+      "model_experiment": "EXP-0070",
+      "data": "experiments\\goal_geometry\\EXP-0070\\data.yaml",
+      "confidence": 0.25,
+      "precision": 0.0,
+      "recall": 0.0,
+      "map50": 0.0,
+      "map50_95": 0.0
+    }
+  ]
+}

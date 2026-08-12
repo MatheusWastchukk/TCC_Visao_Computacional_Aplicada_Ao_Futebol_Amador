@@ -1,0 +1,49 @@
+{
+  "experiment_id": "EXP-0078",
+  "version": "V10_external_evaluation_with_negative_frames",
+  "confidence": 0.05,
+  "frames": 109,
+  "positive_frames": 15,
+  "negative_frames": 94,
+  "recall_iou_030": 0.8,
+  "recall_iou_050": 0.8,
+  "mean_best_iou": 0.7178015177667223,
+  "negative_true_rate": 1.0,
+  "negative_false_positive_rate": 0.0,
+  "mean_predictions": 0.11009174311926606,
+  "by_match": {
+    "match_01": {
+      "frames": 43,
+      "positive_frames": 5,
+      "negative_frames": 38,
+      "positive_recall_iou_030": 0.6,
+      "positive_recall_iou_050": 0.6,
+      "mean_best_iou": 0.5254913576668235,
+      "negative_true_rate": 1.0,
+      "negative_false_positive_rate": 0.0,
+      "mean_predictions": 0.06976744186046512
+    },
+    "match_02": {
+      "frames": 32,
+      "positive_frames": 5,
+      "negative_frames": 27,
+      "positive_recall_iou_030": 1.0,
+      "positive_recall_iou_050": 1.0,
+      "mean_best_iou": 0.9043129641850458,
+      "negative_true_rate": 1.0,
+      "negative_false_positive_rate": 0.0,
+      "mean_predictions": 0.15625
+    },
+    "match_03": {
+      "frames": 34,
+      "positive_frames": 5,
+      "negative_frames": 29,
+      "positive_recall_iou_030": 0.8,
+      "positive_recall_iou_050": 0.8,
+      "mean_best_iou": 0.7236002314482981,
+      "negative_true_rate": 1.0,
+      "negative_false_positive_rate": 0.0,
+      "mean_predictions": 0.11764705882352941
+    }
+  }
+}

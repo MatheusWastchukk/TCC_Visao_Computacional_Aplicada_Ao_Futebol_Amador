@@ -16,6 +16,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--existing-timestamps", type=Path, nargs="+", required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--frames-per-match", type=int, default=20)
+    parser.add_argument(
+        "--max-selected-per-match",
+        type=int,
+        help="Limita a quantidade de candidatos mantidos por partida.",
+    )
     return parser.parse_args()
 
 
@@ -61,6 +66,11 @@ def main() -> int:
         for timestamp in candidates:
             if all(abs(timestamp - old) >= 10.0 for old in previous.get(match_id, [])):
                 selected.append(timestamp)
+                if (
+                    args.max_selected_per_match
+                    and len(selected) >= args.max_selected_per_match
+                ):
+                    break
         for index, timestamp in enumerate(selected, start=1):
             frame_id = f"{match_id}_{timestamp:010.3f}"
             output_rows.append(
