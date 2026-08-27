@@ -1,0 +1,16 @@
+sequence_id,match_id,true_label,frames_analyzed,candidate_frames,appearance_rate,mean_confidence,center_std,confirmed,evaluable,result
+temporal_v10_candidate_001,match_12,goal_structure,21,21,1.0,0.798754,69.844074,True,True,true_positive
+temporal_v10_candidate_002,match_14,goal_structure,21,21,1.0,0.846538,46.260809,True,True,true_positive
+temporal_v10_candidate_003,match_05,goal_structure,21,21,1.0,0.954554,11.633595,True,True,true_positive
+temporal_v10_candidate_004,match_14,goal_structure,21,21,1.0,0.425752,2.401139,True,True,true_positive
+temporal_v10_candidate_005,match_05,goal_structure,21,21,1.0,0.942447,12.376822,True,True,true_positive
+temporal_v10_candidate_006,match_14,goal_structure,21,20,0.952381,0.669254,306.47376,True,True,true_positive
+temporal_v10_candidate_007,match_05,goal_structure,21,21,1.0,0.971765,22.16373,True,True,true_positive
+temporal_v10_candidate_008,match_26,goal_structure,21,21,1.0,0.841564,46.622122,True,True,true_positive
+temporal_v10_candidate_009,match_12,not_goal,21,1,0.047619,0.012794,0.0,False,True,true_negative
+temporal_v10_candidate_010,match_42,not_goal,21,0,0.0,0.0,,False,True,true_negative
+temporal_v10_candidate_011,match_33,inconclusive,21,0,0.0,0.0,,False,False,inconclusive
+temporal_v10_candidate_012,match_12,inconclusive,21,8,0.380952,0.241757,274.09523,False,False,inconclusive
+temporal_v10_candidate_013,match_42,not_goal,21,0,0.0,0.0,,False,True,true_negative
+temporal_v10_candidate_014,match_33,not_goal,21,0,0.0,0.0,,False,True,true_negative
+temporal_v10_candidate_015,match_26,inconclusive,21,1,0.047619,0.026244,0.0,False,False,inconclusive

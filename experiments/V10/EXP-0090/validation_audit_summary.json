@@ -1,0 +1,10 @@
+{
+  "experiment_id": "EXP-0090",
+  "validation_images": 16,
+  "confidence": 0.25,
+  "iou_threshold": 0.5,
+  "true_positive": 12,
+  "false_positive": 1,
+  "false_negative": 0,
+  "manual_review": "pending"
+}

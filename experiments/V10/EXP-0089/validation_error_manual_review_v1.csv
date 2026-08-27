@@ -1,0 +1,6 @@
+frame_id,match_id,capture_system,error_category,manual_notes,review_status
+match_12_random_01,match_12,Veo/derivados,distant_goal,"Estrutura principal visível, porém distante e pequena; há cercas e elementos de fundo próximos.",reviewed
+match_14_random_01,match_14,Veo/derivados,secondary_goal,"Cena com múltiplas estruturas de gol; a distinção entre estrutura principal e secundária dificulta a localização.",reviewed
+match_26_random_01,match_26,Veo/derivados,secondary_goal,"Há várias estruturas ao fundo e a estrutura anotada ocupa poucos pixels.",reviewed
+match_30_random_02,match_30,Veo/derivados,distant_goal,"Estrutura anotada está muito pequena e distante em uma cena ampla.",reviewed
+match_42_random_02,match_42,XBotGo,xbotgo,"Estrutura principal distante, com aparência e enquadramento do domínio XBotGo.",reviewed

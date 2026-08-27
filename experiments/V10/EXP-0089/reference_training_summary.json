@@ -1,0 +1,19 @@
+{
+  "experiment_id": "EXP-0089",
+  "version": "V10_reference_training",
+  "model": "yolo11n.pt",
+  "device": "cpu",
+  "epochs": 10,
+  "imgsz": 640,
+  "batch": 4,
+  "workers": 0,
+  "data": "experiments\\goal_detection_pilot\\data\\v10_reference_v1\\data.yaml",
+  "results": {
+    "metrics/precision(B)": 0.8716634397755239,
+    "metrics/recall(B)": 0.5677627189524447,
+    "metrics/mAP50(B)": 0.7755003968069022,
+    "metrics/mAP50-95(B)": 0.5200915162303166,
+    "fitness": 0.5200915162303166
+  },
+  "status": "reference_training_completed"
+}

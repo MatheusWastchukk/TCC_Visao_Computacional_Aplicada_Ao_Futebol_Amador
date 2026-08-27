@@ -1,0 +1,10 @@
+{
+  "version": "V10_reference_dataset_v1",
+  "train_frames": 90,
+  "validation_frames": 16,
+  "train_positive_frames": 73,
+  "train_negative_frames": 17,
+  "validation_positive_frames": 12,
+  "validation_negative_frames": 4,
+  "status": "ready_for_reference_training"
+}

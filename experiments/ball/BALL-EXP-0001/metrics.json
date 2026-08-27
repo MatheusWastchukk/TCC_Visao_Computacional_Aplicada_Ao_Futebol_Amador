@@ -1,0 +1,18 @@
+{
+  "experiment_id": "BALL-EXP-0001",
+  "model": "yolo11n.pt",
+  "data": "experiments/ball/ball_dataset_v1.yaml",
+  "epochs": 10,
+  "imgsz": 640,
+  "batch": 8,
+  "device": "cpu",
+  "metrics": {
+    "metrics/precision(B)": 0.246,
+    "metrics/recall(B)": 0.151,
+    "metrics/mAP50(B)": 0.116,
+    "metrics/mAP50-95(B)": 0.0442
+  },
+  "execution_seconds": 1116.04,
+  "status": "completed",
+  "note": "Métricas da validação do melhor peso; o treinamento foi concluído, mas a gravação automática do resumo falhou por diretório ausente."
+}

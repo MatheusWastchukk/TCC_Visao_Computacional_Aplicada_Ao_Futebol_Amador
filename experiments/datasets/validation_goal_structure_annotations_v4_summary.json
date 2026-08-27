@@ -1,0 +1,17 @@
+{
+  "version": "validation_goal_structure_annotations_v1",
+  "input_files": [
+    "experiments\\datasets\\validation_goal_structure_annotations_v3.csv",
+    "experiments\\datasets\\validation_multitarget_candidates_v3.csv"
+  ],
+  "total_rows": 97,
+  "annotation_status": {
+    "completed": 97
+  },
+  "labels": {
+    "not_goal": 20,
+    "goal_structure": 77
+  },
+  "matches": 8,
+  "status": "valid"
+}

@@ -1,0 +1,17 @@
+{
+  "experiment_id": "EXP-0092-TEMPORAL-V1",
+  "version": "V10_temporal",
+  "sequences_total": 15,
+  "sequences_evaluable": 12,
+  "sequences_inconclusive": 3,
+  "true_positive_sequences": 8,
+  "true_negative_sequences": 4,
+  "false_positive_sequences": 0,
+  "false_negative_sequences": 0,
+  "appearance_threshold": 0.7,
+  "confidence": 0.25,
+  "total_sequence_minutes": 1.0,
+  "false_candidates_per_hour": 0.0,
+  "execution_seconds": 38.011,
+  "status": "completed"
+}

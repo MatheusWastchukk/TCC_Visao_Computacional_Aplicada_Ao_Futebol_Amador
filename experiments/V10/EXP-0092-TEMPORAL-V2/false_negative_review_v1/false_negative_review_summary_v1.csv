@@ -1,0 +1,13 @@
+interval_id,match_id,review_class,decision,summary
+temporal_v2_interval_050,match_12,partial_small_structure,keep_fn,"Estrutura muito pequena/parcial no canto esquerdo; o detector não encontrou nos frames revisados."
+temporal_v2_interval_057,match_26,partial_secondary_structure,keep_fn,"Estrutura secundária/parcial no canto esquerdo; houve detecção em um frame e perda nos demais."
+temporal_v2_interval_060,match_26,partial_secondary_structure,keep_fn,"Estrutura secundária pequena no canto direito; detecção intermitente."
+temporal_v2_interval_082,match_30,secondary_structure_low_confidence,keep_fn,"Estrutura secundária; houve uma detecção com confiança próxima do limiar."
+temporal_v2_interval_085,match_30,spatial_confusion,review_spatial,"Postes ao fundo foram confundidos; caso deve alimentar a auditoria espacial, não ser tratado apenas como perda temporal."
+temporal_v2_interval_089,match_30,mixed_secondary_and_spatial_confusion,review_annotation_and_spatial,"Há estruturas secundárias, mas também confusão com postes ao fundo; intervalo heterogêneo."
+temporal_v2_interval_098,match_30,multiple_structures_low_rate,keep_fn,"Estruturas secundárias e múltiplas; detecção apareceu somente em parte dos frames."
+temporal_v2_interval_100,match_30,secondary_structures,keep_fn,"Duas estruturas secundárias visíveis em momentos do intervalo e não detectadas."
+temporal_v2_interval_108,match_33,annotation_boundary_or_partial,review_annotation,"Um frame mostra estrutura pequena e outro não mostra estrutura; revisar o limite do intervalo."
+temporal_v2_interval_112,match_33,partial_small_structure,keep_fn,"Estrutura muito pequena/parcial no canto esquerdo e sem detecção nos frames revisados."
+temporal_v2_interval_114,match_33,partial_small_structure,keep_fn,"Estrutura pequena/parcial no canto direito e perda temporal persistente."
+temporal_v2_interval_128,match_42,annotation_boundary_or_partial,review_annotation,"Um frame mostra metade da goleira e outro não mostra estrutura; intervalo provavelmente mistura estados."

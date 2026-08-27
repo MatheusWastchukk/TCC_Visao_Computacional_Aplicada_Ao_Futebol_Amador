@@ -1,0 +1,18 @@
+{
+  "version": "train_goal_structure_annotations_v1",
+  "input_files": [
+    "experiments\\datasets\\random_train_annotations_v1.csv",
+    "experiments\\datasets\\directed_train_annotations_v1.csv",
+    "experiments\\datasets\\hard_negative_annotations_v1.csv"
+  ],
+  "total_rows": 90,
+  "annotation_status": {
+    "completed": 90
+  },
+  "labels": {
+    "goal_structure": 73,
+    "not_goal": 17
+  },
+  "matches": 25,
+  "status": "valid"
+}

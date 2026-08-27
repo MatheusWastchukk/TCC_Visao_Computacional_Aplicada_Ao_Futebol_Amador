@@ -1,0 +1,17 @@
+frame_id,match_id,capture_system,ground_truth,prediction_count,best_confidence,best_iou,true_positive,false_positive,false_negative,error_reason,manual_review,image_path
+match_03_random_01,match_03,Veo/derivados,not_goal,0,0.0,0.0,False,False,False,none,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_03_random_01.jpg
+match_03_random_02,match_03,Veo/derivados,goal_structure,1,0.610277,0.854744,True,False,False,none,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_03_random_02.jpg
+match_05_random_01,match_05,Veo/derivados,goal_structure,1,0.873346,0.911394,True,False,False,none,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_05_random_01.jpg
+match_05_random_02,match_05,Veo/derivados,goal_structure,3,0.995049,0.935611,True,False,False,none,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_05_random_02.jpg
+match_12_random_01,match_12,Veo/derivados,goal_structure,0,0.0,0.0,False,False,True,missed_goal_structure,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_12_random_01.jpg
+match_12_random_02,match_12,Veo/derivados,not_goal,0,0.0,0.0,False,False,False,none,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_12_random_02.jpg
+match_14_random_01,match_14,Veo/derivados,goal_structure,0,0.0,0.0,False,False,True,missed_goal_structure,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_14_random_01.jpg
+match_14_random_02,match_14,Veo/derivados,goal_structure,1,0.334795,0.682647,True,False,False,none,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_14_random_02.jpg
+match_26_random_01,match_26,Veo/derivados,goal_structure,0,0.0,0.0,False,False,True,missed_goal_structure,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_26_random_01.jpg
+match_26_random_02,match_26,Veo/derivados,goal_structure,1,0.507727,0.83922,True,False,False,none,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_26_random_02.jpg
+match_30_random_01,match_30,Veo/derivados,goal_structure,1,0.731924,0.780888,True,False,False,none,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_30_random_01.jpg
+match_30_random_02,match_30,Veo/derivados,goal_structure,0,0.0,0.0,False,False,True,missed_goal_structure,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_30_random_02.jpg
+match_33_random_01,match_33,Veo/derivados,not_goal,0,0.0,0.0,False,False,False,none,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_33_random_01.jpg
+match_33_random_02,match_33,Veo/derivados,not_goal,0,0.0,0.0,False,False,False,none,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_33_random_02.jpg
+match_42_random_01,match_42,XBotGo,goal_structure,1,0.863468,0.823431,True,False,False,none,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_42_random_01.jpg
+match_42_random_02,match_42,XBotGo,goal_structure,0,0.0,0.0,False,False,True,missed_goal_structure,pending,experiments\goal_detection_pilot\data\v10_reference_v1\images\val\match_42_random_02.jpg

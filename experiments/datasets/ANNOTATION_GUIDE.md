@@ -51,3 +51,37 @@ possuem estrutura; esses frames nao estao neste arquivo de anotacao.
 Ao terminar, confirme que `annotation_status` esta como `completed` para os
 frames revisados. O arquivo preenchido sera usado para calcular proporcoes,
 distancias normalizadas e os scores da V8.
+
+## Anotar os 15 frames externos da V8.5
+
+Para preencher os pontos dos frames externos, use o template:
+
+```text
+experiments/datasets/v85_external_goal_annotations.csv
+```
+
+Execute:
+
+```powershell
+.\.venv\Scripts\python.exe -m experiments.datasets.annotate_goal_points `
+  --input experiments/datasets/v85_external_goal_annotations.csv `
+  --output experiments/datasets/v85_external_goal_annotations.csv `
+  --frames-dir experiments/goal_detection_pilot/data/frames_v85
+```
+
+O programa abrira cada JPG em uma janela. Clique nos quatro pontos na ordem
+LT, RT, LB e RB. As coordenadas serao calculadas automaticamente; voce nao
+precisa medir pixels nem digitar coordenadas.
+
+Para o frame `match_02_004804.833`, use o arquivo
+`v85_external_goal_annotations_multitarget.csv`. Ele possui tres linhas para o
+mesmo frame, uma para cada estrutura de gol visivel. Para abrir somente essas
+linhas pendentes:
+
+```powershell
+.\.venv\Scripts\python.exe -m experiments.datasets.annotate_goal_points `
+  --input experiments/datasets/v85_external_goal_annotations_multitarget.csv `
+  --output experiments/datasets/v85_external_goal_annotations_multitarget.csv `
+  --frames-dir experiments/goal_detection_pilot/data/frames_v85 `
+  --pending-only
+```

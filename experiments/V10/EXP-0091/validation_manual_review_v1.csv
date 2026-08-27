@@ -1,0 +1,6 @@
+frame_id,error_type,visual_classification,ground_truth_structures,matched_structures,missed_structures,decision,next_action,notes
+match_26_random_01,FN,ground_truth_possivelmente_incompleto_multitarget,1,0,1,pending_multitarget,anotar_duas_estruturas_adicionais,frame mostra pelo menos tres goleiras visiveis; a auditoria nao deve contar o caso antes da correcao
+match_30_random_01,FN,goleira_principal_distante_com_jogadores,1,0,1,hard_positive,adicionar_positivos_de_goleira_distante,estrutura principal esta visivel ao fundo e parcialmente cercada por jogadores
+match_12_validation_coverage_08,FP,campo_sem_goleira_principal_visivel,0,0,0,hard_negative,manter_como_negativo_dificil,previsao isolada em frame de jogo sem estrutura de gol evidente
+match_14_validation_coverage_01,FN,goleira_distante_em_campo_sintetico,1,0,1,hard_positive,adicionar_positivos_de_goleira_distante,estrutura principal aparece no lado direito e ocupa pequena area
+match_42_validation_coverage_01,FN,goleira_distante_com_baixo_contraste,1,0,1,hard_positive,adicionar_positivos_de_goleira_distante,estrutura aparece ao fundo e se confunde com a paisagem

@@ -1,0 +1,11 @@
+{
+  "validation_images": 80,
+  "confidence": 0.25,
+  "iou_threshold": 0.5,
+  "experiments": {
+    "EXP-0090": {"true_positive_frames": 57, "false_positive_frames": 4, "false_negative_frames": 5, "ground_truth_structures": 75, "matched_ground_truth_structures": 57, "missed_ground_truth_structures": 18},
+    "EXP-0091": {"true_positive_frames": 58, "false_positive_frames": 1, "false_negative_frames": 4, "ground_truth_structures": 77, "matched_ground_truth_structures": 62, "missed_ground_truth_structures": 15},
+    "EXP-0092": {"true_positive_frames": 59, "false_positive_frames": 3, "false_negative_frames": 3, "ground_truth_structures": 77, "matched_ground_truth_structures": 68, "missed_ground_truth_structures": 9}
+  },
+  "interpretation": "O EXP-0092 apresentou o melhor recall estrutural preliminar da serie, com 68 de 77 estruturas correspondentes. O aumento de falsos positivos em relacao ao EXP-0091 deve ser revisado antes de congelar a versao."
+}

@@ -1,0 +1,14 @@
+{
+  "experiment_id": "EXP-0090",
+  "validation_images": 80,
+  "confidence": 0.25,
+  "iou_threshold": 0.5,
+  "true_positive_frames": 57,
+  "false_positive_frames": 4,
+  "false_negative_frames": 5,
+  "partial_multitarget_frames": 0,
+  "ground_truth_structures": 75,
+  "matched_ground_truth_structures": 57,
+  "missed_ground_truth_structures": 18,
+  "manual_review": "pending"
+}

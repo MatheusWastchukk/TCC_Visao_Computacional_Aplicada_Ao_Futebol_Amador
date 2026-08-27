@@ -32,11 +32,14 @@ plano_tcc_jira.md
 data/raw/*
 data/clips/*
 data/processed/*
+data/Videos_Edited/
+docs/plans/
 outputs/frames/*
 outputs/reports/*
 outputs/videos/*
 models/*
 experiments/**/artifacts/*
+experiments/ball/data/*
 experiments/goal_detection_pilot/data/*
 experiments/goal_detection_pilot/outputs/masks/*
 experiments/goal_detection_pilot/outputs/edges/*
@@ -66,6 +69,11 @@ yolo11n.pt
 experiments/goal_geometry/evolution_visuals/
 # Overlays dos experimentos sao artefatos visuais locais e nao sao versionados.
 experiments/goal_geometry/EXP-*/overlays/
+# Imagens geradas durante os experimentos sao artefatos visuais locais.
+experiments/**/*.png
+experiments/**/*.jpg
+experiments/**/*.jpeg
+docs/figuras/overlays-v10/
 results/
 
 # Keep directory placeholders
@@ -87,3 +95,6 @@ results/
 Thumbs.db
 Desktop.ini
 .DS_Store
+docs/historico-completo-projeto-para-artigo.md
+docs/README_V10.md
+experiments/datasets/ANNOTATION_GUIDE.md

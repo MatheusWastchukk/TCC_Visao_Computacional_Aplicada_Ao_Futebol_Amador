@@ -8,11 +8,19 @@ from __future__ import annotations
 
 import argparse
 import csv
+import sys
 from pathlib import Path
 
 import cv2
 
-from experiments.goal_geometry.run_geometry_versions import frame_path
+try:
+    from experiments.goal_geometry.run_geometry_versions import frame_path
+except ModuleNotFoundError:
+    # Permite executar este arquivo diretamente a partir da raiz do projeto.
+    project_root = Path(__file__).resolve().parents[2]
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+    from experiments.goal_geometry.run_geometry_versions import frame_path
 
 POINT_NAMES = ["lt", "rt", "lb", "rb"]
 

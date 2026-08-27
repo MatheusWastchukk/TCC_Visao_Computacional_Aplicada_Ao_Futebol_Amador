@@ -1,0 +1,19 @@
+{
+  "experiment_id": "EXP-0092",
+  "validation_images": 80,
+  "validation_positive_frames": 63,
+  "validation_negative_frames": 17,
+  "confidence": 0.25,
+  "iou_threshold": 0.5,
+  "true_positive_frames": 60,
+  "false_positive_frames": 2,
+  "false_negative_frames": 3,
+  "partial_multitarget_frames": 4,
+  "ground_truth_structures": 78,
+  "matched_ground_truth_structures": 69,
+  "missed_ground_truth_structures": 9,
+  "structure_recall": 0.8846153846,
+  "frame_recall_on_positive_frames": 0.9523809524,
+  "status": "reference_expanded_validation_completed",
+  "test_status": "closed"
+}

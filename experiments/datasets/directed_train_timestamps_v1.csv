@@ -1,0 +1,25 @@
+match_id,event_category,event_timestamp_seconds,offset_seconds,notes
+match_04,difficult_goal,1374,-2,gol difícil de ver no catálogo
+match_04,difficult_goal,1374,0,gol difícil de ver no catálogo
+match_04,difficult_goal,1374,2,gol difícil de ver no catálogo
+match_06,disallowed_goal,915,-2,gol anulado no catálogo
+match_06,disallowed_goal,915,0,gol anulado no catálogo
+match_06,disallowed_goal,915,2,gol anulado no catálogo
+match_07,hidden_ball_penalty,4265,-2,pênalti com bola parcialmente escondida
+match_07,hidden_ball_penalty,4265,0,pênalti com bola parcialmente escondida
+match_07,hidden_ball_penalty,4265,2,pênalti com bola parcialmente escondida
+match_08,difficult_goal,2894,-2,gol difícil de ver no catálogo
+match_08,difficult_goal,2894,0,gol difícil de ver no catálogo
+match_08,difficult_goal,2894,2,gol difícil de ver no catálogo
+match_09,difficult_goal,5392,-2,gol difícil de ver no catálogo
+match_09,difficult_goal,5392,0,gol difícil de ver no catálogo
+match_09,difficult_goal,5392,2,gol difícil de ver no catálogo
+match_13,difficult_goal,364,-2,gol difícil de ver no catálogo
+match_13,difficult_goal,364,0,gol difícil de ver no catálogo
+match_13,difficult_goal,364,2,gol difícil de ver no catálogo
+match_18,difficult_goal,3722,-2,gol difícil de ver no catálogo
+match_18,difficult_goal,3722,0,gol difícil de ver no catálogo
+match_18,difficult_goal,3722,2,gol difícil de ver no catálogo
+match_32,offside_goal,2343,-2,gol impedido no catálogo
+match_32,offside_goal,2343,0,gol impedido no catálogo
+match_32,offside_goal,2343,2,gol impedido no catálogo

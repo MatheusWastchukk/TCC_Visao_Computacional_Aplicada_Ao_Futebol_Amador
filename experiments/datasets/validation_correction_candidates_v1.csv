@@ -1,0 +1,2 @@
+frame_id,match_id,video_filename,timestamp_seconds,original_label,label,split,image_path,lt_x,lt_y,rt_x,rt_y,lb_x,lb_y,rb_x,rb_y,annotation_status,annotator,notes
+match_42_validation_coverage_02__structure_01,match_42,Match_42.mp4,1252.426,goal_structure,goal_structure,validation,experiments/goal_detection_pilot/data/frames_validation_coverage_v1/match_42/match_42_validation_coverage_02_001252.426.jpg,1827,544,1911,554,1826,616,1910,626,completed,manual,"multi-target; anotar estrutura adicional 01; se não existir, usar N"
