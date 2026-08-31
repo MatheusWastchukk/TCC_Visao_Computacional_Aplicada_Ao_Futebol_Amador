@@ -1,0 +1,12 @@
+sample_id,match_id,timestamp_hhmmss,ball_visibility,baseline_status,candidate_status,overlay_path,review_status,review_label,review_notes
+match_03_ball_007,match_03,01:02:56,NOT_VISIBLE,TN,FP,experiments/ball/BALL-EXP-0010-S-960/comparison_with_exp0005/overlays/001_match_03_ball_007.jpg,complete,BASELINE_MELHOR,
+match_03_ball_010,match_03,01:17:39,VISIBLE,TP,FN,experiments/ball/BALL-EXP-0010-S-960/comparison_with_exp0005/overlays/002_match_03_ball_010.jpg,complete,EQUIVALENTES,
+match_05_ball_014,match_05,00:44:57,VISIBLE,TP,FN,experiments/ball/BALL-EXP-0010-S-960/comparison_with_exp0005/overlays/003_match_05_ball_014.jpg,complete,BASELINE_MELHOR,
+match_12_ball_005,match_12,00:25:33,VISIBLE,TP,FN,experiments/ball/BALL-EXP-0010-S-960/comparison_with_exp0005/overlays/004_match_12_ball_005.jpg,complete,BASELINE_MELHOR,
+match_12_ball_009,match_12,00:40:08,VISIBLE,TP,FN,experiments/ball/BALL-EXP-0010-S-960/comparison_with_exp0005/overlays/005_match_12_ball_009.jpg,complete,BASELINE_MELHOR,
+match_26_ball_005,match_26,00:32:25,VISIBLE,FN,TP,experiments/ball/BALL-EXP-0010-S-960/comparison_with_exp0005/overlays/006_match_26_ball_005.jpg,complete,YOLO11S_MELHOR,
+match_26_ball_008,match_26,00:42:47,VISIBLE,TP,FN,experiments/ball/BALL-EXP-0010-S-960/comparison_with_exp0005/overlays/007_match_26_ball_008.jpg,complete,EQUIVALENTES,
+match_26_ball_009,match_26,00:44:30,NOT_VISIBLE,FP,TN,experiments/ball/BALL-EXP-0010-S-960/comparison_with_exp0005/overlays/008_match_26_ball_009.jpg,complete,YOLO11S_MELHOR,
+match_30_ball_008,match_30,00:34:51,VISIBLE,FN,TP,experiments/ball/BALL-EXP-0010-S-960/comparison_with_exp0005/overlays/009_match_30_ball_008.jpg,complete,YOLO11S_MELHOR,
+match_33_ball_002,match_33,00:07:04,VISIBLE,FN,TP,experiments/ball/BALL-EXP-0010-S-960/comparison_with_exp0005/overlays/010_match_33_ball_002.jpg,complete,EQUIVALENTES,
+match_33_ball_004,match_33,00:14:32,VISIBLE,FN,TP,experiments/ball/BALL-EXP-0010-S-960/comparison_with_exp0005/overlays/011_match_33_ball_004.jpg,complete,YOLO11S_MELHOR,

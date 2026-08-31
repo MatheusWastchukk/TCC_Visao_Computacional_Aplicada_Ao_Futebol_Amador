@@ -1,0 +1,18 @@
+{
+  "experiment_id": "BALL-EXP-0011-TEMPORAL-HARD",
+  "model": "yolo11n.pt",
+  "data": "experiments\\ball\\ball_dataset_v3_temporal_hard.yaml",
+  "epochs": 30,
+  "imgsz": 960,
+  "batch": 8,
+  "device": "0",
+  "metrics": {
+    "metrics/precision(B)": 0.5383046439063351,
+    "metrics/recall(B)": 0.3561643835616438,
+    "metrics/mAP50(B)": 0.35575653048803135,
+    "metrics/mAP50-95(B)": 0.0998778878960787,
+    "fitness": 0.0998778878960787
+  },
+  "execution_seconds": 1536.714,
+  "status": "completed"
+}

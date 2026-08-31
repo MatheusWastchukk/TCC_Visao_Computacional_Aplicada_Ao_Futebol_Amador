@@ -1,0 +1,9 @@
+{
+  "blocks": 8,
+  "frames": 12008,
+  "active_frames": 8252,
+  "detected_frames": 6624,
+  "recovered_gap_frames": 1628,
+  "track_segments": 1110,
+  "longest_track_frames": 124
+}

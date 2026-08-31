@@ -201,7 +201,7 @@ def main() -> int:
         if row["interval_label"] == "not_goal"
     )
     summary = {
-        "experiment_id": "EXP-0092-TEMPORAL-V2",
+        "experiment_id": args.output.name,
         "version": "V10_temporal_continuous",
         "blocks_total": len(blocks),
         "intervals_total": len(interval_rows),

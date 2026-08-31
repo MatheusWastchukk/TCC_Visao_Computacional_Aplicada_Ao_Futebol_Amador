@@ -1,0 +1,19 @@
+{
+  "experiment_id": "BALL-TRACK-EXP-0006",
+  "model": "runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt",
+  "blocks_total": 8,
+  "intervals_total": 135,
+  "intervals_evaluable": 133,
+  "true_positive_intervals": 36,
+  "true_negative_intervals": 28,
+  "false_positive_intervals": 28,
+  "false_negative_intervals": 41,
+  "inconclusive": 2,
+  "confidence": 0.1,
+  "sample_fps": 5.0,
+  "max_gap": 1,
+  "max_distance": 200.0,
+  "appearance_threshold": 0.7,
+  "execution_seconds": 326.324,
+  "status": "completed"
+}

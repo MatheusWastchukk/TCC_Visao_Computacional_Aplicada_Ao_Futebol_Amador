@@ -1,0 +1,10 @@
+interval_id,match_id,video_filename,clip_path,review_label
+temporal_v2_interval_008,match_03,Match_03_A.mp4,experiments/V10/BALL-TRACK-EXP-0002/review_050/inconclusive_clips/temporal_v2_interval_008.mp4,INCONCLUSIVO
+temporal_v2_interval_042,match_12,Match_012.mp4,experiments/V10/BALL-TRACK-EXP-0002/review_050/inconclusive_clips/temporal_v2_interval_042.mp4,INCONCLUSIVO
+temporal_v2_interval_043,match_12,Match_012.mp4,experiments/V10/BALL-TRACK-EXP-0002/review_050/inconclusive_clips/temporal_v2_interval_043.mp4,INCONCLUSIVO
+temporal_v2_interval_044,match_12,Match_012.mp4,experiments/V10/BALL-TRACK-EXP-0002/review_050/inconclusive_clips/temporal_v2_interval_044.mp4,INCONCLUSIVO
+temporal_v2_interval_052,match_12,Match_012.mp4,experiments/V10/BALL-TRACK-EXP-0002/review_050/inconclusive_clips/temporal_v2_interval_052.mp4,INCONCLUSIVO
+temporal_v2_interval_066,match_26,Match_26.mp4,experiments/V10/BALL-TRACK-EXP-0002/review_050/inconclusive_clips/temporal_v2_interval_066.mp4,INCONCLUSIVO
+temporal_v2_interval_087,match_30,Match_30.mp4,experiments/V10/BALL-TRACK-EXP-0002/review_050/inconclusive_clips/temporal_v2_interval_087.mp4,INCONCLUSIVO
+temporal_v2_interval_090,match_30,Match_30.mp4,experiments/V10/BALL-TRACK-EXP-0002/review_050/inconclusive_clips/temporal_v2_interval_090.mp4,INCONCLUSIVO
+temporal_v2_interval_100,match_30,Match_30.mp4,experiments/V10/BALL-TRACK-EXP-0002/review_050/inconclusive_clips/temporal_v2_interval_100.mp4,INCONCLUSIVO

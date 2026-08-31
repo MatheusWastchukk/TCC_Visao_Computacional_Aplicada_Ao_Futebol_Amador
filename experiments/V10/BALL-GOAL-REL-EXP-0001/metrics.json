@@ -1,0 +1,10 @@
+{
+  "experiment_id": "BALL-GOAL-REL-EXP-0001",
+  "tracking": "experiments\\V10\\BALL-TRACK-EXP-0002",
+  "goal_model": "runs\\detect\\experiments\\goal_geometry\\EXP-0092\\yolo11n_cpu_reference\\weights\\best.pt",
+  "tracked_ball_frames": 8252,
+  "frames_with_goal_structure": 5531,
+  "ball_inside_goal_frames": 156,
+  "execution_seconds": 880.768,
+  "status": "completed"
+}

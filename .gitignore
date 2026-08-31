@@ -6,6 +6,9 @@ __pycache__/
 .Python
 .venv/
 .venv-dml/
+.venv-rocm/
+.rocm_cache/
+.tmp/
 venv/
 env/
 ENV/
@@ -40,6 +43,10 @@ outputs/videos/*
 models/*
 experiments/**/artifacts/*
 experiments/ball/data/*
+experiments/ball/BALL-EXP-*/audit_v1/
+experiments/ball/BALL-EXP-*/AnotadorAuditoriaBola/
+experiments/ball/directml_smoke_train/
+experiments/ball/rocm_smoke_train_noamp/
 experiments/goal_detection_pilot/data/*
 experiments/goal_detection_pilot/outputs/masks/*
 experiments/goal_detection_pilot/outputs/edges/*
@@ -98,3 +105,4 @@ Desktop.ini
 docs/historico-completo-projeto-para-artigo.md
 docs/README_V10.md
 experiments/datasets/ANNOTATION_GUIDE.md
+docs/analise_continuacao_experimentos_bola.md

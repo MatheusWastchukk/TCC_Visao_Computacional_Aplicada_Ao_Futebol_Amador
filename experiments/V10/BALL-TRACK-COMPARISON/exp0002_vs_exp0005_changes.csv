@@ -1,0 +1,16 @@
+interval_id,match_id,interval_label,base_result,candidate_result,base_rate,candidate_rate
+temporal_v2_interval_019,match_05,goal_structure,false_negative,true_positive,0.6875,0.75
+temporal_v2_interval_026,match_05,not_goal,true_negative,false_positive,0.635135,0.756757
+temporal_v2_interval_037,match_12,not_goal,false_positive,true_negative,1.0,0.666667
+temporal_v2_interval_040,match_12,goal_structure,false_negative,true_positive,0.694561,0.740586
+temporal_v2_interval_048,match_12,goal_structure,false_negative,true_positive,0.627119,0.70339
+temporal_v2_interval_066,match_26,goal_structure,true_positive,false_negative,1.0,0.333333
+temporal_v2_interval_075,match_26,not_goal,true_negative,false_positive,0.555556,0.888889
+temporal_v2_interval_081,match_30,goal_structure,false_negative,true_positive,0.641975,0.703704
+temporal_v2_interval_087,match_30,goal_structure,false_negative,true_positive,0.693694,0.720721
+temporal_v2_interval_100,match_30,goal_structure,false_negative,true_positive,0.628571,0.742857
+temporal_v2_interval_104,match_33,goal_structure,false_negative,true_positive,0.589474,0.726316
+temporal_v2_interval_112,match_33,goal_structure,false_negative,true_positive,0.689655,0.758621
+temporal_v2_interval_113,match_33,not_goal,true_negative,false_positive,0.680851,0.808511
+temporal_v2_interval_127,match_42,not_goal,true_negative,false_positive,0.658974,0.723077
+temporal_v2_interval_133,match_42,not_goal,true_negative,false_positive,0.641176,0.717647

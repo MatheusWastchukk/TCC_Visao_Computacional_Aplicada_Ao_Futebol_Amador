@@ -1,0 +1,4 @@
+threshold,intervals_total,evaluable,true_positive,true_negative,false_positive,false_negative,inconclusive
+0.5,135,133,69,7,49,8,2
+0.7,135,133,53,22,34,24,2
+0.85,135,133,22,40,16,55,2

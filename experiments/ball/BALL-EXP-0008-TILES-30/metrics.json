@@ -1,0 +1,18 @@
+{
+  "experiment_id": "BALL-EXP-0008-TILES-30",
+  "model": "yolo11n.pt",
+  "data": "experiments\\ball\\ball_dataset_tiles_v1.yaml",
+  "epochs": 30,
+  "imgsz": 960,
+  "batch": 8,
+  "device": "0",
+  "metrics": {
+    "metrics/precision(B)": 0.27955999938988896,
+    "metrics/recall(B)": 0.2261904761904762,
+    "metrics/mAP50(B)": 0.19496875971862082,
+    "metrics/mAP50-95(B)": 0.06517516108382902,
+    "fitness": 0.06517516108382902
+  },
+  "execution_seconds": 5953.761,
+  "status": "completed"
+}

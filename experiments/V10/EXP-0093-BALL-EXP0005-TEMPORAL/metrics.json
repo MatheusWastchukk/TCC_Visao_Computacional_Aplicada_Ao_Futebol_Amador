@@ -1,0 +1,24 @@
+{
+  "experiment_id": "EXP-0093-BALL-EXP0005-TEMPORAL",
+  "version": "V10_temporal_continuous",
+  "blocks_total": 8,
+  "intervals_total": 135,
+  "intervals_evaluable": 133,
+  "intervals_inconclusive": 2,
+  "true_positive_intervals": 9,
+  "true_negative_intervals": 49,
+  "false_positive_intervals": 7,
+  "false_negative_intervals": 68,
+  "capture_domains": [
+    "Veo/derivados",
+    "XBotGo"
+  ],
+  "confidence": 0.25,
+  "sample_fps": 5.0,
+  "appearance_threshold": 0.7,
+  "total_block_minutes": 40.0,
+  "negative_evaluable_minutes": 10.02145,
+  "false_candidates_per_hour_of_not_goal": 41.910103,
+  "execution_seconds": 295.438,
+  "status": "completed"
+}

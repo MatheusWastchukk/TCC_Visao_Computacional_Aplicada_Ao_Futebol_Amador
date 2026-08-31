@@ -1,0 +1,16 @@
+interval_id,match_id,interval_label,base_result,candidate_result,base_rate,candidate_rate,timestamp_hhmmss,overlay_path
+temporal_v2_interval_008,match_03,not_goal,false_positive,true_negative,0.744898,0.693878,00:33:16,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_008.jpg
+temporal_v2_interval_009,match_03,goal_structure,true_positive,false_negative,0.723881,0.664179,00:33:39,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_009.jpg
+temporal_v2_interval_025,match_05,goal_structure,true_positive,false_negative,0.719626,0.635514,00:27:13,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_025.jpg
+temporal_v2_interval_029,match_05,goal_structure,true_positive,false_negative,0.727273,0.606061,00:28:00,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_029.jpg
+temporal_v2_interval_030,match_05,not_goal,false_positive,true_negative,0.770642,0.697248,00:28:14,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_030.jpg
+temporal_v2_interval_037,match_12,not_goal,false_positive,true_negative,1.0,0.666667,00:57:00,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_037.jpg
+temporal_v2_interval_042,match_12,goal_structure,true_positive,false_negative,0.717391,0.608696,00:58:33,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_042.jpg
+temporal_v2_interval_049,match_12,not_goal,false_positive,true_negative,0.72,0.64,00:59:53,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_049.jpg
+temporal_v2_interval_061,match_26,not_goal,false_positive,true_negative,1.0,0.5,01:09:23,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_061.jpg
+temporal_v2_interval_066,match_26,goal_structure,true_positive,false_negative,1.0,0.666667,01:11:18,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_066.jpg
+temporal_v2_interval_076,match_26,goal_structure,true_positive,false_negative,0.783784,0.648649,01:13:45,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_076.jpg
+temporal_v2_interval_085,match_30,goal_structure,true_positive,false_negative,0.730769,0.692308,00:39:18,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_085.jpg
+temporal_v2_interval_118,match_33,goal_structure,true_positive,false_negative,0.724138,0.62069,00:54:09,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_118.jpg
+temporal_v2_interval_125,match_33,not_goal,false_positive,true_negative,0.769231,0.692308,00:55:12,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_125.jpg
+temporal_v2_interval_132,match_42,goal_structure,true_positive,false_negative,0.7,0.65,01:21:00,experiments/V10/BALL-TRACK-COMPARISON/exp0002_vs_exp0004_review/overlays/temporal_v2_interval_132.jpg

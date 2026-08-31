@@ -1,0 +1,18 @@
+{
+  "experiment_id": "BALL-EXP-0005",
+  "model": "yolo11n.pt",
+  "data": "experiments\\ball\\ball_dataset_v2.yaml",
+  "epochs": 30,
+  "imgsz": 960,
+  "batch": 8,
+  "device": "0",
+  "metrics": {
+    "metrics/precision(B)": 0.6514745507304984,
+    "metrics/recall(B)": 0.3424657534246575,
+    "metrics/mAP50(B)": 0.3384448842415497,
+    "metrics/mAP50-95(B)": 0.09621894290978075,
+    "fitness": 0.09621894290978075
+  },
+  "execution_seconds": 2121.25,
+  "status": "completed"
+}

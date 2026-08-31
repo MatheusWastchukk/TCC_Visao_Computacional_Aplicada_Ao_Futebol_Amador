@@ -1,0 +1,9 @@
+block_id,match_id,capture_domain,intervals,evaluable_intervals,true_positive,true_negative,false_positive,false_negative,inconclusive
+temporal_v2_block_001,match_03,Veo/derivados,15,13,1,5,1,6,2
+temporal_v2_block_002,match_05,Veo/derivados,20,20,2,6,4,8,0
+temporal_v2_block_003,match_12,Veo/derivados,19,19,4,7,2,6,0
+temporal_v2_block_004,match_14,Veo/derivados,2,2,0,0,0,2,0
+temporal_v2_block_005,match_26,Veo/derivados,24,24,0,10,0,14,0
+temporal_v2_block_006,match_30,Veo/derivados,21,21,1,4,0,16,0
+temporal_v2_block_007,match_33,Veo/derivados,24,24,1,12,0,11,0
+temporal_v2_block_008,match_42,XBotGo,10,10,0,5,0,5,0
