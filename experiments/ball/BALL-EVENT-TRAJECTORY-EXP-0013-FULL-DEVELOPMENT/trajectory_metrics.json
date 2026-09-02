@@ -1,0 +1,8 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0013-FULL-DEVELOPMENT",
+  "sequences": 7,
+  "target_frames": 104,
+  "candidate_recall": 0.4423076923076923,
+  "identity_accuracy": 0.25961538461538464,
+  "mean_center_error_normalized": 0.089107875
+}

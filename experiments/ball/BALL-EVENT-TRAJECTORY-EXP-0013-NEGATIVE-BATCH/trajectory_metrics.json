@@ -1,0 +1,8 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0013-NEGATIVE-BATCH",
+  "sequences": 19,
+  "target_frames": 187,
+  "candidate_recall": 0.5935828877005348,
+  "identity_accuracy": 0.22459893048128343,
+  "mean_center_error_normalized": 0.09628299999999998
+}

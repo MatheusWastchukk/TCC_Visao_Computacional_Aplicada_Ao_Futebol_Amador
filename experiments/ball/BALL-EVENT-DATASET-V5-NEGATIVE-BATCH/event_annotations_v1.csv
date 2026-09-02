@@ -1,0 +1,20 @@
+event_id,source_interval_id,source_interval_label,match_id,video_filename,start_seconds,end_seconds,start_time_hhmmss,end_time_hhmmss,event_label,annotation_status,notes
+ball_event_v5_negative_001,ball_goal_sequence_020,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4231.000,4243.000,01:10:31,01:10:43,NAO_GOL,completed,Relação bola-gol revisada como associação incorreta.
+ball_event_v5_negative_002,ball_goal_sequence_022,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4267.000,4279.000,01:11:07,01:11:19,NAO_GOL,completed,Relação bola-gol revisada como associação incorreta.
+ball_event_v5_negative_003,ball_goal_sequence_027,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4391.000,4403.000,01:13:11,01:13:23,NAO_GOL,completed,Relação bola-gol revisada como associação incorreta.
+ball_event_v5_negative_004,ball_goal_sequence_029,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4396.000,4408.000,01:13:16,01:13:28,NAO_GOL,completed,Relação bola-gol revisada como associação incorreta.
+ball_event_v5_negative_005,ball_goal_sequence_030,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4398.000,4410.000,01:13:18,01:13:30,NAO_GOL,completed,Relação bola-gol revisada como associação incorreta.
+ball_event_v5_negative_006,ball_goal_sequence_033,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4402.000,4414.000,01:13:22,01:13:34,NAO_GOL,completed,Relação bola-gol revisada como associação incorreta.
+ball_event_v5_negative_007,ball_goal_sequence_034,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4404.000,4416.000,01:13:24,01:13:36,NAO_GOL,completed,Relação bola-gol revisada como associação incorreta.
+ball_event_v5_negative_008,ball_goal_sequence_035,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4435.000,4447.000,01:13:55,01:14:07,NAO_GOL,completed,Relação bola-gol revisada como associação incorreta.
+ball_event_v5_negative_009,ball_goal_sequence_036,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4437.000,4449.000,01:13:57,01:14:09,NAO_GOL,completed,Relação bola-gol revisada como associação incorreta.
+ball_event_v5_negative_010,ball_goal_sequence_037,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4439.000,4451.000,01:13:59,01:14:11,NAO_GOL,completed,Relação bola-gol revisada como associação incorreta.
+ball_event_v5_negative_011,ball_goal_sequence_038,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4441.000,4453.000,01:14:01,01:14:13,NAO_GOL,completed,Relação bola-gol revisada como associação incorreta.
+ball_event_v5_negative_012,ball_goal_sequence_039,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4443.000,4455.000,01:14:03,01:14:15,NAO_GOL,completed,Relação bola-gol revisada como associação incorreta.
+ball_event_v5_negative_013,temporal_v2_interval_003,intervalo_temporal_not_goal,match_03,Match_03_A.mp4,1880.423,1892.423,00:31:20,00:31:32,NAO_GOL,completed,Intervalo temporal anotado manualmente como not_goal.
+ball_event_v5_negative_014,temporal_v2_interval_016,intervalo_temporal_not_goal,match_05,Match_05.mp4,1476.320,1488.320,00:24:36,00:24:48,NAO_GOL,completed,Intervalo temporal anotado manualmente como not_goal.
+ball_event_v5_negative_015,temporal_v2_interval_037,intervalo_temporal_not_goal,match_12,Match_012.mp4,3414.404,3426.404,00:56:54,00:57:06,NAO_GOL,completed,Intervalo temporal anotado manualmente como not_goal.
+ball_event_v5_negative_016,temporal_v2_interval_058,intervalo_temporal_not_goal,match_26,Match_26.mp4,4151.439,4163.439,01:09:11,01:09:23,NAO_GOL,completed,Intervalo temporal anotado manualmente como not_goal.
+ball_event_v5_negative_017,temporal_v2_interval_084,intervalo_temporal_not_goal,match_30,Match_30.mp4,2347.133,2359.133,00:39:07,00:39:19,NAO_GOL,completed,Intervalo temporal anotado manualmente como not_goal.
+ball_event_v5_negative_018,temporal_v2_interval_103,intervalo_temporal_not_goal,match_33,Match_33.mp4,3034.168,3046.168,00:50:34,00:50:46,NAO_GOL,completed,Intervalo temporal anotado manualmente como not_goal.
+ball_event_v5_negative_019,temporal_v2_interval_127,intervalo_temporal_not_goal,match_42,Match_42.mp4,4720.550,4732.550,01:18:41,01:18:53,NAO_GOL,completed,Intervalo temporal anotado manualmente como not_goal.

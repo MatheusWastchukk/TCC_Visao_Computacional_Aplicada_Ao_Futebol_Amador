@@ -1,0 +1,8 @@
+sequence_id,frames,candidate_recall,identity_accuracy,longest_correct_run_frames,longest_correct_run_seconds,mean_center_error_normalized,max_center_error_normalized
+event_trajectory_sequence_01,19,0.789474,0.736842,4,0.800,0.008552,0.062290
+event_trajectory_sequence_02,18,0.333333,0.000000,0,0.000,0.232458,0.372233
+event_trajectory_sequence_03,10,0.400000,0.000000,0,0.000,0.184014,0.288946
+event_trajectory_sequence_04,17,0.352941,0.294118,2,0.400,0.031551,0.090883
+event_trajectory_sequence_05,8,0.000000,0.000000,0,0.000,0.128054,0.171912
+event_trajectory_sequence_06,13,0.384615,0.076923,1,0.200,0.031844,0.107594
+event_trajectory_sequence_07,19,0.526316,0.368421,3,0.600,0.058188,0.265555

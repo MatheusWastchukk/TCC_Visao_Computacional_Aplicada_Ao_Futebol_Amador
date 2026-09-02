@@ -1,0 +1,8 @@
+sequence_id,event_id,match_id,relative_frames,mean_relative_step,max_relative_step,net_relative_displacement
+event_trajectory_sequence_01,ball_event_v2_001,match_04,21,0.202429,0.716628,1.593955
+event_trajectory_sequence_02,ball_event_v2_002,match_06,21,0.052413,0.286954,0.326539
+event_trajectory_sequence_03,ball_event_v2_003,match_07,21,0.217038,1.409990,2.367909
+event_trajectory_sequence_04,ball_event_v2_004,match_08,13,0.335195,1.256342,1.660880
+event_trajectory_sequence_05,ball_event_v2_005,match_09,21,0.202512,1.258668,2.194234
+event_trajectory_sequence_06,ball_event_v2_006,match_12,21,0.271762,1.109578,0.258330
+event_trajectory_sequence_07,ball_event_v2_007,match_12,21,0.323131,1.036955,0.988012

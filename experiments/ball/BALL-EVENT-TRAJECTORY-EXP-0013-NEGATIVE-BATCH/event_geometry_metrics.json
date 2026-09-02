@@ -1,0 +1,13 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0013-NEGATIVE-BATCH",
+  "events": 19,
+  "target_evidence_counts": {
+    "DENTRO_PLANO_ENTRADA": 2,
+    "FORA_DAS_REGIOES": 12,
+    "NAO_OBSERVAVEL": 5
+  },
+  "tracker_evidence_counts": {
+    "DENTRO_PLANO_ENTRADA": 9,
+    "FORA_DAS_REGIOES": 10
+  }
+}

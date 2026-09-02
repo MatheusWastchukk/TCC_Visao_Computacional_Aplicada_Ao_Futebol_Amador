@@ -1,0 +1,2 @@
+sequence_id,event_id,match_id,relative_frames,mean_relative_step,max_relative_step,net_relative_displacement
+event_trajectory_sequence_01,ball_event_v3_relation_goal_001,match_05,21,0.317789,1.202424,3.618609
