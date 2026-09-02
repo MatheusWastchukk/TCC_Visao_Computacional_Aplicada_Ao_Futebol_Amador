@@ -1,0 +1,170 @@
+{
+  "experiment_id": "BALL-CANDIDATE-VERIFIER-EXP-0002-BINARY",
+  "status": "completed",
+  "base_model": "ResNet18 ImageNet",
+  "pretrained_source": "experiments\\ball\\BALL-CANDIDATE-VERIFIER-EXP-0001\\torch_hub\\checkpoints\\resnet18-f37072fd.pth",
+  "labels": [
+    "BOLA",
+    "NAO_BOLA"
+  ],
+  "task": "ball_likeness",
+  "train_sequences": [
+    "identity_train_sequence_01",
+    "identity_train_sequence_02",
+    "identity_train_sequence_05",
+    "identity_train_sequence_06",
+    "identity_train_sequence_07",
+    "identity_train_sequence_09",
+    "identity_train_sequence_10"
+  ],
+  "validation_sequences": [
+    "identity_train_sequence_03",
+    "identity_train_sequence_04",
+    "identity_train_sequence_08"
+  ],
+  "train_count": 100,
+  "validation_count": 45,
+  "train_labels": {
+    "NAO_BOLA": 57,
+    "BOLA": 43
+  },
+  "validation_labels": {
+    "BOLA": 16,
+    "NAO_BOLA": 29
+  },
+  "class_metrics": {
+    "BOLA": {
+      "support": 16,
+      "precision": 0.888889,
+      "recall": 0.5,
+      "f1": 0.64
+    },
+    "NAO_BOLA": {
+      "support": 29,
+      "precision": 0.777778,
+      "recall": 0.965517,
+      "f1": 0.861538
+    }
+  },
+  "threshold_sweep": [
+    {
+      "ball_threshold": "0.05",
+      "ball_recall": "0.750000",
+      "non_ball_rejection": "0.862069"
+    },
+    {
+      "ball_threshold": "0.10",
+      "ball_recall": "0.687500",
+      "non_ball_rejection": "0.862069"
+    },
+    {
+      "ball_threshold": "0.15",
+      "ball_recall": "0.625000",
+      "non_ball_rejection": "0.862069"
+    },
+    {
+      "ball_threshold": "0.20",
+      "ball_recall": "0.562500",
+      "non_ball_rejection": "0.896552"
+    },
+    {
+      "ball_threshold": "0.25",
+      "ball_recall": "0.500000",
+      "non_ball_rejection": "0.896552"
+    },
+    {
+      "ball_threshold": "0.30",
+      "ball_recall": "0.500000",
+      "non_ball_rejection": "0.931034"
+    },
+    {
+      "ball_threshold": "0.40",
+      "ball_recall": "0.500000",
+      "non_ball_rejection": "0.965517"
+    },
+    {
+      "ball_threshold": "0.50",
+      "ball_recall": "0.500000",
+      "non_ball_rejection": "0.965517"
+    }
+  ],
+  "best_validation_macro_f1": 0.750769,
+  "history": [
+    {
+      "epoch": 1,
+      "validation_accuracy": 0.644444,
+      "validation_macro_f1": 0.391892
+    },
+    {
+      "epoch": 2,
+      "validation_accuracy": 0.733333,
+      "validation_macro_f1": 0.659091
+    },
+    {
+      "epoch": 3,
+      "validation_accuracy": 0.733333,
+      "validation_macro_f1": 0.659091
+    },
+    {
+      "epoch": 4,
+      "validation_accuracy": 0.666667,
+      "validation_macro_f1": 0.499629
+    },
+    {
+      "epoch": 5,
+      "validation_accuracy": 0.711111,
+      "validation_macro_f1": 0.596273
+    },
+    {
+      "epoch": 6,
+      "validation_accuracy": 0.688889,
+      "validation_macro_f1": 0.55
+    },
+    {
+      "epoch": 7,
+      "validation_accuracy": 0.688889,
+      "validation_macro_f1": 0.578877
+    },
+    {
+      "epoch": 8,
+      "validation_accuracy": 0.666667,
+      "validation_macro_f1": 0.456084
+    },
+    {
+      "epoch": 9,
+      "validation_accuracy": 0.644444,
+      "validation_macro_f1": 0.391892
+    },
+    {
+      "epoch": 10,
+      "validation_accuracy": 0.666667,
+      "validation_macro_f1": 0.456084
+    },
+    {
+      "epoch": 11,
+      "validation_accuracy": 0.644444,
+      "validation_macro_f1": 0.444444
+    },
+    {
+      "epoch": 12,
+      "validation_accuracy": 0.666667,
+      "validation_macro_f1": 0.456084
+    },
+    {
+      "epoch": 13,
+      "validation_accuracy": 0.666667,
+      "validation_macro_f1": 0.456084
+    },
+    {
+      "epoch": 14,
+      "validation_accuracy": 0.755556,
+      "validation_macro_f1": 0.658385
+    },
+    {
+      "epoch": 15,
+      "validation_accuracy": 0.8,
+      "validation_macro_f1": 0.750769
+    }
+  ],
+  "execution_seconds": 32.945
+}

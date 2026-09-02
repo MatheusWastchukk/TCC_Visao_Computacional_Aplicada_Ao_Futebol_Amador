@@ -1,0 +1,8 @@
+event_id,source_interval_id,source_interval_label,match_id,video_filename,start_seconds,end_seconds,start_time_hhmmss,end_time_hhmmss,event_label,annotation_status,notes
+ball_event_v2_001,catalog_match04_2254,known_goal_hint,match_04,Match_04.mp4,1368.000,1380.000,00:22:48,00:23:00,POSSIVEL_GOL,completed,Catálogo: gol difícil de ver aos 22:54; confirmar visualmente.
+ball_event_v2_002,catalog_match06_1515,known_annulled_goal_hint,match_06,Match_06.mp4,909.000,921.000,00:15:09,00:15:21,POSSIVEL_GOL,completed,Catálogo: gol anulado aos 15:15; confirmar visualmente.
+ball_event_v2_003,catalog_match07_7105,known_penalty_hint,match_07,Match_07.mp4,4260.000,4272.000,01:11:00,01:11:12,POSSIVEL_GOL,completed,Catálogo: pênalti com bola meio escondida aos 01:11:05; confirmar resultado.
+ball_event_v2_004,catalog_match08_4814,known_goal_hint,match_08,Match_08.mp4,2888.000,2900.000,00:48:08,00:48:20,POSSIVEL_GOL,completed,Catálogo: gol difícil de ver aos 48:14; confirmar visualmente.
+ball_event_v2_005,catalog_match09_8952,known_goal_hint,match_09,Match_09.mp4,5386.000,5398.000,01:29:46,01:29:58,POSSIVEL_GOL,completed,Catálogo: gol difícil de ver aos 01:29:52; confirmar visualmente.
+ball_event_v2_006,catalog_match12_4819,known_goal_hint,match_12,Match_012.mp4,2893.000,2905.000,00:48:13,00:48:25,POSSIVEL_GOL,completed,Catálogo: gol difícil de ver aos 48:19; confirmar visualmente.
+ball_event_v2_007,catalog_match12_5714,known_annulled_goal_hint,match_12,Match_012.mp4,3428.000,3440.000,00:57:08,00:57:20,POSSIVEL_GOL,completed,Catálogo: gol anulado aos 57:14; confirmar visualmente.

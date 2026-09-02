@@ -1,0 +1,8 @@
+event_id,match_id,video_filename,event_label,event_timestamp_seconds,event_time_hhmmss,annotation_status
+ball_event_v2_001,match_04,Match_04.mp4,POSSIVEL_GOL,1370.543,00:22:51,completed
+ball_event_v2_002,match_06,Match_06.mp4,POSSIVEL_GOL,911.670,00:15:12,completed
+ball_event_v2_003,match_07,Match_07.mp4,POSSIVEL_GOL,4265.837,01:11:06,completed
+ball_event_v2_004,match_08,Match_08.mp4,POSSIVEL_GOL,2894.082,00:48:14,completed
+ball_event_v2_005,match_09,Match_09.mp4,POSSIVEL_GOL,5392.989,01:29:53,completed
+ball_event_v2_006,match_12,Match_012.mp4,POSSIVEL_GOL,2898.929,00:48:19,completed
+ball_event_v2_007,match_12,Match_012.mp4,POSSIVEL_GOL,3432.963,00:57:13,completed

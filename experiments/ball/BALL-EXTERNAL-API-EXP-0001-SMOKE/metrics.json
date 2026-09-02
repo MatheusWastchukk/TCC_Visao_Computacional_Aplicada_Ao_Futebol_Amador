@@ -1,0 +1,13 @@
+{
+  "experiment_id": "BALL-EXTERNAL-API-EXP-0001-SMOKE",
+  "model_id": "football-ball-detection-rejhg/4",
+  "source": "Roboflow Serverless Hosted API",
+  "images_sent_to_external_api": 10,
+  "confidence": 0.01,
+  "iou": 0.5,
+  "tp": 0,
+  "tn": 0,
+  "fp": 4,
+  "fn": 6,
+  "status": "completed"
+}

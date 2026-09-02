@@ -1,0 +1,4 @@
+event_id,match_id,sequence_id,ball_visibility,identity_correct,target_evidence,tracker_evidence,target_inside_front,target_inside_volume,tracker_inside_front,tracker_inside_volume
+ball_event_v2_005,match_09,event_trajectory_sequence_05,UNCERTAIN,False,NAO_OBSERVAVEL,FORA_DAS_REGIOES,,,False,False
+ball_event_v2_006,match_12,event_trajectory_sequence_06,NOT_VISIBLE,False,NAO_OBSERVAVEL,DENTRO_PLANO_ENTRADA,,,True,True
+ball_event_v2_007,match_12,event_trajectory_sequence_07,VISIBLE,True,DENTRO_PLANO_ENTRADA,DENTRO_PLANO_ENTRADA,True,True,True,True

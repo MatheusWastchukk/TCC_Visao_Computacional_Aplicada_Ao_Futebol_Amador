@@ -1,0 +1,2 @@
+event_id,match_id,video_filename,event_label,event_timestamp_seconds,event_time_hhmmss,annotation_status
+ball_event_v3_relation_goal_001,match_05,Match_05.mp4,POSSIVEL_GOL,1624.400,00:27:04,completed

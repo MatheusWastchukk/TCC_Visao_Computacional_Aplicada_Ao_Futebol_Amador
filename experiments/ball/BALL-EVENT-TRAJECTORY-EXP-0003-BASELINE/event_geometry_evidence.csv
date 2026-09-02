@@ -1,0 +1,2 @@
+event_id,match_id,sequence_id,ball_visibility,identity_correct,target_evidence,tracker_evidence,target_inside_front,target_inside_volume,tracker_inside_front,tracker_inside_volume
+ball_event_v3_relation_goal_001,match_05,event_trajectory_sequence_01,VISIBLE,False,DENTRO_PLANO_ENTRADA,FORA_DAS_REGIOES,True,True,False,False

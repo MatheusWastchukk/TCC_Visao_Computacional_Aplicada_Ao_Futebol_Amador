@@ -1,0 +1,4 @@
+event_id,match_id,sequence_id,selected_at_event,inside_goal_region,local_selected_frames,previous_distance_pixels,event_distance_pixels,approach_evidence,decision
+ball_event_v2_005,match_09,event_trajectory_sequence_05,True,False,6,212.337,207.831,False,NOT_EVALUABLE
+ball_event_v2_006,match_12,event_trajectory_sequence_06,True,True,6,64.495,51.828,False,NOT_EVALUABLE
+ball_event_v2_007,match_12,event_trajectory_sequence_07,True,True,6,113.921,36.905,True,POSSIVEL_GOL_CANDIDATO

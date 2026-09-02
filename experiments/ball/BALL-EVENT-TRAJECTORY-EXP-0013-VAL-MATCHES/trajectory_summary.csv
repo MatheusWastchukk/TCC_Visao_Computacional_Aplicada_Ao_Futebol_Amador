@@ -1,0 +1,4 @@
+sequence_id,frames,candidate_recall,identity_accuracy,longest_correct_run_frames,longest_correct_run_seconds,mean_center_error_normalized,max_center_error_normalized
+event_trajectory_sequence_05,8,0.000000,0.000000,0,0.000,0.128054,0.171912
+event_trajectory_sequence_06,13,0.384615,0.076923,1,0.200,0.031844,0.107594
+event_trajectory_sequence_07,19,0.526316,0.368421,3,0.600,0.058188,0.265555

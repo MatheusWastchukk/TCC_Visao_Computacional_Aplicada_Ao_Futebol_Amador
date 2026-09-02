@@ -14,6 +14,8 @@ from typing import Any
 import cv2
 from ultralytics import YOLO
 
+from camera_motion import estimate_camera_motion
+
 
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as file:
@@ -75,6 +77,13 @@ def main() -> int:
     parser.add_argument("--rejection-grace", type=int, default=1)
     parser.add_argument("--appearance-threshold", type=float, default=0.70)
     parser.add_argument(
+        "--camera-compensation",
+        action="store_true",
+        help="Associa candidatas em coordenadas estabilizadas por fluxo óptico Lucas-Kanade.",
+    )
+    parser.add_argument("--camera-min-points", type=int, default=12)
+    parser.add_argument("--camera-max-motion", type=float, default=300.0)
+    parser.add_argument(
         "--goal-model",
         type=Path,
         default=None,
@@ -99,6 +108,7 @@ def main() -> int:
     goal_model = YOLO(str(args.goal_model)) if args.goal_model else None
     args.output.mkdir(parents=True, exist_ok=True)
     frame_rows: list[dict[str, Any]] = []
+    camera_rows: list[dict[str, Any]] = []
     detections_by_block: dict[str, list[dict[str, Any]]] = defaultdict(list)
     started = time.perf_counter()
 
@@ -113,8 +123,11 @@ def main() -> int:
         end_seconds = float(block["end_seconds"])
         cap.set(cv2.CAP_PROP_POS_MSEC, timestamp * 1000.0)
         previous_center: tuple[float, float] | None = None
+        previous_stable_center: tuple[float, float] | None = None
         velocity = (0.0, 0.0)
         last_box: tuple[float, float, float, float] | None = None
+        previous_image = None
+        camera_offset = (0.0, 0.0)
         gap = args.max_gap + 1
         rejection_streak = 0
         print(f"[{block_index}/{len(blocks)}] processando {block['block_id']} ({video_path.name})")
@@ -122,6 +135,20 @@ def main() -> int:
             ok, image = cap.read()
             if not ok or image is None:
                 break
+            camera_motion = None
+            if args.camera_compensation and previous_image is not None:
+                camera_motion = estimate_camera_motion(
+                    previous_image,
+                    image,
+                    min_points=args.camera_min_points,
+                    max_motion=args.camera_max_motion,
+                )
+                if camera_motion.is_valid:
+                    camera_offset = (camera_offset[0] + camera_motion.dx, camera_offset[1] + camera_motion.dy)
+            camera_dx = camera_motion.dx if camera_motion else 0.0
+            camera_dy = camera_motion.dy if camera_motion else 0.0
+            camera_valid_points = camera_motion.valid_points if camera_motion else 0
+            camera_motion_valid = camera_motion.is_valid if camera_motion else False
             result = model.predict(source=image, imgsz=args.imgsz, conf=args.confidence, device=args.device, verbose=False)[0]
             candidates = [tuple(float(value) for value in box) for box in result.boxes.xyxy.tolist()]
             confidences = [float(value) for value in result.boxes.conf.tolist()]
@@ -135,13 +162,22 @@ def main() -> int:
                     verbose=False,
                 )[0]
                 goal_boxes = [tuple(float(value) for value in box) for box in goal_result.boxes.xyxy.tolist()]
-            predicted_center = (previous_center[0] + velocity[0], previous_center[1] + velocity[1]) if previous_center else None
+            predicted_center = (
+                (previous_stable_center[0] + velocity[0], previous_stable_center[1] + velocity[1])
+                if args.camera_compensation and previous_stable_center
+                else ((previous_center[0] + velocity[0], previous_center[1] + velocity[1]) if previous_center else None)
+            )
             chosen_index = -1
             association_rejected = False
             excluded_seed_candidates = 0
             if candidates:
                 if predicted_center is not None and gap <= args.max_gap:
-                    distances = [distance(center(box), predicted_center) for box in candidates]
+                    candidate_centers = [
+                        (center(box)[0] - camera_offset[0], center(box)[1] - camera_offset[1])
+                        if args.camera_compensation else center(box)
+                        for box in candidates
+                    ]
+                    distances = [distance(candidate_center, predicted_center) for candidate_center in candidate_centers]
                     valid: list[int] = []
                     previous_movement = velocity
                     movement_norm = math.hypot(*previous_movement)
@@ -155,7 +191,9 @@ def main() -> int:
                             if ratio > args.max_area_ratio:
                                 continue
                         if movement_norm > 10.0:
-                            movement = (center(candidate)[0] - previous_center[0], center(candidate)[1] - previous_center[1])
+                            current_center = candidate_centers[candidate_index]
+                            prior_center = previous_stable_center if args.camera_compensation else previous_center
+                            movement = (current_center[0] - prior_center[0], current_center[1] - prior_center[1])
                             movement_candidate_norm = math.hypot(*movement)
                             if movement_candidate_norm > 10.0:
                                 cosine = (movement[0] * previous_movement[0] + movement[1] * previous_movement[1]) / (movement_candidate_norm * movement_norm)
@@ -181,19 +219,26 @@ def main() -> int:
             if detected:
                 chosen_box = candidates[chosen_index]
                 chosen_center = center(chosen_box)
-                if previous_center is not None:
-                    velocity = (chosen_center[0] - previous_center[0], chosen_center[1] - previous_center[1])
+                chosen_stable_center = (chosen_center[0] - camera_offset[0], chosen_center[1] - camera_offset[1])
+                prior_center = previous_stable_center if args.camera_compensation else previous_center
+                current_association_center = chosen_stable_center if args.camera_compensation else chosen_center
+                if prior_center is not None:
+                    velocity = (current_association_center[0] - prior_center[0], current_association_center[1] - prior_center[1])
                 previous_center = chosen_center
+                previous_stable_center = chosen_stable_center
                 last_box = chosen_box
                 gap = 0
                 rejection_streak = 0
             elif previous_center is not None and gap < args.max_gap and (not association_rejected or rejection_streak < args.rejection_grace):
                 previous_center = (previous_center[0] + velocity[0], previous_center[1] + velocity[1])
+                if previous_stable_center is not None:
+                    previous_stable_center = (previous_stable_center[0] + velocity[0], previous_stable_center[1] + velocity[1])
                 gap += 1
                 if association_rejected:
                     rejection_streak += 1
             else:
                 previous_center = None
+                previous_stable_center = None
                 last_box = None
                 velocity = (0.0, 0.0)
                 gap = args.max_gap + 1
@@ -206,6 +251,9 @@ def main() -> int:
                 "detected": detected, "track_active": active, "gap": gap if active else "",
                 "confidence": round(confidences[chosen_index], 6) if detected else 0.0,
                 "prediction_count": len(candidates),
+                "camera_dx": round(camera_dx, 4), "camera_dy": round(camera_dy, 4),
+                "camera_offset_x": round(camera_offset[0], 4), "camera_offset_y": round(camera_offset[1], 4),
+                "camera_valid_points": camera_valid_points, "camera_motion_valid": camera_motion_valid,
                 "goal_seed_candidates_excluded": excluded_seed_candidates,
                 "track_x1": round(last_box[0], 2) if last_box and active else "",
                 "track_y1": round(last_box[1], 2) if last_box and active else "",
@@ -213,11 +261,19 @@ def main() -> int:
                 "track_y2": round(last_box[3], 2) if last_box and active else "",
             }
             frame_rows.append(row)
+            camera_rows.append({
+                "block_id": block["block_id"], "match_id": block["match_id"],
+                "timestamp_seconds": round(timestamp, 3), "timestamp_hhmmss": format_time(timestamp),
+                "dx": round(camera_dx, 4), "dy": round(camera_dy, 4),
+                "offset_x": round(camera_offset[0], 4), "offset_y": round(camera_offset[1], 4),
+                "valid_points": camera_valid_points, "motion_valid": camera_motion_valid,
+            })
             detections_by_block[block["block_id"]].append(row)
             for _ in range(frame_step - 1):
                 if not cap.grab():
                     break
             timestamp += 1.0 / args.sample_fps
+            previous_image = image
         cap.release()
 
     interval_rows: list[dict[str, Any]] = []
@@ -247,9 +303,13 @@ def main() -> int:
         "confidence": args.confidence, "sample_fps": args.sample_fps,
         "max_gap": args.max_gap, "max_distance": args.max_distance,
         "appearance_threshold": args.appearance_threshold,
+        "camera_compensation": args.camera_compensation,
+        "camera_motion_valid_frames": sum(bool(row["motion_valid"]) for row in camera_rows),
+        "camera_motion_valid_rate": round(sum(bool(row["motion_valid"]) for row in camera_rows) / len(camera_rows), 6) if camera_rows else 0.0,
         "execution_seconds": round(time.perf_counter() - started, 3), "status": "completed",
     }
     write_csv(args.output / "frame_tracking.csv", frame_rows)
+    write_csv(args.output / "camera_motion.csv", camera_rows)
     write_csv(args.output / "interval_tracking_results.csv", interval_rows)
     (args.output / "metrics.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False))

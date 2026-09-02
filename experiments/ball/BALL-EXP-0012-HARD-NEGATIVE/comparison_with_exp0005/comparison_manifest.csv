@@ -1,0 +1,9 @@
+sample_id,match_id,timestamp_hhmmss,ball_visibility,baseline_status,candidate_status,overlay_path,review_status,review_label,review_notes
+match_03_ball_014,match_03,01:27:23,VISIBLE,TP,FN,experiments/ball/BALL-EXP-0012-HARD-NEGATIVE/comparison_with_exp0005/overlays/001_match_03_ball_014.jpg,complete,BASELINE_MELHOR,
+match_05_ball_013,match_05,00:44:50,VISIBLE,FN,TP,experiments/ball/BALL-EXP-0012-HARD-NEGATIVE/comparison_with_exp0005/overlays/002_match_05_ball_013.jpg,complete,CANDIDATO_MELHOR,
+match_05_ball_014,match_05,00:44:57,VISIBLE,TP,FN,experiments/ball/BALL-EXP-0012-HARD-NEGATIVE/comparison_with_exp0005/overlays/003_match_05_ball_014.jpg,complete,BASELINE_MELHOR,
+match_12_ball_009,match_12,00:40:08,VISIBLE,TP,FN,experiments/ball/BALL-EXP-0012-HARD-NEGATIVE/comparison_with_exp0005/overlays/004_match_12_ball_009.jpg,complete,EQUIVALENTES,
+match_26_ball_014,match_26,01:14:22,VISIBLE,FN,TP,experiments/ball/BALL-EXP-0012-HARD-NEGATIVE/comparison_with_exp0005/overlays/005_match_26_ball_014.jpg,complete,CANDIDATO_MELHOR,
+match_30_ball_009,match_30,00:56:20,NOT_VISIBLE,TN,FP,experiments/ball/BALL-EXP-0012-HARD-NEGATIVE/comparison_with_exp0005/overlays/006_match_30_ball_009.jpg,complete,BASELINE_MELHOR,
+match_30_ball_014,match_30,01:25:23,NOT_VISIBLE,TN,FP,experiments/ball/BALL-EXP-0012-HARD-NEGATIVE/comparison_with_exp0005/overlays/007_match_30_ball_014.jpg,complete,BASELINE_MELHOR,
+match_33_ball_004,match_33,00:14:32,VISIBLE,FN,TP,experiments/ball/BALL-EXP-0012-HARD-NEGATIVE/comparison_with_exp0005/overlays/008_match_33_ball_004.jpg,complete,CANDIDATO_MELHOR,

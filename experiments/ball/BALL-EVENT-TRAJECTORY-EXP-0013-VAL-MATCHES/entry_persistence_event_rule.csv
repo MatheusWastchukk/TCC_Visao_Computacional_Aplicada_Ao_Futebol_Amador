@@ -1,0 +1,4 @@
+event_id,match_id,sequence_id,ball_visibility,selected_at_event,inside_front,inside_volume,local_selected_frames,decision
+ball_event_v2_005,match_09,event_trajectory_sequence_05,UNCERTAIN,True,False,False,6,NOT_EVALUABLE
+ball_event_v2_006,match_12,event_trajectory_sequence_06,NOT_VISIBLE,True,True,True,6,NOT_EVALUABLE
+ball_event_v2_007,match_12,event_trajectory_sequence_07,VISIBLE,True,True,True,6,POSSIVEL_GOL_CANDIDATO

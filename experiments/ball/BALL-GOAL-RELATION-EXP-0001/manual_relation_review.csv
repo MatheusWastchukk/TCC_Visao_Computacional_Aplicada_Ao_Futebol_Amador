@@ -1,0 +1,3 @@
+sequence_id,match_id,frames,manual_relation_quality,annotation_status
+trajectory_train_sequence_01,match_02,21,RELEVANTE_CORRETA,completed
+trajectory_train_sequence_02,match_21,21,RELEVANTE_CORRETA,completed

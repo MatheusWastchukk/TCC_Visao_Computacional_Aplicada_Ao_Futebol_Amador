@@ -1,0 +1,10 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0013-V3-NEW-GOAL",
+  "events": 1,
+  "target_evidence_counts": {
+    "DENTRO_PLANO_ENTRADA": 1
+  },
+  "tracker_evidence_counts": {
+    "DENTRO_PLANO_ENTRADA": 1
+  }
+}

@@ -46,7 +46,7 @@ def main() -> int:
         if all(value not in {None, ""} for value in values):
             x1, y1, x2, y2 = map(lambda value: int(float(value)), values)
             cv2.rectangle(image, (x1, y1), (x2, y2), (0, 0, 255), 4)
-            cv2.putText(image, "TRACK EXP-0004", (x1, max(25, y1 - 10)), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
+            cv2.putText(image, "TRACK CAMERA", (x1, max(25, y1 - 10)), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
         cv2.putText(image, f"{change['interval_id']} | {change['base_result']} -> {change['candidate_result']}", (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 0), 2)
         target = args.output / "overlays" / f"{change['interval_id']}.jpg"
         target.parent.mkdir(parents=True, exist_ok=True)

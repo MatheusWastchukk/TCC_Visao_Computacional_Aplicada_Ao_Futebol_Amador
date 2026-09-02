@@ -1,0 +1,8 @@
+event_id,match_id,sequence_id,ball_visibility,selected_at_event,inside_front,inside_volume,local_selected_frames,decision
+ball_event_v2_001,match_04,event_trajectory_sequence_01,VISIBLE,True,True,True,6,POSSIVEL_GOL_CANDIDATO
+ball_event_v2_002,match_06,event_trajectory_sequence_02,VISIBLE,True,False,False,6,NOT_EVALUABLE
+ball_event_v2_003,match_07,event_trajectory_sequence_03,VISIBLE,True,False,False,6,NOT_EVALUABLE
+ball_event_v2_004,match_08,event_trajectory_sequence_04,VISIBLE,False,False,False,0,NOT_EVALUABLE
+ball_event_v2_005,match_09,event_trajectory_sequence_05,UNCERTAIN,True,False,False,6,NOT_EVALUABLE
+ball_event_v2_006,match_12,event_trajectory_sequence_06,NOT_VISIBLE,True,True,True,6,NOT_EVALUABLE
+ball_event_v2_007,match_12,event_trajectory_sequence_07,VISIBLE,True,False,False,6,NOT_EVALUABLE

@@ -1,0 +1,7 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0013-VAL-MATCHES",
+  "events": 3,
+  "possible_goal_candidates": 1,
+  "not_evaluable": 2,
+  "note": "Simulação em janela centralizada no instante anotado; não é detector de eventos em vídeo completo."
+}

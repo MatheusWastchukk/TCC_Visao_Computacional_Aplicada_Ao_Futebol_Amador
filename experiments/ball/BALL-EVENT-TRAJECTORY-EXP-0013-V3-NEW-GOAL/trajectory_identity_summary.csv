@@ -1,0 +1,2 @@
+sequence_id,target_frames,target_candidate_recall,identity_accuracy,wrong_ball_switch_rate
+event_trajectory_sequence_01,21,0.428571,0.380952,0.000000

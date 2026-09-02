@@ -1,0 +1,8 @@
+event_id,match_id,sequence_id,ball_visibility,identity_correct,target_evidence,tracker_evidence,target_inside_front,target_inside_volume,tracker_inside_front,tracker_inside_volume
+ball_event_v2_001,match_04,event_trajectory_sequence_01,VISIBLE,False,DENTRO_PLANO_ENTRADA,NAO_OBSERVAVEL,True,True,,
+ball_event_v2_002,match_06,event_trajectory_sequence_02,VISIBLE,False,DENTRO_PLANO_ENTRADA,FORA_DAS_REGIOES,True,True,False,False
+ball_event_v2_003,match_07,event_trajectory_sequence_03,VISIBLE,False,DENTRO_PLANO_ENTRADA,FORA_DAS_REGIOES,True,True,False,False
+ball_event_v2_004,match_08,event_trajectory_sequence_04,VISIBLE,False,DENTRO_VOLUME_PROJETADO,FORA_DAS_REGIOES,False,True,False,False
+ball_event_v2_005,match_09,event_trajectory_sequence_05,UNCERTAIN,False,NAO_OBSERVAVEL,FORA_DAS_REGIOES,,,False,False
+ball_event_v2_006,match_12,event_trajectory_sequence_06,NOT_VISIBLE,False,NAO_OBSERVAVEL,FORA_DAS_REGIOES,,,False,False
+ball_event_v2_007,match_12,event_trajectory_sequence_07,VISIBLE,False,DENTRO_PLANO_ENTRADA,NAO_OBSERVAVEL,True,True,,

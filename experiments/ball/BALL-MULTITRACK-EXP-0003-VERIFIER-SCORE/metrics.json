@@ -1,0 +1,12 @@
+{
+  "experiment_id": "BALL-MULTITRACK-EXP-0003-VERIFIER-SCORE",
+  "sequences": 4,
+  "target_frames": 17,
+  "candidate_recall": 0.35294117647058826,
+  "identity_accuracy": 0.17647058823529413,
+  "wrong_ball_switch_rate": 0.17647058823529413,
+  "confidence": 0.01,
+  "max_candidates": 10,
+  "verifier_checkpoint": "experiments\\ball\\BALL-CANDIDATE-VERIFIER-EXP-0003-BINARY\\best.pt",
+  "verifier_weight": 0.3
+}

@@ -80,6 +80,11 @@ experiments/goal_geometry/EXP-*/overlays/
 experiments/**/*.png
 experiments/**/*.jpg
 experiments/**/*.jpeg
+# Predições por frame de execuções V10 são volumosas e podem ser regeneradas.
+experiments/V10/**/frame_tracking.csv
+experiments/V10/**/frame_predictions.csv
+experiments/V10/**/frame_ball_goal_relation.csv
+experiments/V10/**/camera_motion.csv
 docs/figuras/overlays-v10/
 results/
 
@@ -106,3 +111,4 @@ docs/historico-completo-projeto-para-artigo.md
 docs/README_V10.md
 experiments/datasets/ANNOTATION_GUIDE.md
 docs/analise_continuacao_experimentos_bola.md
+requirements-roboflow.txt

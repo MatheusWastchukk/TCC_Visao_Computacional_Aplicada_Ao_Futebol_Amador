@@ -1,0 +1,12 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0001-BASELINE",
+  "sequences": 7,
+  "target_frames": 104,
+  "candidate_recall": 0.3557692307692308,
+  "identity_accuracy": 0.15384615384615385,
+  "wrong_ball_switch_rate": 0.0,
+  "confidence": 0.01,
+  "max_candidates": 10,
+  "verifier_checkpoint": null,
+  "verifier_weight": 0.0
+}

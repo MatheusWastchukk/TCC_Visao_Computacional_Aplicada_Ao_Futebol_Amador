@@ -1,0 +1,120 @@
+sample_id,match_id,capture_domain,ball_visibility,timestamp_hhmmss,status,prediction_count,prediction_class,prediction_confidence,prediction_box_json,top1_iou,best_candidate_iou,matching_candidate_rank,image_path
+match_03_ball_001,match_03,Veo/derivados,NOT_VISIBLE,00:13:15,FP,1,ball,0.017184,"[102.0, 1069.0, 126.0, 1080.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_03\match_03_ball_001_000794.961.jpg
+match_03_ball_002,match_03,Veo/derivados,VISIBLE,00:22:19,FN,1,ball,0.317242,"[1043.0, 523.0, 1060.0, 540.0]",0.437879,0.437879,0,experiments\ball\data\frames\validation\match_03\match_03_ball_002_001338.671.jpg
+match_03_ball_003,match_03,Veo/derivados,NOT_VISIBLE,00:22:39,FP,1,ball,0.044734,"[1638.0, 946.0, 1649.0, 956.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_03\match_03_ball_003_001358.691.jpg
+match_03_ball_004,match_03,Veo/derivados,VISIBLE,00:38:41,FN,1,ball,0.081715,"[704.0, 688.0, 714.0, 698.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_03\match_03_ball_004_002321.085.jpg
+match_03_ball_005,match_03,Veo/derivados,NOT_VISIBLE,00:40:03,FP,1,ball,0.029733,"[1086.0, 933.0, 1097.0, 945.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_03\match_03_ball_005_002403.301.jpg
+match_03_ball_006,match_03,Veo/derivados,VISIBLE,00:44:22,FN,2,ball,0.019643,"[1184.0, 854.0, 1196.0, 866.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_03\match_03_ball_006_002661.993.jpg
+match_03_ball_007,match_03,Veo/derivados,NOT_VISIBLE,01:02:56,FP,2,ball,0.046262,"[533.0, 1038.0, 544.0, 1049.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_03\match_03_ball_007_003775.839.jpg
+match_03_ball_008,match_03,Veo/derivados,VISIBLE,01:11:36,FN,4,ball,0.135178,"[521.0, 858.0, 542.0, 875.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_03\match_03_ball_008_004295.925.jpg
+match_03_ball_009,match_03,Veo/derivados,VISIBLE,01:15:46,FN,1,ball,0.053556,"[964.0, 438.0, 977.0, 451.0]",0.370614,0.370614,0,experiments\ball\data\frames\validation\match_03\match_03_ball_009_004546.308.jpg
+match_03_ball_010,match_03,Veo/derivados,VISIBLE,01:17:39,FN,1,ball,0.800350,"[847.0, 498.0, 861.0, 511.0]",0.130000,0.130000,0,experiments\ball\data\frames\validation\match_03\match_03_ball_010_004658.587.jpg
+match_03_ball_011,match_03,Veo/derivados,VISIBLE,01:21:57,FN,3,ball,0.763360,"[1011.0, 355.0, 1026.0, 370.0]",0.254525,0.254525,0,experiments\ball\data\frames\validation\match_03\match_03_ball_011_004917.179.jpg
+match_03_ball_012,match_03,Veo/derivados,VISIBLE,01:22:56,FN,4,ball,0.205287,"[362.0, 676.0, 380.0, 689.0]",0.000000,0.361111,0,experiments\ball\data\frames\validation\match_03\match_03_ball_012_004975.904.jpg
+match_03_ball_013,match_03,Veo/derivados,VISIBLE,01:23:26,FN,3,ball,0.114900,"[290.0, 808.0, 316.0, 830.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_03\match_03_ball_013_005005.968.jpg
+match_03_ball_014,match_03,Veo/derivados,VISIBLE,01:27:23,FN,1,ball,0.019977,"[1301.0, 417.0, 1316.0, 433.0]",0.376176,0.376176,0,experiments\ball\data\frames\validation\match_03\match_03_ball_014_005242.838.jpg
+match_03_ball_015,match_03,Veo/derivados,VISIBLE,01:29:23,FN,1,ball,0.017347,"[124.0, 1070.0, 144.0, 1080.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_03\match_03_ball_015_005363.291.jpg
+match_05_ball_001,match_05,Veo/derivados,VISIBLE,00:04:42,FN,1,ball,0.013645,"[1754.0, 472.0, 1767.0, 484.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_05\match_05_ball_001_000282.240.jpg
+match_05_ball_002,match_05,Veo/derivados,VISIBLE,00:09:42,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_05\match_05_ball_002_000582.360.jpg
+match_05_ball_003,match_05,Veo/derivados,VISIBLE,00:12:20,FN,1,ball,0.701076,"[1495.0, 504.0, 1508.0, 518.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_05\match_05_ball_003_000739.640.jpg
+match_05_ball_004,match_05,Veo/derivados,VISIBLE,00:13:42,FN,2,ball,0.447480,"[992.0, 494.0, 1006.0, 507.0]",0.133824,0.133824,0,experiments\ball\data\frames\validation\match_05\match_05_ball_004_000821.640.jpg
+match_05_ball_005,match_05,Veo/derivados,VISIBLE,00:23:02,FN,2,ball,0.439244,"[1093.0, 643.0, 1119.0, 667.0]",0.213115,0.213115,0,experiments\ball\data\frames\validation\match_05\match_05_ball_005_001382.000.jpg
+match_05_ball_006,match_05,Veo/derivados,NOT_VISIBLE,00:33:39,FP,1,ball,0.063479,"[801.0, 1053.0, 816.0, 1067.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_05\match_05_ball_006_002018.640.jpg
+match_05_ball_007,match_05,Veo/derivados,VISIBLE,00:34:23,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_05\match_05_ball_007_002063.080.jpg
+match_05_ball_008,match_05,Veo/derivados,PARTIAL,00:36:53,FN,1,ball,0.026310,"[1681.0, 637.0, 1694.0, 647.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_05\match_05_ball_008_002212.760.jpg
+match_05_ball_009,match_05,Veo/derivados,VISIBLE,00:38:39,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_05\match_05_ball_009_002319.440.jpg
+match_05_ball_010,match_05,Veo/derivados,VISIBLE,00:38:41,FN,1,ball,0.437384,"[727.0, 504.0, 739.0, 515.0]",0.267206,0.267206,0,experiments\ball\data\frames\validation\match_05\match_05_ball_010_002320.880.jpg
+match_05_ball_011,match_05,Veo/derivados,VISIBLE,00:39:43,FN,2,ball,0.054952,"[609.0, 513.0, 619.0, 523.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_05\match_05_ball_011_002383.000.jpg
+match_05_ball_012,match_05,Veo/derivados,PARTIAL,00:42:43,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_05\match_05_ball_012_002563.200.jpg
+match_05_ball_013,match_05,Veo/derivados,VISIBLE,00:44:50,FN,1,ball,0.013507,"[1608.0, 576.0, 1622.0, 589.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_05\match_05_ball_013_002690.040.jpg
+match_05_ball_014,match_05,Veo/derivados,VISIBLE,00:44:57,FN,1,ball,0.010311,"[537.0, 483.0, 552.0, 497.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_05\match_05_ball_014_002696.600.jpg
+match_05_ball_015,match_05,Veo/derivados,VISIBLE,00:48:25,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_05\match_05_ball_015_002905.240.jpg
+match_12_ball_001,match_12,Veo/derivados,NOT_VISIBLE,00:11:59,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_001_000718.952.jpg
+match_12_ball_002,match_12,Veo/derivados,PARTIAL,00:15:30,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_002_000930.496.jpg
+match_12_ball_003,match_12,Veo/derivados,VISIBLE,00:20:11,FN,1,ball,0.014598,"[899.0, 551.0, 918.0, 567.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_003_001211.143.jpg
+match_12_ball_004,match_12,Veo/derivados,NOT_VISIBLE,00:22:05,FP,1,ball,0.205322,"[631.0, 540.0, 645.0, 553.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_004_001325.324.jpg
+match_12_ball_005,match_12,Veo/derivados,VISIBLE,00:25:33,FN,2,ball,0.080580,"[1352.0, 508.0, 1364.0, 521.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_005_001533.332.jpg
+match_12_ball_006,match_12,Veo/derivados,NOT_VISIBLE,00:25:41,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_006_001541.373.jpg
+match_12_ball_007,match_12,Veo/derivados,NOT_VISIBLE,00:27:21,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_007_001641.340.jpg
+match_12_ball_008,match_12,Veo/derivados,NOT_VISIBLE,00:32:01,FP,2,ball,0.541341,"[1256.0, 465.0, 1269.0, 477.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_008_001920.652.jpg
+match_12_ball_009,match_12,Veo/derivados,VISIBLE,00:40:08,FN,1,ball,0.075184,"[434.0, 461.0, 449.0, 477.0]",0.133038,0.133038,0,experiments\ball\data\frames\validation\match_12\match_12_ball_009_002408.239.jpg
+match_12_ball_010,match_12,Veo/derivados,VISIBLE,00:43:31,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_010_002610.708.jpg
+match_12_ball_011,match_12,Veo/derivados,VISIBLE,00:49:26,FN,1,ball,0.016355,"[201.0, 789.0, 220.0, 812.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_011_002966.197.jpg
+match_12_ball_012,match_12,Veo/derivados,NOT_VISIBLE,00:50:42,FP,1,ball,0.021379,"[604.0, 666.0, 622.0, 684.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_012_003042.072.jpg
+match_12_ball_013,match_12,Veo/derivados,VISIBLE,00:59:05,FN,1,ball,0.042293,"[550.0, 621.0, 570.0, 641.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_013_003545.142.jpg
+match_12_ball_014,match_12,Veo/derivados,VISIBLE,01:08:18,FN,1,ball,0.029549,"[142.0, 577.0, 161.0, 596.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_12\match_12_ball_014_004098.227.jpg
+match_12_ball_015,match_12,Veo/derivados,VISIBLE,01:15:34,FN,1,ball,0.718221,"[985.0, 473.0, 1000.0, 487.0]",0.260546,0.260546,0,experiments\ball\data\frames\validation\match_12\match_12_ball_015_004534.263.jpg
+match_14_ball_001,match_14,Veo/derivados,NOT_VISIBLE,00:08:23,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_001_000502.575.jpg
+match_14_ball_002,match_14,Veo/derivados,NOT_VISIBLE,00:09:21,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_002_000561.401.jpg
+match_14_ball_003,match_14,Veo/derivados,VISIBLE,00:12:27,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_003_000747.122.jpg
+match_14_ball_004,match_14,Veo/derivados,VISIBLE,00:13:39,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_004_000818.761.jpg
+match_14_ball_005,match_14,Veo/derivados,NOT_VISIBLE,00:13:55,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_005_000835.044.jpg
+match_14_ball_006,match_14,Veo/derivados,VISIBLE,00:16:56,FN,2,ball,0.024824,"[1735.0, 1039.0, 1746.0, 1049.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_006_001015.627.jpg
+match_14_ball_007,match_14,Veo/derivados,NOT_VISIBLE,00:20:15,FP,1,ball,0.040126,"[940.0, 774.0, 951.0, 784.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_007_001214.695.jpg
+match_14_ball_008,match_14,Veo/derivados,NOT_VISIBLE,00:20:41,FP,1,ball,0.037935,"[1898.0, 468.0, 1914.0, 482.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_008_001240.788.jpg
+match_14_ball_009,match_14,Veo/derivados,VISIBLE,00:30:22,FN,1,ball,0.055981,"[288.0, 568.0, 302.0, 580.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_009_001821.776.jpg
+match_14_ball_010,match_14,Veo/derivados,NOT_VISIBLE,00:33:46,FP,1,ball,0.045530,"[1445.0, 996.0, 1457.0, 1007.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_010_002025.582.jpg
+match_14_ball_011,match_14,Veo/derivados,VISIBLE,00:46:48,FN,2,ball,0.032403,"[1137.0, 1004.0, 1149.0, 1016.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_011_002808.407.jpg
+match_14_ball_012,match_14,Veo/derivados,VISIBLE,01:06:20,FN,1,ball,0.059587,"[1560.0, 525.0, 1575.0, 539.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_012_003979.992.jpg
+match_14_ball_013,match_14,Veo/derivados,NOT_VISIBLE,01:10:32,FP,1,ball,0.025946,"[1052.0, 1067.0, 1077.0, 1080.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_013_004231.713.jpg
+match_14_ball_014,match_14,Veo/derivados,VISIBLE,01:16:43,FN,1,ball,0.049763,"[389.0, 681.0, 404.0, 693.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_014_004603.389.jpg
+match_14_ball_015,match_14,Veo/derivados,NOT_VISIBLE,01:22:48,FP,1,ball,0.021334,"[295.0, 475.0, 307.0, 485.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_14\match_14_ball_015_004967.590.jpg
+match_26_ball_001,match_26,Veo/derivados,VISIBLE,00:11:02,FN,2,ball,0.057733,"[226.0, 370.0, 239.0, 385.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_26\match_26_ball_001_000661.624.jpg
+match_26_ball_002,match_26,Veo/derivados,NOT_VISIBLE,00:19:54,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_26\match_26_ball_002_001194.219.jpg
+match_26_ball_003,match_26,Veo/derivados,NOT_VISIBLE,00:21:15,FP,2,ball,0.794887,"[1529.0, 485.0, 1553.0, 506.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_26\match_26_ball_003_001275.100.jpg
+match_26_ball_004,match_26,Veo/derivados,VISIBLE,00:30:11,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_26\match_26_ball_004_001811.399.jpg
+match_26_ball_005,match_26,Veo/derivados,VISIBLE,00:32:25,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_26\match_26_ball_005_001944.732.jpg
+match_26_ball_006,match_26,Veo/derivados,VISIBLE,00:36:03,FN,1,ball,0.016158,"[393.0, 648.0, 403.0, 658.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_26\match_26_ball_006_002162.815.jpg
+match_26_ball_007,match_26,Veo/derivados,VISIBLE,00:36:20,FN,1,ball,0.168751,"[1459.0, 512.0, 1479.0, 530.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_26\match_26_ball_007_002180.132.jpg
+match_26_ball_008,match_26,Veo/derivados,VISIBLE,00:42:47,FN,4,ball,0.281509,"[1874.0, 585.0, 1912.0, 614.0]",0.000000,0.111111,0,experiments\ball\data\frames\validation\match_26\match_26_ball_008_002566.516.jpg
+match_26_ball_009,match_26,Veo/derivados,NOT_VISIBLE,00:44:30,FP,1,ball,0.039292,"[1158.0, 975.0, 1168.0, 985.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_26\match_26_ball_009_002670.386.jpg
+match_26_ball_010,match_26,Veo/derivados,VISIBLE,00:45:59,FN,2,ball,0.747247,"[986.0, 322.0, 999.0, 334.0]",0.253247,0.253247,0,experiments\ball\data\frames\validation\match_26\match_26_ball_010_002758.607.jpg
+match_26_ball_011,match_26,Veo/derivados,PARTIAL,00:47:34,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_26\match_26_ball_011_002854.001.jpg
+match_26_ball_012,match_26,Veo/derivados,PARTIAL,00:52:49,FN,2,ball,0.022802,"[1254.0, 575.0, 1267.0, 589.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_26\match_26_ball_012_003169.248.jpg
+match_26_ball_013,match_26,Veo/derivados,VISIBLE,00:54:15,FN,2,ball,0.039810,"[368.0, 697.0, 380.0, 710.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_26\match_26_ball_013_003254.933.jpg
+match_26_ball_014,match_26,Veo/derivados,VISIBLE,01:14:22,FN,1,ball,0.075486,"[174.0, 782.0, 197.0, 804.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_26\match_26_ball_014_004461.965.jpg
+match_30_ball_001,match_30,Veo/derivados,NOT_VISIBLE,00:05:54,FP,1,ball,0.019537,"[250.0, 621.0, 266.0, 636.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_001_000353.718.jpg
+match_30_ball_002,match_30,Veo/derivados,PARTIAL,00:06:06,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_002_000365.997.jpg
+match_30_ball_003,match_30,Veo/derivados,VISIBLE,00:07:48,FN,1,ball,0.013189,"[854.0, 1070.0, 880.0, 1080.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_003_000468.365.jpg
+match_30_ball_004,match_30,Veo/derivados,VISIBLE,00:11:59,FN,1,ball,0.016321,"[1134.0, 587.0, 1147.0, 602.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_004_000718.514.jpg
+match_30_ball_005,match_30,Veo/derivados,VISIBLE,00:21:31,FN,1,ball,0.508415,"[1488.0, 722.0, 1503.0, 736.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_005_001291.349.jpg
+match_30_ball_006,match_30,Veo/derivados,NOT_VISIBLE,00:27:29,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_006_001648.671.jpg
+match_30_ball_007,match_30,Veo/derivados,VISIBLE,00:28:17,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_007_001696.619.jpg
+match_30_ball_008,match_30,Veo/derivados,VISIBLE,00:34:51,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_008_002091.044.jpg
+match_30_ball_009,match_30,Veo/derivados,NOT_VISIBLE,00:56:20,FP,1,ball,0.024229,"[100.0, 1018.0, 117.0, 1034.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_009_003380.491.jpg
+match_30_ball_010,match_30,Veo/derivados,VISIBLE,01:10:06,FN,3,ball,0.028524,"[508.0, 489.0, 519.0, 500.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_010_004205.544.jpg
+match_30_ball_011,match_30,Veo/derivados,VISIBLE,01:16:22,FN,1,ball,0.027947,"[1446.0, 1068.0, 1470.0, 1079.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_011_004581.551.jpg
+match_30_ball_012,match_30,Veo/derivados,NOT_VISIBLE,01:22:18,FP,1,ball,0.029064,"[50.0, 430.0, 64.0, 444.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_012_004938.105.jpg
+match_30_ball_013,match_30,Veo/derivados,VISIBLE,01:23:34,FN,2,ball,0.054247,"[293.0, 1004.0, 306.0, 1017.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_013_005014.481.jpg
+match_30_ball_014,match_30,Veo/derivados,NOT_VISIBLE,01:25:23,FP,1,ball,0.119261,"[51.0, 1070.0, 73.0, 1080.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_014_005122.955.jpg
+match_30_ball_015,match_30,Veo/derivados,NOT_VISIBLE,01:28:33,FP,3,ball,0.104144,"[547.0, 994.0, 573.0, 1020.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_30\match_30_ball_015_005313.244.jpg
+match_33_ball_001,match_33,Veo/derivados,NOT_VISIBLE,00:06:37,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_001_000397.384.jpg
+match_33_ball_002,match_33,Veo/derivados,VISIBLE,00:07:04,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_002_000423.818.jpg
+match_33_ball_003,match_33,Veo/derivados,NOT_VISIBLE,00:14:08,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_003_000847.803.jpg
+match_33_ball_004,match_33,Veo/derivados,VISIBLE,00:14:32,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_004_000872.371.jpg
+match_33_ball_005,match_33,Veo/derivados,NOT_VISIBLE,00:15:22,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_005_000922.339.jpg
+match_33_ball_006,match_33,Veo/derivados,VISIBLE,00:26:25,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_006_001585.368.jpg
+match_33_ball_007,match_33,Veo/derivados,VISIBLE,00:27:23,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_007_001643.437.jpg
+match_33_ball_008,match_33,Veo/derivados,NOT_VISIBLE,00:33:27,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_008_002007.486.jpg
+match_33_ball_009,match_33,Veo/derivados,VISIBLE,00:57:18,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_009_003438.147.jpg
+match_33_ball_010,match_33,Veo/derivados,VISIBLE,01:03:18,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_010_003798.262.jpg
+match_33_ball_011,match_33,Veo/derivados,VISIBLE,01:09:33,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_011_004173.312.jpg
+match_33_ball_012,match_33,Veo/derivados,VISIBLE,01:14:55,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_012_004494.859.jpg
+match_33_ball_013,match_33,Veo/derivados,VISIBLE,01:16:58,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_013_004617.964.jpg
+match_33_ball_014,match_33,Veo/derivados,VISIBLE,01:22:17,FN,1,ball,0.031279,"[931.0, 562.0, 944.0, 575.0]",0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_014_004936.544.jpg
+match_33_ball_015,match_33,Veo/derivados,VISIBLE,01:26:15,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_33\match_33_ball_015_005175.154.jpg
+match_42_ball_001,match_42,XBotGo,NOT_VISIBLE,00:11:52,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_001_000712.029.jpg
+match_42_ball_002,match_42,XBotGo,NOT_VISIBLE,00:12:32,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_002_000751.829.jpg
+match_42_ball_003,match_42,XBotGo,NOT_VISIBLE,00:15:01,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_003_000901.195.jpg
+match_42_ball_004,match_42,XBotGo,NOT_VISIBLE,00:31:32,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_004_001891.723.jpg
+match_42_ball_005,match_42,XBotGo,NOT_VISIBLE,00:34:03,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_005_002042.822.jpg
+match_42_ball_006,match_42,XBotGo,NOT_VISIBLE,00:40:06,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_006_002406.420.jpg
+match_42_ball_007,match_42,XBotGo,NOT_VISIBLE,00:45:51,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_007_002750.618.jpg
+match_42_ball_008,match_42,XBotGo,NOT_VISIBLE,00:47:26,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_008_002845.950.jpg
+match_42_ball_009,match_42,XBotGo,NOT_VISIBLE,01:06:35,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_009_003995.477.jpg
+match_42_ball_010,match_42,XBotGo,NOT_VISIBLE,01:13:17,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_010_004397.308.jpg
+match_42_ball_011,match_42,XBotGo,NOT_VISIBLE,01:13:25,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_011_004404.542.jpg
+match_42_ball_012,match_42,XBotGo,NOT_VISIBLE,01:25:52,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_012_005152.204.jpg
+match_42_ball_013,match_42,XBotGo,NOT_VISIBLE,01:26:23,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_013_005183.104.jpg
+match_42_ball_014,match_42,XBotGo,VISIBLE,01:28:18,FN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_014_005297.703.jpg
+match_42_ball_015,match_42,XBotGo,NOT_VISIBLE,01:31:05,TN,0,,,,0.000000,0.000000,0,experiments\ball\data\frames\validation\match_42\match_42_ball_015_005465.469.jpg

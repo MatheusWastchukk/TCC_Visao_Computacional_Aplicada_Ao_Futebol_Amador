@@ -1,0 +1,8 @@
+{
+  "experiment_id": "BALL-GOAL-RELATION-EXP-0001",
+  "usable_sequences": 2,
+  "frames": 42,
+  "frames_with_goal_prediction": 35,
+  "ball_inside_goal_frames": 0,
+  "status": "completed"
+}

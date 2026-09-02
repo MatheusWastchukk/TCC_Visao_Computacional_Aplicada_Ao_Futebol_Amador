@@ -1,0 +1,2 @@
+event_id,match_id,sequence_id,target_evidence,tracker_evidence,manual_review,annotation_status
+ball_event_v4_negative_002,match_26,event_trajectory_sequence_02,FORA_DAS_REGIOES,DENTRO_PLANO_ENTRADA,FALHA_TRACKER,completed

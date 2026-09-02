@@ -1,0 +1,8 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0004-NEGATIVE-BASELINE",
+  "sequences": 3,
+  "target_frames": 54,
+  "candidate_recall": 0.5925925925925926,
+  "identity_accuracy": 0.4074074074074074,
+  "mean_center_error_normalized": 0.1218625
+}

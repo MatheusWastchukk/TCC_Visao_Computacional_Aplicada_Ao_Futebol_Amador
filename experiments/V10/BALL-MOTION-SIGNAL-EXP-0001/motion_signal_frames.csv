@@ -1,0 +1,10 @@
+sample_id,match_id,timestamp_hhmmss,ball_visibility,motion_inside_mean,motion_background_mean,motion_ratio,motion_background_percentile,overlay_path,review_status,review_label
+candidate_recall_ambiguous_ball_001,match_05,00:29:37,VISIBLE,16.103395,6.064496,2.655356,0.936813,experiments/V10/BALL-MOTION-SIGNAL-EXP-0001/overlays/candidate_recall_ambiguous_ball_001.jpg,complete,SINAL_POLUIDO
+candidate_recall_ambiguous_ball_002,match_26,01:09:33,VISIBLE,48.283333,6.375083,7.573757,0.982198,experiments/V10/BALL-MOTION-SIGNAL-EXP-0001/overlays/candidate_recall_ambiguous_ball_002.jpg,complete,SINAL_UTIL
+candidate_recall_ambiguous_ball_003,match_26,01:10:37,VISIBLE,24.321739,12.569806,1.934934,0.857070,experiments/V10/BALL-MOTION-SIGNAL-EXP-0001/overlays/candidate_recall_ambiguous_ball_003.jpg,complete,SINAL_POLUIDO
+candidate_recall_ambiguous_ball_006,match_26,01:13:22,PARTIAL,40.509804,6.013360,6.736634,0.983425,experiments/V10/BALL-MOTION-SIGNAL-EXP-0001/overlays/candidate_recall_ambiguous_ball_006.jpg,complete,SINAL_UTIL
+candidate_recall_ambiguous_ball_008,match_26,01:13:28,PARTIAL,19.835317,6.461831,3.069613,0.928689,experiments/V10/BALL-MOTION-SIGNAL-EXP-0001/overlays/candidate_recall_ambiguous_ball_008.jpg,complete,SINAL_POLUIDO
+candidate_recall_ambiguous_ball_009,match_26,01:13:30,VISIBLE,11.777193,9.981309,1.179925,0.743260,experiments/V10/BALL-MOTION-SIGNAL-EXP-0001/overlays/candidate_recall_ambiguous_ball_009.jpg,complete,SINAL_UTIL
+candidate_recall_ambiguous_ball_011,match_26,01:14:03,PARTIAL,19.208333,6.422890,2.990606,0.938362,experiments/V10/BALL-MOTION-SIGNAL-EXP-0001/overlays/candidate_recall_ambiguous_ball_011.jpg,complete,SINAL_UTIL
+candidate_recall_ambiguous_ball_013,match_26,01:14:07,PARTIAL,33.330882,7.322600,4.551783,0.963667,experiments/V10/BALL-MOTION-SIGNAL-EXP-0001/overlays/candidate_recall_ambiguous_ball_013.jpg,complete,SINAL_POLUIDO
+candidate_recall_ambiguous_ball_014,match_26,01:14:09,PARTIAL,32.239796,10.003792,3.222758,0.936906,experiments/V10/BALL-MOTION-SIGNAL-EXP-0001/overlays/candidate_recall_ambiguous_ball_014.jpg,complete,SINAL_POLUIDO

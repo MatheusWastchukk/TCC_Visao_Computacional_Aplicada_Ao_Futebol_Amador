@@ -1,0 +1,8 @@
+interval_id,match_id,interval_label,base_result,candidate_result,base_rate,candidate_rate,timestamp_hhmmss,overlay_path
+temporal_v2_interval_009,match_03,goal_structure,true_positive,false_negative,0.723881,0.69403,00:33:39,experiments/V10/BALL-TRACK-CAM-EXP-0001/review_changes_vs_exp0002/overlays/temporal_v2_interval_009.jpg
+temporal_v2_interval_029,match_05,goal_structure,true_positive,false_negative,0.727273,0.69697,00:28:00,experiments/V10/BALL-TRACK-CAM-EXP-0001/review_changes_vs_exp0002/overlays/temporal_v2_interval_029.jpg
+temporal_v2_interval_037,match_12,not_goal,false_positive,true_negative,1.0,0.666667,00:57:00,experiments/V10/BALL-TRACK-CAM-EXP-0001/review_changes_vs_exp0002/overlays/temporal_v2_interval_037.jpg
+temporal_v2_interval_042,match_12,goal_structure,true_positive,false_negative,0.717391,0.652174,00:58:33,experiments/V10/BALL-TRACK-CAM-EXP-0001/review_changes_vs_exp0002/overlays/temporal_v2_interval_042.jpg
+temporal_v2_interval_060,match_26,goal_structure,true_positive,false_negative,1.0,0.0,01:09:23,experiments/V10/BALL-TRACK-CAM-EXP-0001/review_changes_vs_exp0002/overlays/temporal_v2_interval_060.jpg
+temporal_v2_interval_117,match_33,not_goal,false_positive,true_negative,0.785714,0.642857,00:54:05,experiments/V10/BALL-TRACK-CAM-EXP-0001/review_changes_vs_exp0002/overlays/temporal_v2_interval_117.jpg
+temporal_v2_interval_118,match_33,goal_structure,true_positive,false_negative,0.724138,0.655172,00:54:09,experiments/V10/BALL-TRACK-CAM-EXP-0001/review_changes_vs_exp0002/overlays/temporal_v2_interval_118.jpg

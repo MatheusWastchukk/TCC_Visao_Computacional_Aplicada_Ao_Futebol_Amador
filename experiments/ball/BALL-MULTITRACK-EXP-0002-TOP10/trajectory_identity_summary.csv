@@ -1,0 +1,11 @@
+sequence_id,target_frames,target_candidate_recall,identity_accuracy,wrong_ball_switch_rate
+identity_train_sequence_01,5,0.000000,0.000000,0.000000
+identity_train_sequence_02,5,0.400000,0.400000,0.000000
+identity_train_sequence_03,4,1.000000,0.250000,0.000000
+identity_train_sequence_04,5,0.000000,0.000000,0.000000
+identity_train_sequence_05,5,0.200000,0.000000,0.000000
+identity_train_sequence_06,5,0.400000,0.000000,0.000000
+identity_train_sequence_07,5,0.000000,0.000000,0.000000
+identity_train_sequence_08,3,0.333333,0.000000,0.666667
+identity_train_sequence_09,5,0.200000,0.000000,0.000000
+identity_train_sequence_10,5,0.200000,0.000000,0.000000

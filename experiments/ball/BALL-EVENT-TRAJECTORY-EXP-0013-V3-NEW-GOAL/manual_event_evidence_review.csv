@@ -1,0 +1,2 @@
+event_id,match_id,sequence_id,target_evidence,tracker_evidence,manual_review,annotation_status
+ball_event_v3_relation_goal_001,match_05,event_trajectory_sequence_01,DENTRO_PLANO_ENTRADA,DENTRO_PLANO_ENTRADA,SUPORTA_EVENTO,completed

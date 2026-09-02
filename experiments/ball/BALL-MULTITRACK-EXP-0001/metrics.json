@@ -1,0 +1,10 @@
+{
+  "experiment_id": "BALL-MULTITRACK-EXP-0001",
+  "sequences": 10,
+  "target_frames": 47,
+  "candidate_recall": 0.2127659574468085,
+  "identity_accuracy": 0.06382978723404255,
+  "wrong_ball_switch_rate": 0.1276595744680851,
+  "confidence": 0.01,
+  "max_candidates": 3
+}

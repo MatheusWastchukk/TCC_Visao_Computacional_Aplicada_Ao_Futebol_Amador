@@ -1,0 +1,12 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0013-VAL-MATCHES",
+  "events": 3,
+  "target_evidence_counts": {
+    "DENTRO_PLANO_ENTRADA": 1,
+    "NAO_OBSERVAVEL": 2
+  },
+  "tracker_evidence_counts": {
+    "DENTRO_PLANO_ENTRADA": 2,
+    "FORA_DAS_REGIOES": 1
+  }
+}

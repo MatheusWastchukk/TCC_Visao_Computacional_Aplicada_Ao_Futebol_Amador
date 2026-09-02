@@ -1,0 +1,12 @@
+{
+  "experiment_id": "BALL-MULTITRACK-EXP-0003-HOLDOUT-BASELINE",
+  "sequences": 4,
+  "target_frames": 17,
+  "candidate_recall": 0.35294117647058826,
+  "identity_accuracy": 0.058823529411764705,
+  "wrong_ball_switch_rate": 0.11764705882352941,
+  "confidence": 0.01,
+  "max_candidates": 10,
+  "verifier_checkpoint": null,
+  "verifier_weight": 0.0
+}

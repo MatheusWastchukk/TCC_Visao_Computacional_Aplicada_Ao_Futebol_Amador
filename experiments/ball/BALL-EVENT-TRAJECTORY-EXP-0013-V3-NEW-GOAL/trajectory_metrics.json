@@ -1,0 +1,8 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0013-V3-NEW-GOAL",
+  "sequences": 1,
+  "target_frames": 21,
+  "candidate_recall": 0.42857142857142855,
+  "identity_accuracy": 0.38095238095238093,
+  "mean_center_error_normalized": 0.021085666666666662
+}

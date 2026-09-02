@@ -1,0 +1,19 @@
+{
+  "experiment_id": "BALL-TRACK-EXP-0007-HARD-NEGATIVE",
+  "model": "runs\\detect\\experiments\\ball\\BALL-EXP-0012-HARD-NEGATIVE\\weights\\best.pt",
+  "blocks_total": 8,
+  "intervals_total": 135,
+  "intervals_evaluable": 133,
+  "true_positive_intervals": 43,
+  "true_negative_intervals": 26,
+  "false_positive_intervals": 30,
+  "false_negative_intervals": 34,
+  "inconclusive": 2,
+  "confidence": 0.1,
+  "sample_fps": 5.0,
+  "max_gap": 1,
+  "max_distance": 200.0,
+  "appearance_threshold": 0.7,
+  "execution_seconds": 234.45,
+  "status": "completed"
+}

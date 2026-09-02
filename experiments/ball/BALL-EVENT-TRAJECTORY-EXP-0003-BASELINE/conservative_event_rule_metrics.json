@@ -1,0 +1,7 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0003-BASELINE",
+  "events": 1,
+  "possible_goal_candidates": 0,
+  "not_evaluable": 1,
+  "note": "Simulação em janela centralizada no instante anotado; não é detector de eventos em vídeo completo."
+}

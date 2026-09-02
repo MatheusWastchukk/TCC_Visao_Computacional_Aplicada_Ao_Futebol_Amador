@@ -1,0 +1,8 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0001-BASELINE-VAL-MATCHES",
+  "sequences": 3,
+  "target_frames": 40,
+  "candidate_recall": 0.175,
+  "identity_accuracy": 0.05,
+  "mean_center_error_normalized": 0.10286105000000001
+}

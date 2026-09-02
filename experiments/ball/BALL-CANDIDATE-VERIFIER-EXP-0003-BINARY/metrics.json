@@ -1,0 +1,274 @@
+{
+  "experiment_id": "BALL-CANDIDATE-VERIFIER-EXP-0003-BINARY",
+  "status": "completed",
+  "base_model": "ResNet18 ImageNet",
+  "pretrained_source": "experiments\\ball\\BALL-CANDIDATE-VERIFIER-EXP-0001\\torch_hub\\checkpoints\\resnet18-f37072fd.pth",
+  "labels": [
+    "BOLA",
+    "NAO_BOLA"
+  ],
+  "task": "ball_likeness",
+  "train_sequences": [
+    "identity_train_sequence_01",
+    "identity_train_sequence_02",
+    "identity_train_sequence_04",
+    "identity_train_sequence_05",
+    "identity_train_sequence_06",
+    "identity_train_sequence_10",
+    "verifier_v2_001_match_02_ball_extra_002",
+    "verifier_v2_003_match_06_ball_extra_010",
+    "verifier_v2_004_match_07_ball_extra_004",
+    "verifier_v2_005_match_08_ball_019",
+    "verifier_v2_006_match_09_ball_extra_004",
+    "verifier_v2_007_match_10_ball_015",
+    "verifier_v2_009_match_15_ball_009",
+    "verifier_v2_011_match_18_ball_013",
+    "verifier_v2_012_match_20_ball_007",
+    "verifier_v2_013_match_21_ball_008",
+    "verifier_v2_014_match_22_ball_014",
+    "verifier_v2_015_match_23_ball_020",
+    "verifier_v2_016_match_24_ball_020",
+    "verifier_v2_017_match_25_ball_002",
+    "verifier_v2_018_match_27_ball_extra_005",
+    "verifier_v2_019_match_28_ball_extra_009",
+    "verifier_v2_021_match_35_ball_006",
+    "verifier_v2_022_match_36_ball_018",
+    "verifier_v2_023_match_37_ball_020",
+    "verifier_v2_024_match_38_ball_015",
+    "verifier_v2_025_match_41_ball_extra_001",
+    "verifier_v2_026_match_02_ball_001",
+    "verifier_v2_028_match_06_ball_010",
+    "verifier_v2_029_match_07_ball_extra_007",
+    "verifier_v2_030_match_08_ball_016",
+    "verifier_v2_031_match_09_ball_004",
+    "verifier_v2_032_match_10_ball_extra_002",
+    "verifier_v2_034_match_15_ball_018",
+    "verifier_v2_036_match_18_ball_016",
+    "verifier_v2_037_match_20_ball_extra_004",
+    "verifier_v2_038_match_21_ball_009",
+    "verifier_v2_039_match_22_ball_extra_008",
+    "verifier_v2_040_match_23_ball_004",
+    "verifier_v2_041_match_24_ball_extra_005",
+    "verifier_v2_042_match_25_ball_013",
+    "verifier_v2_043_match_27_ball_016",
+    "verifier_v2_044_match_28_ball_008",
+    "verifier_v2_046_match_35_ball_010",
+    "verifier_v2_047_match_36_ball_002",
+    "verifier_v2_048_match_37_ball_009",
+    "verifier_v2_049_match_38_ball_001",
+    "verifier_v2_050_match_41_ball_001",
+    "verifier_v2_051_match_02_ball_extra_005",
+    "verifier_v2_053_match_06_ball_extra_006",
+    "verifier_v2_054_match_07_ball_012",
+    "verifier_v2_055_match_08_ball_013",
+    "verifier_v2_056_match_09_ball_016",
+    "verifier_v2_057_match_10_ball_extra_004",
+    "verifier_v2_059_match_15_ball_019",
+    "verifier_v2_061_match_02_ball_014",
+    "verifier_v2_063_match_06_ball_extra_005",
+    "verifier_v2_064_match_07_ball_007",
+    "verifier_v2_065_match_08_ball_002",
+    "verifier_v2_066_match_09_ball_extra_010",
+    "verifier_v2_067_match_10_ball_006",
+    "verifier_v2_069_match_15_ball_extra_008",
+    "verifier_v2_071_match_18_ball_004",
+    "verifier_v2_072_match_20_ball_014",
+    "verifier_v2_073_match_21_ball_extra_003",
+    "verifier_v2_074_match_22_ball_019",
+    "verifier_v2_075_match_23_ball_008",
+    "verifier_v2_076_match_24_ball_019",
+    "verifier_v2_077_match_25_ball_extra_001",
+    "verifier_v2_078_match_27_ball_extra_007",
+    "verifier_v2_079_match_28_ball_010",
+    "verifier_v2_081_match_35_ball_009",
+    "verifier_v2_082_match_36_ball_015",
+    "verifier_v2_083_match_37_ball_016",
+    "verifier_v2_084_match_38_ball_018",
+    "verifier_v2_085_match_41_ball_017",
+    "verifier_v2_086_match_02_ball_004",
+    "verifier_v2_088_match_06_ball_020",
+    "verifier_v2_089_match_07_ball_009",
+    "verifier_v2_090_match_08_ball_020"
+  ],
+  "validation_sequences": [],
+  "validation_matches": [
+    "match_04",
+    "match_13",
+    "match_16",
+    "match_32"
+  ],
+  "annotations": [
+    "experiments\\ball\\BALL-CANDIDATE-VERIFIER-DATASET-V1\\candidate_verifier_annotations_v1.csv",
+    "experiments\\ball\\BALL-CANDIDATE-VERIFIER-DATASET-V2\\candidate_verifier_annotations_v2.csv"
+  ],
+  "train_count": 298,
+  "validation_count": 101,
+  "train_labels": {
+    "NAO_BOLA": 169,
+    "BOLA": 129
+  },
+  "validation_labels": {
+    "BOLA": 36,
+    "NAO_BOLA": 65
+  },
+  "class_metrics": {
+    "BOLA": {
+      "support": 36,
+      "precision": 0.846154,
+      "recall": 0.916667,
+      "f1": 0.88
+    },
+    "NAO_BOLA": {
+      "support": 65,
+      "precision": 0.951613,
+      "recall": 0.907692,
+      "f1": 0.929134
+    }
+  },
+  "threshold_sweep": [
+    {
+      "ball_threshold": "0.05",
+      "ball_recall": "0.944444",
+      "non_ball_rejection": "0.707692"
+    },
+    {
+      "ball_threshold": "0.10",
+      "ball_recall": "0.944444",
+      "non_ball_rejection": "0.753846"
+    },
+    {
+      "ball_threshold": "0.15",
+      "ball_recall": "0.944444",
+      "non_ball_rejection": "0.800000"
+    },
+    {
+      "ball_threshold": "0.20",
+      "ball_recall": "0.944444",
+      "non_ball_rejection": "0.830769"
+    },
+    {
+      "ball_threshold": "0.25",
+      "ball_recall": "0.944444",
+      "non_ball_rejection": "0.846154"
+    },
+    {
+      "ball_threshold": "0.30",
+      "ball_recall": "0.944444",
+      "non_ball_rejection": "0.861538"
+    },
+    {
+      "ball_threshold": "0.40",
+      "ball_recall": "0.916667",
+      "non_ball_rejection": "0.876923"
+    },
+    {
+      "ball_threshold": "0.50",
+      "ball_recall": "0.916667",
+      "non_ball_rejection": "0.907692"
+    }
+  ],
+  "best_validation_macro_f1": 0.904567,
+  "history": [
+    {
+      "epoch": 1,
+      "validation_accuracy": 0.792079,
+      "validation_macro_f1": 0.777323
+    },
+    {
+      "epoch": 2,
+      "validation_accuracy": 0.693069,
+      "validation_macro_f1": 0.692587
+    },
+    {
+      "epoch": 3,
+      "validation_accuracy": 0.841584,
+      "validation_macro_f1": 0.819964
+    },
+    {
+      "epoch": 4,
+      "validation_accuracy": 0.861386,
+      "validation_macro_f1": 0.848932
+    },
+    {
+      "epoch": 5,
+      "validation_accuracy": 0.831683,
+      "validation_macro_f1": 0.828386
+    },
+    {
+      "epoch": 6,
+      "validation_accuracy": 0.831683,
+      "validation_macro_f1": 0.824814
+    },
+    {
+      "epoch": 7,
+      "validation_accuracy": 0.881188,
+      "validation_macro_f1": 0.868831
+    },
+    {
+      "epoch": 8,
+      "validation_accuracy": 0.841584,
+      "validation_macro_f1": 0.83292
+    },
+    {
+      "epoch": 9,
+      "validation_accuracy": 0.841584,
+      "validation_macro_f1": 0.83292
+    },
+    {
+      "epoch": 10,
+      "validation_accuracy": 0.752475,
+      "validation_macro_f1": 0.751599
+    },
+    {
+      "epoch": 11,
+      "validation_accuracy": 0.851485,
+      "validation_macro_f1": 0.844088
+    },
+    {
+      "epoch": 12,
+      "validation_accuracy": 0.871287,
+      "validation_macro_f1": 0.860571
+    },
+    {
+      "epoch": 13,
+      "validation_accuracy": 0.881188,
+      "validation_macro_f1": 0.870513
+    },
+    {
+      "epoch": 14,
+      "validation_accuracy": 0.851485,
+      "validation_macro_f1": 0.840945
+    },
+    {
+      "epoch": 15,
+      "validation_accuracy": 0.910891,
+      "validation_macro_f1": 0.904567
+    },
+    {
+      "epoch": 16,
+      "validation_accuracy": 0.891089,
+      "validation_macro_f1": 0.878936
+    },
+    {
+      "epoch": 17,
+      "validation_accuracy": 0.90099,
+      "validation_macro_f1": 0.895575
+    },
+    {
+      "epoch": 18,
+      "validation_accuracy": 0.891089,
+      "validation_macro_f1": 0.87717
+    },
+    {
+      "epoch": 19,
+      "validation_accuracy": 0.861386,
+      "validation_macro_f1": 0.842469
+    },
+    {
+      "epoch": 20,
+      "validation_accuracy": 0.871287,
+      "validation_macro_f1": 0.854837
+    }
+  ],
+  "execution_seconds": 113.148
+}

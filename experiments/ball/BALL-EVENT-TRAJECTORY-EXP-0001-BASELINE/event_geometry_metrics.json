@@ -1,0 +1,14 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0001-BASELINE",
+  "events": 7,
+  "target_evidence_counts": {
+    "DENTRO_PLANO_ENTRADA": 4,
+    "DENTRO_VOLUME_PROJETADO": 1,
+    "NAO_OBSERVAVEL": 2
+  },
+  "tracker_evidence_counts": {
+    "DENTRO_PLANO_ENTRADA": 2,
+    "FORA_DAS_REGIOES": 4,
+    "NAO_OBSERVAVEL": 1
+  }
+}

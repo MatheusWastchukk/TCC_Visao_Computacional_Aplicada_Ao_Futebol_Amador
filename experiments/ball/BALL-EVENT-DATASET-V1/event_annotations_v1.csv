@@ -1,0 +1,13 @@
+event_id,source_interval_id,source_interval_label,match_id,video_filename,start_seconds,end_seconds,start_time_hhmmss,end_time_hhmmss,event_label,annotation_status,notes
+ball_event_v1_001,temporal_v2_interval_002,goal_structure,match_03,Match_03_A.mp4,1873.483,1885.483,00:31:13,00:31:25,NO_GOAL,completed,Fonte temporal usada somente para estratificação; evento real exige revisão humana.
+ball_event_v1_002,temporal_v2_interval_017,goal_structure,match_05,Match_05.mp4,1510.600,1522.600,00:25:11,00:25:23,NO_GOAL,completed,Fonte temporal usada somente para estratificação; evento real exige revisão humana.
+ball_event_v1_003,temporal_v2_interval_036,goal_structure,match_12,Match_012.mp4,3412.052,3424.052,00:56:52,00:57:04,NO_GOAL,completed,Fonte temporal usada somente para estratificação; evento real exige revisão humana.
+ball_event_v1_004,temporal_v2_interval_055,goal_structure,match_14,Match_14.mp4,1205.305,1217.305,00:20:05,00:20:17,NO_GOAL,completed,Fonte temporal usada somente para estratificação; evento real exige revisão humana.
+ball_event_v1_005,temporal_v2_interval_057,goal_structure,match_26,Match_26.mp4,4149.269,4161.269,01:09:09,01:09:21,NO_GOAL,completed,Fonte temporal usada somente para estratificação; evento real exige revisão humana.
+ball_event_v1_006,temporal_v2_interval_081,goal_structure,match_30,Match_30.mp4,2314.166,2326.166,00:38:34,00:38:46,NO_GOAL,completed,Fonte temporal usada somente para estratificação; evento real exige revisão humana.
+ball_event_v1_007,temporal_v2_interval_003,not_goal,match_03,Match_03_A.mp4,1880.423,1892.423,00:31:20,00:31:32,NO_GOAL,completed,Fonte temporal usada somente para estratificação; evento real exige revisão humana.
+ball_event_v1_008,temporal_v2_interval_016,not_goal,match_05,Match_05.mp4,1476.320,1488.320,00:24:36,00:24:48,NO_GOAL,completed,Fonte temporal usada somente para estratificação; evento real exige revisão humana.
+ball_event_v1_009,temporal_v2_interval_037,not_goal,match_12,Match_012.mp4,3414.404,3426.404,00:56:54,00:57:06,NO_GOAL,completed,Fonte temporal usada somente para estratificação; evento real exige revisão humana.
+ball_event_v1_010,temporal_v2_interval_058,not_goal,match_26,Match_26.mp4,4151.439,4163.439,01:09:11,01:09:23,NO_GOAL,completed,Fonte temporal usada somente para estratificação; evento real exige revisão humana.
+ball_event_v1_011,temporal_v2_interval_084,not_goal,match_30,Match_30.mp4,2347.133,2359.133,00:39:07,00:39:19,NO_GOAL,completed,Fonte temporal usada somente para estratificação; evento real exige revisão humana.
+ball_event_v1_012,temporal_v2_interval_103,not_goal,match_33,Match_33.mp4,3034.168,3046.168,00:50:34,00:50:46,NO_GOAL,completed,Fonte temporal usada somente para estratificação; evento real exige revisão humana.

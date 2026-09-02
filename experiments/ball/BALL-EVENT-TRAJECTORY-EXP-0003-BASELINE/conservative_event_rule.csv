@@ -1,0 +1,2 @@
+event_id,match_id,sequence_id,selected_at_event,inside_goal_region,local_selected_frames,previous_distance_pixels,event_distance_pixels,approach_evidence,decision
+ball_event_v3_relation_goal_001,match_05,event_trajectory_sequence_01,True,False,6,244.156,210.694,True,NOT_EVALUABLE

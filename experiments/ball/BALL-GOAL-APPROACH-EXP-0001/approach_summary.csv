@@ -1,0 +1,3 @@
+sequence_id,match_id,frames,frames_with_goal,first_distance_pixels,last_distance_pixels,slope_pixels_per_frame,descending_adjacent_fraction,spatial_trend
+trajectory_train_sequence_01,match_02,21,21,151.294,194.812,2.176,0.250,AFASTAMENTO
+trajectory_train_sequence_02,match_21,21,14,455.536,286.875,-12.047,0.667,APROXIMACAO

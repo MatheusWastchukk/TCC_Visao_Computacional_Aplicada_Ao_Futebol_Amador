@@ -1,0 +1,8 @@
+{
+  "experiment_id": "BALL-TRAJECTORY-EXP-0001-BASELINE",
+  "sequences": 3,
+  "target_frames": 63,
+  "candidate_recall": 0.8095238095238095,
+  "identity_accuracy": 0.49206349206349204,
+  "mean_center_error_normalized": 0.01839849206349206
+}

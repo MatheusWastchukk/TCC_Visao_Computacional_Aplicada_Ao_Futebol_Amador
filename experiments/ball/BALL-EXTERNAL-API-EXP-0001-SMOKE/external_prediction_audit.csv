@@ -1,0 +1,11 @@
+sample_id,match_id,capture_domain,ball_visibility,timestamp_hhmmss,status,prediction_count,prediction_class,prediction_confidence,prediction_box_json,iou,image_path
+match_03_ball_001,match_03,Veo/derivados,NOT_VISIBLE,00:13:15,FP,1,ball,0.017184,"[102.0, 1069.0, 126.0, 1080.0]",0.000000,experiments\ball\data\frames\validation\match_03\match_03_ball_001_000794.961.jpg
+match_03_ball_002,match_03,Veo/derivados,VISIBLE,00:22:19,FN,1,ball,0.317242,"[1043.0, 523.0, 1060.0, 540.0]",0.437879,experiments\ball\data\frames\validation\match_03\match_03_ball_002_001338.671.jpg
+match_03_ball_003,match_03,Veo/derivados,NOT_VISIBLE,00:22:39,FP,1,ball,0.044734,"[1638.0, 946.0, 1649.0, 956.0]",0.000000,experiments\ball\data\frames\validation\match_03\match_03_ball_003_001358.691.jpg
+match_03_ball_004,match_03,Veo/derivados,VISIBLE,00:38:41,FN,1,ball,0.081715,"[704.0, 688.0, 714.0, 698.0]",0.000000,experiments\ball\data\frames\validation\match_03\match_03_ball_004_002321.085.jpg
+match_03_ball_005,match_03,Veo/derivados,NOT_VISIBLE,00:40:03,FP,1,ball,0.029733,"[1086.0, 933.0, 1097.0, 945.0]",0.000000,experiments\ball\data\frames\validation\match_03\match_03_ball_005_002403.301.jpg
+match_03_ball_006,match_03,Veo/derivados,VISIBLE,00:44:22,FN,2,ball,0.019643,"[1184.0, 854.0, 1196.0, 866.0]",0.000000,experiments\ball\data\frames\validation\match_03\match_03_ball_006_002661.993.jpg
+match_03_ball_007,match_03,Veo/derivados,NOT_VISIBLE,01:02:56,FP,2,ball,0.046262,"[533.0, 1038.0, 544.0, 1049.0]",0.000000,experiments\ball\data\frames\validation\match_03\match_03_ball_007_003775.839.jpg
+match_03_ball_008,match_03,Veo/derivados,VISIBLE,01:11:36,FN,4,ball,0.135178,"[521.0, 858.0, 542.0, 875.0]",0.000000,experiments\ball\data\frames\validation\match_03\match_03_ball_008_004295.925.jpg
+match_03_ball_009,match_03,Veo/derivados,VISIBLE,01:15:46,FN,1,ball,0.053556,"[964.0, 438.0, 977.0, 451.0]",0.370614,experiments\ball\data\frames\validation\match_03\match_03_ball_009_004546.308.jpg
+match_03_ball_010,match_03,Veo/derivados,VISIBLE,01:17:39,FN,1,ball,0.800350,"[847.0, 498.0, 861.0, 511.0]",0.130000,experiments\ball\data\frames\validation\match_03\match_03_ball_010_004658.587.jpg

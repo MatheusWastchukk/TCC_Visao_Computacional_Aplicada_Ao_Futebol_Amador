@@ -1,0 +1,2 @@
+event_id,match_id,sequence_id,ball_visibility,selected_at_event,inside_front,inside_volume,local_selected_frames,decision
+ball_event_v3_relation_goal_001,match_05,event_trajectory_sequence_01,VISIBLE,True,True,True,6,POSSIVEL_GOL_CANDIDATO

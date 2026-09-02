@@ -1,0 +1,4 @@
+event_id,match_id,video_filename,event_label,event_timestamp_seconds,event_time_hhmmss,annotation_status
+ball_event_v4_negative_001,match_05,Match_05.mp4,NAO_GOL,1777.000,00:29:37,completed
+ball_event_v4_negative_002,match_26,Match_26.mp4,NAO_GOL,4173.000,01:09:33,completed
+ball_event_v4_negative_003,match_33,Match_33.mp4,NAO_GOL,3268.000,00:54:28,completed

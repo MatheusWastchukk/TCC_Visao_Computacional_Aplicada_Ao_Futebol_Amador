@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 from pathlib import Path
 
 import cv2
@@ -127,8 +128,12 @@ def main() -> int:
                     if bbox is None:
                         for field in ("ball_x1", "ball_y1", "ball_x2", "ball_y2"):
                             row[field] = ""
+                        if "ball_of_play_box_json" in row:
+                            row["ball_of_play_box_json"] = ""
                     else:
                         row["ball_x1"], row["ball_y1"], row["ball_x2"], row["ball_y2"] = [str(value) for value in bbox]
+                        if "ball_of_play_box_json" in row:
+                            row["ball_of_play_box_json"] = json.dumps(list(bbox))
                     row["annotation_status"] = "completed"
                     row["annotator"] = row.get("annotator") or "manual"
                     write_rows(args.output, all_rows)

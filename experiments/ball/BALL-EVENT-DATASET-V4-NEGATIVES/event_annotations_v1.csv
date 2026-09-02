@@ -1,0 +1,4 @@
+event_id,source_interval_id,source_interval_label,match_id,video_filename,start_seconds,end_seconds,start_time_hhmmss,end_time_hhmmss,event_label,annotation_status,notes
+ball_event_v4_negative_001,ball_goal_sequence_014,relacao_bola_gol_incorreta,match_05,Match_05.mp4,1771.000,1783.000,00:29:31,00:29:43,NAO_GOL,completed,Negativo derivado de relação bola-gol classificada manualmente como associação incorreta.
+ball_event_v4_negative_002,ball_goal_sequence_018,relacao_bola_gol_incorreta,match_26,Match_26.mp4,4167.000,4179.000,01:09:27,01:09:39,NAO_GOL,completed,Negativo derivado de relação bola-gol classificada manualmente como associação incorreta.
+ball_event_v4_negative_003,ball_goal_sequence_043,relacao_bola_gol_incorreta,match_33,Match_33.mp4,3262.000,3274.000,00:54:22,00:54:34,NAO_GOL,completed,Negativo derivado de relação bola-gol classificada manualmente como associação incorreta.

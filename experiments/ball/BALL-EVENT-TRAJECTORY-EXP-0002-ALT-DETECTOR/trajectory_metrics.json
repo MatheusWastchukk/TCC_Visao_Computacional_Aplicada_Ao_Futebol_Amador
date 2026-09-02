@@ -1,0 +1,8 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0002-ALT-DETECTOR",
+  "sequences": 7,
+  "target_frames": 104,
+  "candidate_recall": 0.27884615384615385,
+  "identity_accuracy": 0.0673076923076923,
+  "mean_center_error_normalized": 0.06734073076923076
+}

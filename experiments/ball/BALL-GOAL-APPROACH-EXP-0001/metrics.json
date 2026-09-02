@@ -1,0 +1,9 @@
+{
+  "experiment_id": "BALL-GOAL-APPROACH-EXP-0001",
+  "sequences": 2,
+  "trend_counts": {
+    "AFASTAMENTO": 1,
+    "APROXIMACAO": 1
+  },
+  "interpretation": "Tendência espacial exploratória; não representa decisão de gol."
+}

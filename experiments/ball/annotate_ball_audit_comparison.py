@@ -11,7 +11,7 @@ import cv2
 
 LABELS = {
     "1": "BASELINE_MELHOR",
-    "2": "YOLO11S_MELHOR",
+    "2": "CANDIDATO_MELHOR",
     "3": "EQUIVALENTES",
     "4": "INCONCLUSIVO",
 }
@@ -25,7 +25,7 @@ def save_csv(path: Path, rows: list[dict[str, str]]) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Compara visualmente as previsões do YOLO11n e YOLO11s.")
+    parser = argparse.ArgumentParser(description="Compara visualmente as previsões do baseline e de um candidato.")
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--output", type=Path, default=None)
     parser.add_argument("--pending-only", action="store_true")
@@ -43,7 +43,7 @@ def main() -> int:
         image = cv2.imread(row["overlay_path"])
         if image is None:
             raise FileNotFoundError(row["overlay_path"])
-        cv2.putText(image, f"{index + 1}/{len(pending)} | 1 n melhor | 2 s melhor | 3 equivalentes | 4 inconclusivo | Q sair", (20, image.shape[0] - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.62, (0, 255, 255), 2)
+        cv2.putText(image, f"{index + 1}/{len(pending)} | 1 esquerda melhor | 2 direita melhor | 3 equivalentes | 4 inconclusivo | Q sair", (20, image.shape[0] - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.62, (0, 255, 255), 2)
         cv2.imshow(window, image)
         key = cv2.waitKeyEx(0)
         char = chr(key & 0xFF).lower() if key not in {-1, 255} else ""

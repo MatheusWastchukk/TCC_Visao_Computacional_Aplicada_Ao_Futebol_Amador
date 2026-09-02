@@ -1,0 +1,22 @@
+{
+  "experiment_id": "BALL-TRACK-CAM-EXP-0001",
+  "model": "runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt",
+  "blocks_total": 8,
+  "intervals_total": 135,
+  "intervals_evaluable": 133,
+  "true_positive_intervals": 41,
+  "true_negative_intervals": 28,
+  "false_positive_intervals": 28,
+  "false_negative_intervals": 36,
+  "inconclusive": 2,
+  "confidence": 0.1,
+  "sample_fps": 5.0,
+  "max_gap": 1,
+  "max_distance": 200.0,
+  "appearance_threshold": 0.7,
+  "camera_compensation": true,
+  "camera_motion_valid_frames": 12000,
+  "camera_motion_valid_rate": 0.999334,
+  "execution_seconds": 673.207,
+  "status": "completed"
+}

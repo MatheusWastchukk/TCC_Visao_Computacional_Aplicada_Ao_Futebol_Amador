@@ -1,0 +1,12 @@
+{
+  "experiment_id": "BALL-EVENT-TRAJECTORY-EXP-0013-VAL-MATCHES",
+  "sequences": 3,
+  "target_frames": 40,
+  "candidate_recall": 0.375,
+  "identity_accuracy": 0.2,
+  "wrong_ball_switch_rate": 0.0,
+  "confidence": 0.01,
+  "max_candidates": 10,
+  "verifier_checkpoint": null,
+  "verifier_weight": 0.0
+}

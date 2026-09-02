@@ -1,0 +1,7 @@
+{
+  "frames": 9,
+  "mean_motion_ratio": 3.7683739999999997,
+  "mean_background_percentile": 0.9189322222222223,
+  "frames_above_background_mean": 9,
+  "frames_above_background_p75": 8
+}

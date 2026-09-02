@@ -1,0 +1,16 @@
+{
+  "experiment_id": "BALL-EXTERNAL-API-EXP-0001",
+  "model_id": "football-ball-detection-rejhg/4",
+  "source": "Roboflow Serverless Hosted API",
+  "images_sent_to_external_api": 119,
+  "confidence": 0.01,
+  "iou": 0.5,
+  "tp": 0,
+  "tn": 26,
+  "fp": 20,
+  "fn": 73,
+  "positive_frames": 73,
+  "candidate_recall": 0.0,
+  "top1_identity_accuracy": 0.0,
+  "status": "completed"
+}

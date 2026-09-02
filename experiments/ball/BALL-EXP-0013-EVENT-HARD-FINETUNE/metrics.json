@@ -1,0 +1,18 @@
+{
+  "experiment_id": "BALL-EXP-0013-EVENT-HARD-FINETUNE",
+  "model": "runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt",
+  "data": "experiments\\ball\\data\\yolo_event_hard_v1\\data.yaml",
+  "epochs": 15,
+  "imgsz": 960,
+  "batch": 8,
+  "device": "0",
+  "metrics": {
+    "metrics/precision(B)": 0.2894172105247066,
+    "metrics/recall(B)": 0.15285125210402406,
+    "metrics/mAP50(B)": 0.13688946099636828,
+    "metrics/mAP50-95(B)": 0.043768631870462364,
+    "fitness": 0.043768631870462364
+  },
+  "execution_seconds": 156.055,
+  "status": "completed"
+}
