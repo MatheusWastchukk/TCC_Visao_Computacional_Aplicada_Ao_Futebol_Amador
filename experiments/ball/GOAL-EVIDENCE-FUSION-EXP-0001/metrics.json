@@ -1,0 +1,11 @@
+{
+  "experiment_id": "GOAL-EVIDENCE-FUSION-EXP-0001",
+  "contexts": 9,
+  "goal_with_context_evidence": 2,
+  "possible_goal": 2,
+  "supported_goal_events": 4,
+  "missed_spatial_candidate": 2,
+  "rejected_or_invalidated": 2,
+  "rule": "placar_alterado_e_reinicio > reinicio_e_candidato_espacial > demais_estados",
+  "warning": "Fusão experimental em revisão manual pequena; não equivale a confirmação oficial de gol."
+}

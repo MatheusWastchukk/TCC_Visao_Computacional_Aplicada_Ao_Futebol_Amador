@@ -1,0 +1,9 @@
+﻿{
+    "worker_pids":  [
+                        2152,
+                        3756
+                    ],
+    "samples":  372,
+    "gpu_engine_utilization_sum_mean_percent":  15.914,
+    "gpu_engine_utilization_sum_max_percent":  26.386
+}

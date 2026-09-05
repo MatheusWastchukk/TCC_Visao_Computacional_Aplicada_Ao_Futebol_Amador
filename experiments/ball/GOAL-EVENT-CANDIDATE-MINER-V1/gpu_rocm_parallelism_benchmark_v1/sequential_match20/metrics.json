@@ -1,0 +1,175 @@
+{
+  "experiment_id": "sequential_match20",
+  "status": "completed",
+  "device": "cuda:0",
+  "gpu": "AMD Radeon RX 9060 XT",
+  "torch": "2.9.1+rocm7.2.1",
+  "video": "data\\Videos_Edited\\Match_20.mp4",
+  "frames": 20,
+  "goal_mean_seconds": 0.321839,
+  "ball_mean_seconds": 0.109204,
+  "combined_mean_seconds": 0.431043,
+  "frame_results": [
+    {
+      "frame_index": 1,
+      "goal_predictions": 0,
+      "goal_seconds": 6.171672,
+      "ball_predictions": 3,
+      "ball_seconds": 1.813537,
+      "combined_seconds": 7.985209
+    },
+    {
+      "frame_index": 2,
+      "goal_predictions": 1,
+      "goal_seconds": 0.015004,
+      "ball_predictions": 5,
+      "ball_seconds": 0.015091,
+      "combined_seconds": 0.030096
+    },
+    {
+      "frame_index": 3,
+      "goal_predictions": 1,
+      "goal_seconds": 0.01408,
+      "ball_predictions": 4,
+      "ball_seconds": 0.017823,
+      "combined_seconds": 0.031903
+    },
+    {
+      "frame_index": 4,
+      "goal_predictions": 0,
+      "goal_seconds": 0.01444,
+      "ball_predictions": 0,
+      "ball_seconds": 0.015413,
+      "combined_seconds": 0.029853
+    },
+    {
+      "frame_index": 5,
+      "goal_predictions": 0,
+      "goal_seconds": 0.013509,
+      "ball_predictions": 0,
+      "ball_seconds": 0.014325,
+      "combined_seconds": 0.027834
+    },
+    {
+      "frame_index": 6,
+      "goal_predictions": 1,
+      "goal_seconds": 0.013793,
+      "ball_predictions": 7,
+      "ball_seconds": 0.015593,
+      "combined_seconds": 0.029387
+    },
+    {
+      "frame_index": 7,
+      "goal_predictions": 0,
+      "goal_seconds": 0.013336,
+      "ball_predictions": 0,
+      "ball_seconds": 0.0143,
+      "combined_seconds": 0.027636
+    },
+    {
+      "frame_index": 8,
+      "goal_predictions": 1,
+      "goal_seconds": 0.014197,
+      "ball_predictions": 1,
+      "ball_seconds": 0.015081,
+      "combined_seconds": 0.029278
+    },
+    {
+      "frame_index": 9,
+      "goal_predictions": 0,
+      "goal_seconds": 0.013257,
+      "ball_predictions": 6,
+      "ball_seconds": 0.014946,
+      "combined_seconds": 0.028203
+    },
+    {
+      "frame_index": 10,
+      "goal_predictions": 1,
+      "goal_seconds": 0.014212,
+      "ball_predictions": 1,
+      "ball_seconds": 0.01532,
+      "combined_seconds": 0.029532
+    },
+    {
+      "frame_index": 11,
+      "goal_predictions": 0,
+      "goal_seconds": 0.013438,
+      "ball_predictions": 5,
+      "ball_seconds": 0.01513,
+      "combined_seconds": 0.028567
+    },
+    {
+      "frame_index": 12,
+      "goal_predictions": 1,
+      "goal_seconds": 0.014085,
+      "ball_predictions": 3,
+      "ball_seconds": 0.015262,
+      "combined_seconds": 0.029347
+    },
+    {
+      "frame_index": 13,
+      "goal_predictions": 1,
+      "goal_seconds": 0.014127,
+      "ball_predictions": 2,
+      "ball_seconds": 0.0152,
+      "combined_seconds": 0.029327
+    },
+    {
+      "frame_index": 14,
+      "goal_predictions": 0,
+      "goal_seconds": 0.013532,
+      "ball_predictions": 8,
+      "ball_seconds": 0.098944,
+      "combined_seconds": 0.112477
+    },
+    {
+      "frame_index": 15,
+      "goal_predictions": 1,
+      "goal_seconds": 0.014476,
+      "ball_predictions": 0,
+      "ball_seconds": 0.014327,
+      "combined_seconds": 0.028803
+    },
+    {
+      "frame_index": 16,
+      "goal_predictions": 1,
+      "goal_seconds": 0.013838,
+      "ball_predictions": 1,
+      "ball_seconds": 0.014877,
+      "combined_seconds": 0.028714
+    },
+    {
+      "frame_index": 17,
+      "goal_predictions": 1,
+      "goal_seconds": 0.013731,
+      "ball_predictions": 1,
+      "ball_seconds": 0.014754,
+      "combined_seconds": 0.028484
+    },
+    {
+      "frame_index": 18,
+      "goal_predictions": 1,
+      "goal_seconds": 0.013872,
+      "ball_predictions": 1,
+      "ball_seconds": 0.014881,
+      "combined_seconds": 0.028753
+    },
+    {
+      "frame_index": 19,
+      "goal_predictions": 1,
+      "goal_seconds": 0.014643,
+      "ball_predictions": 0,
+      "ball_seconds": 0.014323,
+      "combined_seconds": 0.028966
+    },
+    {
+      "frame_index": 20,
+      "goal_predictions": 0,
+      "goal_seconds": 0.013535,
+      "ball_predictions": 2,
+      "ball_seconds": 0.014958,
+      "combined_seconds": 0.028493
+    }
+  ],
+  "note": "Smoke test de infraestrutura; não é avaliação de eventos nem benchmark completo."
+}

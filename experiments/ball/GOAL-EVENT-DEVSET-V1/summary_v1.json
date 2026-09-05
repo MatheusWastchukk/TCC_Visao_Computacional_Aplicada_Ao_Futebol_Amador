@@ -1,0 +1,29 @@
+{
+  "dataset": "GOAL-EVENT-DEVSET-V1",
+  "split_policy": "somente TRAIN; VALIDATION e TEST rejeitados",
+  "input_files": [
+    "experiments/ball/BALL-EVENT-DATASET-V2/event_annotations_v2.csv",
+    "experiments/ball/BALL-EVENT-DATASET-V3/event_annotations_v3_consolidated.csv",
+    "experiments/ball/BALL-EVENT-DATASET-V4-NEGATIVES/event_annotations_v1.csv",
+    "experiments/ball/BALL-EVENT-DATASET-V5-NEGATIVE-BATCH/event_annotations_v1.csv",
+    "experiments/ball/BALL-EVENT-DATASET-V2/event_moments_v1.csv",
+    "experiments/ball/BALL-EVENT-DATASET-V3/event_moments_v1.csv",
+    "experiments/ball/BALL-EVENT-DATASET-V4-NEGATIVES/event_moments_v1.csv",
+    "experiments/ball/BALL-EVENT-DATASET-V5-NEGATIVE-BATCH/event_moments_v1.csv"
+  ],
+  "accepted_events": 5,
+  "accepted_by_ground_truth": {
+    "GOAL": 5
+  },
+  "accepted_matches": [
+    "match_04",
+    "match_06",
+    "match_07",
+    "match_08",
+    "match_09"
+  ],
+  "rejected": {
+    "split_validation": 26
+  },
+  "annotation_status": "pending"
+}

@@ -1,0 +1,26 @@
+{
+  "experiment_id": "GOAL-RESTART-TEMPORAL-EXP-0001-FULL",
+  "evaluation_type": "leave_one_match_out",
+  "external_only": false,
+  "temporal_offsets_seconds": [
+    -2,
+    -1,
+    0,
+    1,
+    2
+  ],
+  "feature_type": "media_desvio_e_delta_de_histograma_hsv_grade_espacial_bordas",
+  "excluded_labels": [
+    "INCONCLUSIVO"
+  ],
+  "samples": 112,
+  "accuracy": 0.49107142857142855,
+  "precision_restart": 0.2857142857142857,
+  "recall_restart": 0.3888888888888889,
+  "f1_restart": 0.32941176470588235,
+  "tp": 14,
+  "tn": 41,
+  "fp": 35,
+  "fn": 22,
+  "warning": "Baseline temporal exploratório; dados ainda insuficientes para conclusão final."
+}

@@ -1,0 +1,16 @@
+{
+  "experiment_id": "GOAL-CANDIDATE-GENERATION-EXP-0001",
+  "evaluation_type": "simulacao_retrospetiva_com_reinicio_anotado_manual",
+  "contexts": 9,
+  "lookback_seconds": 60.0,
+  "spatial_candidates": 5,
+  "hybrid_candidates": 8,
+  "positive_events": 8,
+  "spatial_candidate_recall_on_positive_events": 0.5,
+  "hybrid_candidate_recall_on_positive_events": 0.875,
+  "restart_confirmed_events": 6,
+  "spatial_candidate_recall_on_restart_confirmed": 0.5,
+  "hybrid_candidate_recall_on_restart_confirmed": 1.0,
+  "recovered_only_by_restart": 3,
+  "warning": "O reinicio e manual neste piloto; nao interpretar como desempenho de detector automatico."
+}

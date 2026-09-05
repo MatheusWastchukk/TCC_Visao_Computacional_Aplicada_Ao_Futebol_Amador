@@ -1,0 +1,21 @@
+﻿{
+    "experiment_id":  "gpu_rocm_parallel_full_match21_match22_v1",
+    "status":  "completed",
+    "scope":  "somente TRAIN",
+    "started_at":  "2026-09-04T10:39:08.0711821-03:00",
+    "finished_at":  "2026-09-04T11:05:20.6915531-03:00",
+    "wall_seconds":  1572.62,
+    "matches":  [
+                    "match_21",
+                    "match_22"
+                ],
+    "worker_exit_codes":  {
+                              "3008":  0,
+                              "7064":  0
+                          },
+    "usage_samples":  459,
+    "gpu_counter_available":  true,
+    "gpu_engine_utilization_sum_mean_percent":  0,
+    "gpu_engine_utilization_sum_max_percent":  0,
+    "note":  "Benchmark de infraestrutura; a soma dos motores GPU pode exceder 100 e nÃ£o representa avaliaÃ§Ã£o de eventos."
+}

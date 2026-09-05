@@ -1,0 +1,11 @@
+{
+  "experiment_id": "evaluation_v1",
+  "contexts": 9,
+  "scoreboard_available": 6,
+  "scoreboard_changed": 2,
+  "supporting_evidence_rate_when_available": 0.3333333333333333,
+  "changed_with_restart_confirmed": 2,
+  "changed_with_possible_goal": 1,
+  "interpretation": "Mudança de placar apoia a confirmação; ausência de mudança não rejeita o evento.",
+  "warning": "Revisão manual pequena; não é OCR nem detector automático de placar."
+}

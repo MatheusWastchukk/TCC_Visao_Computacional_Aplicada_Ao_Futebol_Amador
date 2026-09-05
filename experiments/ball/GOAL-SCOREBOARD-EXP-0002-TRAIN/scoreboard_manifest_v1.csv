@@ -1,0 +1,6 @@
+scoreboard_id,context_id,event_id,match_id,video_filename,event_timestamp_seconds,before_timestamp_seconds,after_timestamp_seconds,before_hhmmss,after_hhmmss,scoreboard_available,scoreboard_roi_json,score_changed,annotation_status,notes
+scoreboard_context_001,goal_context_001,ball_event_v2_001,match_04,Match_04.mp4,1370.543,1360.543,1392.303,00:22:41,00:23:12,,,,pending,Piloto manual: placar é evidência opcional e não substitui a verificação do evento.
+scoreboard_context_002,goal_context_002,ball_event_v2_002,match_06,Match_06.mp4,911.670,901.670,1001.670,00:15:02,00:16:42,,,,pending,Piloto manual: placar é evidência opcional e não substitui a verificação do evento.
+scoreboard_context_003,goal_context_003,ball_event_v2_003,match_07,Match_07.mp4,4265.837,4255.837,4293.733,01:10:56,01:11:34,,,,pending,Piloto manual: placar é evidência opcional e não substitui a verificação do evento.
+scoreboard_context_004,goal_context_004,ball_event_v2_004,match_08,Match_08.mp4,2894.082,2884.082,2927.049,00:48:04,00:48:47,,,,pending,Piloto manual: placar é evidência opcional e não substitui a verificação do evento.
+scoreboard_context_005,goal_context_005,ball_event_v2_005,match_09,Match_09.mp4,5392.989,5382.989,5434.631,01:29:43,01:30:35,,,,pending,Piloto manual: placar é evidência opcional e não substitui a verificação do evento.

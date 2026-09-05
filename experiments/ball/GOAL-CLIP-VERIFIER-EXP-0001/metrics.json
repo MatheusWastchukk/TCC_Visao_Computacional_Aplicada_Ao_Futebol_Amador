@@ -1,0 +1,9 @@
+{
+  "experiment_id": "GOAL-CLIP-VERIFIER-EXP-0001",
+  "contexts": 9,
+  "spatial_candidates": 5,
+  "possible_goal": 3,
+  "rejected_or_invalidated": 2,
+  "missed_spatial_candidate": 3,
+  "note": "Piloto em contextos anotados manualmente; não representa execução completa de vídeo."
+}

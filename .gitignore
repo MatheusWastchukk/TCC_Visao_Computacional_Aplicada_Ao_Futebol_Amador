@@ -36,6 +36,7 @@ data/raw/*
 data/clips/*
 data/processed/*
 data/Videos_Edited/
+data/Videos_Test_Fechado/
 docs/plans/
 outputs/frames/*
 outputs/reports/*
@@ -85,6 +86,11 @@ experiments/V10/**/frame_tracking.csv
 experiments/V10/**/frame_predictions.csv
 experiments/V10/**/frame_ball_goal_relation.csv
 experiments/V10/**/camera_motion.csv
+# Mineração de eventos: CSVs por frame e telemetria bruta são regeneráveis e volumosos.
+experiments/ball/GOAL-EVENT-CANDIDATE-MINER-V1/**/candidate_frames_v1.csv
+experiments/ball/GOAL-EVENT-CANDIDATE-MINER-V1/**/usage_samples*.csv
+experiments/ball/GOAL-EVENT-CANDIDATE-MINER-V1/**/progress.json
+experiments/ball/GOAL-EVENT-CANDIDATE-MINER-V1/**/status.json
 docs/figuras/overlays-v10/
 results/
 
