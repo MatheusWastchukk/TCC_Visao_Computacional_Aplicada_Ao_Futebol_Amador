@@ -1,0 +1,29 @@
+{
+  "experiment_id": "GOAL-EVENT-TEMPORAL-RANKER-EXP-0001",
+  "scope": "somente TRAIN; leave-one-match-out",
+  "groups": 5742,
+  "positive_groups": 144,
+  "features": [
+    "hit_count",
+    "unique_timestamps",
+    "duration_seconds",
+    "max_gap_seconds",
+    "gap_count",
+    "max_candidate_score",
+    "mean_candidate_score",
+    "max_ball_confidence",
+    "mean_ball_confidence",
+    "max_goal_confidence",
+    "mean_goal_confidence",
+    "min_normalized_distance",
+    "mean_normalized_distance",
+    "distance_std",
+    "distance_before_min",
+    "distance_after_min",
+    "distance_slope",
+    "inside_goal_fraction",
+    "mean_relative_speed",
+    "max_relative_speed"
+  ],
+  "note": "Recall@K mede cobertura temporal em desenvolvimento; não é resultado final nem confirmação online."
+}

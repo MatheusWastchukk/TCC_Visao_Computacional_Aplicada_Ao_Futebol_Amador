@@ -1,0 +1,35 @@
+{
+  "experiment_id": "GOAL-EVENT-VISUAL-VERIFIER-EXP-0001",
+  "scope": "somente TRAIN",
+  "protocol": "leave-one-match-out",
+  "sampling_role": "candidate_review",
+  "examples": 100,
+  "labels": {
+    "NO_GOAL": 90,
+    "GOAL": 10
+  },
+  "features": 48,
+  "models": {
+    "logistic_regression": {
+      "examples": 100,
+      "positive_examples": 10,
+      "average_precision": 0.09881887619001009,
+      "roc_auc": 0.45666666666666667,
+      "precision_at_0_5": 0.10714285714285714,
+      "recall_at_0_5": 0.3,
+      "f1_at_0_5": 0.15789473684210525,
+      "predicted_positive_at_0_5": 28
+    },
+    "random_forest": {
+      "examples": 100,
+      "positive_examples": 10,
+      "average_precision": 0.15351501164429432,
+      "roc_auc": 0.5177777777777778,
+      "precision_at_0_5": 0.16666666666666666,
+      "recall_at_0_5": 0.1,
+      "f1_at_0_5": 0.125,
+      "predicted_positive_at_0_5": 6
+    }
+  },
+  "warning": "Baseline visual de desenvolvimento. Esta amostra não é conjunto independente e seus resultados não estimam desempenho final."
+}

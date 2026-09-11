@@ -5,6 +5,7 @@ __pycache__/
 *.pyd
 .Python
 .venv/
+.venv-rfdetr/
 .venv-dml/
 .venv-rocm/
 .rocm_cache/
@@ -44,6 +45,18 @@ outputs/videos/*
 models/*
 experiments/**/artifacts/*
 experiments/ball/data/*
+experiments/ball/BALL-RFDETR-EXP-0001/dataset_rfdetr/
+experiments/ball/BALL-RFDETR-EXP-0001/dataset_smoke/
+experiments/ball/BALL-RFDETR-EXP-0001/smoke_train/
+experiments/ball/BALL-RFDETR-EXP-0001/smoke_train_utf8/
+experiments/ball/BALL-RFDETR-EXP-0001/smoke_result.json
+experiments/ball/BALL-RFDETR-EXP-0001/train_full_r512_e30/
+experiments/ball/BALL-RFDETR-EXP-0001/smoke_train_rocm_r384/
+experiments/ball/BALL-RFDETR-EXP-0001/smoke_train_rocm_r512_b8/
+experiments/ball/BALL-RFDETR-EXP-0001/pilot_rocm_r512_e3_b8/
+experiments/ball/BALL-RFDETR-EXP-0001/cloud_bundle_v1/dataset_rfdetr/
+experiments/ball/BALL-RFDETR-EXP-0001/cloud_bundle_v1/output/
+experiments/ball/BALL-RFDETR-EXP-0001/cloud_bundle_v1/*.zip
 experiments/ball/BALL-EXP-*/audit_v1/
 experiments/ball/BALL-EXP-*/AnotadorAuditoriaBola/
 experiments/ball/directml_smoke_train/
@@ -91,6 +104,12 @@ experiments/ball/GOAL-EVENT-CANDIDATE-MINER-V1/**/candidate_frames_v1.csv
 experiments/ball/GOAL-EVENT-CANDIDATE-MINER-V1/**/usage_samples*.csv
 experiments/ball/GOAL-EVENT-CANDIDATE-MINER-V1/**/progress.json
 experiments/ball/GOAL-EVENT-CANDIDATE-MINER-V1/**/status.json
+experiments/ball/GOAL-EVENT-VERIFIER-V1/frames_v1/
+experiments/ball/GOAL-CLIP-PRETRAINED-VERIFIER-EXP-0001/clip_embeddings_v1.csv
+experiments/ball/GOAL-CLIP-TEMPORAL-SEQUENCE-EXP-0001/run_v1/sequence_embeddings_v1.npz
+experiments/ball/GOAL-EVENT-TEMPORAL-DATASET-*/temporal_group_dataset_v1.csv
+experiments/ball/GOAL-EVENT-CANDIDATE-MINER-V1/group_ranker_lomo_*/group_predictions_lomo_v1.csv
+experiments/ball/GOAL-EVENT-TEMPORAL-RANKER-EXP-0002-predictions-v2/group_predictions_lomo_v1.csv
 docs/figuras/overlays-v10/
 results/
 

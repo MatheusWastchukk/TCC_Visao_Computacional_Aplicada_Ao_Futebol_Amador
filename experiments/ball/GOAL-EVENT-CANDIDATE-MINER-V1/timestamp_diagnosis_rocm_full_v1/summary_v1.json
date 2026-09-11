@@ -1,0 +1,28 @@
+{
+  "experiment_id": "GOAL-EVENT-TIMESTAMP-WINDOW-DIAGNOSIS-V1",
+  "scope": "somente TRAIN",
+  "goals_diagnosed": 152,
+  "automatic_failure_categories": {
+    "HIT_GEOMETRICO": 152
+  },
+  "parameters": {
+    "goal_timestamps": "experiments\\ball\\GOAL-CATALOG-TIMESTAMP-ANNOTATION-V1\\goal_catalog_timestamp_manifest_v1_annotated.csv",
+    "split_manifest": "experiments\\datasets\\dataset_split_v1.csv",
+    "videos_dir": "data\\Videos_Edited",
+    "goal_model": "runs\\detect\\experiments\\goal_geometry\\EXP-0092\\yolo11n_cpu_reference\\weights\\best.pt",
+    "ball_model": "runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt",
+    "output": "experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\timestamp_diagnosis_rocm_full_v1",
+    "analysis_fps": 5.0,
+    "window_pre_seconds": 10.0,
+    "window_post_seconds": 10.0,
+    "goal_confidence": 0.25,
+    "ball_confidence": 0.05,
+    "goal_imgsz": 640,
+    "ball_imgsz": 960,
+    "goal_margin": 0.35,
+    "max_normalized_distance": 2.0,
+    "device": "0",
+    "max_goals": null
+  },
+  "note": "Diagnóstico por sinais dos detectores ao redor de timestamps catalogados; não é avaliação final nem confirmação online."
+}

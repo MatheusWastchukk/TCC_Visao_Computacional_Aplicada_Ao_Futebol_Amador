@@ -1,0 +1,14 @@
+{
+  "experiment_id": "GOAL-EVENT-VERIFIER-MANIFEST-V1",
+  "scope": "somente TRAIN",
+  "examples": 136,
+  "labels": {
+    "NO_GOAL": 90,
+    "GOAL": 46
+  },
+  "sampling_roles": {
+    "candidate_review": 100,
+    "timestamp_aligned_confirmation": 36
+  },
+  "note": "Manifesto para desenvolvimento do verificador; não é conjunto de avaliação independente."
+}

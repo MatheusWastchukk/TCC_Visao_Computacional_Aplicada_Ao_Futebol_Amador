@@ -1,0 +1,15 @@
+{
+  "experiment_id": "resolved_v1",
+  "scope": "somente TRAIN",
+  "dataset_clips": 304,
+  "labels": {
+    "GOAL": 152,
+    "NO_GOAL": 152
+  },
+  "audit_items": 19,
+  "audit_labels": {
+    "NO_GOAL": 19
+  },
+  "resolution_method": "confirmação humana explícita após falha de persistência do anotador",
+  "remaining_limitation": "A auditoria é amostral: 19 dos 78 negativos temporais seguros foram revisados."
+}

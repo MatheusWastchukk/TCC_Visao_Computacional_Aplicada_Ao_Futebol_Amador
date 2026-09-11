@@ -1,0 +1,13 @@
+model,k,evaluable_catalog_goals,covered_catalog_goals,recall_at_k
+logistic_regression,4,152,10,0.065789
+logistic_regression,8,152,19,0.125000
+logistic_regression,12,152,28,0.184211
+logistic_regression,20,152,47,0.309211
+random_forest,4,152,14,0.092105
+random_forest,8,152,25,0.164474
+random_forest,12,152,34,0.223684
+random_forest,20,152,48,0.315789
+gradient_boosting,4,152,11,0.072368
+gradient_boosting,8,152,20,0.131579
+gradient_boosting,12,152,28,0.184211
+gradient_boosting,20,152,40,0.263158

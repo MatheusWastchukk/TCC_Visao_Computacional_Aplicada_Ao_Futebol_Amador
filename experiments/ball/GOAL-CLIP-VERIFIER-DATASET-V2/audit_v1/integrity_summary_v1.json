@@ -1,0 +1,14 @@
+{
+  "experiment_id": "audit_v1",
+  "scope": "somente TRAIN",
+  "clips": 304,
+  "pairs": 152,
+  "negative_sources": {
+    "reviewed_hard_negative": 74,
+    "safe_temporal_negative": 78
+  },
+  "safe_negative_audit_queue": 19,
+  "queue_sampling": "um negativo temporal seguro por partida",
+  "goal_exclusion_seconds_verified": 90.0,
+  "warning": "A fila exige revisão humana antes de usar negativos temporais para treinamento ou métricas."
+}

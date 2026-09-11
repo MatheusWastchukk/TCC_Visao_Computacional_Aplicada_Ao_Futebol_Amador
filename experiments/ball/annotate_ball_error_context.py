@@ -40,7 +40,7 @@ def save_csv(path: Path, rows: list[dict[str, str]]) -> None:
 def draw_manual_box(image, row: dict[str, str]) -> None:
     try:
         box = tuple(int(float(row[f"manual_ball_{axis}"])) for axis in ("x1", "y1", "x2", "y2"))
-    except (TypeError, ValueError):
+    except (KeyError, TypeError, ValueError):
         return
     x1, y1, x2, y2 = box
     if x2 > x1 and y2 > y1:

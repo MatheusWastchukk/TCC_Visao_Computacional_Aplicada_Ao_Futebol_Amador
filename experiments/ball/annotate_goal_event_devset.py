@@ -54,6 +54,8 @@ def format_time(seconds: float) -> str:
 
 def output_fields(source_fields: list[str]) -> list[str]:
     fields = list(source_fields)
+    if "ground_truth" not in fields:
+        fields.append("ground_truth")
     if "source_ground_truth" not in fields:
         fields.append("source_ground_truth")
     for field in EVIDENCE_FIELDS + ["not_evaluable_reason", "annotation_status", "notes"]:
@@ -150,7 +152,10 @@ def main() -> int:
     if unknown_ids:
         raise ValueError(f"event_id ausente do manifesto: {unknown_ids}")
     selected_rows = [row for row in rows if row["event_id"] in selected_ids]
-    pending = [row for row in selected_rows if not args.pending_only or row["annotation_status"] != "completed"]
+    pending = [
+        row for row in selected_rows
+        if not args.pending_only or row["annotation_status"] != "completed" or not row.get("ground_truth")
+    ]
     if not pending:
         print("Não há eventos pendentes.")
         return 0

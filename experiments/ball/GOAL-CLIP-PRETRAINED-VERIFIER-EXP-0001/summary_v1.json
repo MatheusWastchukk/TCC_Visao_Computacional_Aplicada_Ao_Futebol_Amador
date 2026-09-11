@@ -1,0 +1,37 @@
+{
+  "experiment_id": "GOAL-CLIP-PRETRAINED-VERIFIER-EXP-0001",
+  "scope": "somente TRAIN",
+  "protocol": "leave-one-match-out",
+  "encoder": "ResNet18 ImageNet congelada",
+  "frames_per_clip": 8,
+  "examples": 304,
+  "labels": {
+    "GOAL": 152,
+    "NO_GOAL": 152
+  },
+  "matches": 25,
+  "features": 2048,
+  "models": {
+    "logistic_regression": {
+      "examples": 304,
+      "positive_examples": 152,
+      "average_precision": 0.6620623498263892,
+      "roc_auc": 0.6460786011080333,
+      "precision_at_0_5": 0.6148648648648649,
+      "recall_at_0_5": 0.5986842105263158,
+      "f1_at_0_5": 0.6066666666666667,
+      "predicted_positive_at_0_5": 148
+    },
+    "random_forest": {
+      "examples": 304,
+      "positive_examples": 152,
+      "average_precision": 0.66675996496842,
+      "roc_auc": 0.6494113573407202,
+      "precision_at_0_5": 0.6299212598425197,
+      "recall_at_0_5": 0.5263157894736842,
+      "f1_at_0_5": 0.5734767025089605,
+      "predicted_positive_at_0_5": 127
+    }
+  },
+  "warning": "Desenvolvimento em TRAIN. O conjunto usa negativos temporais com auditoria amostral e não é avaliação final independente."
+}

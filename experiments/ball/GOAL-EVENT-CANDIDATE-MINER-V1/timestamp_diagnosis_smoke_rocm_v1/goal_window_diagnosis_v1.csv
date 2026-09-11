@@ -1,0 +1,3 @@
+goal_catalog_id,match_id,video_filename,split,goal_timestamp_seconds,window_start_seconds,window_end_seconds,frames_sampled,frames_with_goal_detection,frames_with_ball_detection,frames_with_both_detections,geometric_hit_frames,automatic_failure_category,annotation_status,notes
+match_02__catalog_goal_001,match_02,Match_02_A.mp4,train,45.378,35.378,55.378,100,97,88,86,60,HIT_GEOMETRICO,completed,Diagnóstico automático em janela temporal de gol TRAIN; não confirma evento online.
+match_02__catalog_goal_002,match_02,Match_02_A.mp4,train,670.266,660.266,680.266,100,97,88,85,75,HIT_GEOMETRICO,completed,Diagnóstico automático em janela temporal de gol TRAIN; não confirma evento online.

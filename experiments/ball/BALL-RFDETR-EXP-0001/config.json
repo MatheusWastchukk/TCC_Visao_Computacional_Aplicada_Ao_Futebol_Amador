@@ -1,0 +1,78 @@
+{
+  "experiment_id": "BALL-RFDETR-EXP-0001",
+  "model": "RFDETRSmall",
+  "task": "ball_detection",
+  "classes": ["ball"],
+  "resolution_requested": 384,
+  "dataset_source": "experiments/ball/ball_dataset_annotations_v2.csv",
+  "dataset_format": "COCO",
+  "baseline_comparison": ["BALL-EXP-0005", "BALL-EXP-0013-EVENT-HARD-FINETUNE"],
+  "device": "rocm_cuda",
+  "status": "preliminary_no_go_rocm_cost_and_candidate_recall",
+  "smoke": {
+    "train_images": 20,
+    "validation_images": 10,
+    "epochs": 1,
+    "batch_size": 1,
+    "forward_backward": "passed",
+    "checkpoint": "saved"
+  },
+  "rocm_smoke": {
+    "torch": "2.9.1+rocm7.2.1",
+    "gpu": "AMD Radeon RX 9060 XT",
+    "device_argument": "cuda",
+    "amp": false,
+    "resolution": 512,
+    "batch_size": 8,
+    "train_images": 20,
+    "validation_images": 10,
+    "execution_seconds": 46,
+    "peak_memory_mb": 9161,
+    "status": "passed",
+    "limitations": [
+      "Hungarian assignment fallback to SciPy CPU",
+      "AMD efficient attention marked experimental",
+      "offload-arch warning caused by historical physical path with space"
+    ],
+    "estimated_full_epochs": {
+      "epochs": 30,
+      "estimated_minutes_per_epoch": "13-15",
+      "estimated_hours_total": "6.5-7.5"
+    }
+  },
+  "rocm_full_pilot": {
+    "epochs_requested": 3,
+    "resolution": 512,
+    "batch_size": 8,
+    "status": "interrupted_system_freeze",
+    "completed_epochs": 1,
+    "epoch_0_seconds": 340,
+    "epoch_0_validation": {
+      "map50_95": 0.0356320664,
+      "recall": 0.2602739632
+    },
+    "incident": "Durante a época 1, a telemetria registrou free_mem=0; o computador travou e precisou ser reiniciado.",
+    "interpretation": "A época isolada não é avaliação comparativa; batch 8 não é estável no ambiente ROCm atual."
+  },
+  "epoch_0_candidate_recall_comparison": {
+    "status": "preliminary_no_go_signal",
+    "protocol": "73 validation frames VISIBLE/PARTIAL; IoU 0.50; same thresholds",
+    "rfdetr_epoch_0": {
+      "epochs": 1,
+      "resolution": 512,
+      "confidence_0.01": {"candidate_recall": 0.534247, "mean_candidates_per_frame": 208.548},
+      "confidence_0.03": {"candidate_recall": 0.506849, "mean_candidates_per_frame": 76.082},
+      "confidence_0.05": {"candidate_recall": 0.452055, "mean_candidates_per_frame": 34.027},
+      "confidence_0.10": {"candidate_recall": 0.356164, "mean_candidates_per_frame": 8.712}
+    },
+    "yolo_ball_exp_0005_reference": {
+      "epochs": 30,
+      "resolution": 960,
+      "confidence_0.01": {"candidate_recall": 0.657534, "mean_candidates_per_frame": 8.027},
+      "confidence_0.03": {"candidate_recall": 0.602740, "mean_candidates_per_frame": 3.534},
+      "confidence_0.05": {"candidate_recall": 0.561644, "mean_candidates_per_frame": 2.288},
+      "confidence_0.10": {"candidate_recall": 0.506849, "mean_candidates_per_frame": 1.329}
+    },
+    "interpretation": "RF-DETR possui menos candidate recall em todos os limiares e produz muito mais candidatas; não é comparação final por diferença de épocas e resolução."
+  }
+}

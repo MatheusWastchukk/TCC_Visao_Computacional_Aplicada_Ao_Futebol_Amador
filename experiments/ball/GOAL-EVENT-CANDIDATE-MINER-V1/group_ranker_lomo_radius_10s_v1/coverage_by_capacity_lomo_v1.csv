@@ -1,0 +1,5 @@
+max_candidates_per_match,selected_candidate_windows,evaluable_catalog_goals,covered_catalog_goals,candidate_window_recall
+4,100,152,14,0.092105
+8,200,152,25,0.164474
+12,300,152,31,0.203947
+20,500,152,41,0.269737

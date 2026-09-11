@@ -1,0 +1,31 @@
+{
+  "experiment_id": "BALL-RFDETR-EXP-0001-CLOUD-NVIDIA",
+  "purpose": "Teste controlado único em GPU NVIDIA para confirmar ou refutar o sinal NO-GO preliminar obtido em ROCm.",
+  "model": "RFDETRSmall",
+  "classes": ["ball"],
+  "dataset": "dataset_rfdetr",
+  "dataset_images": {
+    "train": 733,
+    "validation": 119,
+    "validation_visible_or_partial": 73,
+    "validation_not_visible": 46
+  },
+  "training": {
+    "resolution": 512,
+    "epochs": 30,
+    "batch_size": 4,
+    "grad_accum_steps": 4,
+    "learning_rate": 0.0001,
+    "amp": true,
+    "device": "cuda"
+  },
+  "evaluation": {
+    "iou": 0.5,
+    "confidences": [0.01, 0.03, 0.05, 0.1],
+    "primary_metric": "candidate_recall_visible_or_partial",
+    "secondary_metrics": ["mean_candidates_per_frame", "mean_candidates_not_visible"]
+  },
+  "baseline": "reference/yolo_exp0005_candidate_recall_summary.csv",
+  "split_policy": "Usar somente train e validation. Não incluir ou acessar o split test fechado.",
+  "stop_rule": "Não iniciar tracker, ByteTrack, OC-SORT, SAM3, MediaPipe ou VLM. A decisão desta execução encerra-se no detector."
+}

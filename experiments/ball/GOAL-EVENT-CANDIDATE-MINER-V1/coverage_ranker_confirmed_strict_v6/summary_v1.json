@@ -1,0 +1,17 @@
+{
+  "experiment_id": "GOAL-EVENT-CANDIDATE-COVERAGE-V1",
+  "scope": "somente TRAIN",
+  "candidate_windows": 124,
+  "boundary_tolerance_seconds": 0.0,
+  "manual_labels": {
+    "GOAL": 34,
+    "NO_GOAL": 90
+  },
+  "evaluable_catalog_goals": 152,
+  "not_evaluable_catalog_goals": 1,
+  "catalog_discrepancy_catalog_goals": 3,
+  "covered_catalog_goals": 28,
+  "candidate_window_recall": 0.184211,
+  "candidates_matching_any_catalog_goal_window": 28,
+  "note": "Recall mede apenas a cobertura temporal das janelas dos candidatos anotados. Não equivale à confirmação online do evento e exclui gols sem timestamp visual confiável ou com divergência confirmada entre catálogo e vídeo."
+}

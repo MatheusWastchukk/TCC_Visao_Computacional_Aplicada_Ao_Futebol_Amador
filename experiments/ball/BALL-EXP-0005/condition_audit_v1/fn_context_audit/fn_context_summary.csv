@@ -1,0 +1,8 @@
+error_context,frame_count,share_of_32_fn,interpretation
+BORRADA_BAIXA_QUALIDADE,11,0.34375,Contexto visual principal anotado manualmente.
+MUITO_PEQUENA,6,0.1875,Contexto visual principal anotado manualmente.
+OCULTA_JOGADOR,6,0.1875,Contexto visual principal anotado manualmente.
+COBRANCA_LATERAL,3,0.09375,Contexto visual principal anotado manualmente.
+FORA_ENQUADRAMENTO,2,0.0625,Contexto visual principal anotado manualmente.
+MAOS_GOLEIRO,2,0.0625,Contexto visual principal anotado manualmente.
+OUTRO,2,0.0625,Consultar context_notes para o diagnóstico específico.

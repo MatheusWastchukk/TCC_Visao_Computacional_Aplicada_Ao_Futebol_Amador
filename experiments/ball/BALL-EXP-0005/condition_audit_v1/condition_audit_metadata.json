@@ -1,0 +1,19 @@
+{
+  "purpose": "Auditoria de candidate recall YOLO por condições observáveis da anotação.",
+  "annotations": "experiments\\ball\\ball_dataset_annotations_v2.csv",
+  "predictions": "experiments\\ball\\BALL-RFDETR-EXP-0001\\pilot_rocm_r512_e3_b8\\baseline_yolo_exp0005_candidate_recall\\candidate_recall_frames.csv",
+  "evaluated_frames": 73,
+  "prediction_rows": 292,
+  "size_bins_max_side_px": [
+    "<=16",
+    "17-24",
+    "25-32",
+    ">32"
+  ],
+  "not_derived_conditions": [
+    "proximidade_de_jogador",
+    "bola_no_ar",
+    "proximidade_do_gol",
+    "desfoque"
+  ]
+}

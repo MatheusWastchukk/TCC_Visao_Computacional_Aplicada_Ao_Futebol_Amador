@@ -1,0 +1,55 @@
+{
+  "experiment_id": "GOAL-EVENT-GROUP-RANKER-LOMO-V1",
+  "scope": "somente TRAIN; leave-one-match-out",
+  "evaluable_catalog_goals": 152,
+  "groups": 5742,
+  "positive_groups": 237,
+  "positive_radius_seconds": 20.0,
+  "feature_importance_last_fold": [
+    {
+      "feature": "min_normalized_distance",
+      "importance": 0.134939
+    },
+    {
+      "feature": "max_candidate_score",
+      "importance": 0.097114
+    },
+    {
+      "feature": "mean_normalized_distance",
+      "importance": 0.095937
+    },
+    {
+      "feature": "duration_seconds",
+      "importance": 0.092901
+    },
+    {
+      "feature": "max_ball_confidence",
+      "importance": 0.091907
+    },
+    {
+      "feature": "mean_goal_confidence",
+      "importance": 0.088848
+    },
+    {
+      "feature": "inside_goal_hit_fraction",
+      "importance": 0.084429
+    },
+    {
+      "feature": "max_goal_confidence",
+      "importance": 0.082352
+    },
+    {
+      "feature": "mean_ball_confidence",
+      "importance": 0.082051
+    },
+    {
+      "feature": "mean_candidate_score",
+      "importance": 0.081604
+    },
+    {
+      "feature": "hit_count",
+      "importance": 0.067918
+    }
+  ],
+  "note": "Ranking supervisionado avaliado por partida deixada de fora. É experimento de desenvolvimento TRAIN, não avaliação final nem confirmação online."
+}

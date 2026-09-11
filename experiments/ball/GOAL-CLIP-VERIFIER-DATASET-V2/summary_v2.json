@@ -1,0 +1,23 @@
+{
+  "experiment_id": "GOAL-CLIP-VERIFIER-DATASET-V2",
+  "scope": "somente TRAIN",
+  "pairs": 152,
+  "clips": 304,
+  "labels": {
+    "GOAL": 152,
+    "NO_GOAL": 152
+  },
+  "negative_sources": {
+    "reviewed_hard_negative": 74,
+    "safe_temporal_negative": 78
+  },
+  "seconds_before": 10.0,
+  "seconds_after": 20.0,
+  "goal_exclusion_seconds": 90.0,
+  "negative_separation_seconds": 45.0,
+  "excluded_catalog_rows": {
+    "catalog_discrepancy": 3,
+    "not_evaluable": 1
+  },
+  "warning": "Negativos temporais seguros exigem auditoria humana amostral antes de treinamento ou métricas de classificação."
+}

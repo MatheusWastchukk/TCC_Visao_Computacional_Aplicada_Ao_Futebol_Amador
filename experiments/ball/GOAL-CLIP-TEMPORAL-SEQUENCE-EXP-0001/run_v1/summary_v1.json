@@ -1,0 +1,27 @@
+{
+  "experiment_id": "run_v1",
+  "scope": "somente TRAIN",
+  "protocol": "leave-one-match-out",
+  "hypothesis": "A ordem dos oito embeddings congelados contém informação adicional ao agregado estatístico.",
+  "encoder": "ResNet18 ImageNet congelada",
+  "classifier": "regressão logística L2 balanceada",
+  "frames_per_clip": 8,
+  "sequence_features": 4096,
+  "examples": 304,
+  "labels": {
+    "GOAL": 152,
+    "NO_GOAL": 152
+  },
+  "metrics": {
+    "examples": 304,
+    "positive_examples": 152,
+    "average_precision": 0.7203029678278559,
+    "roc_auc": 0.7490477839335179,
+    "precision_at_0_5": 0.697841726618705,
+    "recall_at_0_5": 0.6381578947368421,
+    "f1_at_0_5": 0.6666666666666666,
+    "predicted_positive_at_0_5": 139
+  },
+  "promotion_rule": "AP deve superar 66,68% por pelo menos 3 pontos percentuais e reduzir o compromisso recall-FP do baseline agregado.",
+  "warning": "Desenvolvimento em TRAIN; não usar este resultado como avaliação final independente."
+}
