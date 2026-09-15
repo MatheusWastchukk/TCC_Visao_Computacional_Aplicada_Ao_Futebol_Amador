@@ -1,0 +1,4 @@
+scope,match_id,valid_catalog_goals,selected_candidates,reviewed_segments,unique_review_seconds,unique_review_minutes,human_goal_segments,human_no_goal_segments,human_not_evaluable_segments,covered_catalog_goals,human_confirmed_catalog_goals
+individual,match_04,7,43,36,2526.596,42.11,7,29,0,7,7
+individual,match_02,9,45,39,2646.904,44.12,9,30,0,9,9
+aggregate,match_02+match_04,16,88,75,5173.500,86.23,16,59,0,16,16
