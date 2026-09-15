@@ -1,0 +1,20 @@
+{
+  "experiment_id": "GOAL-EVENT-RANKING-DIAGNOSIS-VALIDATION-V1",
+  "scope": "VALIDATION; diagnóstico do Random Forest TRAIN congelado",
+  "candidate_limits": [
+    1,
+    2,
+    4,
+    8,
+    12,
+    20,
+    30
+  ],
+  "catalog_goals": 51,
+  "min_separation_seconds": 45.0,
+  "clip_window_seconds": {
+    "pre": 10.0,
+    "post": 20.0
+  },
+  "note": "O rank diverso mede a ordem efetiva dos candidatos após a separação temporal; não é resultado de novo treinamento."
+}

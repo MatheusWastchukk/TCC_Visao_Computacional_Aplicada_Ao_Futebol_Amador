@@ -1,0 +1,8 @@
+{
+  "experiment_id": "GOAL-EVENT-RICH-TEMPORAL-VALIDATION-V1",
+  "scope": "modelo treinado somente em TRAIN; confirmação única em VALIDATION",
+  "model": "RandomForestClassifier(n_estimators=300, min_samples_leaf=2, class_weight=balanced, random_state=42)",
+  "feature_count": 49,
+  "trajectory_feature_count": 13,
+  "warning": "Este resultado é confirmação única, não autorização para novo tuning; TEST não foi acessado."
+}

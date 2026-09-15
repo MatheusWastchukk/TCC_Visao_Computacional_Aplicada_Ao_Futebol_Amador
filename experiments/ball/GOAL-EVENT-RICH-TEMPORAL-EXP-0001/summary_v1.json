@@ -1,0 +1,9 @@
+{
+  "experiment_id": "GOAL-EVENT-RICH-TEMPORAL-EXP-0001",
+  "scope": "somente TRAIN; leave-one-match-out",
+  "model": "RandomForestClassifier(n_estimators=300, min_samples_leaf=2, class_weight=balanced, random_state=42)",
+  "feature_count": 49,
+  "trajectory_feature_count": 13,
+  "median_rank_when_covered": 5.5,
+  "warning": "Hipótese C: apenas a representação de trajetória muda; nenhum dado VALIDATION ou TEST foi utilizado."
+}

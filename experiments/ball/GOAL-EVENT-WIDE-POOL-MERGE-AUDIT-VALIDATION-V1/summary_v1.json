@@ -1,0 +1,12 @@
+{
+  "experiment_id": "GOAL-EVENT-WIDE-POOL-MERGE-AUDIT-VALIDATION-V1",
+  "scope": "somente VALIDATION; escores congelados, sem retreinamento",
+  "delivery_window": "20+40",
+  "methods": [
+    "rank_score",
+    "fusion_top_30"
+  ],
+  "selection_rule_for_validation": "Entre F30+T5/T10/T15/T20, escolher em TRAIN a maior cobertura com redução de ao menos 20% dos minutos únicos frente ao top 60 temporal; desempatar pelo menor tempo único.",
+  "top60_gap_audit_cases": 3,
+  "warning": "TEST não foi acessado. VALIDATION não deve ser usada para escolher a configuração híbrida."
+}

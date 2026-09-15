@@ -1,0 +1,22 @@
+{
+  "experiment_id": "GOAL-EVENT-CLIP-UTILITY-15-30-EXP-0001",
+  "scope": "somente TRAIN; leave-one-match-out",
+  "window": {
+    "pre_seconds": 15.0,
+    "post_seconds": 30.0
+  },
+  "target_definition": {
+    "absent": 0.0,
+    "edge_0_10_or_90_100_percent": 0.3,
+    "limited_context_10_25_or_75_90_percent": 0.6,
+    "good_context_25_75_percent": 1.0
+  },
+  "feature_count": 36,
+  "target_counts": {
+    "0.0": 5461,
+    "0.3": 48,
+    "0.6": 85,
+    "1.0": 148
+  },
+  "warning": "Novo alvo de utilidade do clipe; não é o target graduado por proximidade já descartado. Nenhum dado VALIDATION ou TEST foi utilizado."
+}

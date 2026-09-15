@@ -81,7 +81,7 @@ def normalized_distance(
     return math.hypot(first[0] - goal_center[0], first[1] - goal_center[1]) / diagonal
 
 
-def load_train_videos(split_manifest: Path, videos_dir: Path, include_matches: list[str] | None) -> list[dict[str, str]]:
+def load_videos(split_manifest: Path, videos_dir: Path, include_matches: list[str] | None, expected_split: str) -> list[dict[str, str]]:
     with split_manifest.open(newline="", encoding="utf-8") as file:
         rows = list(csv.DictReader(file))
     selected = set(include_matches) if include_matches else None
@@ -90,23 +90,23 @@ def load_train_videos(split_manifest: Path, videos_dir: Path, include_matches: l
         unknown = sorted(selected - known)
         if unknown:
             raise ValueError(f"Partidas ausentes do manifesto de split: {unknown}")
-    train_rows = []
+    selected_rows = []
     for row in rows:
         if selected and row["match_id"] not in selected:
             continue
-        if row["split"] != "train":
+        if row["split"] != expected_split:
             if selected and row["match_id"] in selected:
                 raise AssertionError(
-                    f"{row['match_id']} pertence a {row['split']}; TEST e VALIDATION não podem ser minerados."
+                    f"{row['match_id']} pertence a {row['split']}; o executor exige {expected_split}."
                 )
             continue
         video_path = videos_dir / row["video_filename"]
         if not video_path.is_file():
             raise FileNotFoundError(video_path)
-        train_rows.append(row)
-    if not train_rows:
-        raise ValueError("Nenhuma partida TRAIN foi selecionada.")
-    return train_rows
+        selected_rows.append(row)
+    if not selected_rows:
+        raise ValueError(f"Nenhuma partida {expected_split.upper()} foi selecionada.")
+    return selected_rows
 
 
 def predictions(result) -> list[tuple[tuple[float, float, float, float], float]]:
@@ -228,6 +228,7 @@ def main() -> int:
     parser.add_argument("--ball-model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--include-matches", nargs="+", default=None)
+    parser.add_argument("--expected-split", choices=["train", "validation"], default="train")
     parser.add_argument("--analysis-fps", type=float, default=5.0)
     parser.add_argument("--goal-confidence", type=float, default=0.25)
     parser.add_argument("--ball-confidence", type=float, default=0.05)
@@ -250,7 +251,7 @@ def main() -> int:
     if not args.goal_model.is_file() or not args.ball_model.is_file():
         raise FileNotFoundError("Os pesos informados para estrutura do gol e bola devem existir.")
 
-    videos = load_train_videos(args.split_manifest, args.videos_dir, args.include_matches)
+    videos = load_videos(args.split_manifest, args.videos_dir, args.include_matches, args.expected_split)
     args.output.mkdir(parents=True, exist_ok=False)
     write_progress(args.output, "running", [], {}, 0)
     goal_model, ball_model = YOLO(str(args.goal_model)), YOLO(str(args.ball_model))
@@ -283,7 +284,7 @@ def main() -> int:
                 "source_file": "mine_goal_event_candidates_v1.py",
                 "source_interval_id": f"{video['match_id']}_{best.frame_index}",
                 "source_interval_label": "bola_proxima_estrutura_gol",
-                "match_id": video["match_id"], "video_filename": video["video_filename"], "split": "train",
+                "match_id": video["match_id"], "video_filename": video["video_filename"], "split": args.expected_split,
                 "event_timestamp_seconds": f"{best.timestamp:.3f}", "event_time_hhmmss": format_time(best.timestamp),
                 "ground_truth": "", "ball_visible": "", "goal_visible": "", "spatial_candidate": "True",
                 "relative_motion_valid": "", "identity_stable": "", "center_visible_after": "",
@@ -309,7 +310,7 @@ def main() -> int:
     write_csv(args.output / "candidate_frames_v1.csv", all_frame_rows, FRAME_FIELDS)
     metrics = {
         "experiment_id": args.output.name,
-        "scope": "somente TRAIN",
+        "scope": f"somente {args.expected_split.upper()}",
         "videos_processed": len(videos),
         "candidate_events": len(all_event_rows),
         "parameters": vars(args) | {"split_manifest": str(args.split_manifest), "videos_dir": str(args.videos_dir), "goal_model": str(args.goal_model), "ball_model": str(args.ball_model), "output": str(args.output)},

@@ -1,0 +1,6 @@
+{
+  "experiment_id": "GOAL-EVENT-WIDE-POOL-REDUCTION-VALIDATION-V1",
+  "scope": "somente VALIDATION; pool temporal top 60 e modelos visual/fusão congelados",
+  "delivery_window": "20+40",
+  "warning": "Mede redução sem treinar pesos; TEST não foi acessado."
+}

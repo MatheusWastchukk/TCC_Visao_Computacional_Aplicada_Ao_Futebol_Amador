@@ -30,6 +30,7 @@ def main() -> int:
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--videos-dir", type=Path, required=True)
+    parser.add_argument("--expected-split", choices=["train", "validation"], default="train")
     parser.add_argument("--pending-only", action="store_true")
     parser.add_argument(
         "--goal-ids",
@@ -60,8 +61,8 @@ def main() -> int:
     missing = required - set(fields)
     if missing:
         raise ValueError(f"Manifesto sem colunas obrigatórias: {sorted(missing)}")
-    if any(row["split"] != "train" for row in rows):
-        raise AssertionError("O anotador aceita somente o split TRAIN; TEST permanece fechado.")
+    if any(row["split"] != args.expected_split for row in rows):
+        raise AssertionError(f"O anotador aceita somente o split {args.expected_split.upper()}; TEST permanece fechado.")
 
     existing: dict[str, dict[str, str]] = {}
     if args.output.exists():

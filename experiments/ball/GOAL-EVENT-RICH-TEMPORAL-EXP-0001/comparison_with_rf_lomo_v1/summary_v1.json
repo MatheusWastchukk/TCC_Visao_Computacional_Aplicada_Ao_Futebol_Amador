@@ -1,0 +1,8 @@
+{
+  "scope": "somente TRAIN; comparação LOMO",
+  "goals": 152,
+  "improved_goals": 26,
+  "worsened_goals": 20,
+  "unchanged_goals": 106,
+  "limit": 20
+}

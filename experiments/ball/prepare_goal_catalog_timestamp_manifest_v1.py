@@ -12,6 +12,7 @@ def main() -> int:
     )
     parser.add_argument("--split-manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--split", choices=["train", "validation"], default="train")
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError(f"A saída já existe: {args.output}")
@@ -31,7 +32,7 @@ def main() -> int:
     ]
     output_rows: list[dict[str, str]] = []
     for row in rows:
-        if row.get("split") != "train":
+        if row.get("split") != args.split:
             continue
         for index in range(1, int(row["goals_registered"]) + 1):
             output_rows.append(
@@ -39,12 +40,12 @@ def main() -> int:
                     "goal_catalog_id": f"{row['match_id']}__catalog_goal_{index:03d}",
                     "match_id": row["match_id"],
                     "video_filename": row["video_filename"],
-                    "split": "train",
+                    "split": args.split,
                     "catalog_goal_index": str(index),
                     "event_timestamp_seconds": "",
                     "event_timestamp_hhmmss": "",
                     "annotation_status": "pending",
-                    "notes": "Timestamp ausente no catálogo original; preencher apenas após revisão do vídeo TRAIN.",
+                    "notes": f"Timestamp ausente no catálogo original; preencher apenas após revisão do vídeo {args.split.upper()}.",
                 }
             )
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -52,7 +53,7 @@ def main() -> int:
         writer = csv.DictWriter(file, fieldnames=fields)
         writer.writeheader()
         writer.writerows(output_rows)
-    print(f"Manifesto criado com {len(output_rows)} gols TRAIN pendentes: {args.output}")
+    print(f"Manifesto criado com {len(output_rows)} gols {args.split.upper()} pendentes: {args.output}")
     return 0
 
 

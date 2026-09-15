@@ -1,0 +1,13 @@
+{
+  "experiment_id": "GOAL-EVENT-FUSION-FINAL-V1",
+  "scope": "somente TRAIN; escores de entrada out-of-fold",
+  "candidates": 500,
+  "positive_candidates": 50,
+  "matches": 25,
+  "model": "regressão logística L2 balanceada",
+  "features": [
+    "rank_score",
+    "visual_score_goal"
+  ],
+  "warning": "Modelo final para confirmação única; não é métrica de avaliação."
+}

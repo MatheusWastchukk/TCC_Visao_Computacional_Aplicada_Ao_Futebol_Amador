@@ -1,0 +1,12 @@
+{
+  "experiment_id": "GOAL-EVENT-PROPOSAL-COVERAGE-DIAGNOSIS-TRAIN-V1",
+  "scope": "somente TRAIN; diagnóstico sem retreinamento",
+  "catalog_goals": 152,
+  "current_window": {
+    "pre_seconds": 10,
+    "post_seconds": 20
+  },
+  "current_window_no_group": 17,
+  "current_window_group_but_not_top30": 69,
+  "note": "Uma proposta ausente exige melhorar geração/agrupamento/janela; proposta além de top 30 exige priorização. Nenhum dado VALIDATION ou TEST foi lido."
+}

@@ -1,0 +1,12 @@
+{
+  "experiment_id": "GOAL-EVENT-WIDE-POOL-FUSION-TRAIN-V1",
+  "scope": "VALIDATION; configuração TRAIN congelada",
+  "candidates": 1470,
+  "candidate_limits": [
+    4,
+    8,
+    12,
+    20
+  ],
+  "warning": "Confirmação única de fusão congelada; não ajustar limiares ou pesos com estes resultados."
+}

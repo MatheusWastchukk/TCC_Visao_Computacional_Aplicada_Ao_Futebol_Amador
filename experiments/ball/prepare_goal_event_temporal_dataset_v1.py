@@ -41,6 +41,7 @@ def main() -> int:
     parser.add_argument("--minimum-hits", type=int, default=2)
     parser.add_argument("--positive-radius-seconds", type=float, default=10.0)
     parser.add_argument("--temporal-bins", type=int, default=0)
+    parser.add_argument("--expected-split", choices=["train", "validation"], default="train")
     args = parser.parse_args()
     if args.temporal_bins < 0:
         raise ValueError("temporal-bins deve ser não negativo.")
@@ -63,8 +64,8 @@ def main() -> int:
                 "center_y": (float(box[1]) + float(box[3])) / 2.0,
             })
     goals, fields = read_csv(args.goal_timestamps)
-    if any(row["split"] != "train" for row in goals):
-        raise AssertionError("O dataset temporal aceita somente TRAIN; TEST permanece fechado.")
+    if any(row["split"] != args.expected_split for row in goals):
+        raise AssertionError(f"O dataset temporal aceita somente {args.expected_split.upper()}; TEST permanece fechado.")
     goals_by_match: dict[str, list[float]] = defaultdict(list)
     for row in goals:
         if row["annotation_status"] == "completed" and row["event_timestamp_seconds"]:
@@ -132,7 +133,7 @@ def main() -> int:
             })
     args.output.mkdir(parents=True, exist_ok=False)
     write_csv(args.output / "temporal_group_dataset_v1.csv", ["group_uid", "match_id", "best_timestamp_seconds", "weak_label", *feature_names], dataset)
-    summary = {"experiment_id": "GOAL-EVENT-TEMPORAL-DATASET-V1", "scope": "somente TRAIN", "groups": len(dataset), "positive_groups": sum(int(row["weak_label"]) for row in dataset), "features": feature_names, "positive_radius_seconds": args.positive_radius_seconds, "temporal_bins": args.temporal_bins}
+    summary = {"experiment_id": "GOAL-EVENT-TEMPORAL-DATASET-V1", "scope": f"somente {args.expected_split.upper()}", "groups": len(dataset), "positive_groups": sum(int(row["weak_label"]) for row in dataset), "features": feature_names, "positive_radius_seconds": args.positive_radius_seconds, "temporal_bins": args.temporal_bins}
     (args.output / "summary_v1.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return 0

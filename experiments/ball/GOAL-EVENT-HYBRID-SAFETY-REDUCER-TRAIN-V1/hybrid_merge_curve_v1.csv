@@ -1,0 +1,7 @@
+method,catalog_goals,covered_goals,recall,mean_candidates_per_match,mean_segments_per_match,mean_review_minutes_brutos,mean_review_minutes_unique,total_review_minutes_unique,reduction_percent_vs_total_match_duration
+rank_score,152,128,0.842105,58.800,45.040,58.800,56.920,1423.007,36.137
+fusion_top_30,152,91,0.598684,30.000,26.880,30.000,29.571,739.272,66.822
+hybrid_f30_t5,152,98,0.644737,35.000,30.640,35.000,34.430,860.747,61.371
+hybrid_f30_t10,152,108,0.710526,40.000,34.320,40.000,39.255,981.364,55.957
+hybrid_f30_t15,152,118,0.776316,44.920,37.760,44.920,43.969,1099.220,50.668
+hybrid_f30_t20,152,122,0.802632,49.600,40.680,49.600,48.434,1210.858,45.658

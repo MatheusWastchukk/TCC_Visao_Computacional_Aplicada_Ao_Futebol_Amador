@@ -1,0 +1,11 @@
+{
+  "experiment_id": "GOAL-CLIP-VERIFIER-VALIDATION-V1",
+  "scope": "VALIDATION; configuração TRAIN congelada",
+  "candidates": 32,
+  "candidates_with_catalog_goal": 10,
+  "encoder": "ResNet18 ImageNet congelada",
+  "classifier": "regressão logística L2 congelada",
+  "average_precision": 0.5591300901827218,
+  "roc_auc": 0.6227272727272728,
+  "warning": "Escores descritivos sem ajuste de limiar em VALIDATION; não constituem filtro operacional binário."
+}

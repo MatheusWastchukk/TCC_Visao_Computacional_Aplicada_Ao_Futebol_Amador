@@ -1,0 +1,13 @@
+method,k,catalog_goals,covered_goals,recall_at_k
+rank_score,4,152,18,0.118421
+rank_score,8,152,30,0.197368
+rank_score,12,152,36,0.236842
+rank_score,20,152,50,0.328947
+visual_score_goal,4,152,20,0.131579
+visual_score_goal,8,152,35,0.230263
+visual_score_goal,12,152,42,0.276316
+visual_score_goal,20,152,50,0.328947
+fusion_score_goal,4,152,24,0.157895
+fusion_score_goal,8,152,34,0.223684
+fusion_score_goal,12,152,44,0.289474
+fusion_score_goal,20,152,50,0.328947

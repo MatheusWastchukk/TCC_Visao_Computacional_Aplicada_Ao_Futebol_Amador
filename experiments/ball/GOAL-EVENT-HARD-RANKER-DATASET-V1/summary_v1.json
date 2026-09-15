@@ -1,0 +1,20 @@
+{
+  "experiment_id": "GOAL-EVENT-HARD-RANKER-DATASET-V1",
+  "scope": "somente TRAIN; seleção baseada em predições LOMO",
+  "hard_top_k": 20,
+  "common_negative_multiplier": 5,
+  "random_seed": 42,
+  "roles": {
+    "common_negative_candidate": 5097,
+    "hard_negative": 450,
+    "ambiguous_negative_excluded": 51,
+    "positive": 144
+  },
+  "selected": {
+    "positives": 144,
+    "hard_negatives": 450,
+    "common_negatives": 720,
+    "total": 1314
+  },
+  "warning": "Negativos ambíguos que contêm timestamp catalogado no clipe são excluídos; VALIDATION e TEST não foram lidos."
+}

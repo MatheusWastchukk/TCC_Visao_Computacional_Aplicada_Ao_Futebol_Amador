@@ -1,0 +1,14 @@
+{
+  "experiment_id": "GOAL-EVENT-FUSION-15-30-VALIDATION-CONFIRMATION-V1",
+  "scope": "modelo e escores já congelados; confirmação única em VALIDATION",
+  "pipeline": "top 20 temporal previamente pontuado -> fusão temporal+visual -> top 12",
+  "window": {
+    "pre_seconds": 15.0,
+    "post_seconds": 30.0
+  },
+  "catalog_goals": 51,
+  "covered_goals": 18,
+  "recall_at_k": 0.35294117647058826,
+  "review_minutes_per_match": 9.0,
+  "warning": "Resultado de confirmação; não usar para selecionar nova janela, retreinar ou alterar a configuração. TEST não foi acessado."
+}

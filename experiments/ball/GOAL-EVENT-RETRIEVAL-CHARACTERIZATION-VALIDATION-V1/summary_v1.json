@@ -1,0 +1,50 @@
+{
+  "experiment_id": "GOAL-EVENT-RETRIEVAL-CHARACTERIZATION-VALIDATION-V1",
+  "scope": "somente VALIDATION; caracterização sem retreinamento",
+  "catalog_goals": 51,
+  "min_separation_seconds": 45.0,
+  "candidate_limits": [
+    1,
+    2,
+    4,
+    8,
+    12,
+    20,
+    30,
+    40,
+    50,
+    60,
+    80,
+    100
+  ],
+  "windows": {
+    "pre_10_post_20": {
+      "candidate_pool_recall": 0.8627450980392157,
+      "diverse_pool_recall": 0.6862745098039216,
+      "rank_median": 14.0,
+      "rank_p75": 26.0,
+      "rank_p90": 49.40000000000001,
+      "goal_position_percent_median": 25.887,
+      "max_candidates_in_a_match": 84
+    },
+    "pre_15_post_30": {
+      "candidate_pool_recall": 0.9803921568627451,
+      "diverse_pool_recall": 0.8823529411764706,
+      "rank_median": 20.0,
+      "rank_p75": 26.0,
+      "rank_p90": 45.800000000000004,
+      "goal_position_percent_median": 35.484,
+      "max_candidates_in_a_match": 84
+    },
+    "pre_20_post_40": {
+      "candidate_pool_recall": 0.9803921568627451,
+      "diverse_pool_recall": 0.9411764705882353,
+      "rank_median": 16.0,
+      "rank_p75": 26.0,
+      "rank_p90": 44.90000000000001,
+      "goal_position_percent_median": 33.695,
+      "max_candidates_in_a_match": 84
+    }
+  },
+  "warning": "Esta análise mede teto e trade-off sem retreinamento. TEST não foi acessado e o resultado não autoriza alterar a configuração avaliada."
+}

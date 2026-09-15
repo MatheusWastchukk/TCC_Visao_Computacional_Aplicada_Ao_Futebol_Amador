@@ -1,0 +1,20 @@
+{
+  "experiment_id": "GOAL-EVENT-GRADED-TARGET-EXP-0001",
+  "scope": "somente TRAIN; leave-one-match-out",
+  "model": "RandomForestRegressor(n_estimators=300, min_samples_leaf=2, random_state=42)",
+  "target_definition": {
+    "0-2_seconds": 1.0,
+    "2-5_seconds": 0.75,
+    "5-10_seconds": 0.4,
+    "over_10_seconds": 0.0
+  },
+  "feature_count": 36,
+  "target_counts": {
+    "0.0": 5598,
+    "0.4": 59,
+    "0.75": 41,
+    "1.0": 44
+  },
+  "median_rank_when_covered": 10.0,
+  "warning": "Hipótese B: somente o target de treino muda; nenhum dado VALIDATION ou TEST foi utilizado."
+}

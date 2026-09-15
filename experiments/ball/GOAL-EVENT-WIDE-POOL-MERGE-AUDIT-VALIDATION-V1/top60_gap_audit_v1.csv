@@ -1,0 +1,4 @@
+goal_catalog_id,match_id,goal_timestamp_seconds,classification,raw_covering_groups,best_raw_covering_rank,best_raw_covering_group_uid,best_raw_covering_timestamp_seconds,best_raw_covering_score,best_diverse_covering_rank,diversity_blocker_count,nearest_diversity_blocker_rank,nearest_diversity_blocker_timestamp_seconds,nearest_diversity_blocker_score
+match_12__catalog_goal_002,match_12,2810.408,suppressed_by_diversity,3,88,match_12::temporal_group_0121,2809.006000,0.04850299,,2,58,2834.031000,0.04982219
+match_12__catalog_goal_004,match_12,2998.596,below_top60_after_diversity,3,143,match_12::temporal_group_0130,2997.595000,0.02238981,72,1,72,2997.595000,0.02238981
+match_14__catalog_goal_003,match_14,4348.865,suppressed_by_diversity,6,62,match_14::temporal_group_0308,4349.999000,0.06413699,,2,16,4306.555000,0.11141052

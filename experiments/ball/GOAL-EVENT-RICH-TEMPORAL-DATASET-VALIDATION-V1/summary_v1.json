@@ -1,0 +1,22 @@
+{
+  "experiment_id": "GOAL-EVENT-RICH-TEMPORAL-DATASET-VALIDATION-V1",
+  "scope": "somente VALIDATION; derivado sem novos dados",
+  "groups": 1944,
+  "original_feature_count": 36,
+  "derived_trajectory_features": [
+    "trajectory_distance_delta_0_3",
+    "trajectory_score_delta_0_3",
+    "trajectory_ball_confidence_delta_0_3",
+    "trajectory_inside_delta_0_3",
+    "trajectory_distance_abs_change_sum",
+    "trajectory_score_abs_change_sum",
+    "trajectory_distance_decrease_fraction",
+    "trajectory_score_increase_fraction",
+    "trajectory_distance_slope",
+    "trajectory_score_slope",
+    "trajectory_ball_confidence_slope",
+    "trajectory_distance_min_bin",
+    "trajectory_score_max_bin"
+  ],
+  "note": "A fonte histórica conserva quatro bins normalizados; a hipótese C testa explicitamente tendências, variações e posições de pico nesses bins, mantendo todos os 5.742 grupos comparáveis."
+}

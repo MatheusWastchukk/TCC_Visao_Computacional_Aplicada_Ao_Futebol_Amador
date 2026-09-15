@@ -1,0 +1,11 @@
+{
+  "experiment_id": "GOAL-EVENT-WIDE-POOL-OOF-REDUCER-TRAIN-V1",
+  "scope": "somente TRAIN; todos os escores por partida out-of-fold",
+  "ranker": "Random Forest temporal LOMO",
+  "preselect_k": 60,
+  "visual_verifier": "ResNet18 congelada + regressão logística LOMO",
+  "fusion": "regressão logística L2 com rank_score e visual_score_goal, LOMO",
+  "candidates": 1470,
+  "candidates_with_goal": 96,
+  "warning": "Experimento de desenvolvimento; não seleciona limiar e não usa VALIDATION ou TEST."
+}

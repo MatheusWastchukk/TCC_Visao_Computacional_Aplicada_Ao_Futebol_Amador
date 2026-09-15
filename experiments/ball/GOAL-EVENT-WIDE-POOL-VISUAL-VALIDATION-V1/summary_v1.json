@@ -1,0 +1,11 @@
+{
+  "experiment_id": "GOAL-EVENT-WIDE-POOL-VISUAL-VALIDATION-V1",
+  "scope": "VALIDATION; configuração TRAIN congelada",
+  "candidates": 462,
+  "candidates_with_catalog_goal": 34,
+  "encoder": "ResNet18 ImageNet congelada",
+  "classifier": "regressão logística L2 congelada",
+  "average_precision": 0.12545548911209153,
+  "roc_auc": 0.6381253435953821,
+  "warning": "Escores descritivos sem ajuste de limiar em VALIDATION; não constituem filtro operacional binário."
+}

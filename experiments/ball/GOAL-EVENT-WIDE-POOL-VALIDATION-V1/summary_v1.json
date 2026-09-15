@@ -1,0 +1,9 @@
+{
+  "experiment_id": "GOAL-EVENT-WIDE-POOL-VALIDATION-V1",
+  "scope": "somente VALIDATION",
+  "top_k": 60,
+  "candidates": 462,
+  "matches": 8,
+  "analysis_window": "10+20",
+  "delivery_window": "20+40"
+}

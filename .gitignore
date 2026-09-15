@@ -110,6 +110,22 @@ experiments/ball/GOAL-CLIP-TEMPORAL-SEQUENCE-EXP-0001/run_v1/sequence_embeddings
 experiments/ball/GOAL-EVENT-TEMPORAL-DATASET-*/temporal_group_dataset_v1.csv
 experiments/ball/GOAL-EVENT-CANDIDATE-MINER-V1/group_ranker_lomo_*/group_predictions_lomo_v1.csv
 experiments/ball/GOAL-EVENT-TEMPORAL-RANKER-EXP-0002-predictions-v2/group_predictions_lomo_v1.csv
+# Saídas intermediárias regeneráveis dos experimentos de eventos.
+experiments/ball/**/candidate_frames_v1.csv
+experiments/ball/**/lomo_predictions_v1.csv
+experiments/ball/**/validation_predictions_v1.csv
+experiments/ball/**/temporal_group_dataset_v1.csv
+experiments/ball/**/hard_ranker_selection_v1.csv
+experiments/ball/**/ranked_groups_v1.csv
+experiments/ball/**/group_predictions_lomo_v1.csv
+experiments/ball/**/progress.json
+experiments/ball/**/status.json
+experiments/ball/**/*.stdout.log
+experiments/ball/**/*.stderr.log
+experiments/ball/GOAL-EVENT-PIPELINE-FINAL-V1/*.joblib
+experiments/ball/GOAL-EVENT-FUSION-FINAL-V1/*.joblib
+.rocm-cache/
+.rocm_cache/
 docs/figuras/overlays-v10/
 results/
 

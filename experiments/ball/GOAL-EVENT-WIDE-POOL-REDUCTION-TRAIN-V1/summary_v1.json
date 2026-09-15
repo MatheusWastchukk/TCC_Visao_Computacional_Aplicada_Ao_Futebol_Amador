@@ -1,0 +1,6 @@
+{
+  "experiment_id": "GOAL-EVENT-WIDE-POOL-REDUCTION-TRAIN-V1",
+  "scope": "somente TRAIN; pool temporal top 60 LOMO e modelos visual/fusão congelados",
+  "delivery_window": "20+40",
+  "warning": "Mede redução em desenvolvimento; não usa VALIDATION ou TEST e não treina pesos."
+}

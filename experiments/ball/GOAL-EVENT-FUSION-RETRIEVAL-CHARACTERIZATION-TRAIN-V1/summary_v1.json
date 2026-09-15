@@ -1,0 +1,7 @@
+{
+  "experiment_id": "GOAL-EVENT-FUSION-RETRIEVAL-CHARACTERIZATION-TRAIN-V1",
+  "scope": "somente TRAIN; escores de fusão out-of-fold já existentes",
+  "preselection": "top 20 do ranker temporal",
+  "note": "A avaliação muda somente a janela do clipe entregue. O visual_score foi extraído da janela original 10+20 e não foi retreinado para janelas maiores.",
+  "warning": "Sem acesso a VALIDATION ou TEST; resultados de janela maior são análise de desenvolvimento, não confirmação externa."
+}

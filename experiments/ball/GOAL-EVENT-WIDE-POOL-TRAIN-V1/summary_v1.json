@@ -1,0 +1,9 @@
+{
+  "experiment_id": "GOAL-EVENT-WIDE-POOL-TRAIN-V1",
+  "scope": "somente TRAIN; previsões LOMO",
+  "top_k": 60,
+  "candidates": 1470,
+  "matches": 25,
+  "analysis_window": "10+20",
+  "delivery_window": "20+40"
+}

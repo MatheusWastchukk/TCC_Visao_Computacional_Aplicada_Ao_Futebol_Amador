@@ -1,0 +1,50 @@
+{
+  "experiment_id": "GOAL-EVENT-RETRIEVAL-CHARACTERIZATION-TRAIN-V1",
+  "scope": "somente TRAIN; caracterização da configuração Random Forest LOMO sem retreinamento",
+  "catalog_goals": 152,
+  "min_separation_seconds": 45.0,
+  "candidate_limits": [
+    1,
+    2,
+    4,
+    8,
+    12,
+    20,
+    30,
+    40,
+    50,
+    60,
+    80,
+    100
+  ],
+  "windows": {
+    "pre_10_post_20": {
+      "candidate_pool_recall": 0.8881578947368421,
+      "diverse_pool_recall": 0.6907894736842105,
+      "rank_median": 23.0,
+      "rank_p75": 38.0,
+      "rank_p90": 54.800000000000026,
+      "goal_position_percent_median": 35.447,
+      "max_candidates_in_a_match": 93
+    },
+    "pre_15_post_30": {
+      "candidate_pool_recall": 0.9473684210526315,
+      "diverse_pool_recall": 0.8552631578947368,
+      "rank_median": 24.0,
+      "rank_p75": 37.75,
+      "rank_p90": 56.10000000000001,
+      "goal_position_percent_median": 34.8535,
+      "max_candidates_in_a_match": 93
+    },
+    "pre_20_post_40": {
+      "candidate_pool_recall": 0.9802631578947368,
+      "diverse_pool_recall": 0.9276315789473685,
+      "rank_median": 24.0,
+      "rank_p75": 39.0,
+      "rank_p90": 57.0,
+      "goal_position_percent_median": 34.833,
+      "max_candidates_in_a_match": 93
+    }
+  },
+  "warning": "Esta análise mede o teto e o trade-off de recuperação em desenvolvimento. Ela não usa VALIDATION ou TEST e não autoriza afirmar desempenho final."
+}

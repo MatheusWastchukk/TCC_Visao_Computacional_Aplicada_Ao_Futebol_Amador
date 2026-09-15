@@ -1,0 +1,21 @@
+{
+  "experiment_id": "GOAL-EVENT-PIPELINE-VALIDATION-V1",
+  "scope": "VALIDATION; configuração TRAIN congelada",
+  "ranker_model": "RandomForest 300/min_leaf=2/balanced",
+  "groups_scored": 1944,
+  "selected_candidates": 32,
+  "selected_by_match": {
+    "match_03": 4,
+    "match_05": 4,
+    "match_12": 4,
+    "match_14": 4,
+    "match_26": 4,
+    "match_30": 4,
+    "match_33": 4,
+    "match_42": 4
+  },
+  "catalog_goals_evaluable": 51,
+  "catalog_goals_covered": 10,
+  "recall_at_k": 0.19607843137254902,
+  "warning": "Resultado de VALIDATION com configuração congelada; não use para retreinar, ajustar limiares ou selecionar novo modelo."
+}
