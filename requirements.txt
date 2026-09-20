@@ -9,7 +9,9 @@ tqdm==4.69.0
 pytest==9.1.1
 ruff==0.15.22
 mypy==2.3.0
-streamlit==1.59.2
+fastapi==0.128.8
+uvicorn==0.40.0
+psutil==7.2.2
 torch==2.13.0
 torchvision==0.28.0
 torchaudio==2.11.0

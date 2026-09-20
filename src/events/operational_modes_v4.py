@@ -20,6 +20,7 @@ MODES = {
     "cobertura_reduzida": "Top 30 pela fusão e 15 complementos temporais.",
     "triagem_rapida": "Top 30 pela fusão temporal e visual.",
 }
+MAX_SEGMENT_SECONDS = 140.0
 
 
 def format_time(seconds: float) -> str:
@@ -75,13 +76,16 @@ def select_candidates(rows: Iterable[dict[str, str]], mode: str) -> list[dict[st
 
 
 def merge_candidates(rows: Iterable[dict[str, str]], mode: str) -> list[dict[str, object]]:
-    """Une intervalos sobrepostos e preserva os candidatos que formam cada segmento."""
+    """Une sobreposições, sem criar clipes extensos demais para revisão."""
     selected = select_candidates(rows, mode)
     ordered = sorted(selected, key=lambda row: float(row["delivery_start_seconds"]))
     merged: list[dict[str, object]] = []
     for candidate in ordered:
         start, end = float(candidate["delivery_start_seconds"]), float(candidate["delivery_end_seconds"])
-        if not merged or start > float(merged[-1]["end_seconds"]):
+        merged_end = float(merged[-1]["end_seconds"]) if merged else 0.0
+        merged_start = float(merged[-1]["start_seconds"]) if merged else 0.0
+        would_exceed_limit = merged and max(merged_end, end) - merged_start > MAX_SEGMENT_SECONDS
+        if not merged or start > merged_end or would_exceed_limit:
             merged.append({"start_seconds": start, "end_seconds": end, "members": [candidate]})
         else:
             merged[-1]["end_seconds"] = max(float(merged[-1]["end_seconds"]), end)

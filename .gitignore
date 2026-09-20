@@ -128,6 +128,20 @@ experiments/ball/GOAL-EVENT-FUSION-FINAL-V1/*.joblib
 .rocm_cache/
 docs/figuras/overlays-v10/
 results/
+release/
+
+# Electron/React: dependências e build são reproduzíveis a partir do lockfile.
+desktop/node_modules/
+desktop/dist/
+desktop/.vite/
+desktop/*.log
+
+# Entregas locais e artefatos visuais gerados para apresentação.
+Entrega 2/
+docs/figuras/artigo/*.png
+docs/figuras/artigo/*.jpg
+docs/figuras/artigo/*.jpeg
+docs/figuras/artigo/*.csv
 
 # Keep directory placeholders
 !**/.gitkeep
@@ -153,3 +167,5 @@ docs/README_V10.md
 experiments/datasets/ANNOTATION_GUIDE.md
 docs/analise_continuacao_experimentos_bola.md
 requirements-roboflow.txt
+docs/figuras/artigo/README.md
+docs/figuras/gerar_figuras_artigo.py

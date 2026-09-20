@@ -19,11 +19,23 @@ def read_clip_frames(video_path: Path, start: float, end: float, count: int = 8)
         raise FileNotFoundError(f"Não foi possível abrir o vídeo: {video_path}")
     frames: list[Image.Image] = []
     try:
-        for timestamp in np.linspace(start, end, count, endpoint=False):
-            capture.set(cv2.CAP_PROP_POS_MSEC, float(timestamp) * 1000.0)
+        fps = float(capture.get(cv2.CAP_PROP_FPS) or 30.0)
+        frame_count = int(capture.get(cv2.CAP_PROP_FRAME_COUNT) or 0)
+        if frame_count <= 0:
+            raise RuntimeError(f"Não foi possível obter a duração de {video_path}.")
+        last_timestamp = max(0.0, (frame_count - 2) / fps)
+        bounded_start = min(max(0.0, start), last_timestamp)
+        bounded_end = min(max(bounded_start + 1.0 / fps, end), last_timestamp)
+        for timestamp in np.linspace(bounded_start, bounded_end, count, endpoint=False):
+            target = min(float(timestamp), last_timestamp)
+            capture.set(cv2.CAP_PROP_POS_MSEC, target * 1000.0)
             ok, image = capture.read()
             if not ok or image is None:
-                raise RuntimeError(f"Não foi possível ler {video_path} em {timestamp:.3f}s.")
+                # Alguns MP4s longos falham no seek por milissegundo perto de keyframes.
+                capture.set(cv2.CAP_PROP_POS_FRAMES, min(frame_count - 2, max(0, round(target * fps))))
+                ok, image = capture.read()
+            if not ok or image is None:
+                raise RuntimeError(f"Não foi possível ler {video_path} em {target:.3f}s após tentativas de seek.")
             frames.append(Image.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB)))
     finally:
         capture.release()

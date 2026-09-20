@@ -10,6 +10,7 @@ import csv
 import json
 import math
 from collections import defaultdict
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -117,7 +118,8 @@ def predictions(result) -> list[tuple[tuple[float, float, float, float], float]]
 
 
 def collect_hits(
-    video: dict[str, str], videos_dir: Path, goal_model: YOLO, ball_model: YOLO, args: argparse.Namespace
+    video: dict[str, str], videos_dir: Path, goal_model: YOLO, ball_model: YOLO, args: argparse.Namespace,
+    progress: Callable[[int, int], None] | None = None,
 ) -> list[Hit]:
     capture = cv2.VideoCapture(str(videos_dir / video["video_filename"]))
     if not capture.isOpened():
@@ -125,13 +127,17 @@ def collect_hits(
     hits: list[Hit] = []
     try:
         fps = float(capture.get(cv2.CAP_PROP_FPS) or 30.0)
+        total_frames = max(1, int(capture.get(cv2.CAP_PROP_FRAME_COUNT) or 1))
         step = max(1, round(fps / args.analysis_fps))
+        report_interval = max(step, total_frames // 200)
         frame_index = -1
         while True:
             ok, frame = capture.read()
             if not ok:
                 break
             frame_index += 1
+            if progress and (frame_index % report_interval == 0 or frame_index + 1 >= total_frames):
+                progress(min(frame_index + 1, total_frames), total_frames)
             if frame_index % step:
                 continue
             goal_result = goal_model.predict(
@@ -218,12 +224,17 @@ def write_progress(
     )
 
 
-def main() -> int:
+def main(
+    argv: list[str] | None = None,
+    progress: Callable[[str, float], None] | None = None,
+) -> int:
     parser = argparse.ArgumentParser(
         description="Minera clipes candidatos a evento de gol exclusivamente em partidas TRAIN."
     )
-    parser.add_argument("--split-manifest", type=Path, required=True)
-    parser.add_argument("--videos-dir", type=Path, required=True)
+    parser.add_argument("--split-manifest", type=Path)
+    parser.add_argument("--videos-dir", type=Path)
+    parser.add_argument("--video-path", type=Path, help="Vídeo externo a analisar sem consultar o split.")
+    parser.add_argument("--video-id", default="video", help="Identificador local para vídeo externo.")
     parser.add_argument("--goal-model", type=Path, required=True)
     parser.add_argument("--ball-model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -243,7 +254,7 @@ def main() -> int:
     parser.add_argument("--clip-pre-seconds", type=float, default=10.0)
     parser.add_argument("--clip-post-seconds", type=float, default=20.0)
     parser.add_argument("--device", default="cpu")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     if args.analysis_fps <= 0 or args.minimum_hits < 1 or args.max_candidates_per_match < 1:
         raise ValueError("analysis-fps, minimum-hits e max-candidates-per-match devem ser positivos.")
     if args.output.exists() and any(args.output.iterdir()):
@@ -251,7 +262,15 @@ def main() -> int:
     if not args.goal_model.is_file() or not args.ball_model.is_file():
         raise FileNotFoundError("Os pesos informados para estrutura do gol e bola devem existir.")
 
-    videos = load_videos(args.split_manifest, args.videos_dir, args.include_matches, args.expected_split)
+    if args.video_path:
+        if not args.video_path.is_file():
+            raise FileNotFoundError(args.video_path)
+        args.videos_dir = args.video_path.parent
+        videos = [{"match_id": args.video_id, "video_filename": args.video_path.name, "split": "external"}]
+    else:
+        if not args.split_manifest or not args.videos_dir:
+            raise ValueError("Informe --video-path ou --split-manifest com --videos-dir.")
+        videos = load_videos(args.split_manifest, args.videos_dir, args.include_matches, args.expected_split)
     args.output.mkdir(parents=True, exist_ok=False)
     write_progress(args.output, "running", [], {}, 0)
     goal_model, ball_model = YOLO(str(args.goal_model)), YOLO(str(args.ball_model))
@@ -259,9 +278,14 @@ def main() -> int:
     all_event_rows: list[dict[str, str]] = []
     summary_by_match: dict[str, dict[str, int]] = defaultdict(lambda: {"hits": 0, "groups": 0, "selected": 0})
     processed_matches: list[str] = []
-    for video in videos:
+    for video_index, video in enumerate(videos):
         print(f"Iniciando: {video['match_id']}", flush=True)
-        hits = collect_hits(video, args.videos_dir, goal_model, ball_model, args)
+        def report_frames(current: int, total: int, index: int = video_index) -> None:
+            if progress:
+                completed = (index + current / total) / len(videos)
+                progress("Mineração de candidatos", 70.0 * completed)
+
+        hits = collect_hits(video, args.videos_dir, goal_model, ball_model, args, report_frames)
         groups = group_hits(hits, args.merge_gap_seconds, args.minimum_hits)
         selected = select_diverse_groups(groups, args)
         summary_by_match[video["match_id"]] = {"hits": len(hits), "groups": len(groups), "selected": len(selected)}
@@ -317,7 +341,10 @@ def main() -> int:
         "by_match": summary_by_match,
         "warning": "Gerador de hipóteses; não mede desempenho final nem confirma gol.",
     }
-    (args.output / "metrics.json").write_text(json.dumps(metrics, ensure_ascii=False, indent=2, default=dict) + "\n", encoding="utf-8")
+    (args.output / "metrics.json").write_text(
+        json.dumps(metrics, ensure_ascii=False, indent=2, default=str) + "\n",
+        encoding="utf-8",
+    )
     write_progress(args.output, "completed", processed_matches, summary_by_match, len(all_event_rows))
     print(json.dumps({"candidate_events": len(all_event_rows), "output": str(args.output)}, ensure_ascii=False))
     return 0
