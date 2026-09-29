@@ -1,0 +1,36 @@
+{
+  "experiment_id": "GOAL-EVENT-WINDOW-COMPRESSION-TRAIN-V1",
+  "scope": "TRAIN only; temporal, visual and fusion scores are LOMO; TEST not accessed",
+  "candidate_rows": 5742,
+  "matches": 25,
+  "catalog_goals": 152,
+  "window_contract": {
+    "30": {
+      "pre_seconds": 10.0,
+      "post_seconds": 20.0
+    },
+    "40": {
+      "pre_seconds": 13.333333333333334,
+      "post_seconds": 26.666666666666668
+    },
+    "45": {
+      "pre_seconds": 15.0,
+      "post_seconds": 30.0
+    },
+    "60": {
+      "pre_seconds": 20.0,
+      "post_seconds": 40.0
+    }
+  },
+  "selection": "rankings fixed; gap45 for temporal/visual/fusion/RRF; fixed RRF NMS IoU0.10 for NMS policy; no score refit",
+  "candidate_limits": [
+    20,
+    30,
+    40,
+    50,
+    60,
+    80,
+    100
+  ],
+  "warning": "TRAIN/LOMO exploratory compression sweep only; no VALIDATION or TEST used to choose a rule."
+}

@@ -1,0 +1,25 @@
+{
+  "experiment_id": "run_v2",
+  "scope": "TRAIN only; TEST closed",
+  "sample_count": 400,
+  "strata": {
+    "audited_miss": 144,
+    "easy_goal_control": 144,
+    "weak_negative_control": 112
+  },
+  "unique_frames": 400,
+  "unique_matches": 25,
+  "sampling": {
+    "miss_frames_per_goal": 12,
+    "easy_positive_goals": 24,
+    "frames_per_easy_goal": 6,
+    "weak_negative_controls": 112,
+    "sequence_sampling": "4 bursts x 3 consecutive analysis frames at 5 FPS around each audited miss; 2 bursts x 3 frames for each easy goal control",
+    "weak_negative_definition": "weak_label=0 and more than 60 s from every TRAIN catalog goal; not human ground truth",
+    "random_seed": 20260925
+  },
+  "annotation_required": [
+    "tight box around the real ball, or BALL_NOT_VISIBLE/UNCERTAIN",
+    "optional scene tags"
+  ]
+}

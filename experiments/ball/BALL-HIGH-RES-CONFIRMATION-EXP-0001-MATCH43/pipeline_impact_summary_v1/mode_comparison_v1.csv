@@ -1,0 +1,10 @@
+variant,mode,raw_hits,temporal_groups,selected_groups_max60,wide_pool_size,candidate_pool_goal_recall,goals_total,selected_candidate_count,selected_goal_recall,segment_count,segment_goal_recall,unique_review_seconds
+global_960,alta_cobertura,9305,199,60,60,4,4,60,4,49,4,3503.759
+global_960,cobertura_reduzida,9305,199,60,60,4,4,45,3,38,3,2636.354
+global_960,triagem_rapida,9305,199,60,60,4,4,30,2,26,2,1759.399
+global_1536,alta_cobertura,6665,275,60,60,3,4,60,3,47,3,3489.27
+global_1536,cobertura_reduzida,6665,275,60,60,3,4,45,0,39,0,2648.709
+global_1536,triagem_rapida,6665,275,60,60,3,4,30,0,28,0,1783.303
+hybrid_960_roi_1536,alta_cobertura,15403,190,60,60,4,4,60,4,51,4,3522.261
+hybrid_960_roi_1536,cobertura_reduzida,15403,190,60,60,4,4,45,2,43,2,2686.906
+hybrid_960_roi_1536,triagem_rapida,15403,190,60,60,4,4,30,1,30,1,1800.0

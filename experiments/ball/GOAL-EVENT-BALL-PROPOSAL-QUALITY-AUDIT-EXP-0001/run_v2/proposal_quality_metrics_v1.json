@@ -1,0 +1,62 @@
+{
+  "experiment_id": "run_v2",
+  "scope": "TRAIN only; manually annotated frames; TEST closed",
+  "matching": {
+    "primary_iou_threshold": 0.5,
+    "secondary_iou_threshold": 0.3,
+    "false_proposal_rule": "all proposals when BALL_NOT_VISIBLE; for visible frames subtract at most one matching proposal at IoU>=0.5",
+    "uncertain_frames": "excluded from recall and false-proposal means"
+  },
+  "overall": {
+    "annotated_frames": 400,
+    "visible_frames": 298,
+    "not_visible_frames": 102,
+    "uncertain_frames": 0,
+    "proposal_recall_iou30": 0.5704697986577181,
+    "proposal_recall_iou50": 0.2684563758389262,
+    "mean_false_proposals_per_evaluable_frame": 1.995,
+    "confidence_rank1_share_among_matched_iou50": 0.85,
+    "sequence_count": 96,
+    "fully_covered_sequences": 1
+  },
+  "by_stratum": [
+    {
+      "source_stratum": "audited_miss",
+      "annotated_frames": 144,
+      "visible_frames": 104,
+      "not_visible_frames": 40,
+      "uncertain_frames": 0,
+      "proposal_recall_iou30": "0.461538",
+      "proposal_recall_iou50": "0.086538",
+      "mean_false_proposals_per_evaluable_frame": "1.902778",
+      "mean_ball_proposals_per_frame": "1.965278"
+    },
+    {
+      "source_stratum": "easy_goal_control",
+      "annotated_frames": 144,
+      "visible_frames": 99,
+      "not_visible_frames": 45,
+      "uncertain_frames": 0,
+      "proposal_recall_iou30": "0.444444",
+      "proposal_recall_iou50": "0.191919",
+      "mean_false_proposals_per_evaluable_frame": "1.618056",
+      "mean_ball_proposals_per_frame": "1.750000"
+    },
+    {
+      "source_stratum": "weak_negative_control",
+      "annotated_frames": 112,
+      "visible_frames": 95,
+      "not_visible_frames": 17,
+      "uncertain_frames": 0,
+      "proposal_recall_iou30": "0.821053",
+      "proposal_recall_iou50": "0.547368",
+      "mean_false_proposals_per_evaluable_frame": "2.598214",
+      "mean_ball_proposals_per_frame": "3.062500"
+    }
+  ],
+  "limitations": [
+    "Manual labels cover a stratified sample, not full videos.",
+    "The 112 weak-negative controls are not human-confirmed goal negatives; ball visibility is annotated independently.",
+    "Temporal pair coverage measures only 3-frame bursts sampled at approximately 5 FPS, not full-lance tracking."
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "status": "completed",
+  "scope": "one new external match; 400 preselected and manually annotated frames; stratified exploratory confirmation, not a multi-match estimate",
+  "split": "external_confirmation",
+  "match_id": "match_43",
+  "device": "cuda:0",
+  "gpu": "AMD Radeon RX 9060 XT",
+  "torch": "2.9.1+rocm7.2.1",
+  "hip": "7.2.53211-158bd99533",
+  "label_counts": {
+    "positive_visible_or_partial": 258,
+    "not_visible": 142,
+    "uncertain_excluded": 0
+  },
+  "models": {
+    "ball": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt",
+    "goal": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\runs\\detect\\experiments\\goal_geometry\\EXP-0092\\yolo11n_cpu_reference\\weights\\best.pt"
+  },
+  "frozen_parameters": {
+    "ball_confidence": 0.05,
+    "goal_confidence": 0.25,
+    "goal_imgsz": 640,
+    "ball_global_imgsz": [
+      960,
+      1536
+    ],
+    "roi_lateral_goal_widths": 2.0,
+    "roi_above_goal_heights": 3.0,
+    "roi_below_goal_heights": 2.0,
+    "hybrid_cross_source_dedup_iou": 0.5
+  },
+  "runtime_seconds_synchronized_inference_only": {
+    "goal_640": 12.788173800010554,
+    "ball_global_960": 8.48306850001245,
+    "ball_global_1536": 11.574976800067816,
+    "ball_roi_1536": 30.071533500060468
+  },
+  "gpu_failure_before_cpu_fallback": null,
+  "by_mode": {
+    "global_960": {
+      "annotated_frames": 400,
+      "visible_or_partial_frames": 258,
+      "not_visible_frames": 142,
+      "uncertain_frames_excluded": 0,
+      "proposal_recall_iou30": 0.3372093023255814,
+      "proposal_recall_iou50": 0.2441860465116279,
+      "mean_false_proposals_per_evaluable_frame": 1.0675,
+      "rank1_share_among_iou50_matches": 0.6666666666666666,
+      "by_stratum": {
+        "goal_window": {
+          "visible_or_partial_frames": 206,
+          "hit_iou50": 48,
+          "proposal_recall_iou50": 0.23300970873786409
+        },
+        "background_control": {
+          "visible_or_partial_frames": 52,
+          "hit_iou50": 15,
+          "proposal_recall_iou50": 0.28846153846153844
+        }
+      },
+      "goal_window_temporal_pairs": {
+        "both_adjacent_frames_hit_iou50": 17,
+        "evaluable_pairs": 175,
+        "coverage": 0.09714285714285714
+      }
+    },
+    "global_1536": {
+      "annotated_frames": 400,
+      "visible_or_partial_frames": 258,
+      "not_visible_frames": 142,
+      "uncertain_frames_excluded": 0,
+      "proposal_recall_iou30": 0.2248062015503876,
+      "proposal_recall_iou50": 0.18604651162790697,
+      "mean_false_proposals_per_evaluable_frame": 0.6175,
+      "rank1_share_among_iou50_matches": 0.8125,
+      "by_stratum": {
+        "goal_window": {
+          "visible_or_partial_frames": 206,
+          "hit_iou50": 33,
+          "proposal_recall_iou50": 0.16019417475728157
+        },
+        "background_control": {
+          "visible_or_partial_frames": 52,
+          "hit_iou50": 15,
+          "proposal_recall_iou50": 0.28846153846153844
+        }
+      },
+      "goal_window_temporal_pairs": {
+        "both_adjacent_frames_hit_iou50": 5,
+        "evaluable_pairs": 175,
+        "coverage": 0.02857142857142857
+      }
+    },
+    "roi_1536": {
+      "annotated_frames": 400,
+      "visible_or_partial_frames": 258,
+      "not_visible_frames": 142,
+      "uncertain_frames_excluded": 0,
+      "proposal_recall_iou30": 0.10077519379844961,
+      "proposal_recall_iou50": 0.07751937984496124,
+      "mean_false_proposals_per_evaluable_frame": 0.2475,
+      "rank1_share_among_iou50_matches": 0.8,
+      "by_stratum": {
+        "goal_window": {
+          "visible_or_partial_frames": 206,
+          "hit_iou50": 18,
+          "proposal_recall_iou50": 0.08737864077669903
+        },
+        "background_control": {
+          "visible_or_partial_frames": 52,
+          "hit_iou50": 2,
+          "proposal_recall_iou50": 0.038461538461538464
+        }
+      },
+      "goal_window_temporal_pairs": {
+        "both_adjacent_frames_hit_iou50": 5,
+        "evaluable_pairs": 175,
+        "coverage": 0.02857142857142857
+      }
+    },
+    "hybrid_960_roi_1536": {
+      "annotated_frames": 400,
+      "visible_or_partial_frames": 258,
+      "not_visible_frames": 142,
+      "uncertain_frames_excluded": 0,
+      "proposal_recall_iou30": 0.39147286821705424,
+      "proposal_recall_iou50": 0.2868217054263566,
+      "mean_false_proposals_per_evaluable_frame": 1.1,
+      "rank1_share_among_iou50_matches": 0.6621621621621622,
+      "by_stratum": {
+        "goal_window": {
+          "visible_or_partial_frames": 206,
+          "hit_iou50": 59,
+          "proposal_recall_iou50": 0.28640776699029125
+        },
+        "background_control": {
+          "visible_or_partial_frames": 52,
+          "hit_iou50": 15,
+          "proposal_recall_iou50": 0.28846153846153844
+        }
+      },
+      "goal_window_temporal_pairs": {
+        "both_adjacent_frames_hit_iou50": 21,
+        "evaluable_pairs": 175,
+        "coverage": 0.12
+      }
+    }
+  },
+  "limitations": [
+    "One match only; event windows are enriched around four catalogued difficult goals, with 80 stratified background controls.",
+    "Ball boxes are manual; partial balls use the visible-region box and are included as positives.",
+    "ROI D and its dimensions were chosen during earlier TRAIN analysis; ROI results here are a new-match diagnostic, not independently selected.",
+    "This is frame proposal quality, not full pipeline candidate recall, Recall@K, or review minutes.",
+    "TEST was not accessed. No training, threshold tuning, or checkpoint selection occurred."
+  ]
+}

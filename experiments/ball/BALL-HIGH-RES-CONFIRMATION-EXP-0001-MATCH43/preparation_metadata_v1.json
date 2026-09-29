@@ -1,0 +1,23 @@
+{
+  "status": "prepared_for_blind_manual_annotation",
+  "match_id": "match_43",
+  "video": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\data\\Videos_Edited\\Match_43.mp4",
+  "video_size_bytes": 1780091175,
+  "fps": 29.97002997002997,
+  "frame_count": 155887,
+  "width": 1920,
+  "height": 1080,
+  "duration_seconds": 5201.429566666667,
+  "catalogued_goal_times_seconds": [
+    3422.0,
+    3546.0,
+    3841.0,
+    3930.0
+  ],
+  "sample_count": 400,
+  "goal_window_frames": 320,
+  "background_control_frames": 80,
+  "seed": 430926,
+  "test_accessed": false,
+  "warning": "Annotate every frame before loading/running any detector. Match 43 is an external match-level confirmation relative to existing TRAIN/VALIDATION, conditional on confirming this video was not used elsewhere."
+}

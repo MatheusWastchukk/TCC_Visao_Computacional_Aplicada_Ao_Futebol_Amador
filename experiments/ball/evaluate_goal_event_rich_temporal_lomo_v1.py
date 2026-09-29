@@ -51,7 +51,8 @@ def main() -> int:
     rows, fields = read_csv(args.dataset)
     excluded = {"group_uid", "match_id", "best_timestamp_seconds", "weak_label"}
     feature_names = [field for field in fields if field not in excluded]
-    if not any(name.startswith("trajectory_") for name in feature_names):
+    trajectory_features = [name for name in feature_names if name.startswith(("trajectory_", "local_trajectory_"))]
+    if not trajectory_features:
         raise ValueError("O dataset não contém atributos enriquecidos de trajetória.")
     catalog, _ = read_csv(args.goal_timestamps)
     if any(row["split"] != "train" for row in catalog):
@@ -95,7 +96,8 @@ def main() -> int:
         "scope": "somente TRAIN; leave-one-match-out",
         "model": "RandomForestClassifier(n_estimators=300, min_samples_leaf=2, class_weight=balanced, random_state=42)",
         "feature_count": len(feature_names),
-        "trajectory_feature_count": sum(name.startswith("trajectory_") for name in feature_names),
+        "trajectory_feature_count": len(trajectory_features),
+        "experimental_evidence_feature_count": sum(name.startswith(("local_trajectory_", "shot_")) for name in feature_names),
         "median_rank_when_covered": float(np.median(numeric_ranks)) if numeric_ranks else None,
         "warning": "Hipótese C: apenas a representação de trajetória muda; nenhum dado VALIDATION ou TEST foi utilizado.",
     }

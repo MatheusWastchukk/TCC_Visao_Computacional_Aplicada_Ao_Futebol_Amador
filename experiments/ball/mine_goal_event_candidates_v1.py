@@ -117,6 +117,25 @@ def predictions(result) -> list[tuple[tuple[float, float, float, float], float]]
     ]
 
 
+def box_iou(first: tuple[float, float, float, float], second: tuple[float, float, float, float]) -> float:
+    x1, y1 = max(first[0], second[0]), max(first[1], second[1])
+    x2, y2 = min(first[2], second[2]), min(first[3], second[3])
+    intersection = max(0.0, x2-x1) * max(0.0, y2-y1)
+    area_first = max(0.0, first[2]-first[0]) * max(0.0, first[3]-first[1])
+    area_second = max(0.0, second[2]-second[0]) * max(0.0, second[3]-second[1])
+    return intersection / max(1e-12, area_first + area_second - intersection)
+
+
+def deduplicate_ball_predictions(
+    proposals: list[tuple[tuple[float, float, float, float], float]], threshold: float = 0.5,
+) -> list[tuple[tuple[float, float, float, float], float]]:
+    kept: list[tuple[tuple[float, float, float, float], float]] = []
+    for proposal in sorted(proposals, key=lambda item: -item[1]):
+        if not any(box_iou(proposal[0], previous[0]) >= threshold for previous in kept):
+            kept.append(proposal)
+    return kept
+
+
 def collect_hits(
     video: dict[str, str], videos_dir: Path, goal_model: YOLO, ball_model: YOLO, args: argparse.Namespace,
     progress: Callable[[int, int], None] | None = None,
@@ -130,6 +149,7 @@ def collect_hits(
         total_frames = max(1, int(capture.get(cv2.CAP_PROP_FRAME_COUNT) or 1))
         step = max(1, round(fps / args.analysis_fps))
         report_interval = max(step, total_frames // 200)
+        last_console_progress = -1
         frame_index = -1
         while True:
             ok, frame = capture.read()
@@ -138,6 +158,11 @@ def collect_hits(
             frame_index += 1
             if progress and (frame_index % report_interval == 0 or frame_index + 1 >= total_frames):
                 progress(min(frame_index + 1, total_frames), total_frames)
+            elif not progress and (frame_index % report_interval == 0 or frame_index + 1 >= total_frames):
+                percent = int(100 * min(frame_index + 1, total_frames) / total_frames)
+                if percent >= last_console_progress + 5:
+                    print(f"{video['match_id']}: {percent}% do vídeo analisado", flush=True)
+                    last_console_progress = percent
             if frame_index % step:
                 continue
             goal_result = goal_model.predict(
@@ -152,6 +177,26 @@ def collect_hits(
                 device=args.device, verbose=False,
             )[0]
             ball_predictions = predictions(ball_result)
+            if args.roi_imgsz is not None:
+                height, width = frame.shape[:2]
+                goal_box, _ = max(goal_predictions, key=lambda item: item[1])
+                goal_width = max(1.0, goal_box[2]-goal_box[0])
+                goal_height = max(1.0, goal_box[3]-goal_box[1])
+                left = max(0, int(goal_box[0] - args.roi_lateral_goal_widths * goal_width))
+                top = max(0, int(goal_box[1] - args.roi_above_goal_heights * goal_height))
+                right = min(width, int(goal_box[2] + args.roi_lateral_goal_widths * goal_width))
+                bottom = min(height, int(goal_box[3] + args.roi_below_goal_heights * goal_height))
+                if right > left and bottom > top:
+                    crop_result = ball_model.predict(
+                        source=frame[top:bottom, left:right], conf=args.ball_confidence,
+                        imgsz=args.roi_imgsz, device=args.device, verbose=False,
+                    )[0]
+                    crop_predictions = predictions(crop_result)
+                    ball_predictions.extend((
+                        ((box[0]+left, box[1]+top, box[2]+left, box[3]+top), confidence)
+                        for box, confidence in crop_predictions
+                    ))
+                    ball_predictions = deduplicate_ball_predictions(ball_predictions)
             for ball_box, ball_confidence in ball_predictions:
                 ball_center = box_center(ball_box)
                 nearest_goal, goal_confidence = min(
@@ -239,12 +284,16 @@ def main(
     parser.add_argument("--ball-model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--include-matches", nargs="+", default=None)
-    parser.add_argument("--expected-split", choices=["train", "validation"], default="train")
+    parser.add_argument("--expected-split", choices=["train", "validation", "external"], default="train")
     parser.add_argument("--analysis-fps", type=float, default=5.0)
     parser.add_argument("--goal-confidence", type=float, default=0.25)
     parser.add_argument("--ball-confidence", type=float, default=0.05)
     parser.add_argument("--goal-imgsz", type=int, default=640)
     parser.add_argument("--ball-imgsz", type=int, default=960)
+    parser.add_argument("--roi-imgsz", type=int, default=None, help="Ativa crop BALL de alta resolução a partir da proposta GOAL de maior confiança.")
+    parser.add_argument("--roi-lateral-goal-widths", type=float, default=2.0)
+    parser.add_argument("--roi-above-goal-heights", type=float, default=3.0)
+    parser.add_argument("--roi-below-goal-heights", type=float, default=2.0)
     parser.add_argument("--goal-margin", type=float, default=0.35)
     parser.add_argument("--max-normalized-distance", type=float, default=2.0)
     parser.add_argument("--merge-gap-seconds", type=float, default=3.0)
@@ -280,10 +329,16 @@ def main(
     processed_matches: list[str] = []
     for video_index, video in enumerate(videos):
         print(f"Iniciando: {video['match_id']}", flush=True)
+        last_console_progress = [-1]
         def report_frames(current: int, total: int, index: int = video_index) -> None:
             if progress:
                 completed = (index + current / total) / len(videos)
                 progress("Mineração de candidatos", 70.0 * completed)
+            else:
+                percent = int(100 * current / max(1, total))
+                if percent >= last_console_progress[0] + 5:
+                    print(f"{video['match_id']}: {percent}% do vídeo analisado", flush=True)
+                    last_console_progress[0] = percent
 
         hits = collect_hits(video, args.videos_dir, goal_model, ball_model, args, report_frames)
         groups = group_hits(hits, args.merge_gap_seconds, args.minimum_hits)
@@ -308,7 +363,7 @@ def main(
                 "source_file": "mine_goal_event_candidates_v1.py",
                 "source_interval_id": f"{video['match_id']}_{best.frame_index}",
                 "source_interval_label": "bola_proxima_estrutura_gol",
-                "match_id": video["match_id"], "video_filename": video["video_filename"], "split": args.expected_split,
+                "match_id": video["match_id"], "video_filename": video["video_filename"], "split": video.get("split", args.expected_split),
                 "event_timestamp_seconds": f"{best.timestamp:.3f}", "event_time_hhmmss": format_time(best.timestamp),
                 "ground_truth": "", "ball_visible": "", "goal_visible": "", "spatial_candidate": "True",
                 "relative_motion_valid": "", "identity_stable": "", "center_visible_after": "",

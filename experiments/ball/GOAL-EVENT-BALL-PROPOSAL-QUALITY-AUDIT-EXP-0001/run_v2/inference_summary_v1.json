@@ -1,0 +1,45 @@
+{
+  "frames": 400,
+  "detections": 1351,
+  "ball_proposals_by_stratum": {
+    "audited_miss": {
+      "frames": 144,
+      "frames_no_ball_proposal": 30,
+      "mean_proposals_per_frame": 1.9652777777777777,
+      "median_proposals_per_frame": 2,
+      "frames_5plus": 12
+    },
+    "easy_goal_control": {
+      "frames": 144,
+      "frames_no_ball_proposal": 42,
+      "mean_proposals_per_frame": 1.75,
+      "median_proposals_per_frame": 1,
+      "frames_5plus": 9
+    },
+    "weak_negative_control": {
+      "frames": 112,
+      "frames_no_ball_proposal": 2,
+      "mean_proposals_per_frame": 3.0625,
+      "median_proposals_per_frame": 3,
+      "frames_5plus": 20
+    }
+  },
+  "runtime": {
+    "backend": "ROCm/PyTorch",
+    "device": "cuda:0",
+    "gpu": "AMD Radeon RX 9060 XT",
+    "torch": "2.9.1+rocm7.2.1",
+    "goal_model": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\runs\\detect\\experiments\\goal_geometry\\EXP-0092\\yolo11n_cpu_reference\\weights\\best.pt",
+    "ball_model": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt",
+    "goal_confidence": 0.25,
+    "ball_confidence": 0.05,
+    "goal_imgsz": 640,
+    "ball_imgsz": 960,
+    "sampling": "fixed TRAIN-only manifest; every sampled frame is scored even if no GOAL or BALL proposal exists"
+  },
+  "progress": {
+    "status": "completed",
+    "completed_frames": 400,
+    "total_frames": 400
+  }
+}

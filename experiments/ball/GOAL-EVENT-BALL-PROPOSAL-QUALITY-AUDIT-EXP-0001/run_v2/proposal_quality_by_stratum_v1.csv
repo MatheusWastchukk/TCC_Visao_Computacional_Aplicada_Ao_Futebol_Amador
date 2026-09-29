@@ -1,0 +1,4 @@
+source_stratum,annotated_frames,visible_frames,not_visible_frames,uncertain_frames,proposal_recall_iou30,proposal_recall_iou50,mean_false_proposals_per_evaluable_frame,mean_ball_proposals_per_frame
+audited_miss,144,104,40,0,0.461538,0.086538,1.902778,1.965278
+easy_goal_control,144,99,45,0,0.444444,0.191919,1.618056,1.750000
+weak_negative_control,112,95,17,0,0.821053,0.547368,2.598214,3.062500

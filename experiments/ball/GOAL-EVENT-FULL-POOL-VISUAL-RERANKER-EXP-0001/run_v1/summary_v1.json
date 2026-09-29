@@ -1,0 +1,11 @@
+{
+  "experiment_id": "run_v1",
+  "scope": "somente TRAIN; todos os escores por partida out-of-fold",
+  "ranker": "Random Forest temporal LOMO",
+  "preselect_k": 6000,
+  "visual_verifier": "ResNet18 congelada + regressão logística LOMO",
+  "fusion": "regressão logística L2 com rank_score e visual_score_goal, LOMO",
+  "candidates": 5742,
+  "candidates_with_goal": 195,
+  "warning": "Experimento de desenvolvimento; não seleciona limiar e não usa VALIDATION ou TEST."
+}

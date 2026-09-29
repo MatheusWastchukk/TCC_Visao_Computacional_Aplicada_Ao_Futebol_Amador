@@ -1,0 +1,9 @@
+method,k_per_match,catalog_goals,covered_goals,recall,selected_candidates,unique_review_minutes_per_match
+local_trajectory_baseline,20,51,27,0.529412,160,19.812
+local_trajectory_baseline,40,51,39,0.764706,320,38.966
+local_trajectory_baseline,60,51,45,0.882353,465,56.190
+local_trajectory_baseline,100,51,48,0.941176,609,72.115
+all_four_frozen,20,51,25,0.490196,160,19.850
+all_four_frozen,40,51,40,0.784314,320,38.959
+all_four_frozen,60,51,47,0.921569,464,56.163
+all_four_frozen,100,51,48,0.941176,605,71.787

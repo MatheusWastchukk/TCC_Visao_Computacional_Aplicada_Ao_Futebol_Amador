@@ -1,0 +1,137 @@
+{
+  "status": "completed",
+  "scope": "exploratory TRAIN pilot; reuses 400 frames selected and annotated before this pilot; TEST closed",
+  "model": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt",
+  "confidence": 0.05,
+  "device": "cuda:0",
+  "gpu": "AMD Radeon RX 9060 XT",
+  "torch": "2.9.1+rocm7.2.1",
+  "hip": "7.2.53211-158bd99533",
+  "roi": {
+    "source": "top-confidence GOAL box from frozen run_v2",
+    "confidence": 0.25,
+    "imgsz": 640,
+    "lateral_goal_widths": 2.0,
+    "above_goal_heights": 3.0,
+    "below_goal_heights": 2.0
+  },
+  "runtime_seconds": {
+    "global_960": 16.19769269961398,
+    "global_1536": 11.937845501699485,
+    "roi_1536": 30.912839099415578
+  },
+  "gpu_failure_before_cpu_fallback": null,
+  "deduplication": "hybrid proposal union uses confidence-sorted cross-source IoU suppression at 0.5",
+  "by_mode": {
+    "global_960": {
+      "all_frames": 400,
+      "visible_frames": 298,
+      "not_visible_frames": 102,
+      "proposal_recall_iou30": 0.5805369127516778,
+      "proposal_recall_iou50": 0.2684563758389262,
+      "mean_false_proposals_per_frame": 2.0025,
+      "rank1_share_among_iou50_matches": 0.85,
+      "by_stratum": {
+        "audited_miss": {
+          "visible_frames": 104,
+          "hit_iou50": 9,
+          "proposal_recall_iou50": 0.08653846153846154
+        },
+        "easy_goal_control": {
+          "visible_frames": 99,
+          "hit_iou50": 19,
+          "proposal_recall_iou50": 0.1919191919191919
+        },
+        "weak_negative_control": {
+          "visible_frames": 95,
+          "hit_iou50": 52,
+          "proposal_recall_iou50": 0.5473684210526316
+        }
+      }
+    },
+    "global_1536": {
+      "all_frames": 400,
+      "visible_frames": 298,
+      "not_visible_frames": 102,
+      "proposal_recall_iou30": 0.6610738255033557,
+      "proposal_recall_iou50": 0.38926174496644295,
+      "mean_false_proposals_per_frame": 2.025,
+      "rank1_share_among_iou50_matches": 0.8189655172413793,
+      "by_stratum": {
+        "audited_miss": {
+          "visible_frames": 104,
+          "hit_iou50": 23,
+          "proposal_recall_iou50": 0.22115384615384615
+        },
+        "easy_goal_control": {
+          "visible_frames": 99,
+          "hit_iou50": 31,
+          "proposal_recall_iou50": 0.31313131313131315
+        },
+        "weak_negative_control": {
+          "visible_frames": 95,
+          "hit_iou50": 62,
+          "proposal_recall_iou50": 0.6526315789473685
+        }
+      }
+    },
+    "roi_1536": {
+      "all_frames": 400,
+      "visible_frames": 298,
+      "not_visible_frames": 102,
+      "proposal_recall_iou30": 0.38926174496644295,
+      "proposal_recall_iou50": 0.27181208053691275,
+      "mean_false_proposals_per_frame": 1.15,
+      "rank1_share_among_iou50_matches": 0.8888888888888888,
+      "by_stratum": {
+        "audited_miss": {
+          "visible_frames": 104,
+          "hit_iou50": 7,
+          "proposal_recall_iou50": 0.0673076923076923
+        },
+        "easy_goal_control": {
+          "visible_frames": 99,
+          "hit_iou50": 32,
+          "proposal_recall_iou50": 0.32323232323232326
+        },
+        "weak_negative_control": {
+          "visible_frames": 95,
+          "hit_iou50": 42,
+          "proposal_recall_iou50": 0.4421052631578947
+        }
+      }
+    },
+    "hybrid_960_roi_1536": {
+      "all_frames": 400,
+      "visible_frames": 298,
+      "not_visible_frames": 102,
+      "proposal_recall_iou30": 0.6140939597315436,
+      "proposal_recall_iou50": 0.33557046979865773,
+      "mean_false_proposals_per_frame": 2.0225,
+      "rank1_share_among_iou50_matches": 0.74,
+      "by_stratum": {
+        "audited_miss": {
+          "visible_frames": 104,
+          "hit_iou50": 12,
+          "proposal_recall_iou50": 0.11538461538461539
+        },
+        "easy_goal_control": {
+          "visible_frames": 99,
+          "hit_iou50": 34,
+          "proposal_recall_iou50": 0.3434343434343434
+        },
+        "weak_negative_control": {
+          "visible_frames": 95,
+          "hit_iou50": 54,
+          "proposal_recall_iou50": 0.5684210526315789
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The 400 frames were reused after selecting 1536 and ROI dimensions; this is not independent confirmation.",
+    "ROI D was selected from geometric coverage on the same annotations; ROI findings are exploratory and selection-biased.",
+    "GOAL boxes are frozen detector proposals; a missing GOAL box yields no ROI proposal.",
+    "This frame-level pilot does not measure full-pipeline candidate recall, Recall@K or review minutes."
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "status": "completed",
+  "scope": "TRAIN-only diagnostic; reuses the 400 manually annotated frames; TEST closed",
+  "model": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt",
+  "confidence": 0.05,
+  "device": "cuda:0",
+  "gpu": "AMD Radeon RX 9060 XT",
+  "torch": "2.9.1+rocm7.2.1",
+  "miopen_user_db_path": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-BALL-PROPOSAL-QUALITY-AUDIT-EXP-0001\\miopen_workspace_cache_v1\\user_db",
+  "miopen_custom_cache_dir": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-BALL-PROPOSAL-QUALITY-AUDIT-EXP-0001\\miopen_workspace_cache_v1\\kernel_cache",
+  "imgsz_values": [
+    960,
+    1280,
+    1536
+  ],
+  "runtime": {
+    "inference_seconds_by_imgsz": {
+      "960": 15.918584900326096,
+      "1280": 10.537739798775874,
+      "1536": 13.306974898674525
+    },
+    "total_inference_seconds": 39.763299597776495,
+    "mean_seconds_per_frame_all_sizes": 0.09940824899444124
+  },
+  "by_imgsz": {
+    "960": {
+      "annotated_frames": 400,
+      "visible_frames": 298,
+      "proposal_recall_iou30": 0.5704697986577181,
+      "proposal_recall_iou50": 0.2684563758389262,
+      "mean_false_proposals_per_evaluable_frame": 1.995,
+      "mean_proposals_per_frame": 2.195,
+      "rank1_share_among_iou50_matches": 0.85,
+      "by_stratum": {
+        "audited_miss": {
+          "visible_frames": 104,
+          "hit_iou30": 48,
+          "hit_iou50": 9,
+          "proposal_recall_iou50": 0.08653846153846154
+        },
+        "easy_goal_control": {
+          "visible_frames": 99,
+          "hit_iou30": 44,
+          "hit_iou50": 19,
+          "proposal_recall_iou50": 0.1919191919191919
+        },
+        "weak_negative_control": {
+          "visible_frames": 95,
+          "hit_iou30": 78,
+          "hit_iou50": 52,
+          "proposal_recall_iou50": 0.5473684210526316
+        }
+      },
+      "adjacent_pairs_both_hit_iou50": 8,
+      "adjacent_pairs_evaluable": 118,
+      "adjacent_pair_coverage_iou50": 0.06779661016949153
+    },
+    "1280": {
+      "annotated_frames": 400,
+      "visible_frames": 298,
+      "proposal_recall_iou30": 0.6442953020134228,
+      "proposal_recall_iou50": 0.3691275167785235,
+      "mean_false_proposals_per_evaluable_frame": 1.9975,
+      "mean_proposals_per_frame": 2.2725,
+      "rank1_share_among_iou50_matches": 0.8727272727272727,
+      "by_stratum": {
+        "audited_miss": {
+          "visible_frames": 104,
+          "hit_iou30": 60,
+          "hit_iou50": 16,
+          "proposal_recall_iou50": 0.15384615384615385
+        },
+        "easy_goal_control": {
+          "visible_frames": 99,
+          "hit_iou30": 52,
+          "hit_iou50": 33,
+          "proposal_recall_iou50": 0.3333333333333333
+        },
+        "weak_negative_control": {
+          "visible_frames": 95,
+          "hit_iou30": 80,
+          "hit_iou50": 61,
+          "proposal_recall_iou50": 0.6421052631578947
+        }
+      },
+      "adjacent_pairs_both_hit_iou50": 15,
+      "adjacent_pairs_evaluable": 118,
+      "adjacent_pair_coverage_iou50": 0.1271186440677966
+    },
+    "1536": {
+      "annotated_frames": 400,
+      "visible_frames": 298,
+      "proposal_recall_iou30": 0.6610738255033557,
+      "proposal_recall_iou50": 0.3959731543624161,
+      "mean_false_proposals_per_evaluable_frame": 2.0475,
+      "mean_proposals_per_frame": 2.3425,
+      "rank1_share_among_iou50_matches": 0.788135593220339,
+      "by_stratum": {
+        "audited_miss": {
+          "visible_frames": 104,
+          "hit_iou30": 62,
+          "hit_iou50": 24,
+          "proposal_recall_iou50": 0.23076923076923078
+        },
+        "easy_goal_control": {
+          "visible_frames": 99,
+          "hit_iou30": 53,
+          "hit_iou50": 32,
+          "proposal_recall_iou50": 0.32323232323232326
+        },
+        "weak_negative_control": {
+          "visible_frames": 95,
+          "hit_iou30": 82,
+          "hit_iou50": 62,
+          "proposal_recall_iou50": 0.6526315789473685
+        }
+      },
+      "adjacent_pairs_both_hit_iou50": 17,
+      "adjacent_pairs_evaluable": 118,
+      "adjacent_pair_coverage_iou50": 0.1440677966101695
+    }
+  }
+}

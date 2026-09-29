@@ -1,0 +1,9 @@
+method,k_per_match,catalog_goals,covered_goals,recall,selected_candidates,merged_segments,unique_review_minutes_per_match
+local_trajectory_baseline,20,130,53,0.407692,440,416,19.844
+local_trajectory_baseline,40,130,89,0.684615,880,780,39.393
+local_trajectory_baseline,60,130,106,0.815385,1320,1024,58.214
+local_trajectory_baseline,100,130,116,0.892308,1727,1110,74.726
+ball_purity_continuity,20,130,50,0.384615,440,413,19.822
+ball_purity_continuity,40,130,92,0.707692,880,773,39.387
+ball_purity_continuity,60,130,113,0.869231,1320,1028,58.261
+ball_purity_continuity,100,130,120,0.923077,1729,1098,74.759

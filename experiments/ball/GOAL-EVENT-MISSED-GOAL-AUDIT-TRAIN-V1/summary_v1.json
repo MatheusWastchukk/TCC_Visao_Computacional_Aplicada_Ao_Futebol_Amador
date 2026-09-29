@@ -1,0 +1,19 @@
+{
+  "experiment_id": "GOAL-EVENT-MISSED-GOAL-AUDIT-TRAIN-V1",
+  "scope": "TRAIN only; 25-fold LOMO scores; TEST not accessed",
+  "candidate_rows": 5742,
+  "catalog_goals": 152,
+  "pool_recoverable_goals": 149,
+  "unrecoverable_pool_misses": 3,
+  "rrf_nms_iou": 0.1,
+  "shortlist_k": 60,
+  "covered_by_shortlist": 137,
+  "recoverable_but_missed": 12,
+  "audit_rows": 15,
+  "audit_dispositions": {
+    "outside_top60_after_nms": 2,
+    "suppressed_by_nms": 10,
+    "unrecoverable_pool_miss": 3
+  },
+  "warning": "Ranks and NMS causes are automatic. Visual/action/tracking fields are intentionally blank pending human video review."
+}

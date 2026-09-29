@@ -1,0 +1,26 @@
+{
+  "python.analysis.exclude": [
+    "**/.git/**",
+    "**/.venv/**",
+    "**/.venv-*/**",
+    "**/venv/**",
+    "**/env/**",
+    "**/site-packages/**",
+    "**/__pycache__/**",
+    "**/.pytest_cache/**",
+    "**/.mypy_cache/**",
+    "**/.ruff_cache/**",
+    "**/.rocm_cache/**",
+    "**/.rocm-cache/**",
+    "**/runs/**",
+    "**/results/**",
+    "**/outputs/**",
+    "**/data/**",
+    "**/models/**",
+    "**/weights/**",
+    "**/release/**",
+    "**/desktop/node_modules/**",
+    "**/desktop/dist/**",
+    "**/desktop/.vite/**"
+  ]
+}

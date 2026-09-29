@@ -1,0 +1,11 @@
+{
+  "experiment_id": "visual_scored_v1",
+  "scope": "VALIDATION; configuração TRAIN congelada",
+  "candidates": 1944,
+  "candidates_with_catalog_goal": 68,
+  "encoder": "ResNet18 ImageNet congelada",
+  "classifier": "regressão logística L2 congelada",
+  "average_precision": 0.04599043046234488,
+  "roc_auc": 0.5750109745390695,
+  "warning": "Escores descritivos sem ajuste de limiar em VALIDATION; não constituem filtro operacional binário."
+}

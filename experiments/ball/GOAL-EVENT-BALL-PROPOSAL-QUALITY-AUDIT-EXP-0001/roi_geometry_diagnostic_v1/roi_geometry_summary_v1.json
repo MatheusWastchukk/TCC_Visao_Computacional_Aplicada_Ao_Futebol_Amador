@@ -1,0 +1,70 @@
+{
+  "status": "completed",
+  "scope": "Exploratory geometric coverage only; reuses 298 visible BALL annotations from TRAIN; no inference; VALIDATION and TEST closed",
+  "goal_proposals": "Top confidence GOAL box from frozen run_v2, confidence 0.25, imgsz 640",
+  "roi_definitions": {
+    "roi_a_lateral0.75_top1_bottom1": {
+      "lateral_margin_goal_widths": 0.75,
+      "top_margin_goal_heights": 1.0,
+      "bottom_margin_goal_heights": 1.0
+    },
+    "roi_b_lateral1_top1.5_bottom1": {
+      "lateral_margin_goal_widths": 1.0,
+      "top_margin_goal_heights": 1.5,
+      "bottom_margin_goal_heights": 1.0
+    },
+    "roi_c_lateral1.5_top2_bottom1.5": {
+      "lateral_margin_goal_widths": 1.5,
+      "top_margin_goal_heights": 2.0,
+      "bottom_margin_goal_heights": 1.5
+    },
+    "roi_d_lateral2_top3_bottom2": {
+      "lateral_margin_goal_widths": 2.0,
+      "top_margin_goal_heights": 3.0,
+      "bottom_margin_goal_heights": 2.0
+    }
+  },
+  "overall": {
+    "roi_a_lateral0.75_top1_bottom1": {
+      "visible_ball_frames": 298,
+      "frames_with_goal_proposal": 267,
+      "ball_center_covered": 148,
+      "ball_gt_box_fully_covered": 141,
+      "center_coverage_rate": 0.4966442953020134,
+      "full_box_coverage_rate": 0.47315436241610737,
+      "mean_roi_area_fraction": 0.05620114093959728
+    },
+    "roi_b_lateral1_top1.5_bottom1": {
+      "visible_ball_frames": 298,
+      "frames_with_goal_proposal": 267,
+      "ball_center_covered": 164,
+      "ball_gt_box_fully_covered": 155,
+      "center_coverage_rate": 0.5503355704697986,
+      "full_box_coverage_rate": 0.5201342281879194,
+      "mean_roi_area_fraction": 0.07779893959731535
+    },
+    "roi_c_lateral1.5_top2_bottom1.5": {
+      "visible_ball_frames": 298,
+      "frames_with_goal_proposal": 267,
+      "ball_center_covered": 182,
+      "ball_gt_box_fully_covered": 179,
+      "center_coverage_rate": 0.610738255033557,
+      "full_box_coverage_rate": 0.6006711409395973,
+      "mean_roi_area_fraction": 0.13045112080536903
+    },
+    "roi_d_lateral2_top3_bottom2": {
+      "visible_ball_frames": 298,
+      "frames_with_goal_proposal": 267,
+      "ball_center_covered": 200,
+      "ball_gt_box_fully_covered": 194,
+      "center_coverage_rate": 0.6711409395973155,
+      "full_box_coverage_rate": 0.6510067114093959,
+      "mean_roi_area_fraction": 0.2114240100671142
+    }
+  },
+  "limitations": [
+    "Coverage means manual BALL center/box containment by an expanded GOAL box; it is not ROI BALL detector recall.",
+    "The sample is biased toward goal windows and weak-negative controls and reuses prior annotations.",
+    "ROI unions and crop detector inference are not evaluated here."
+  ]
+}

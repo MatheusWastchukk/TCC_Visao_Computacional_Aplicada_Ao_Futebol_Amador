@@ -1,0 +1,31 @@
+{
+  "experiment_id": "GOAL-EVENT-BALL-EVIDENCE-RRF-ENSEMBLE-EXP-0001",
+  "scope": "TRAIN only; 22 matched TRAIN games, 5,372 common groups, all rank scores LOMO; no VAL/TEST access",
+  "catalog_goals": 130,
+  "matches": 22,
+  "candidate_rows": 5372,
+  "excluded_from_feature_comparison": 370,
+  "excluded_reason": "3 LOMO trajectory/shot/net score files do not contain these 370 groups/3 matches",
+  "base_score_sources": [
+    "rank_score",
+    "visual_score_goal",
+    "fusion_score_goal"
+  ],
+  "tested_expert_sources": [
+    "local_trajectory",
+    "shot_motion",
+    "net_motion"
+  ],
+  "selection": {
+    "dedup_gap_seconds": 45.0,
+    "limits_per_match": [
+      20,
+      40,
+      60,
+      100
+    ],
+    "review_window": "delivery window 20+40s"
+  },
+  "label_protocol": "Existing completed TRAIN catalog timestamps; 130 goals; all rank predictions are out-of-fold by match.",
+  "warning": "Exploratory RRF source comparison; no parameters fitted or promoted. Manual 12-miss labels are descriptive only and were not used to build ranks. TEST remains closed."
+}

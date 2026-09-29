@@ -1,0 +1,162 @@
+{
+  "experiment_id": "GOAL-EVENT-BALL-DETECTION-MULTIPLICITY-AUDIT-TRAIN-V1",
+  "scope": "TRAIN only; 25 matches, 152 catalog goals; candidate-positive sampled frames from saved miner detections; TEST closed",
+  "source_files": [
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_match07_v1\\candidate_frames_v1.csv",
+      "rows": 31684,
+      "matches": [
+        "match_07"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_match08_v1\\candidate_frames_v1.csv",
+      "rows": 9299,
+      "matches": [
+        "match_08"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_match09_v1\\candidate_frames_v1.csv",
+      "rows": 17154,
+      "matches": [
+        "match_09"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_match10_v1\\candidate_frames_v1.csv",
+      "rows": 11433,
+      "matches": [
+        "match_10"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_match13_match15_v1\\candidate_frames_v1.csv",
+      "rows": 27998,
+      "matches": [
+        "match_13",
+        "match_15"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_match16_v1\\candidate_frames_v1.csv",
+      "rows": 14691,
+      "matches": [
+        "match_16"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_match18_match20_v1\\candidate_frames_v1.csv",
+      "rows": 22415,
+      "matches": [
+        "match_18",
+        "match_20"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_parallel_full_match21_match22_v1\\match_21\\candidate_frames_v1.csv",
+      "rows": 14751,
+      "matches": [
+        "match_21"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_parallel_full_match21_match22_v1\\match_22\\candidate_frames_v1.csv",
+      "rows": 15619,
+      "matches": [
+        "match_22"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_parallel_full_match23_match24_v1\\match_23\\candidate_frames_v1.csv",
+      "rows": 10553,
+      "matches": [
+        "match_23"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_parallel_full_match23_match24_v1\\match_24\\candidate_frames_v1.csv",
+      "rows": 13648,
+      "matches": [
+        "match_24"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_parallel_full_match25_match27_v1\\match_25\\candidate_frames_v1.csv",
+      "rows": 8040,
+      "matches": [
+        "match_25"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_parallel_full_match25_match27_v1\\match_27\\candidate_frames_v1.csv",
+      "rows": 16455,
+      "matches": [
+        "match_27"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_parallel_full_match28_match32_v1\\match_28\\candidate_frames_v1.csv",
+      "rows": 12559,
+      "matches": [
+        "match_28"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_parallel_full_match28_match32_v1\\match_32\\candidate_frames_v1.csv",
+      "rows": 22193,
+      "matches": [
+        "match_32"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_sequential_match35_match37_v1\\candidate_frames_v1.csv",
+      "rows": 27946,
+      "matches": [
+        "match_35",
+        "match_36",
+        "match_37"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\gpu_rocm_sequential_match38_match41_v1\\candidate_frames_v1.csv",
+      "rows": 25212,
+      "matches": [
+        "match_38",
+        "match_41"
+      ]
+    },
+    {
+      "source_file": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-EVENT-CANDIDATE-MINER-V1\\pilot_train_3_matches\\candidate_frames_v1.csv",
+      "rows": 58813,
+      "matches": [
+        "match_02",
+        "match_04",
+        "match_06"
+      ]
+    }
+  ],
+  "aggregate": {
+    "candidate_positive_frames": 201678,
+    "mean_unique_ball_boxes": 1.787319390315255,
+    "median_unique_ball_boxes": 1.0,
+    "share_frames_multi_box": 0.48353811521335993,
+    "share_frames_5plus_boxes": 0.024990331121887366,
+    "max_unique_ball_boxes": 12
+  },
+  "filters_and_limits": [
+    "Miner writes only frames where GOAL detections exist.",
+    "Only BALL detections within the miner's expanded-goal / max-normalized-distance gate are stored.",
+    "Counts therefore describe ball proposals near detected goal structure, not every BALL box in the full frame.",
+    "No detection means no row and cannot be counted as zero from these files."
+  ],
+  "miss_window": {
+    "before_seconds": 25.0,
+    "after_seconds": 35.0
+  },
+  "control_strata": {
+    "goal_near_seconds": 60.0,
+    "note": "Control is candidate-positive frames outside any catalog-goal exclusion interval; not all sampled video frames."
+  },
+  "warning": "Descriptive detector-output audit only; manual miss annotations are joined only after aggregation for the case-level table. No model training or ranking selection. Existing detections were generated in TRAIN; no inference rerun."
+}

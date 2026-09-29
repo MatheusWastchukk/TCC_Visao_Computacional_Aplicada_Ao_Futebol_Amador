@@ -1,0 +1,39 @@
+{
+  "experiment_id": "rocm_smoke_match06",
+  "status": "completed",
+  "device": "cuda:0",
+  "gpu": "AMD Radeon RX 9060 XT",
+  "torch": "2.9.1+rocm7.2.1",
+  "video": "data\\Videos_Edited\\Match_06.mp4",
+  "frames": 3,
+  "goal_mean_seconds": 6.084908,
+  "ball_mean_seconds": 1.71051,
+  "combined_mean_seconds": 7.795418,
+  "frame_results": [
+    {
+      "frame_index": 1,
+      "goal_predictions": 0,
+      "goal_seconds": 18.049369,
+      "ball_predictions": 0,
+      "ball_seconds": 5.094117,
+      "combined_seconds": 23.143486
+    },
+    {
+      "frame_index": 2,
+      "goal_predictions": 1,
+      "goal_seconds": 0.187738,
+      "ball_predictions": 3,
+      "ball_seconds": 0.019767,
+      "combined_seconds": 0.207505
+    },
+    {
+      "frame_index": 3,
+      "goal_predictions": 1,
+      "goal_seconds": 0.017618,
+      "ball_predictions": 3,
+      "ball_seconds": 0.017645,
+      "combined_seconds": 0.035263
+    }
+  ],
+  "note": "Smoke test de infraestrutura; não é avaliação de eventos nem benchmark completo."
+}

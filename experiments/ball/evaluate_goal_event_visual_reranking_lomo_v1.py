@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import time
 from collections import defaultdict
 from pathlib import Path
 
@@ -86,6 +87,7 @@ def main() -> int:
     parser.add_argument("--delivery-pre-seconds", type=float, default=20.0)
     parser.add_argument("--delivery-post-seconds", type=float, default=40.0)
     parser.add_argument("--torch-threads", type=int, default=4)
+    parser.add_argument("--embedding-checkpoint", type=Path)
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError(f"A saída já existe: {args.output}")
@@ -167,15 +169,58 @@ def main() -> int:
     encoder = resnet18(weights=ResNet18_Weights.DEFAULT)
     encoder.fc = torch.nn.Identity()
     encoder.eval()
-    candidate_embeddings: list[np.ndarray] = []
+    checkpoint_path = args.embedding_checkpoint or args.output.with_name(args.output.name + "_embeddings_checkpoint.npy")
+    progress_path = checkpoint_path.with_suffix(".json")
+    checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+    expected_candidate_ids = [str(candidate["candidate_id"]) for candidate in candidates]
+    if checkpoint_path.exists() or progress_path.exists():
+        if not checkpoint_path.exists() or not progress_path.exists():
+            raise FileExistsError("Checkpoint incompleto: arquivo de embeddings e manifesto devem existir juntos.")
+        progress = json.loads(progress_path.read_text(encoding="utf-8"))
+        if progress.get("candidate_ids") != expected_candidate_ids:
+            raise ValueError("A ordem dos candidatos difere do checkpoint existente.")
+        candidate_embeddings = np.load(checkpoint_path, mmap_mode="r+")
+        if candidate_embeddings.shape != (len(candidates), 512 * 8):
+            raise ValueError("Dimensoes do checkpoint de embeddings inesperadas.")
+        completed = int(progress["completed_candidates"])
+        if not 0 <= completed <= len(candidates):
+            raise ValueError("Progresso invalido no checkpoint de embeddings.")
+        print(f"Retomando embeddings: {completed}/{len(candidates)} ja concluidos.", flush=True)
+    else:
+        candidate_embeddings = np.lib.format.open_memmap(
+            checkpoint_path, mode="w+", dtype=np.float32, shape=(len(candidates), 512 * 8)
+        )
+        completed = 0
+        progress = {"candidate_ids": expected_candidate_ids, "completed_candidates": 0}
+        progress_path.write_text(json.dumps(progress), encoding="utf-8")
     for index, candidate in enumerate(candidates, start=1):
-        frames = read_clip_frames(args.videos_dir / str(candidate["video_filename"]), float(candidate["candidate_start_seconds"]), float(candidate["candidate_end_seconds"]), 8)
-        batch = torch.stack([transform(frame) for frame in frames])
-        with torch.inference_mode():
-            candidate_embeddings.append(encoder(batch).cpu().numpy().astype(np.float32).reshape(-1))
+        if index <= completed:
+            continue
+        last_error: Exception | None = None
+        for attempt in range(3):
+            try:
+                frames = read_clip_frames(args.videos_dir / str(candidate["video_filename"]), float(candidate["candidate_start_seconds"]), float(candidate["candidate_end_seconds"]), 8)
+                batch = torch.stack([transform(frame) for frame in frames])
+                with torch.inference_mode():
+                    candidate_embeddings[index - 1] = encoder(batch).cpu().numpy().astype(np.float32).reshape(-1)
+                last_error = None
+                break
+            except (RuntimeError, FileNotFoundError, cv2.error) as error:
+                last_error = error
+                if attempt < 2:
+                    print(f"Falha temporaria no candidato {index}; nova tentativa {attempt + 2}/3: {error}", flush=True)
+                    time.sleep(2)
+        if last_error is not None:
+            candidate_embeddings.flush()
+            raise last_error
         if index % 25 == 0 or index == len(candidates):
+            candidate_embeddings.flush()
+            progress = {"candidate_ids": expected_candidate_ids, "completed_candidates": index}
+            progress_tmp = progress_path.with_suffix(".tmp")
+            progress_tmp.write_text(json.dumps(progress), encoding="utf-8")
+            progress_tmp.replace(progress_path)
             print(f"Embeddings de candidatos: {index}/{len(candidates)}", flush=True)
-    candidate_x = np.stack(candidate_embeddings)
+    candidate_x = candidate_embeddings
     candidate_matches = np.asarray([str(row["match_id"]) for row in candidates])
     visual_scores = np.zeros(len(candidates), dtype=np.float64)
     for held_match in sorted(set(candidate_matches)):

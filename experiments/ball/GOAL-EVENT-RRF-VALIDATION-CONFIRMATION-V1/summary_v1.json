@@ -1,0 +1,11 @@
+{
+  "experiment_id": "GOAL-EVENT-RRF-VALIDATION-CONFIRMATION-V1",
+  "scope": "VALIDATION only; frozen temporal, visual and fusion scores; no fit or threshold adjustment; TEST not accessed",
+  "candidate_pool_rows": 462,
+  "matches": 8,
+  "catalog_goals": 51,
+  "rank_fusion": "RRF of rank_score, visual_score_goal and frozen fusion_score_goal; reciprocal rank constant 60",
+  "selection": "45-second minimum separation; delivery window 20+40 seconds clipped to video duration; per-match K in [4, 8, 12, 20, 60]",
+  "pool_limitation": "Input pool was previously reduced by temporal top-60 with 45-second separation; this confirms RRF only within that pool and is not a full-candidate-universe validation.",
+  "warning": "Single VALIDATION confirmation. Do not retune from these metrics; TEST remains closed."
+}

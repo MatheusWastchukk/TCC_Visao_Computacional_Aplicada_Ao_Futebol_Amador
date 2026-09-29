@@ -1,5 +1,20 @@
 # Configuração da GPU AMD
 
+## Política de execução do projeto
+
+Usar a GPU AMD como primeira opção nos próximos experimentos sempre que o
+backend e os operadores necessários forem compatíveis. Para PyTorch em GPU,
+começar pelo ambiente `.venv-rocm`; para inferência ONNX compatível, considerar
+`.venv-dml`. Fazer primeiro um smoke curto do fluxo real do experimento. Se a
+GPU não for reconhecida, um operador falhar ou o resultado não puder ser
+validado, registrar o erro e repetir em CPU (`.venv`). Toda comparação deve
+registrar o ambiente e o dispositivo efetivamente usados. A preferência por
+GPU não altera retroativamente os experimentos já executados em CPU.
+
+Ferramentas de anotação e reprodução de vídeo não precisam de aceleração GPU;
+essa política se aplica aos experimentos de inferência, extração e treinamento
+que consigam usar o backend.
+
 ## Estado
 
 A GPU identificada neste computador é uma AMD Radeon RX 9060 XT, com 16 GB de
@@ -113,6 +128,43 @@ localizáveis foi 41,10% (30/73), acima dos 28,77% (21/73) do `BALL-EXP-0003`.
 Também foram registradas 12 caixas manuais para casos em que a revisão visual
 identificou uma posição da bola não representada adequadamente na anotação
 original. Essas caixas não alteram retroativamente as métricas do detector.
+
+## Smoke ROCm para auditoria de propostas BALL — 25/09/2026
+
+No ambiente atual, `torch.cuda.is_available()` e a inferência real dos pesos do
+minerador funcionaram em `cuda:0`, identificando AMD Radeon RX 9060 XT e PyTorch
+`2.9.1+rocm7.2.1`. O smoke de três frames em `match_06` terminou; o primeiro
+frame teve custo de compilação/aquecimento, e os dois seguintes completaram em
+0,208 s e 0,035 s (detector GOAL + BALL). Uma mensagem de parsing de
+`offload-arch.exe` acompanhou a inicialização, mas não bloqueou esse smoke.
+
+O fluxo da auditoria de propostas também pontuou 400 frames TRAIN completos em
+ROCm, usando o mesmo backend, dispositivos e pesos congelados. O resultado foi
+registrado em `experiments/ball/GOAL-EVENT-BALL-PROPOSAL-QUALITY-AUDIT-EXP-0001/run_v2/inference_runtime_v1.json`.
+Isso valida esta inferência frame a frame; não certifica treinamento ou todos os
+fluxos ROCm. O minerador de partidas completas permaneceu sem progresso nas
+tentativas anteriores. Para repetir experimentos, manter smoke do fluxo real,
+cache MIOpen gravável e monitoramento de progresso antes de escalar.
+
+## Cache MIOpen local para execução no workspace — 26/09/2026
+
+Na ablação de resolução BALL, o ROCm reconheceu a RX 9060 XT, mas MIOpen falhou
+ao abrir um lock em `C:\Users\mathe\.miopen\db\miopen-lockfiles` com acesso
+negado. A ACL do caminho dava leitura ao grupo do sandbox e controle total à
+conta proprietária. Redirecionar o User DB e o cache de kernels para diretórios
+graváveis do workspace permitiu completar tanto um smoke como o sweep ROCm de
+400 frames em três resoluções. Essa é a causa mais provável, não uma prova de
+que o ACL era o único fator.
+
+Os scripts da auditoria BALL configuram estes padrões antes de importar PyTorch:
+
+- `MIOPEN_USER_DB_PATH`: `experiments/ball/GOAL-EVENT-BALL-PROPOSAL-QUALITY-AUDIT-EXP-0001/miopen_workspace_cache_v1/user_db`
+- `MIOPEN_CUSTOM_CACHE_DIR`: `experiments/ball/GOAL-EVENT-BALL-PROPOSAL-QUALITY-AUDIT-EXP-0001/miopen_workspace_cache_v1/kernel_cache`
+
+Variáveis já definidas pelo usuário são preservadas. A documentação oficial
+MIOpen permite definir as rotas do User DB em runtime e usa
+`MIOPEN_CUSTOM_CACHE_DIR` para o cache de kernels: [AMD ROCm MIOpen cache e
+performance database](https://rocm.docs.amd.com/projects/MIOpen/en/latest/conceptual/cache.html).
 
 ## Teste
 

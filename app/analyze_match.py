@@ -50,8 +50,8 @@ def main(argv: list[str] | None = None, progress: ProgressCallback | None = None
     parser = argparse.ArgumentParser(description="Gera segmentos V4 a partir de um pool pontuado ou de uma partida TRAIN.")
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument("--candidate-scores", type=Path, help="CSV de até 60 candidatos com escores temporal e de fusão.")
-    source.add_argument("--video-path", type=Path, help="Vídeo de uma partida TRAIN já presente no diretório de vídeos.")
-    parser.add_argument("--match-id", help="Identificador TRAIN do manifesto; obrigatório com --video-path.")
+    source.add_argument("--video-path", type=Path, help="Vídeo de uma partida TRAIN ou vídeo externo autorizado.")
+    parser.add_argument("--match-id", help="Identificador do manifesto ou da partida externa; obrigatório com --video-path.")
     parser.add_argument("--allow-arbitrary-video", action="store_true", help="Permite vídeo externo na aplicação desktop.")
     parser.add_argument("--split-manifest", type=Path, default=Path("experiments/datasets/dataset_split_v1.csv"))
     parser.add_argument("--videos-dir", type=Path, default=Path("data/Videos_Edited"))
@@ -60,6 +60,8 @@ def main(argv: list[str] | None = None, progress: ProgressCallback | None = None
     parser.add_argument("--temporal-ranker", type=Path, default=Path("experiments/ball/GOAL-EVENT-PIPELINE-FINAL-V1/temporal_ranker.joblib"))
     parser.add_argument("--visual-verifier", type=Path, default=Path("experiments/ball/GOAL-EVENT-PIPELINE-FINAL-V1/temporal_sequence_verifier.joblib"))
     parser.add_argument("--fusion-model", type=Path, default=Path("experiments/ball/GOAL-EVENT-FUSION-FINAL-V1/fusion_reranker.joblib"))
+    parser.add_argument("--ball-imgsz", type=int, default=960, help="Resolução da busca BALL global durante mineração.")
+    parser.add_argument("--roi-imgsz", type=int, default=None, help="Ativa a ablação de crop BALL em alta resolução.")
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--resume", action="store_true", help="Retoma após mineração concluída sem repetir os hits já gerados.")
     parser.add_argument("--mode", choices=sorted(MODES), default="cobertura_reduzida")
@@ -96,9 +98,12 @@ def main(argv: list[str] | None = None, progress: ProgressCallback | None = None
             mine_main(
                 ["--split-manifest", str(args.split_manifest), "--videos-dir", str(args.videos_dir),
                  "--goal-model", str(args.goal_model), "--ball-model", str(args.ball_model),
-                 "--include-matches", args.match_id, "--expected-split", "train",
+                 "--include-matches", args.match_id,
+                 "--expected-split", "external" if args.allow_arbitrary_video else "train",
+                 "--ball-imgsz", str(args.ball_imgsz),
                  "--max-candidates-per-match", "60", "--output", str(miner_output),
                  "--device", str(args.device)]
+                + (["--roi-imgsz", str(args.roi_imgsz)] if args.roi_imgsz is not None else [])
                 + (["--video-path", str(args.video_path), "--video-id", args.match_id] if args.allow_arbitrary_video else []),
                 progress,
             )

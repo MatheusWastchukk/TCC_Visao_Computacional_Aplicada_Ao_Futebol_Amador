@@ -1,0 +1,16 @@
+{
+  "experiment_id": "run_v1",
+  "scope": "TRAIN only; 25-fold LOMO; 5,742 full-pool candidate windows; TEST not accessed",
+  "encoder": "frozen ImageNet ResNet18, one frame sampled at the center of each 5-second subclip",
+  "this_is_not": "a pretrained video backbone; temporal order is represented only by per-subclip scores and aggregation",
+  "training_clips": 304,
+  "training_subclips": 1824,
+  "positive_training_subclips": 152,
+  "negative_training_subclips": 1672,
+  "candidate_groups": 5742,
+  "subclips_per_candidate": 12,
+  "candidate_groups_with_delivery_goal": 355,
+  "goal_timestamps": 152,
+  "window": "20 seconds before and 40 seconds after candidate center, truncated at video duration",
+  "warning": "Exploratory subclip detector trained from exact catalog goal timestamps; no action-relevance labels and no TEST."
+}

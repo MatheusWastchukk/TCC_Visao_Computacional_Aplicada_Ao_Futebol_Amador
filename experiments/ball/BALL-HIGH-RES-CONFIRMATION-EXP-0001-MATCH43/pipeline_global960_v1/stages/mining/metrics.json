@@ -1,0 +1,45 @@
+{
+  "experiment_id": "mining",
+  "scope": "somente EXTERNAL",
+  "videos_processed": 1,
+  "candidate_events": 60,
+  "parameters": {
+    "split_manifest": "experiments\\datasets\\dataset_split_v1.csv",
+    "videos_dir": "data\\Videos_Edited",
+    "video_path": "data\\Videos_Edited\\Match_43.mp4",
+    "video_id": "match_43",
+    "goal_model": "runs\\detect\\experiments\\goal_geometry\\EXP-0092\\yolo11n_cpu_reference\\weights\\best.pt",
+    "ball_model": "runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt",
+    "output": "experiments\\ball\\BALL-HIGH-RES-CONFIRMATION-EXP-0001-MATCH43\\pipeline_global960_v1\\stages\\mining",
+    "include_matches": [
+      "match_43"
+    ],
+    "expected_split": "external",
+    "analysis_fps": 5.0,
+    "goal_confidence": 0.25,
+    "ball_confidence": 0.05,
+    "goal_imgsz": 640,
+    "ball_imgsz": 960,
+    "roi_imgsz": null,
+    "roi_lateral_goal_widths": 2.0,
+    "roi_above_goal_heights": 3.0,
+    "roi_below_goal_heights": 2.0,
+    "goal_margin": 0.35,
+    "max_normalized_distance": 2.0,
+    "merge_gap_seconds": 3.0,
+    "minimum_hits": 2,
+    "min_separation_seconds": 45.0,
+    "max_candidates_per_match": 60,
+    "clip_pre_seconds": 10.0,
+    "clip_post_seconds": 20.0,
+    "device": "0"
+  },
+  "by_match": {
+    "match_43": {
+      "hits": 9305,
+      "groups": 199,
+      "selected": 60
+    }
+  },
+  "warning": "Gerador de hipóteses; não mede desempenho final nem confirma gol."
+}

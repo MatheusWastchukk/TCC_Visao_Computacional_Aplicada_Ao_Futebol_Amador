@@ -1,0 +1,107 @@
+{
+  "experiment_id": "GOAL-EVENT-BALL-PURITY-CONTINUITY-ABLATION-LOMO-EXP-0001",
+  "scope": "TRAIN only; 22 games, 5,372 groups, 130 completed catalog goals; leave-one-match-out",
+  "models": "Paired RandomForestClassifier folds (300 trees, min_samples_leaf=2, class_weight=balanced, random_state=42)",
+  "baseline_features": [
+    "hit_count",
+    "unique_timestamps",
+    "duration_seconds",
+    "max_gap_seconds",
+    "gap_count",
+    "max_candidate_score",
+    "mean_candidate_score",
+    "max_ball_confidence",
+    "mean_ball_confidence",
+    "max_goal_confidence",
+    "mean_goal_confidence",
+    "min_normalized_distance",
+    "mean_normalized_distance",
+    "distance_std",
+    "distance_before_min",
+    "distance_after_min",
+    "distance_slope",
+    "inside_goal_fraction",
+    "mean_relative_speed",
+    "max_relative_speed",
+    "bin_0_mean_distance",
+    "bin_0_mean_score",
+    "bin_0_mean_ball_confidence",
+    "bin_0_inside_fraction",
+    "bin_1_mean_distance",
+    "bin_1_mean_score",
+    "bin_1_mean_ball_confidence",
+    "bin_1_inside_fraction",
+    "bin_2_mean_distance",
+    "bin_2_mean_score",
+    "bin_2_mean_ball_confidence",
+    "bin_2_inside_fraction",
+    "bin_3_mean_distance",
+    "bin_3_mean_score",
+    "bin_3_mean_ball_confidence",
+    "bin_3_inside_fraction",
+    "trajectory_distance_delta_0_3",
+    "trajectory_score_delta_0_3",
+    "trajectory_ball_confidence_delta_0_3",
+    "trajectory_inside_delta_0_3",
+    "trajectory_distance_abs_change_sum",
+    "trajectory_score_abs_change_sum",
+    "trajectory_distance_decrease_fraction",
+    "trajectory_score_increase_fraction",
+    "trajectory_distance_slope",
+    "trajectory_score_slope",
+    "trajectory_ball_confidence_slope",
+    "trajectory_distance_min_bin",
+    "trajectory_score_max_bin",
+    "local_trajectory_path_observations",
+    "local_trajectory_path_score",
+    "local_trajectory_mean_normalized_step",
+    "local_trajectory_continuity"
+  ],
+  "added_features": [
+    "detections_per_sampled_timestamp",
+    "local_path_coverage",
+    "local_path_share_of_hits",
+    "ball_confidence_mean_to_max"
+  ],
+  "ablation_feature_sets": {
+    "local_trajectory_baseline": [],
+    "ablate_detections_per_sampled_timestamp": [
+      "detections_per_sampled_timestamp"
+    ],
+    "ablate_local_path_coverage": [
+      "local_path_coverage"
+    ],
+    "ablate_local_path_share_of_hits": [
+      "local_path_share_of_hits"
+    ],
+    "ablate_ball_confidence_mean_to_max": [
+      "ball_confidence_mean_to_max"
+    ],
+    "all_four": [
+      "detections_per_sampled_timestamp",
+      "local_path_coverage",
+      "local_path_share_of_hits",
+      "ball_confidence_mean_to_max"
+    ]
+  },
+  "feature_interpretation": {
+    "detections_per_sampled_timestamp": "proxy for multiple ball detections among hits near the goal; not a full-frame false-positive count",
+    "local_path_coverage": "fraction of sampled timestamps represented in the selected local path",
+    "local_path_share_of_hits": "fraction of all near-goal hits retained by the selected local path",
+    "ball_confidence_mean_to_max": "mean confidence relative to the peak confidence in the temporal group"
+  },
+  "selection": {
+    "window_seconds": [
+      20.0,
+      40.0
+    ],
+    "gap_seconds": 45.0,
+    "limits": [
+      20,
+      40,
+      60,
+      100
+    ]
+  },
+  "warning": "Exploratory paired TRAIN/LOMO comparison; weak TRAIN labels; added ratios use existing aggregate features and do not access the 12 human annotations. No policy promoted. TEST closed."
+}
