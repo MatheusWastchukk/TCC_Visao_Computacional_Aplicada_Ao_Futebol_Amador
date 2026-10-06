@@ -1,0 +1,39 @@
+{
+  "scope": "TRAIN only; LOMO by match; no VALIDATION/TEST; weak_label=0 excluded from negative training labels",
+  "positive_groups": 149,
+  "manually_confirmed_no_goal_groups": 20,
+  "features_base": 36,
+  "features_rich": 49,
+  "baseline_gap45_k60_reproduced": [
+    1470,
+    1126,
+    1415.824,
+    128
+  ],
+  "pairwise_summary": [
+    {
+      "method": "RF_BASELINE_FROZEN",
+      "matched_pairs": 20,
+      "goals_above_reviewed_no_goal": 0,
+      "pairwise_accuracy": 0.0
+    },
+    {
+      "method": "LR_BASE36_HARDNEG_LOMO",
+      "matched_pairs": 20,
+      "goals_above_reviewed_no_goal": 13,
+      "pairwise_accuracy": 0.65
+    },
+    {
+      "method": "LR_RICH49_HARDNEG_LOMO",
+      "matched_pairs": 20,
+      "goals_above_reviewed_no_goal": 13,
+      "pairwise_accuracy": 0.65
+    },
+    {
+      "method": "RF_RICH49_HARDNEG_LOMO",
+      "matched_pairs": 20,
+      "goals_above_reviewed_no_goal": 16,
+      "pairwise_accuracy": 0.8
+    }
+  ]
+}

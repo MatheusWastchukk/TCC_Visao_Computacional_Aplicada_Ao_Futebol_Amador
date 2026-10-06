@@ -1,0 +1,5 @@
+﻿method,features,goal_above_control,pairs,pairwise_accuracy,catalog_goals_covered_k60,catalog_goals,recall_k60,reviewed_no_goal_controls_selected_k60
+LR_BASE36,36,13,20,0.65,78,152,0.5132,0
+LR_SEM_INSIDE,31,11,20,0.55,81,152,0.5329,0
+LR_SEM_CONTAGEM,32,14,20,0.7,77,152,0.5066,0
+LR_SEM_INSIDE_NEM_CONTAGEM,27,11,20,0.55,82,152,0.5395,0

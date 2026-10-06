@@ -1,0 +1,36 @@
+{
+  "experiment_id": "GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001",
+  "scope": "TRAIN only; persisted LOMO predictions and detector outputs; no VALIDATION/TEST inputs; no new mining or training",
+  "catalog_goals": 152,
+  "full_pool_groups": 5742,
+  "recoverable_goals": 149,
+  "covered_temporal_top60": 128,
+  "representative_match_id": "match_09",
+  "representative_match_top60_candidates": 60,
+  "manual_case_rows": 175,
+  "secondary_goal_annotations_pending": 200,
+  "delivery_window": "20 seconds before to 40 seconds after, clipped to source video duration",
+  "baseline_scores": "Existing temporal RF LOMO scores and frozen top-60 shortlist. Human review time is not inferred from video duration.",
+  "known_limitations": [
+    "weak_label=0 is not a verified NO_GOAL label",
+    "full-pool visual/fusion/RRF ranks are not present; RRF diagnostics exist only within the common Top-60",
+    "secondary_goal annotations and manual case labels are pending visual review",
+    "detector rows are candidate-filtered historical proposals, not independent tracker identities"
+  ],
+  "input_sha256": {
+    "experiments\\ball\\GOAL-EVENT-TEMPORAL-RANKER-EXP-0002-predictions-v2\\group_predictions_lomo_v1.csv": "12862f6514ae7f52f99866a2e4a2a7f0b9282e6aa4ed651ad85b0e81a0386b15",
+    "experiments\\ball\\GOAL-EVENT-TEMPORAL-DATASET-V2\\temporal_group_dataset_v1.csv": "97a646c03a785240a566885d6a26171b927bca42d9d493afc16cbc246cd201ed",
+    "experiments\\ball\\GOAL-EVENT-WIDE-POOL-TRAIN-V1\\wide_pool_candidates_v1.csv": "f1c1f889a39e06958a94decd6ca9089be37da2ea613cbe6775a1149b1bae9ad5",
+    "experiments\\ball\\GOAL-EVENT-WIDE-POOL-OOF-REDUCER-TRAIN-V1\\candidate_scores_lomo_v1.csv": "a3baca1bc9e7904bbc61b2d5365d193d35b15150e457c96508494c3067aee489",
+    "experiments\\ball\\GOAL-EVENT-MISSED-GOAL-AUDIT-TRAIN-V1\\train_goal_pool_and_shortlist_coverage_v1.csv": "51b35a4f9b59057da25939453ec6bc9a6b13f2a2d5aa8c01e3fd057ff4c40b44",
+    "experiments\\ball\\GOAL-EVENT-MISSED-GOAL-AUDIT-TRAIN-V1\\manual_review_v1.csv": "a9789bbe5ddd8b26c2268fce5f3d3fb1d2e6e30d824116fd68bd461bf088654f"
+  },
+  "input_row_counts": {
+    "rank_predictions": 5742,
+    "features": 5742,
+    "shortlist": 1470,
+    "score_audit": 1470,
+    "catalog": 152,
+    "prior_manual_misses": 12
+  }
+}

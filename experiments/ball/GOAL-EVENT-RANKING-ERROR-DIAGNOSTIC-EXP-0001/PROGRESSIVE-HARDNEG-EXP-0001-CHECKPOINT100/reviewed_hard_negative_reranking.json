@@ -1,0 +1,60 @@
+{
+  "scope": "TRAIN only; LOMO by match; no VALIDATION/TEST; weak_label=0 excluded from negative training labels",
+  "methods": [
+    "RF_BASELINE_FROZEN",
+    "LR_BASE36_HARDNEG_LOMO",
+    "LR_RICH49_HARDNEG_LOMO",
+    "RF_RICH49_HARDNEG_LOMO",
+    "XGB_RICH49_HARDNEG_LOMO"
+  ],
+  "positive_groups": 149,
+  "manually_confirmed_no_goal_groups": 100,
+  "prior_control_count": 50,
+  "progressive_batch_review": {
+    "candidates": 50,
+    "new_no_goal_confirmed": 50,
+    "goal": 0,
+    "not_evaluable": 0,
+    "pending": 0
+  },
+  "features_base": 36,
+  "features_rich": 49,
+  "baseline_gap45_k60_reproduced": [
+    1470,
+    1126,
+    1415.824,
+    128
+  ],
+  "pairwise_summary": [
+    {
+      "method": "RF_BASELINE_FROZEN",
+      "matched_pairs": 100,
+      "goals_above_reviewed_no_goal": 0,
+      "pairwise_accuracy": 0.0
+    },
+    {
+      "method": "LR_BASE36_HARDNEG_LOMO",
+      "matched_pairs": 100,
+      "goals_above_reviewed_no_goal": 59,
+      "pairwise_accuracy": 0.59
+    },
+    {
+      "method": "LR_RICH49_HARDNEG_LOMO",
+      "matched_pairs": 100,
+      "goals_above_reviewed_no_goal": 64,
+      "pairwise_accuracy": 0.64
+    },
+    {
+      "method": "RF_RICH49_HARDNEG_LOMO",
+      "matched_pairs": 100,
+      "goals_above_reviewed_no_goal": 81,
+      "pairwise_accuracy": 0.81
+    },
+    {
+      "method": "XGB_RICH49_HARDNEG_LOMO",
+      "matched_pairs": 100,
+      "goals_above_reviewed_no_goal": 64,
+      "pairwise_accuracy": 0.64
+    }
+  ]
+}

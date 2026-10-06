@@ -1,0 +1,7 @@
+﻿experiment,score_source,gap_seconds,candidate_cap_per_match,selected_candidates_total,merged_delivery_segments_total,unique_delivery_minutes_total,unique_delivery_minutes_per_match,catalog_goals,covered_catalog_goals,baseline_recoverable_misses_recovered,recall_catalog,pool_recoverable_goals,covered_pool_recoverable_goals,recall_conditional_recoverable,test_or_validation_used
+GAP_POLICY_COUNTERFACTUAL_TRAIN_V1,frozen RF LOMO temporal scores,0,60,1500,842,1202.557,48.102,152,120,4,0.789474,149,120,0.805369,False
+GAP_POLICY_COUNTERFACTUAL_TRAIN_V1,frozen RF LOMO temporal scores,15,60,1500,855,1234.381,49.375,152,119,3,0.782895,149,119,0.798658,False
+GAP_POLICY_COUNTERFACTUAL_TRAIN_V1,frozen RF LOMO temporal scores,30,60,1500,950,1351.064,54.043,152,124,3,0.815789,149,124,0.832215,False
+GAP_POLICY_COUNTERFACTUAL_TRAIN_V1,frozen RF LOMO temporal scores,45,60,1470,1126,1415.824,56.633,152,128,0,0.842105,149,128,0.85906,False
+GAP_POLICY_COUNTERFACTUAL_TRAIN_V1,frozen RF LOMO temporal scores,60,60,1419,1418,1409.086,56.363,152,126,7,0.828947,149,126,0.845638,False
+GAP_POLICY_COUNTERFACTUAL_TRAIN_V1,frozen RF LOMO temporal scores,90,60,1037,1037,1030.495,41.22,152,104,4,0.684211,149,104,0.697987,False

@@ -1,0 +1,20 @@
+{
+  "scope": "TRAIN-only deterministic selection simulation; TEST and VALIDATION not read",
+  "gaps_seconds": [
+    0,
+    15,
+    30,
+    45,
+    60,
+    90
+  ],
+  "candidate_cap_per_match": 60,
+  "baseline_gap45_reproduced": true,
+  "operational_baseline": [
+    1470,
+    1126,
+    1415.824,
+    128
+  ],
+  "interpretation_limit": "Exploratory within the existing TRAIN set; not a selected or promoted operating policy."
+}

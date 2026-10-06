@@ -1,0 +1,201 @@
+annotation_level,match_id,group_uid,video_filename,secondary_goal_status,definition_version,evidence_path,reviewer_notes
+MATCH,match_02,,Match_02_A.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_04,,Match_04.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_06,,Match_06.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_07,,Match_07.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_08,,Match_08.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_09,,Match_09.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_10,,Match_10.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_13,,Match_13.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_15,,Match_15.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_16,,Match_16.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_18,,Match_18.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_20,,Match_20.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_21,,Match_21.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_22,,Match_22.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_23,,Match_23.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_24,,Match_24.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_25,,Match_25.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_27,,Match_27.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_28,,Match_28.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_32,,Match_32.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_35,,Match_35.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_36,,Match_36.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_37,,Match_37.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_38,,Match_38.mp4,PENDING,written_visual_review_v1,,
+MATCH,match_41,,Match_41.mp4,PENDING,written_visual_review_v1,,
+CANDIDATE,match_02,match_02::temporal_group_0042,Match_02_A.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_02,match_02::temporal_group_0124,Match_02_A.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_02,match_02::temporal_group_0165,Match_02_A.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_04,match_04::temporal_group_0036,Match_04.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_04,match_04::temporal_group_0076,Match_04.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_04,match_04::temporal_group_0078,Match_04.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_06,match_06::temporal_group_0005,Match_06.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_06,match_06::temporal_group_0016,Match_06.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_06,match_06::temporal_group_0034,Match_06.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_06,match_06::temporal_group_0052,Match_06.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_06,match_06::temporal_group_0076,Match_06.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_06,match_06::temporal_group_0085,Match_06.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_06,match_06::temporal_group_0096,Match_06.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_07,match_07::temporal_group_0004,Match_07.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_07,match_07::temporal_group_0089,Match_07.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_07,match_07::temporal_group_0090,Match_07.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_07,match_07::temporal_group_0102,Match_07.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_07,match_07::temporal_group_0121,Match_07.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_07,match_07::temporal_group_0190,Match_07.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_07,match_07::temporal_group_0218,Match_07.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_08,match_08::temporal_group_0029,Match_08.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_08,match_08::temporal_group_0032,Match_08.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_08,match_08::temporal_group_0150,Match_08.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_08,match_08::temporal_group_0155,Match_08.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_08,match_08::temporal_group_0199,Match_08.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_08,match_08::temporal_group_0205,Match_08.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0001,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0002,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0005,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0013,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0018,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0023,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0024,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0027,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0029,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0032,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0035,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0039,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0040,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0042,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0046,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0051,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0052,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0057,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0058,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0062,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0070,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0075,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0076,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0079,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0085,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0087,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0090,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0093,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0094,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0103,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0105,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0107,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0111,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0116,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0117,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0118,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0119,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0121,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0122,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0123,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0126,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0129,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0134,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0135,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0141,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0144,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0146,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0150,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0151,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0156,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0160,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0166,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0167,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0170,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0174,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0180,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0183,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0188,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0193,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0196,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0200,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0205,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0207,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_09,match_09::temporal_group_0212,Match_09.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_10,match_10::temporal_group_0115,Match_10.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_10,match_10::temporal_group_0170,Match_10.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_10,match_10::temporal_group_0176,Match_10.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_13,match_13::temporal_group_0201,Match_13.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_13,match_13::temporal_group_0248,Match_13.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_13,match_13::temporal_group_0253,Match_13.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_15,match_15::temporal_group_0068,Match_15.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_15,match_15::temporal_group_0158,Match_15.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_15,match_15::temporal_group_0180,Match_15.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_16,match_16::temporal_group_0050,Match_16.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_16,match_16::temporal_group_0061,Match_16.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_16,match_16::temporal_group_0098,Match_16.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_18,match_18::temporal_group_0162,Match_18.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_18,match_18::temporal_group_0241,Match_18.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_18,match_18::temporal_group_0278,Match_18.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_20,match_20::temporal_group_0046,Match_20.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_20,match_20::temporal_group_0088,Match_20.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_20,match_20::temporal_group_0099,Match_20.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_20,match_20::temporal_group_0107,Match_20.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_20,match_20::temporal_group_0168,Match_20.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_20,match_20::temporal_group_0175,Match_20.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_21,match_21::temporal_group_0189,Match_21.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_21,match_21::temporal_group_0206,Match_21.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_21,match_21::temporal_group_0254,Match_21.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_22,match_22::temporal_group_0007,Match_22.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_22,match_22::temporal_group_0066,Match_22.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_22,match_22::temporal_group_0089,Match_22.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_22,match_22::temporal_group_0139,Match_22.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_22,match_22::temporal_group_0172,Match_22.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_22,match_22::temporal_group_0175,Match_22.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_23,match_23::temporal_group_0038,Match_23.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_23,match_23::temporal_group_0045,Match_23.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_23,match_23::temporal_group_0158,Match_23.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_24,match_24::temporal_group_0021,Match_24.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_24,match_24::temporal_group_0035,Match_24.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_24,match_24::temporal_group_0066,Match_24.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_25,match_25::temporal_group_0061,Match_25.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_25,match_25::temporal_group_0100,Match_25.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_25,match_25::temporal_group_0181,Match_25.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_25,match_25::temporal_group_0200,Match_25.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_25,match_25::temporal_group_0227,Match_25.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_25,match_25::temporal_group_0298,Match_25.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_25,match_25::temporal_group_0318,Match_25.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_27,match_27::temporal_group_0020,Match_27.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_27,match_27::temporal_group_0022,Match_27.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_27,match_27::temporal_group_0167,Match_27.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_28,match_28::temporal_group_0070,Match_28.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_28,match_28::temporal_group_0230,Match_28.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_28,match_28::temporal_group_0276,Match_28.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_32,match_32::temporal_group_0016,Match_32.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_32,match_32::temporal_group_0029,Match_32.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_32,match_32::temporal_group_0031,Match_32.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_32,match_32::temporal_group_0032,Match_32.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_32,match_32::temporal_group_0085,Match_32.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_32,match_32::temporal_group_0101,Match_32.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_32,match_32::temporal_group_0117,Match_32.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_32,match_32::temporal_group_0194,Match_32.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_35,match_35::temporal_group_0044,Match_35.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_35,match_35::temporal_group_0218,Match_35.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_35,match_35::temporal_group_0298,Match_35.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_36,match_36::temporal_group_0089,Match_36.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_36,match_36::temporal_group_0237,Match_36.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_36,match_36::temporal_group_0243,Match_36.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_37,match_37::temporal_group_0004,Match_37.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_37,match_37::temporal_group_0027,Match_37.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_37,match_37::temporal_group_0057,Match_37.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_37,match_37::temporal_group_0104,Match_37.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_37,match_37::temporal_group_0119,Match_37.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_37,match_37::temporal_group_0229,Match_37.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_37,match_37::temporal_group_0248,Match_37.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_38,match_38::temporal_group_0025,Match_38.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_38,match_38::temporal_group_0035,Match_38.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_38,match_38::temporal_group_0053,Match_38.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_38,match_38::temporal_group_0125,Match_38.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_38,match_38::temporal_group_0138,Match_38.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_38,match_38::temporal_group_0168,Match_38.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_38,match_38::temporal_group_0184,Match_38.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_38,match_38::temporal_group_0217,Match_38.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_41,match_41::temporal_group_0002,Match_41.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_41,match_41::temporal_group_0021,Match_41.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_41,match_41::temporal_group_0046,Match_41.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_41,match_41::temporal_group_0050,Match_41.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_41,match_41::temporal_group_0090,Match_41.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_41,match_41::temporal_group_0110,Match_41.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.
+CANDIDATE,match_41,match_41::temporal_group_0152,Match_41.mp4,PENDING,written_visual_review_v1,,Avaliar estrutura secundÃ¡ria na janela especÃ­fica; presenÃ§a de duas caixas no mesmo frame nÃ£o basta.

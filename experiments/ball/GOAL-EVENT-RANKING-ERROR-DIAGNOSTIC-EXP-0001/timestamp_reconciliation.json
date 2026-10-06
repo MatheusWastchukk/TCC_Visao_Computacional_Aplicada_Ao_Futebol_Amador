@@ -1,0 +1,32 @@
+{
+  "scope": "TRAIN only; timestamp reconciliation; no visual overlay inference",
+  "cases": 175,
+  "cases_matching_catalog_goal_timestamp": 36,
+  "cases_without_catalog_goal_timestamp_in_window": 139,
+  "distinct_catalog_goals_covered_in_queue": 36,
+  "cataloged_goals_in_source": 152,
+  "recoverable_below_top60_cases_matching_catalog": 21,
+  "recoverable_goals_missed_by_gap45": 11,
+  "recoverable_goals_missed_by_top60_capacity": 10,
+  "misses_ranked_in_full_pool_top60_but_suppressed_by_gap45": 4,
+  "miss_exclusion_counts": {
+    "GAP_45S_SUPPRESSED_BY_EARLIER_SELECTED_CANDIDATE": 11,
+    "TOP60_CAPACITY_OR_AFTER_SHORTLIST_LIMIT": 10
+  },
+  "role_case_counts": {
+    "REPRESENTATIVE_MATCH_TOP60": 60,
+    "PAIRED_HIGHER_RANK_UNCONFIRMED": 33,
+    "RECOVERABLE_GOAL_BELOW_TOP60": 21,
+    "TOP30_CONTROL_UNCONFIRMED": 72
+  },
+  "role_timestamp_match_counts": {
+    "REPRESENTATIVE_MATCH_TOP60": 7,
+    "RECOVERABLE_GOAL_BELOW_TOP60": 21,
+    "TOP30_CONTROL_UNCONFIRMED": 8
+  },
+  "interpretation": "NO_CATALOG_GOAL_IN_WINDOW is not a verified NO_GOAL label; it means only that no annotated catalog timestamp falls inside this window.",
+  "inputs_sha256": {
+    "experiments\\ball\\GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001\\manual_case_audit.csv": "f4216d0fc15b5810ab207fba064513b7197c68755754384d12d2d2dd5e825430",
+    "experiments\\ball\\GOAL-EVENT-MISSED-GOAL-AUDIT-TRAIN-V1\\train_goal_pool_and_shortlist_coverage_v1.csv": "51b35a4f9b59057da25939453ec6bc9a6b13f2a2d5aa8c01e3fd057ff4c40b44"
+  }
+}

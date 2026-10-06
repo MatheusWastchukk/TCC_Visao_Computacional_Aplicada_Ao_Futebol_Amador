@@ -1,0 +1,1679 @@
+{
+  "experiment_id": "GOAL-EVENT-RANKING-REVIEWED-PAIR-OVERLAYS-V1",
+  "scope": "TRAIN only; fresh frozen-model inference; diagnostic contact sheets, not continuous tracking",
+  "device_requested": "cpu",
+  "device_actual": "CPU",
+  "torch_version": "2.9.1+rocm7.2.1",
+  "goal_model": "runs\\detect\\experiments\\goal_geometry\\EXP-0092\\yolo11n_cpu_reference\\weights\\best.pt",
+  "ball_model": "runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt",
+  "goal_confidence": 0.25,
+  "ball_confidence": 0.05,
+  "goal_imgsz": 640,
+  "ball_imgsz": 960,
+  "offsets_seconds": [
+    -10,
+    -5,
+    0,
+    5,
+    10
+  ],
+  "clips": [
+    {
+      "goal_catalog_id": "match_06__catalog_goal_004",
+      "match_id": "match_06",
+      "video_filename": "Match_06.mp4",
+      "control_timestamp_seconds": 1351.985,
+      "catalog_goal_timestamp_seconds": 2728.249,
+      "image": "match_06__catalog_goal_004.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 1341.985,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 1346.985,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 1351.985,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 1356.985,
+          "goal_detections": 1,
+          "ball_detections": 6
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 1361.985,
+          "goal_detections": 1,
+          "ball_detections": 6
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 2718.249,
+          "goal_detections": 1,
+          "ball_detections": 7
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 2723.249,
+          "goal_detections": 1,
+          "ball_detections": 6
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 2728.249,
+          "goal_detections": 1,
+          "ball_detections": 3
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 2733.249,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 2738.249,
+          "goal_detections": 1,
+          "ball_detections": 5
+        }
+      ],
+      "control_rank_full_pool": 2,
+      "control_temporal_score_lomo": 0.247852
+    },
+    {
+      "goal_catalog_id": "match_07__catalog_goal_004",
+      "match_id": "match_07",
+      "video_filename": "Match_07.mp4",
+      "control_timestamp_seconds": 113.119,
+      "catalog_goal_timestamp_seconds": 2937.735,
+      "image": "match_07__catalog_goal_004.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 103.119,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 108.119,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 113.119,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 118.119,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 123.119,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 2927.735,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 2932.735,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 2937.735,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 2942.735,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 2947.735,
+          "goal_detections": 1,
+          "ball_detections": 3
+        }
+      ],
+      "control_rank_full_pool": 1,
+      "control_temporal_score_lomo": 0.549558
+    },
+    {
+      "goal_catalog_id": "match_07__catalog_goal_006",
+      "match_id": "match_07",
+      "video_filename": "Match_07.mp4",
+      "control_timestamp_seconds": 6012.747,
+      "catalog_goal_timestamp_seconds": 4265.837,
+      "image": "match_07__catalog_goal_006.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 6002.747,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 6007.747,
+          "goal_detections": 1,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 6012.747,
+          "goal_detections": 1,
+          "ball_detections": 5
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 6017.747,
+          "goal_detections": 1,
+          "ball_detections": 7
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 6022.747,
+          "goal_detections": 1,
+          "ball_detections": 6
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 4255.837,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 4260.837,
+          "goal_detections": 1,
+          "ball_detections": 3
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 4265.837,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 4270.837,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 4275.837,
+          "goal_detections": 1,
+          "ball_detections": 1
+        }
+      ],
+      "control_rank_full_pool": 2,
+      "control_temporal_score_lomo": 0.513116
+    },
+    {
+      "goal_catalog_id": "match_08__catalog_goal_009",
+      "match_id": "match_08",
+      "video_filename": "Match_08.mp4",
+      "control_timestamp_seconds": 875.195,
+      "catalog_goal_timestamp_seconds": 5352.701,
+      "image": "match_08__catalog_goal_009.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 865.195,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 870.195,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 875.195,
+          "goal_detections": 1,
+          "ball_detections": 4
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 880.195,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 885.195,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 5342.701,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 5347.701,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 5352.701,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 5357.701,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 5362.701,
+          "goal_detections": 1,
+          "ball_detections": 0
+        }
+      ],
+      "control_rank_full_pool": 1,
+      "control_temporal_score_lomo": 0.261137
+    },
+    {
+      "goal_catalog_id": "match_09__catalog_goal_001",
+      "match_id": "match_09",
+      "video_filename": "Match_09.mp4",
+      "control_timestamp_seconds": 5620.182,
+      "catalog_goal_timestamp_seconds": 663.292,
+      "image": "match_09__catalog_goal_001.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 5610.182,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 5615.182,
+          "goal_detections": 3,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 5620.182,
+          "goal_detections": 2,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 5625.182,
+          "goal_detections": 2,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 5630.182,
+          "goal_detections": 2,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 653.292,
+          "goal_detections": 3,
+          "ball_detections": 4
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 658.292,
+          "goal_detections": 2,
+          "ball_detections": 3
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 663.292,
+          "goal_detections": 2,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 668.292,
+          "goal_detections": 2,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 673.292,
+          "goal_detections": 1,
+          "ball_detections": 3
+        }
+      ],
+      "control_rank_full_pool": 1,
+      "control_temporal_score_lomo": 0.224351
+    },
+    {
+      "goal_catalog_id": "match_09__catalog_goal_005",
+      "match_id": "match_09",
+      "video_filename": "Match_09.mp4",
+      "control_timestamp_seconds": 4084.256,
+      "catalog_goal_timestamp_seconds": 1320.044,
+      "image": "match_09__catalog_goal_005.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 4074.256,
+          "goal_detections": 2,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 4079.256,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 4084.256,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 4089.256,
+          "goal_detections": 3,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 4094.256,
+          "goal_detections": 1,
+          "ball_detections": 5
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 1310.044,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 1315.044,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 1320.044,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 1325.044,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 1330.044,
+          "goal_detections": 1,
+          "ball_detections": 1
+        }
+      ],
+      "control_rank_full_pool": 2,
+      "control_temporal_score_lomo": 0.21444
+    },
+    {
+      "goal_catalog_id": "match_09__catalog_goal_008",
+      "match_id": "match_09",
+      "video_filename": "Match_09.mp4",
+      "control_timestamp_seconds": 2749.931,
+      "catalog_goal_timestamp_seconds": 3338.449,
+      "image": "match_09__catalog_goal_008.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 2739.931,
+          "goal_detections": 2,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 2744.931,
+          "goal_detections": 2,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 2749.931,
+          "goal_detections": 2,
+          "ball_detections": 5
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 2754.931,
+          "goal_detections": 2,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 2759.931,
+          "goal_detections": 3,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 3328.449,
+          "goal_detections": 2,
+          "ball_detections": 3
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 3333.449,
+          "goal_detections": 2,
+          "ball_detections": 5
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 3338.449,
+          "goal_detections": 2,
+          "ball_detections": 3
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 3343.449,
+          "goal_detections": 2,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 3348.449,
+          "goal_detections": 2,
+          "ball_detections": 0
+        }
+      ],
+      "control_rank_full_pool": 3,
+      "control_temporal_score_lomo": 0.210764
+    },
+    {
+      "goal_catalog_id": "match_20__catalog_goal_002",
+      "match_id": "match_20",
+      "video_filename": "Match_20.mp4",
+      "control_timestamp_seconds": 4729.032,
+      "catalog_goal_timestamp_seconds": 1076.774,
+      "image": "match_20__catalog_goal_002.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 4719.032,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 4724.032,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 4729.032,
+          "goal_detections": 1,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 4734.032,
+          "goal_detections": 2,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 4739.032,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 1066.774,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 1071.774,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 1076.774,
+          "goal_detections": 2,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 1081.774,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 1086.774,
+          "goal_detections": 0,
+          "ball_detections": 0
+        }
+      ],
+      "control_rank_full_pool": 1,
+      "control_temporal_score_lomo": 0.4328
+    },
+    {
+      "goal_catalog_id": "match_22__catalog_goal_007",
+      "match_id": "match_22",
+      "video_filename": "Match_22.mp4",
+      "control_timestamp_seconds": 136.007,
+      "catalog_goal_timestamp_seconds": 4352.799,
+      "image": "match_22__catalog_goal_007.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 126.007,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 131.007,
+          "goal_detections": 2,
+          "ball_detections": 8
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 136.007,
+          "goal_detections": 1,
+          "ball_detections": 6
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 141.007,
+          "goal_detections": 2,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 146.007,
+          "goal_detections": 2,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 4342.799,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 4347.799,
+          "goal_detections": 1,
+          "ball_detections": 6
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 4352.799,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 4357.799,
+          "goal_detections": 1,
+          "ball_detections": 3
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 4362.799,
+          "goal_detections": 1,
+          "ball_detections": 1
+        }
+      ],
+      "control_rank_full_pool": 1,
+      "control_temporal_score_lomo": 0.516747
+    },
+    {
+      "goal_catalog_id": "match_25__catalog_goal_001",
+      "match_id": "match_25",
+      "video_filename": "Match_25.mp4",
+      "control_timestamp_seconds": 4334.304,
+      "catalog_goal_timestamp_seconds": 1392.783,
+      "image": "match_25__catalog_goal_001.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 4324.304,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 4329.304,
+          "goal_detections": 2,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 4334.304,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 4339.304,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 4344.304,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 1382.783,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 1387.783,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 1392.783,
+          "goal_detections": 1,
+          "ball_detections": 3
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 1397.783,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 1402.783,
+          "goal_detections": 0,
+          "ball_detections": 0
+        }
+      ],
+      "control_rank_full_pool": 1,
+      "control_temporal_score_lomo": 0.128313
+    },
+    {
+      "goal_catalog_id": "match_25__catalog_goal_002",
+      "match_id": "match_25",
+      "video_filename": "Match_25.mp4",
+      "control_timestamp_seconds": 697.092,
+      "catalog_goal_timestamp_seconds": 2616.532,
+      "image": "match_25__catalog_goal_002.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 687.092,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 692.092,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 697.092,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 702.092,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 707.092,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 2606.532,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 2611.532,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 2616.532,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 2621.532,
+          "goal_detections": 1,
+          "ball_detections": 4
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 2626.532,
+          "goal_detections": 1,
+          "ball_detections": 2
+        }
+      ],
+      "control_rank_full_pool": 2,
+      "control_temporal_score_lomo": 0.091844
+    },
+    {
+      "goal_catalog_id": "match_32__catalog_goal_001",
+      "match_id": "match_32",
+      "video_filename": "Match_32.mp4",
+      "control_timestamp_seconds": 863.809,
+      "catalog_goal_timestamp_seconds": 447.971,
+      "image": "match_32__catalog_goal_001.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 853.809,
+          "goal_detections": 2,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 858.809,
+          "goal_detections": 1,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 863.809,
+          "goal_detections": 2,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 868.809,
+          "goal_detections": 2,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 873.809,
+          "goal_detections": 2,
+          "ball_detections": 5
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 437.971,
+          "goal_detections": 3,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 442.971,
+          "goal_detections": 2,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 447.971,
+          "goal_detections": 3,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 452.971,
+          "goal_detections": 3,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 457.971,
+          "goal_detections": 1,
+          "ball_detections": 1
+        }
+      ],
+      "control_rank_full_pool": 1,
+      "control_temporal_score_lomo": 0.387455
+    },
+    {
+      "goal_catalog_id": "match_32__catalog_goal_002",
+      "match_id": "match_32",
+      "video_filename": "Match_32.mp4",
+      "control_timestamp_seconds": 2271.424,
+      "catalog_goal_timestamp_seconds": 818.475,
+      "image": "match_32__catalog_goal_002.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 2261.424,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 2266.424,
+          "goal_detections": 1,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 2271.424,
+          "goal_detections": 2,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 2276.424,
+          "goal_detections": 2,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 2281.424,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 808.475,
+          "goal_detections": 2,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 813.475,
+          "goal_detections": 2,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 818.475,
+          "goal_detections": 2,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 823.475,
+          "goal_detections": 3,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 828.475,
+          "goal_detections": 2,
+          "ball_detections": 0
+        }
+      ],
+      "control_rank_full_pool": 2,
+      "control_temporal_score_lomo": 0.134757
+    },
+    {
+      "goal_catalog_id": "match_32__catalog_goal_005",
+      "match_id": "match_32",
+      "video_filename": "Match_32.mp4",
+      "control_timestamp_seconds": 5784.262,
+      "catalog_goal_timestamp_seconds": 2757.03,
+      "image": "match_32__catalog_goal_005.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 5774.262,
+          "goal_detections": 3,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 5779.262,
+          "goal_detections": 2,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 5784.262,
+          "goal_detections": 3,
+          "ball_detections": 4
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 5789.262,
+          "goal_detections": 3,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 5794.262,
+          "goal_detections": 2,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 2747.03,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 2752.03,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 2757.03,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 2762.03,
+          "goal_detections": 2,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 2767.03,
+          "goal_detections": 1,
+          "ball_detections": 0
+        }
+      ],
+      "control_rank_full_pool": 4,
+      "control_temporal_score_lomo": 0.094347
+    },
+    {
+      "goal_catalog_id": "match_37__catalog_goal_002",
+      "match_id": "match_37",
+      "video_filename": "Match_37.mp4",
+      "control_timestamp_seconds": 4967.771,
+      "catalog_goal_timestamp_seconds": 1100.727,
+      "image": "match_37__catalog_goal_002.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 4957.771,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 4962.771,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 4967.771,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 4972.771,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 4977.771,
+          "goal_detections": 1,
+          "ball_detections": 3
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 1090.727,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 1095.727,
+          "goal_detections": 1,
+          "ball_detections": 5
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 1100.727,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 1105.727,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 1110.727,
+          "goal_detections": 0,
+          "ball_detections": 0
+        }
+      ],
+      "control_rank_full_pool": 1,
+      "control_temporal_score_lomo": 0.366767
+    },
+    {
+      "goal_catalog_id": "match_37__catalog_goal_006",
+      "match_id": "match_37",
+      "video_filename": "Match_37.mp4",
+      "control_timestamp_seconds": 2139.787,
+      "catalog_goal_timestamp_seconds": 5339.068,
+      "image": "match_37__catalog_goal_006.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 2129.787,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 2134.787,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 2139.787,
+          "goal_detections": 1,
+          "ball_detections": 7
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 2144.787,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 2149.787,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 5329.068,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 5334.068,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 5339.068,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 5344.068,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 5349.068,
+          "goal_detections": 1,
+          "ball_detections": 0
+        }
+      ],
+      "control_rank_full_pool": 2,
+      "control_temporal_score_lomo": 0.280738
+    },
+    {
+      "goal_catalog_id": "match_38__catalog_goal_002",
+      "match_id": "match_38",
+      "video_filename": "Match_38.mp4",
+      "control_timestamp_seconds": 941.395,
+      "catalog_goal_timestamp_seconds": 732.262,
+      "image": "match_38__catalog_goal_002.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 931.395,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 936.395,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 941.395,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 946.395,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 951.395,
+          "goal_detections": 1,
+          "ball_detections": 5
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 722.262,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 727.262,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 732.262,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 737.262,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 742.262,
+          "goal_detections": 1,
+          "ball_detections": 0
+        }
+      ],
+      "control_rank_full_pool": 1,
+      "control_temporal_score_lomo": 0.277175
+    },
+    {
+      "goal_catalog_id": "match_38__catalog_goal_005",
+      "match_id": "match_38",
+      "video_filename": "Match_38.mp4",
+      "control_timestamp_seconds": 1404.792,
+      "catalog_goal_timestamp_seconds": 4795.606,
+      "image": "match_38__catalog_goal_005.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 1394.792,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 1399.792,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 1404.792,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 1409.792,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 1414.792,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 4785.606,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 4790.606,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 4795.606,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 4800.606,
+          "goal_detections": 1,
+          "ball_detections": 6
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 4805.606,
+          "goal_detections": 1,
+          "ball_detections": 1
+        }
+      ],
+      "control_rank_full_pool": 2,
+      "control_temporal_score_lomo": 0.259999
+    },
+    {
+      "goal_catalog_id": "match_38__catalog_goal_006",
+      "match_id": "match_38",
+      "video_filename": "Match_38.mp4",
+      "control_timestamp_seconds": 4370.775,
+      "catalog_goal_timestamp_seconds": 5464.102,
+      "image": "match_38__catalog_goal_006.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 4360.775,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 4365.775,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 4370.775,
+          "goal_detections": 1,
+          "ball_detections": 4
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 4375.775,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 4380.775,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 5454.102,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 5459.102,
+          "goal_detections": 1,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 5464.102,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 5469.102,
+          "goal_detections": 1,
+          "ball_detections": 3
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 5474.102,
+          "goal_detections": 0,
+          "ball_detections": 0
+        }
+      ],
+      "control_rank_full_pool": 3,
+      "control_temporal_score_lomo": 0.256767
+    },
+    {
+      "goal_catalog_id": "match_41__catalog_goal_002",
+      "match_id": "match_41",
+      "video_filename": "Match_41.mp4",
+      "control_timestamp_seconds": 4063.777,
+      "catalog_goal_timestamp_seconds": 1318.193,
+      "image": "match_41__catalog_goal_002.jpg",
+      "frames": [
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -10,
+          "timestamp_seconds": 4053.777,
+          "goal_detections": 1,
+          "ball_detections": 5
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": -5,
+          "timestamp_seconds": 4058.777,
+          "goal_detections": 1,
+          "ball_detections": 5
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 0,
+          "timestamp_seconds": 4063.777,
+          "goal_detections": 1,
+          "ball_detections": 3
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 5,
+          "timestamp_seconds": 4068.777,
+          "goal_detections": 1,
+          "ball_detections": 2
+        },
+        {
+          "section": "NO_GOAL candidate",
+          "offset_seconds": 10,
+          "timestamp_seconds": 4073.777,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -10,
+          "timestamp_seconds": 1308.193,
+          "goal_detections": 1,
+          "ball_detections": 1
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": -5,
+          "timestamp_seconds": 1313.193,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 0,
+          "timestamp_seconds": 1318.193,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 5,
+          "timestamp_seconds": 1323.193,
+          "goal_detections": 0,
+          "ball_detections": 0
+        },
+        {
+          "section": "catalog goal",
+          "offset_seconds": 10,
+          "timestamp_seconds": 1328.193,
+          "goal_detections": 0,
+          "ball_detections": 0
+        }
+      ],
+      "control_rank_full_pool": 2,
+      "control_temporal_score_lomo": 0.323459
+    }
+  ],
+  "aggregate_detections_by_section": {
+    "NO_GOAL candidate": {
+      "frames": 100,
+      "frames_with_goal": 88,
+      "frames_with_ball": 72,
+      "mean_goal_boxes_per_frame": 1.21,
+      "mean_ball_boxes_per_frame": 2.01
+    },
+    "catalog goal": {
+      "frames": 100,
+      "frames_with_goal": 83,
+      "frames_with_ball": 54,
+      "mean_goal_boxes_per_frame": 1.08,
+      "mean_ball_boxes_per_frame": 1.25
+    }
+  },
+  "fallback_reason": "MIOpen Error: Acesso negado ao inicializar lockfile em C:\\Users\\mathe\\.miopen\\db\\miopen-lockfiles; nenhum frame processado na GPU."
+}

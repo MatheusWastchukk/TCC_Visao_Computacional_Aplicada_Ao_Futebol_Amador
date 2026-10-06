@@ -238,6 +238,10 @@ experiments/ball/**/*_frame_results*.csv
 experiments/ball/**/*_sequence_predictions*.csv
 experiments/ball/**/oracle_feature_frames_v1.csv
 experiments/ball/**/oracle_temporal_diagnostic_frames_v1.csv
+experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frame_annotations_v1.csv
+experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frame_annotations_v1_goal_geometry.csv
+experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frame_annotations_v1_temporal_geometry.csv
+experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/frame_annotations_v1_before_reset_*.csv
 experiments/ball/BALL-HARD-POSITIVE-EXP-0001/dataset_*/manifest.csv
 
 # Keep compact validation outputs that are otherwise caught by broad suffix rules.

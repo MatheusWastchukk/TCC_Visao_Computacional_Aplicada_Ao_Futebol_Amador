@@ -1,0 +1,12 @@
+{
+  "experiment_id": "run_v1",
+  "sequences": 40,
+  "target_frames": 359,
+  "candidate_recall": 0.4401114206128134,
+  "identity_accuracy": 0.3064066852367688,
+  "wrong_ball_switch_rate": 0.0,
+  "confidence": 0.01,
+  "max_candidates": 10,
+  "verifier_checkpoint": null,
+  "verifier_weight": 0.0
+}
