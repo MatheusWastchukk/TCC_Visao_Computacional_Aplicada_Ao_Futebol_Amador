@@ -1,0 +1,31 @@
+{
+  "experiment_id": "budget_grid_v1",
+  "scope": "TRAIN only; label-blind tracker rerun using frozen human annotations only after prediction recomputation; VALIDATION and TEST not accessed",
+  "prediction_freeze_sha256": "c8182ae91866cf6d6e9ad65f47125c25f51df2d8b856a3224fd3b6a0cd77df91",
+  "frame_prediction_sha256": "d7cd257da7a43488fa6e712790dfc994f0d5154863823bf457b4b569fe304522",
+  "annotation_sha256": "b016b99ea5c61e5d928a313697f1e4ee6d2a0762dc352b2596f10252f1261565",
+  "candidate_generation_limits": {
+    "source_confidence_floor": 0.01,
+    "source_max_candidates_per_frame": 10,
+    "source_checkpoint_hashes": {
+      "baseline": "9f162fa47fcf8c7f06b774f34e56bfecc6025373f5e5fd208204e1afd5ebcb01",
+      "oversampled": "a028fbfcda1e4d0cb17de83418724ce71e630024491e53f84e2820a61749b7d5"
+    }
+  },
+  "grid": {
+    "confidence_floors": [
+      0.01,
+      0.03,
+      0.05
+    ],
+    "top_n": [
+      1,
+      3,
+      5,
+      10
+    ],
+    "viterbi_transition_penalty": "4*normalized center distance + 0.25*abs(log area ratio)"
+  },
+  "limitation": "Lower confidence floors (0.005/0.001) and Top-20/50 are not recoverable from the saved proposal list, which was generated at conf=0.01 and capped at Top-10. This grid only reduces the saved proposal set; it does not test new low-confidence or additional proposals.",
+  "interpretation": "Exploratory paired TRAIN diagnostic; no integration or model promotion decision."
+}
