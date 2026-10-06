@@ -1,0 +1,24 @@
+{
+  "experiment_id": "BALL-HARD-POSITIVE-EXP-0001",
+  "scope": "TRAIN-only engineering gate; no VALIDATION/TEST or generalization claim",
+  "evaluation_protocol": "experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\holdout_evaluation_v1\\protocol_v1.json",
+  "holdout_summary": "experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\holdout_evaluation_v1\\holdout_summary_v1.csv",
+  "gate": {
+    "criterion": "oversampled positive candidate recall >= 0.50 and greater than baseline on identical holdout rows",
+    "minimum_oversampled_recall": 0.5,
+    "baseline": {
+      "positive_frames": 104,
+      "hits": 71,
+      "candidate_recall": 0.682692
+    },
+    "oversampled": {
+      "positive_frames": 104,
+      "hits": 72,
+      "candidate_recall": 0.692308
+    },
+    "passed": true,
+    "decision": "REOPEN_TRACKER"
+  },
+  "weight_selection": "No checkpoint selection or detector promotion is permitted from this comparison.",
+  "next_step": "Prepare the conditional same-Viterbi TRAIN retest only if the gate passes; otherwise keep tracking closed."
+}

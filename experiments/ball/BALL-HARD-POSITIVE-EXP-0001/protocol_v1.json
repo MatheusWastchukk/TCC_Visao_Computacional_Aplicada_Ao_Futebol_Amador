@@ -1,0 +1,170 @@
+{
+  "experiment_id": "BALL-HARD-POSITIVE-EXP-0001",
+  "source_scope": "Existing TRAIN annotations only; original TRAIN split has 25 matches; no VALIDATION or TEST rows included.",
+  "inputs": {
+    "annotations": "experiments\\ball\\ball_dataset_annotations_v2.csv",
+    "annotations_sha256": "ce00443d9652d0aa725abde93b7d5c77f33f08d1c0fb7f89f1e623b7fb27fc55",
+    "oracle_manifest": "experiments\\ball\\GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001\\oracle_pair_manifest_v1.csv",
+    "oracle_manifest_sha256": "d795859a1567ce2fbfb5306615a206832120d7c6864743a2c188426ce76dae47"
+  },
+  "split": {
+    "seed": 20261002,
+    "holdout_matches": [
+      "match_10",
+      "match_16",
+      "match_23",
+      "match_27",
+      "match_36"
+    ],
+    "train_matches": [
+      "match_02",
+      "match_04",
+      "match_06",
+      "match_07",
+      "match_08",
+      "match_09",
+      "match_13",
+      "match_15",
+      "match_18",
+      "match_20",
+      "match_21",
+      "match_22",
+      "match_24",
+      "match_25",
+      "match_28",
+      "match_32",
+      "match_35",
+      "match_37",
+      "match_38",
+      "match_41"
+    ],
+    "oracle_matches_excluded_from_holdout_eligibility": [
+      "match_06",
+      "match_07",
+      "match_08",
+      "match_09",
+      "match_20",
+      "match_22",
+      "match_25",
+      "match_32",
+      "match_37",
+      "match_38",
+      "match_41"
+    ],
+    "holdout_is_disjoint_from_oracle_matches": true
+  },
+  "intervention": {
+    "only_change": "Oversample existing VISIBLE/PARTIAL ball boxes with area <400 px2 to 3 total copies.",
+    "area_threshold_px2": 400.0,
+    "original_small_positive_count_in_train_fold": 63,
+    "extra_duplicate_rows": 126,
+    "total_multiplier": 3,
+    "all_other_labels_and_model_settings": "unchanged"
+  },
+  "baseline_train": {
+    "samples": 600,
+    "matches": 20,
+    "visibility": {
+      "NOT_VISIBLE": 157,
+      "PARTIAL": 23,
+      "UNCERTAIN": 15,
+      "VISIBLE": 405
+    },
+    "positive_visible_partial": 428,
+    "positive_box_area_lt_400px2": 63,
+    "per_match_samples": {
+      "match_02": 30,
+      "match_04": 30,
+      "match_06": 30,
+      "match_07": 30,
+      "match_08": 30,
+      "match_09": 30,
+      "match_13": 30,
+      "match_15": 30,
+      "match_18": 30,
+      "match_20": 30,
+      "match_21": 30,
+      "match_22": 30,
+      "match_24": 30,
+      "match_25": 30,
+      "match_28": 30,
+      "match_32": 30,
+      "match_35": 30,
+      "match_37": 30,
+      "match_38": 30,
+      "match_41": 30
+    }
+  },
+  "oversampled_train": {
+    "samples": 726,
+    "matches": 20,
+    "visibility": {
+      "NOT_VISIBLE": 157,
+      "PARTIAL": 31,
+      "UNCERTAIN": 15,
+      "VISIBLE": 523
+    },
+    "positive_visible_partial": 554,
+    "positive_box_area_lt_400px2": 189,
+    "per_match_samples": {
+      "match_02": 40,
+      "match_04": 34,
+      "match_06": 30,
+      "match_07": 40,
+      "match_08": 42,
+      "match_09": 36,
+      "match_13": 54,
+      "match_15": 34,
+      "match_18": 42,
+      "match_20": 30,
+      "match_21": 32,
+      "match_22": 38,
+      "match_24": 32,
+      "match_25": 36,
+      "match_28": 44,
+      "match_32": 38,
+      "match_35": 30,
+      "match_37": 30,
+      "match_38": 30,
+      "match_41": 34
+    }
+  },
+  "holdout": {
+    "samples": 150,
+    "matches": 5,
+    "visibility": {
+      "NOT_VISIBLE": 44,
+      "PARTIAL": 4,
+      "UNCERTAIN": 2,
+      "VISIBLE": 100
+    },
+    "positive_visible_partial": 104,
+    "positive_box_area_lt_400px2": 9,
+    "per_match_samples": {
+      "match_10": 30,
+      "match_16": 30,
+      "match_23": 30,
+      "match_27": 30,
+      "match_36": 30
+    }
+  },
+  "comparison_protocol": {
+    "init_weights": "yolo11n.pt for both",
+    "epochs": 30,
+    "imgsz": 960,
+    "batch": 8,
+    "seed": 0,
+    "device": "CPU .venv; Python 3.11.9; PyTorch 2.13.0+cpu; Ultralytics 8.4.102",
+    "validation_during_training": false,
+    "checkpoint_choice": "last.pt at fixed epoch; no holdout metric used to select weights",
+    "candidate_recall": "any top-10 prediction at confidence 0.01 with IoU >=0.50 on VISIBLE/PARTIAL holdout frames",
+    "also_report": [
+      "recall by match and visibility",
+      "proposals per frame",
+      "cost",
+      "per-match variation"
+    ],
+    "tracking_reopen_gate": "Retest the same Viterbi only if oversampled holdout positive candidate recall is >=0.50 and exceeds baseline on the same five matches; otherwise NO-GO tracker."
+  },
+  "warning": "The five evaluation matches are a pre-fixed holdout from TRAIN, not VALIDATION or TEST and not an estimate of external generalization. This holdout supports one detector engineering comparison only."
+}

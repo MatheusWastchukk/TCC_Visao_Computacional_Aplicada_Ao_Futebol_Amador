@@ -1,0 +1,5 @@
+path: "C:/Users/mathe/Documents/tcc_deteccao_analise_de_videos_de _futebol/experiments/ball/BALL-HARD-POSITIVE-EXP-0001/dataset_small_positive_oversampled"
+train: images/train
+val: images/train
+names:
+  0: ball

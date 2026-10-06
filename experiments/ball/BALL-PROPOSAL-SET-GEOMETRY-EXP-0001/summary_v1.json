@@ -1,0 +1,43 @@
+{
+  "experiment_id": "BALL-PROPOSAL-SET-GEOMETRY-EXP-0001",
+  "scope": "TRAIN-only five-match holdout disjoint from both checkpoints; 35 geometry-marked event frames (29 goal, 6 paired controls); TEST/VALIDATION not accessed",
+  "annotations": {
+    "path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\frame_annotations_v1.csv",
+    "sha256": "b016b99ea5c61e5d928a313697f1e4ee6d2a0762dc352b2596f10252f1261565"
+  },
+  "checkpoints": [
+    {
+      "name": "baseline",
+      "path": "runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\baseline\\weights\\last.pt",
+      "sha256": "9f162fa47fcf8c7f06b774f34e56bfecc6025373f5e5fd208204e1afd5ebcb01"
+    },
+    {
+      "name": "oversampled",
+      "path": "runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\oversampled\\weights\\last.pt",
+      "sha256": "a028fbfcda1e4d0cb17de83418724ce71e630024491e53f84e2820a61749b7d5"
+    }
+  ],
+  "inference": {
+    "imgsz": 960,
+    "device": "0",
+    "confidence_floor": 0.001,
+    "thresholds": [
+      0.01,
+      0.005,
+      0.001
+    ],
+    "max_det_per_view": 300,
+    "tile_grid": "2x2",
+    "tile_overlap": 0.2,
+    "cross_view_dedup_iou": 0.75
+  },
+  "geometry": "Proposal-box center tested against manually marked opening quadrilateral and 6-point volume polygon using signed point-to-polygon distance. Near-opening threshold=max(5 px, 2% of opening bounding-box diagonal).",
+  "limits": "Only the event frame has manual goal geometry; temporal aggregation, camera-motion compensation, and goal-structure tracking are not evaluated. Pairwise inference uses six matched positives/controls; 23 positive geometry frames are unmatched.",
+  "runtime_seconds": {
+    "baseline:global": 0.021489974280952343,
+    "baseline:tiles_2x2": 0.08119253143169251,
+    "oversampled:global": 0.01904339428458895,
+    "oversampled:tiles_2x2": 0.07393070000855784
+  },
+  "interpretation": "Exploratory small-sample proposal-set geometry comparison; no external validation and no promotion decision."
+}

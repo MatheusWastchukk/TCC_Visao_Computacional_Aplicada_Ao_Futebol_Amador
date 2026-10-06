@@ -1,0 +1,19 @@
+{
+  "experiment_id": "BALL-HARD-POSITIVE-EXP-0001",
+  "addendum_id": "area-stratification-descriptive-diagnostic-v1",
+  "frozen_before_holdout_predictions_reviewed": true,
+  "date": "2026-10-03",
+  "reason": "The only detector intervention oversamples existing positive boxes with area below 400 px2; report a same-holdout descriptive stratum to inspect whether any observed change is concentrated in that target group.",
+  "population": "The exact same 104 VISIBLE/PARTIAL positive rows in the five frozen TRAIN holdout matches; each model uses identical rows.",
+  "area_measure": "Area of the frozen manual ground-truth xyxy box in original image pixels.",
+  "groups": {
+    "lt_400_px2": "GT box area <400 px2",
+    "ge_400_px2": "GT box area >=400 px2"
+  },
+  "expected_counts_from_frozen_annotation_manifest": {
+    "lt_400_px2": 9,
+    "ge_400_px2": 95
+  },
+  "status": "Descriptive diagnostic only. It does not alter the preregistered overall tracker gate (oversampled positive candidate recall >=0.50 and greater than baseline), select checkpoints, tune settings, or justify a generalization claim.",
+  "scope": "TRAIN-only engineering comparison; TEST remains closed."
+}

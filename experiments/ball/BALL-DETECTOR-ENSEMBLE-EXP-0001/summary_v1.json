@@ -1,0 +1,46 @@
+{
+  "experiment_id": "BALL-DETECTOR-ENSEMBLE-EXP-0001",
+  "scope": "TRAIN-only frozen five-match holdout; 104 visible/partial positives; TEST and VALIDATION not accessed",
+  "annotations": {
+    "path": "experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\holdout_train_annotations_v1.csv",
+    "sha256": "a2e0b49796b2ca3722f9857964386d234c081aec5730f661b3ed3f81bfc61fcb"
+  },
+  "raw_detections": {
+    "path": "experiments\\ball\\BALL-PROPOSAL-CEILING-EXP-0001\\proposal_ceiling_raw_detections_v1.csv",
+    "sha256": "d8b412db9d7b4406cceb286edcab282edc5214eaec7dd18052aafa90f8cc67aa"
+  },
+  "checkpoints": [
+    {
+      "name": "baseline",
+      "path": "runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\baseline\\weights\\last.pt",
+      "sha256": "9f162fa47fcf8c7f06b774f34e56bfecc6025373f5e5fd208204e1afd5ebcb01"
+    },
+    {
+      "name": "oversampled",
+      "path": "runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\oversampled\\weights\\last.pt",
+      "sha256": "a028fbfcda1e4d0cb17de83418724ce71e630024491e53f84e2820a61749b7d5"
+    }
+  ],
+  "models": [
+    "baseline",
+    "oversampled"
+  ],
+  "confidence_thresholds": [
+    0.01,
+    0.005,
+    0.001
+  ],
+  "top_n": [
+    10,
+    20,
+    50,
+    "all"
+  ],
+  "cross_model_dedup_iou_sweep": [
+    0.5,
+    0.75,
+    1.01
+  ],
+  "ensemble_ranking": "pooled detections sorted by raw confidence, then model name and within-model rank; cross-model boxes at or above the dedup IoU are suppressed; top-N applies after this merge. IoU 1.01 is the no-dedup union control.",
+  "warning": "Confidence values may not be calibrated equally between checkpoints. This is a two-model exploratory engineering comparison on the fixed TRAIN holdout, not external validation or a promotion decision."
+}

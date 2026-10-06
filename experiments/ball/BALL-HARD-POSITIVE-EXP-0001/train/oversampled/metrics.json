@@ -1,0 +1,19 @@
+{
+  "experiment_id": "oversampled",
+  "model": "yolo11n.pt",
+  "data": "experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\dataset_small_positive_oversampled.yaml",
+  "epochs": 30,
+  "imgsz": 960,
+  "batch": 8,
+  "device": "cpu",
+  "metrics_scope": "post-training training-fold diagnostics only; not the frozen holdout comparison or a promotion metric",
+  "metrics": {
+    "metrics/precision(B)": 0.6035763186308667,
+    "metrics/recall(B)": 0.5342960288808665,
+    "metrics/mAP50(B)": 0.5483865362293501,
+    "metrics/mAP50-95(B)": 0.18376085332884462,
+    "fitness": 0.18376085332884462
+  },
+  "execution_seconds": 12013.535,
+  "status": "completed"
+}

@@ -1,0 +1,43 @@
+{
+  "experiment_id": "BALL-TILED-INFERENCE-EXP-0001",
+  "scope": "TRAIN-only frozen holdout; 5 matches; 104 positive and 44 NOT_VISIBLE frames; two UNCERTAIN frames excluded; TEST/VALIDATION not accessed",
+  "annotations": {
+    "path": "experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\holdout_train_annotations_v1.csv",
+    "sha256": "a2e0b49796b2ca3722f9857964386d234c081aec5730f661b3ed3f81bfc61fcb"
+  },
+  "checkpoints": [
+    {
+      "name": "baseline",
+      "path": "runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\baseline\\weights\\last.pt",
+      "sha256": "9f162fa47fcf8c7f06b774f34e56bfecc6025373f5e5fd208204e1afd5ebcb01"
+    },
+    {
+      "name": "oversampled",
+      "path": "runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\oversampled\\weights\\last.pt",
+      "sha256": "a028fbfcda1e4d0cb17de83418724ce71e630024491e53f84e2820a61749b7d5"
+    }
+  ],
+  "imgsz": 960,
+  "device": "0",
+  "inference_confidence_floor": 0.001,
+  "thresholds_evaluated": [
+    0.01,
+    0.005,
+    0.001
+  ],
+  "max_det_per_view": 300,
+  "tiling": {
+    "grid": "2x2",
+    "nominal_overlap_fraction": 0.2,
+    "tile_size_formula": "ceil(image_dimension/(2-overlap)); starts at each border"
+  },
+  "cross_view_dedup_iou": 0.75,
+  "mean_inference_seconds_per_frame": {
+    "baseline:global": 0.019306218918614292,
+    "oversampled:global": 0.019532939866326773,
+    "baseline:tiles_2x2": 0.0753808756672771,
+    "oversampled:tiles_2x2": 0.07623224054239816
+  },
+  "timing_scope": "Model predict wall time only; image decoding/crop assembly/output I/O excluded; one warmup prediction per checkpoint excluded.",
+  "warning": "Fixed TRAIN holdout engineering experiment; not external validation or a promotion decision. Cross-view confidence pooling is not used to rank proposals; all surviving proposals are evaluated."
+}

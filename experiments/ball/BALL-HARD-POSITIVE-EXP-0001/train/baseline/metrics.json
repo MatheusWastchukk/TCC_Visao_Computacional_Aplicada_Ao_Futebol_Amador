@@ -1,0 +1,21 @@
+{
+  "experiment_id": "baseline",
+  "model": "yolo11n.pt",
+  "data": "experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\dataset_baseline.yaml",
+  "epochs": 30,
+  "imgsz": 960,
+  "batch": 8,
+  "device": "cpu",
+  "metrics_scope": "post-training training-fold diagnostics only; not the frozen holdout comparison or a promotion metric",
+  "metrics": {
+    "metrics/precision(B)": 0.6332430476782603,
+    "metrics/recall(B)": 0.544392523364486,
+    "metrics/mAP50(B)": 0.5696812221984673,
+    "metrics/mAP50-95(B)": 0.20263442355945616,
+    "fitness": 0.20263442355945616
+  },
+  "resume_checkpoint": "runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\baseline\\weights\\last.pt",
+  "resume_from_checkpoint_epoch": 26,
+  "resume_execution_seconds": 1142.017,
+  "status": "completed"
+}

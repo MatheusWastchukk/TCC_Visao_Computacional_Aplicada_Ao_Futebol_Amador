@@ -1,0 +1,55 @@
+{
+  "experiment_id": "BALL-HARD-POSITIVE-EXP-0001",
+  "scope": "five untouched TRAIN matches only; not VALIDATION or TEST and not an external generalization estimate",
+  "holdout_matches": [
+    "match_10",
+    "match_16",
+    "match_23",
+    "match_27",
+    "match_36"
+  ],
+  "holdout_rows": 150,
+  "annotation_source": {
+    "path": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\holdout_train_annotations_v1.csv",
+    "sha256": "a2e0b49796b2ca3722f9857964386d234c081aec5730f661b3ed3f81bfc61fcb"
+  },
+  "comparison": "baseline versus one 3x small-positive oversampling intervention; same saved last.pt rule",
+  "confidence": 0.01,
+  "top_n": 10,
+  "iou_threshold": 0.5,
+  "imgsz": 960,
+  "device": "CPU",
+  "candidate_recall": "fraction of VISIBLE/PARTIAL frames with any of top-N predictions at IoU >= threshold",
+  "positive_area_threshold_px2": 400.0,
+  "positive_area_group_counts": {
+    "lt_400_px2": 9,
+    "ge_400_px2": 95
+  },
+  "area_stratification": "Descriptive diagnostic only: candidate recall for positive GT boxes <400 px2 and >=400 px2; does not change the overall tracker gate or select checkpoints.",
+  "analysis_addendum": {
+    "path": "experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\protocol_addendum_area_stratification_v1.json",
+    "sha256": "bb26e210d0e9d0efc7ead746f794b54c712ca1bf5d199eed12908f69e9fe9b1d"
+  },
+  "evaluation_artifacts": {
+    "holdout_frame_results_v1.csv": {
+      "path": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\holdout_evaluation_v1\\holdout_frame_results_v1.csv",
+      "sha256": "97370757317a55462863b6909b1ffc8bc5b96df79c6d2e63ef4d86bbde9a7f01"
+    },
+    "holdout_summary_v1.csv": {
+      "path": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\holdout_evaluation_v1\\holdout_summary_v1.csv",
+      "sha256": "466db6a5a7009cb7dd844afc5faef5a280d765207b3d9692a942c0ad91d2957f"
+    }
+  },
+  "negative_diagnostic": "proposal count on NOT_VISIBLE frames; no false-negative or recall label is assigned to UNCERTAIN rows",
+  "selection": "No checkpoint or configuration selection is permitted from these holdout outcomes.",
+  "checkpoints": {
+    "baseline": {
+      "path": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\baseline\\weights\\last.pt",
+      "sha256": "9f162fa47fcf8c7f06b774f34e56bfecc6025373f5e5fd208204e1afd5ebcb01"
+    },
+    "oversampled": {
+      "path": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\oversampled\\weights\\last.pt",
+      "sha256": "a028fbfcda1e4d0cb17de83418724ce71e630024491e53f84e2820a61749b7d5"
+    }
+  }
+}

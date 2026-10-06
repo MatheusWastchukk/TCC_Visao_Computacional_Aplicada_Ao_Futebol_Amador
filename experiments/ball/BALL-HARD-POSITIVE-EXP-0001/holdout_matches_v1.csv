@@ -1,0 +1,6 @@
+match_id,selection_seed,selection_basis
+match_10,20261002,random sample from TRAIN matches absent from oracle_pair_manifest_v1.csv
+match_16,20261002,random sample from TRAIN matches absent from oracle_pair_manifest_v1.csv
+match_23,20261002,random sample from TRAIN matches absent from oracle_pair_manifest_v1.csv
+match_27,20261002,random sample from TRAIN matches absent from oracle_pair_manifest_v1.csv
+match_36,20261002,random sample from TRAIN matches absent from oracle_pair_manifest_v1.csv
