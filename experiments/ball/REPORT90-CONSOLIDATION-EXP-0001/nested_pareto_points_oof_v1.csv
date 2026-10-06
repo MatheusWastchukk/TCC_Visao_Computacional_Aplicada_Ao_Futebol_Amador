@@ -1,0 +1,16 @@
+budget_minutes_per_match,policy_family,covered_goals,catalog_goals,recall,mean_unique_video_minutes,max_outer_match_minutes,mean_segments_per_match,evaluation_scope,pareto_efficient
+30,GLOBAL_BEST,88,130,0.676923,30.0,30.0,53.636,nested_outer_fold_oof,True
+30,NO_RESCUE,88,130,0.676923,30.0,30.0,54.545,nested_outer_fold_oof,True
+30,CORE_RESCUE,85,130,0.653846,29.432,30.0,56.136,nested_outer_fold_oof,True
+40,GLOBAL_BEST,101,130,0.776923,39.697,40.0,59.545,nested_outer_fold_oof,True
+40,NO_RESCUE,101,130,0.776923,39.697,40.0,59.545,nested_outer_fold_oof,True
+40,CORE_RESCUE,103,130,0.792308,39.849,40.0,59.773,nested_outer_fold_oof,True
+45,GLOBAL_BEST,102,130,0.784615,44.602,45.0,59.773,nested_outer_fold_oof,False
+45,NO_RESCUE,100,130,0.769231,44.602,45.0,59.773,nested_outer_fold_oof,False
+45,CORE_RESCUE,103,130,0.792308,44.602,45.0,59.773,nested_outer_fold_oof,False
+50,GLOBAL_BEST,102,130,0.784615,47.518,49.777,48.5,nested_outer_fold_oof,False
+50,NO_RESCUE,101,130,0.776923,47.317,49.777,49.182,nested_outer_fold_oof,False
+50,CORE_RESCUE,104,130,0.8,46.731,49.463,51.318,nested_outer_fold_oof,True
+58,GLOBAL_BEST,108,130,0.830769,53.622,54.294,44.364,nested_outer_fold_oof,True
+58,NO_RESCUE,107,130,0.823077,53.37,54.483,43.955,nested_outer_fold_oof,True
+58,CORE_RESCUE,111,130,0.853846,53.649,54.294,44.727,nested_outer_fold_oof,True
