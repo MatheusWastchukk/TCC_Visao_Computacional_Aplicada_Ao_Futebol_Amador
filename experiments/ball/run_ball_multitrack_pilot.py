@@ -68,6 +68,7 @@ def main() -> int:
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--verifier-checkpoint", type=Path, default=None, help="Checkpoint binário para adicionar P(BOLA) ao score.")
     parser.add_argument("--verifier-weight", type=float, default=0.0, help="Peso de P(BOLA) no score; 0 preserva o baseline.")
+    parser.add_argument("--prediction-only", action="store_true", help="Skip all target-label fields and export candidate predictions only.")
     args = parser.parse_args()
 
     with args.sequences.open(newline="", encoding="utf-8") as file:
@@ -159,20 +160,25 @@ def main() -> int:
 
         correct_frames = wrong_switches = candidate_present = target_frames = 0
         for frame_index, row in enumerate(sequence_rows):
-            target_box = (
-                tuple(json.loads(row["ball_of_play_box_json"]))
-                if row.get("ball_visibility", "VISIBLE") in {"VISIBLE", "PARTIAL"} and row["ball_of_play_box_json"]
-                else None
-            )
-            distractors = [tuple(box) for box in json.loads(row["distractor_boxes_json"] or "[]")]
             candidates = candidates_by_frame[frame_index]
-            target_rank = next((index + 1 for index, (box, _, _) in enumerate(candidates) if target_box and iou(box, target_box) >= 0.5), 0)
             selected_index = selected.get(frame_index, -1)
             selected_box = candidates[selected_index][0] if selected_index >= 0 else None
             selected_confidence = candidates[selected_index][1] if selected_index >= 0 else 0.0
             selected_ball_probability = candidates[selected_index][2] if selected_index >= 0 else 0.0
-            target_iou = iou(selected_box, target_box) if selected_box and target_box else 0.0
-            distractor_iou = max((iou(selected_box, distractor) for distractor in distractors), default=0.0) if selected_box else 0.0
+            if args.prediction_only:
+                target_box = None
+                target_rank = 0
+                target_iou = distractor_iou = 0.0
+            else:
+                target_box = (
+                    tuple(json.loads(row["ball_of_play_box_json"]))
+                    if row.get("ball_visibility", "VISIBLE") in {"VISIBLE", "PARTIAL"} and row.get("ball_of_play_box_json")
+                    else None
+                )
+                distractors = [tuple(box) for box in json.loads(row.get("distractor_boxes_json", "[]") or "[]")]
+                target_rank = next((index + 1 for index, (box, _, _) in enumerate(candidates) if target_box and iou(box, target_box) >= 0.5), 0)
+                target_iou = iou(selected_box, target_box) if selected_box and target_box else 0.0
+                distractor_iou = max((iou(selected_box, distractor) for distractor in distractors), default=0.0) if selected_box else 0.0
             if target_box:
                 target_frames += 1
                 candidate_present += bool(target_rank)
@@ -189,6 +195,10 @@ def main() -> int:
                 "selected_confidence": f"{selected_confidence:.6f}",
                 "selected_ball_probability": f"{selected_ball_probability:.6f}",
                 "selected_box_json": json.dumps(selected_box) if selected_box else "",
+                "candidate_boxes_json": json.dumps([
+                    {"box": box, "confidence": confidence, "ball_probability": probability}
+                    for box, confidence, probability in candidates
+                ], separators=(",", ":")),
                 "selected_target_iou": f"{target_iou:.6f}",
                 "selected_distractor_iou": f"{distractor_iou:.6f}",
                 "identity_correct": str(target_iou >= 0.5),
@@ -211,11 +221,12 @@ def main() -> int:
     target_rows = [row for row in frame_rows if row["target_annotated"] == "True"]
     metrics = {
         "experiment_id": args.output.name,
+        "prediction_only": args.prediction_only,
         "sequences": len(trajectory_rows),
         "target_frames": len(target_rows),
-        "candidate_recall": sum(row["target_candidate_rank"] != "0" for row in target_rows) / len(target_rows),
-        "identity_accuracy": sum(row["identity_correct"] == "True" for row in target_rows) / len(target_rows),
-        "wrong_ball_switch_rate": sum(row["wrong_ball_switch"] == "True" for row in target_rows) / len(target_rows),
+        "candidate_recall": sum(row["target_candidate_rank"] != "0" for row in target_rows) / len(target_rows) if target_rows else None,
+        "identity_accuracy": sum(row["identity_correct"] == "True" for row in target_rows) / len(target_rows) if target_rows else None,
+        "wrong_ball_switch_rate": sum(row["wrong_ball_switch"] == "True" for row in target_rows) / len(target_rows) if target_rows else None,
         "confidence": args.confidence,
         "max_candidates": args.max_candidates,
         "verifier_checkpoint": str(args.verifier_checkpoint) if args.verifier_checkpoint else None,

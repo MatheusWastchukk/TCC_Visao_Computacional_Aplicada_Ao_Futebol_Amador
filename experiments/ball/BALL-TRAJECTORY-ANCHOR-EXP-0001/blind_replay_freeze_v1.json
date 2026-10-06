@@ -1,0 +1,45 @@
+{
+  "experiment_id": "BALL-TRAJECTORY-ANCHOR-EXP-0001",
+  "scope": "TRAIN-only exploratory tracking comparison; TEST remains closed; V4 unchanged",
+  "protocol_sha256": "b736f84b33f3c57a7f20bba625ed922dd5fb36385962a5b2ed5a4d132237618c",
+  "source_prediction_freeze_sha256": "bba19c8340c96ac9e7b710657e6f1a2fdf07046b1410dc2b6e15e136184131c2",
+  "tracker_configuration": {
+    "seed_window_frames": 5,
+    "seed_policy": "within the first five frames, choose the highest-confidence candidate; break ties by earlier frame, then candidate rank",
+    "motion_model": "constant-velocity extrapolation from the last two accepted candidate centers; hold the last center before a second observation",
+    "association": "select the candidate nearest the predicted trajectory point; confidence is only a deterministic tie-breaker",
+    "hard_gate_fraction_of_image_diagonal_per_frame": 0.12,
+    "gate_scales_with_gap_frames": true,
+    "max_gap_frames_before_track_lost": 5,
+    "no_candidate_inside_gate": "emit a track gap; never jump to a farther candidate; do not reacquire after the maximum gap",
+    "confidence_after_seed": "not allowed to override trajectory distance"
+  },
+  "runs": {
+    "center_baseline": {
+      "source_predictions_sha256": "0b87e21ecb859933da6a960b5f70d9d53c8d27a6c346a1542eca9ca882b7c933",
+      "anchor_predictions_path": "experiments\\ball\\BALL-TRAJECTORY-ANCHOR-EXP-0001\\center_baseline\\anchor_trajectory_predictions_v1.csv",
+      "anchor_predictions_rows": 385,
+      "anchor_predictions_sha256": "c88f83460d17a4226d0864220055be4824b36aad2a1bc532faadd687436f6c17"
+    },
+    "center_oversampled": {
+      "source_predictions_sha256": "0aa83163bb83c33c115aefea7cd1c762ffdff796fc5c7b8ee25d7766bb6d5b97",
+      "anchor_predictions_path": "experiments\\ball\\BALL-TRAJECTORY-ANCHOR-EXP-0001\\center_oversampled\\anchor_trajectory_predictions_v1.csv",
+      "anchor_predictions_rows": 385,
+      "anchor_predictions_sha256": "70fb7d51d0bc7bde29dab6aa440996b6381ca0d9398075ffa1161a30d19c7342"
+    },
+    "full_baseline": {
+      "source_predictions_sha256": "dd47859fd4e0b48e09c0e29c06cae4620b78b7b7aed4a352e7dad6f0b629a244",
+      "anchor_predictions_path": "experiments\\ball\\BALL-TRAJECTORY-ANCHOR-EXP-0001\\full_baseline\\anchor_trajectory_predictions_v1.csv",
+      "anchor_predictions_rows": 1435,
+      "anchor_predictions_sha256": "d7f9d86149b6f63b6fe3ae1880ef3bc7155d0cbcdd48c63adb8bf68ac07405b6"
+    },
+    "full_oversampled": {
+      "source_predictions_sha256": "ef44506bcdc51d9652dd49343407d3ad4c45b123bdd41352cb304bd2235cdddd",
+      "anchor_predictions_path": "experiments\\ball\\BALL-TRAJECTORY-ANCHOR-EXP-0001\\full_oversampled\\anchor_trajectory_predictions_v1.csv",
+      "anchor_predictions_rows": 1435,
+      "anchor_predictions_sha256": "56e029cedf4199428acf32888d0cd3bba695782967e91a1f5e361e351deb200d"
+    }
+  },
+  "label_blind": true,
+  "ground_truth_read": false
+}

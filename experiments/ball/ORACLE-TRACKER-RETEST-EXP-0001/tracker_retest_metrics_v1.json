@@ -1,0 +1,54 @@
+{
+  "experiment_id": "ORACLE-TRACKER-RETEST-EXP-0001",
+  "scope": "TRAIN-only engineering retest; no VALIDATION/TEST or V4 promotion",
+  "annotation_freeze": {
+    "path": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\annotation_freeze_v1.json",
+    "sha256": "efdb8733c7e5b3a0a6eb87aa00d4d3ef515961aba1fc9c882986ebaf2010f168"
+  },
+  "annotation_scoring_scope": "BALL identity plus completed GOAL geometry decisions",
+  "detector_checkpoints": {
+    "baseline": {
+      "path": "runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\baseline\\weights\\last.pt",
+      "sha256": "9f162fa47fcf8c7f06b774f34e56bfecc6025373f5e5fd208204e1afd5ebcb01"
+    },
+    "oversampled": {
+      "path": "runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\oversampled\\weights\\last.pt",
+      "sha256": "a028fbfcda1e4d0cb17de83418724ce71e630024491e53f84e2820a61749b7d5"
+    }
+  },
+  "tracker_configuration": {
+    "confidence": 0.01,
+    "max_candidates": 10,
+    "imgsz": 960,
+    "device": "cpu",
+    "verifier": null
+  },
+  "runs": {
+    "center_baseline": {
+      "frame_results_path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\center_baseline\\frame_identity_results.csv",
+      "frame_results_sha256": "0b87e21ecb859933da6a960b5f70d9d53c8d27a6c346a1542eca9ca882b7c933",
+      "trajectory_summary_sha256": "956f3d8baa78d7f5cc9dd7ea7fbc61d39544429ad45665b35c82f2a2f8ed078c"
+    },
+    "center_oversampled": {
+      "frame_results_path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\center_oversampled\\frame_identity_results.csv",
+      "frame_results_sha256": "0aa83163bb83c33c115aefea7cd1c762ffdff796fc5c7b8ee25d7766bb6d5b97",
+      "trajectory_summary_sha256": "956f3d8baa78d7f5cc9dd7ea7fbc61d39544429ad45665b35c82f2a2f8ed078c"
+    },
+    "full_baseline": {
+      "frame_results_path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\full_baseline\\frame_identity_results.csv",
+      "frame_results_sha256": "dd47859fd4e0b48e09c0e29c06cae4620b78b7b7aed4a352e7dad6f0b629a244",
+      "trajectory_summary_sha256": "956f3d8baa78d7f5cc9dd7ea7fbc61d39544429ad45665b35c82f2a2f8ed078c"
+    },
+    "full_oversampled": {
+      "frame_results_path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\full_oversampled\\frame_identity_results.csv",
+      "frame_results_sha256": "ef44506bcdc51d9652dd49343407d3ad4c45b123bdd41352cb304bd2235cdddd",
+      "trajectory_summary_sha256": "956f3d8baa78d7f5cc9dd7ea7fbc61d39544429ad45665b35c82f2a2f8ed078c"
+    }
+  },
+  "scope_note": "Center window (frames 16-26) is the comparable candidate/identity score. Full-window outputs support continuity, gaps and descriptive image-plane geometry. Image-plane entry/exit flags are not physical 3D line-crossing claims.",
+  "outputs": [
+    "tracker_retest_group_metrics_v1.csv",
+    "tracker_retest_sequence_metrics_v1.csv",
+    "tracker_retest_pair_metrics_v1.csv"
+  ]
+}

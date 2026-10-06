@@ -1,0 +1,36 @@
+{
+  "experiment_id": "ORACLE-TRACKER-RETEST-EXP-0001",
+  "prediction_only": true,
+  "labels_included": false,
+  "scope": "TRAIN-only engineering inference; no TEST/VALIDATION and no V4 change",
+  "event_manifest_sha256": "339f9b32f39218fec1c699b0946d57f298120ab468eeb0fd978eaaa04805175b",
+  "input_source_sha256_at_preparation": "35e18ebde457e571853a4e522cd8c41c862f64d96cf100ea072681671c1dc10a",
+  "input_columns": [
+    "sequence_id",
+    "sequence_frame",
+    "sample_id",
+    "image_path",
+    "match_id",
+    "event_role",
+    "pair_id"
+  ],
+  "outputs": {
+    "full": {
+      "path": "blind_tracker_inputs_full_v1.csv",
+      "rows": 1435,
+      "sha256": "6612305d5969658d21b28bc717f8adda1bd0503509732fdb1926ae0e021d8a5a"
+    },
+    "center": {
+      "path": "blind_tracker_inputs_center_v1.csv",
+      "rows": 385,
+      "sha256": "18de56b9e68b5ff47d38b94715d2fc1d8df60e9419af85b4ea11b5509fe6a7c5"
+    }
+  },
+  "tracker_configuration": {
+    "confidence": 0.01,
+    "max_candidates": 10,
+    "imgsz": 960,
+    "device": "cpu",
+    "verifier": null
+  }
+}

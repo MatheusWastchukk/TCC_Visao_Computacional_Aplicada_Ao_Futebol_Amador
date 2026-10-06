@@ -1,0 +1,30 @@
+{
+  "experiment_id": "BALL-TRAJECTORY-ANCHOR-EXP-0001",
+  "scope": "TRAIN-only exploratory tracking comparison; TEST remains closed; V4 unchanged",
+  "hypothesis": "Se a associação começar na proposta de maior confiança do início do clipe e depois priorizar proximidade à trajetória extrapolada, recusando saltos distantes, ela reduzirá trocas bruscas para objetos de fundo sem perda inaceitável de identidade/continuidade.",
+  "baseline": "Existing Viterbi selected path from the exact frozen detector candidate lists.",
+  "candidate_source": "ORACLE-TRACKER-RETEST-EXP-0001 frozen prediction-only Top-10 boxes; no new detector inference.",
+  "algorithm": {
+    "seed_window_frames": 5,
+    "seed_policy": "within the first five frames, choose the highest-confidence candidate; break ties by earlier frame, then candidate rank",
+    "motion_model": "constant-velocity extrapolation from the last two accepted candidate centers; hold the last center before a second observation",
+    "association": "select the candidate nearest the predicted trajectory point; confidence is only a deterministic tie-breaker",
+    "hard_gate_fraction_of_image_diagonal_per_frame": 0.12,
+    "gate_scales_with_gap_frames": true,
+    "max_gap_frames_before_track_lost": 5,
+    "no_candidate_inside_gate": "emit a track gap; never jump to a farther candidate; do not reacquire after the maximum gap",
+    "confidence_after_seed": "not allowed to override trajectory distance"
+  },
+  "evaluation": {
+    "primary": "For full 41-frame runs, compare Viterbi and anchored tracking on frames 16-26 using visible/partial manual ball boxes, candidate recall, identity accuracy, distractor switches, selected-box coverage and normalized jumps.",
+    "secondary": "Report full-window gaps/continuity and the central-window-start sensitivity separately.",
+    "stratification": "per match and event role; preserve positive/control identities",
+    "promotion": "No promotion from this post-hoc TRAIN experiment. Any threshold or model selection requires a separately frozen match-level development protocol."
+  },
+  "limits": [
+    "The seed can itself be a false positive.",
+    "A fixed image-plane speed gate can reject real fast motion or camera pans.",
+    "The experiment tests trajectory association only; it does not train or change the BALL detector.",
+    "Projected image-plane continuity is not physical 3D ball motion."
+  ]
+}

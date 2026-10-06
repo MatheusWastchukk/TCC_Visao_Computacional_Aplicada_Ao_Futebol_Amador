@@ -1,0 +1,69 @@
+{
+  "experiment_id": "ORACLE-TRACKER-RETEST-EXP-0001",
+  "prediction_only": true,
+  "scope": "TRAIN-only; no VALIDATION/TEST; no V4 promotion or change",
+  "input_freeze_sha256": "7dbc95db15d7c9d62d53cdafaef4c8015b559e950004cc3b0d8d1080d0a682b3",
+  "detector_checkpoints": {
+    "baseline": {
+      "path": "runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\baseline\\weights\\last.pt",
+      "sha256": "9f162fa47fcf8c7f06b774f34e56bfecc6025373f5e5fd208204e1afd5ebcb01"
+    },
+    "oversampled": {
+      "path": "runs\\detect\\experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\train\\oversampled\\weights\\last.pt",
+      "sha256": "a028fbfcda1e4d0cb17de83418724ce71e630024491e53f84e2820a61749b7d5"
+    }
+  },
+  "tracker_configuration": {
+    "confidence": 0.01,
+    "max_candidates": 10,
+    "imgsz": 960,
+    "device": "cpu",
+    "verifier": null
+  },
+  "runs": {
+    "center_baseline": {
+      "window": "center",
+      "detector": "baseline",
+      "input_path": "blind_tracker_inputs_center_v1.csv",
+      "input_sha256": "18de56b9e68b5ff47d38b94715d2fc1d8df60e9419af85b4ea11b5509fe6a7c5",
+      "frame_results_path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\center_baseline\\frame_identity_results.csv",
+      "frame_results_rows": 385,
+      "frame_results_sha256": "0b87e21ecb859933da6a960b5f70d9d53c8d27a6c346a1542eca9ca882b7c933",
+      "trajectory_summary_sha256": "956f3d8baa78d7f5cc9dd7ea7fbc61d39544429ad45665b35c82f2a2f8ed078c",
+      "metrics_sha256": "a80c00e943b31bbbe354611a651310537cd8da9de012eb3c546e2a2da7fc204e"
+    },
+    "center_oversampled": {
+      "window": "center",
+      "detector": "oversampled",
+      "input_path": "blind_tracker_inputs_center_v1.csv",
+      "input_sha256": "18de56b9e68b5ff47d38b94715d2fc1d8df60e9419af85b4ea11b5509fe6a7c5",
+      "frame_results_path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\center_oversampled\\frame_identity_results.csv",
+      "frame_results_rows": 385,
+      "frame_results_sha256": "0aa83163bb83c33c115aefea7cd1c762ffdff796fc5c7b8ee25d7766bb6d5b97",
+      "trajectory_summary_sha256": "956f3d8baa78d7f5cc9dd7ea7fbc61d39544429ad45665b35c82f2a2f8ed078c",
+      "metrics_sha256": "9507e1c01ecb4d65e6959f30e736d1a8fa1eaefef3d3528b384cb489f862c48b"
+    },
+    "full_baseline": {
+      "window": "full",
+      "detector": "baseline",
+      "input_path": "blind_tracker_inputs_full_v1.csv",
+      "input_sha256": "6612305d5969658d21b28bc717f8adda1bd0503509732fdb1926ae0e021d8a5a",
+      "frame_results_path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\full_baseline\\frame_identity_results.csv",
+      "frame_results_rows": 1435,
+      "frame_results_sha256": "dd47859fd4e0b48e09c0e29c06cae4620b78b7b7aed4a352e7dad6f0b629a244",
+      "trajectory_summary_sha256": "956f3d8baa78d7f5cc9dd7ea7fbc61d39544429ad45665b35c82f2a2f8ed078c",
+      "metrics_sha256": "efefebc5203296055a3ae3d9133453a4a23e385865a01bd6840cdc9e90d6118d"
+    },
+    "full_oversampled": {
+      "window": "full",
+      "detector": "oversampled",
+      "input_path": "blind_tracker_inputs_full_v1.csv",
+      "input_sha256": "6612305d5969658d21b28bc717f8adda1bd0503509732fdb1926ae0e021d8a5a",
+      "frame_results_path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\full_oversampled\\frame_identity_results.csv",
+      "frame_results_rows": 1435,
+      "frame_results_sha256": "ef44506bcdc51d9652dd49343407d3ad4c45b123bdd41352cb304bd2235cdddd",
+      "trajectory_summary_sha256": "956f3d8baa78d7f5cc9dd7ea7fbc61d39544429ad45665b35c82f2a2f8ed078c",
+      "metrics_sha256": "c6eac5c11f93f8263555e14676e0371cfe13db8dfe941ce825fdbf7cd6b1d560"
+    }
+  }
+}

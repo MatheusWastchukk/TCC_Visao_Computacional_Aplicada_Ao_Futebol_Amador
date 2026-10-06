@@ -1,0 +1,44 @@
+{
+  "experiment_id": "ORACLE-TRACKER-RETEST-EXP-0001",
+  "scope": "TRAIN only; TEST remains closed",
+  "scoring_scope": "BALL identity plus completed GOAL geometry decisions",
+  "ball_identity_only": false,
+  "annotations_path": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\frame_annotations_v1.csv",
+  "annotations_sha256": "b016b99ea5c61e5d928a313697f1e4ee6d2a0762dc352b2596f10252f1261565",
+  "event_manifest_path": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\event_manifest_v1.csv",
+  "event_manifest_sha256": "339f9b32f39218fec1c699b0946d57f298120ab468eeb0fd978eaaa04805175b",
+  "full_input": {
+    "path": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\tracking_scoring_frames_full_v1.csv",
+    "rows": 1435,
+    "sha256": "7cd62c5ba4a7599bbe5ddcf4702e2a8f05bbe8d4c45b90ae8816000c4b8d9aa0"
+  },
+  "center_input": {
+    "path": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\tracking_scoring_frames_center_v1.csv",
+    "frames_1_based": [
+      16,
+      26
+    ],
+    "rows": 385,
+    "sha256": "6e0fac29a85570d64dc423136a097385babf2744da2ba306e703fc1c6312f1f2"
+  },
+  "sequences": 35,
+  "visibility_denominators": {
+    "VISIBLE": 1081,
+    "PARTIAL": 120,
+    "NOT_VISIBLE": 216,
+    "UNCERTAIN": 18
+  },
+  "goal_region_status_at_centers": {
+    "VALID": 35,
+    "NOT_VISIBLE": 0,
+    "UNCERTAIN": 0
+  },
+  "goal_geometry_missing_decisions_at_centers": 0,
+  "tracker_configuration": {
+    "confidence": 0.01,
+    "max_candidates": 10,
+    "imgsz": 960,
+    "device": "cpu",
+    "verifier": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "input_path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\blind_tracker_inputs_full_v1.csv",
+  "input_sha256": "6612305d5969658d21b28bc717f8adda1bd0503509732fdb1926ae0e021d8a5a",
+  "checkpoint_hashes": {
+    "baseline": "9f162fa47fcf8c7f06b774f34e56bfecc6025373f5e5fd208204e1afd5ebcb01",
+    "oversampled": "a028fbfcda1e4d0cb17de83418724ce71e630024491e53f84e2820a61749b7d5"
+  },
+  "confidence": 0.01,
+  "imgsz": 960,
+  "max_det_per_view": 300,
+  "tile_grid": "2x2",
+  "overlap": 0.2,
+  "cross_view_dedup_iou": 0.75,
+  "max_selected_candidates": 10,
+  "device": "0"
+}

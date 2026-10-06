@@ -1,0 +1,71 @@
+{
+  "experiment_id": "ORACLE-TRACKER-RETEST-EXP-0001",
+  "scope": "TRAIN only; five fixed detector-holdout matches; no VALIDATION/TEST",
+  "gate_decision_path": "experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\holdout_evaluation_v1\\tracker_gate_decision_v1.json",
+  "gate_decision_sha256": "022626fbb6a16792e5c435e06e40b1e80a7cce1f4701da74cb95ed5eb99544d0",
+  "gate_decision": "REOPEN_TRACKER",
+  "inputs": {
+    "goal_catalog": "experiments\\ball\\GOAL-EVENT-RETRIEVAL-CHARACTERIZATION-TRAIN-V1\\goal_rank_and_clip_position_v1.csv",
+    "goal_catalog_sha256": "1cecc7d38958dc8570531a1411e4f4b768da59e7de7c63ea76d0513c8a100c41",
+    "confirmed_control_candidates": "experiments\\ball\\BALL-HARD-POSITIVE-EXP-0001\\tracking_candidate_controls_v1.csv",
+    "confirmed_control_candidates_sha256": "eb9407da4d67524709dbf2ebbece8d85558cd5f096a1d2dce27439b3df070fb0",
+    "detector_holdout_matches": [
+      "match_10",
+      "match_16",
+      "match_23",
+      "match_27",
+      "match_36"
+    ]
+  },
+  "sampling": {
+    "seconds_before": 4.0,
+    "seconds_after": 4.0,
+    "sample_fps": 5.0,
+    "frames_per_sequence": 41,
+    "event_center_frame_1_based": 21,
+    "primary_scoring_frames_1_based": [
+      16,
+      26
+    ],
+    "primary_scoring_seconds_relative_to_event": [
+      -1.0,
+      1.0
+    ],
+    "rule": "Same window/sampling as the oracle tracker pilot; score its central 11 frames for comparable metrics."
+  },
+  "tracker": {
+    "script": "experiments/ball/run_ball_multitrack_pilot.py",
+    "configuration": {
+      "confidence": 0.01,
+      "max_candidates": 10,
+      "imgsz": 960,
+      "device": "cpu",
+      "verifier": null
+    },
+    "algorithm": "Existing Viterbi transition model, unchanged; no threshold or coefficient tuning."
+  },
+  "event_counts": {
+    "catalog_goals": 29,
+    "human_confirmed_no_goal_controls": 6,
+    "one_to_one_pairs_same_match": 6,
+    "matches_with_confirmed_controls": [
+      "match_10",
+      "match_16",
+      "match_23",
+      "match_36"
+    ],
+    "matches_without_confirmed_control": [
+      "match_27"
+    ],
+    "sequences": 35,
+    "frames": 1435,
+    "ball_frame_rows_reused_from_exact_manual_train_samples": 0,
+    "frames_newly_extracted": 0
+  },
+  "analysis_limits": [
+    "The detector holdout passed its engineering gate by one additional positive frame (72/104 versus 71/104); this retest is conditional TRAIN engineering evidence, not detector promotion.",
+    "There are six confirmed NO_GOAL controls across four matches; match_27 has no confirmed control. Pending labels are excluded.",
+    "The full event set includes all 29 cataloged goals plus all six eligible human-confirmed controls; positive-only coverage in match_27 is descriptive.",
+    "Do not tune or alter V4 from this retest; TEST remains closed."
+  ]
+}

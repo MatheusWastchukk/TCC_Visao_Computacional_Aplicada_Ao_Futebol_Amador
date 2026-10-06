@@ -1,0 +1,32 @@
+{
+  "experiment_id": "BALL-TILED-TRACKER-RETEST-EXP-0001",
+  "prediction_freeze_sha256": "c8182ae91866cf6d6e9ad65f47125c25f51df2d8b856a3224fd3b6a0cd77df91",
+  "annotation_path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\frame_annotations_v1.csv",
+  "annotation_sha256": "b016b99ea5c61e5d928a313697f1e4ee6d2a0762dc352b2596f10252f1261565",
+  "old_full_window_predictions": {
+    "global_baseline": {
+      "path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\full_baseline\\frame_identity_results.csv",
+      "sha256": "dd47859fd4e0b48e09c0e29c06cae4620b78b7b7aed4a352e7dad6f0b629a244"
+    },
+    "global_oversampled": {
+      "path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\full_oversampled\\frame_identity_results.csv",
+      "sha256": "ef44506bcdc51d9652dd49343407d3ad4c45b123bdd41352cb304bd2235cdddd"
+    }
+  },
+  "old_center_only_predictions": {
+    "center_baseline": {
+      "path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\center_baseline\\frame_identity_results.csv",
+      "sha256": "0b87e21ecb859933da6a960b5f70d9d53c8d27a6c346a1542eca9ca882b7c933"
+    },
+    "center_oversampled": {
+      "path": "experiments\\ball\\ORACLE-TRACKER-RETEST-EXP-0001\\center_oversampled\\frame_identity_results.csv",
+      "sha256": "0aa83163bb83c33c115aefea7cd1c762ffdff796fc5c7b8ee25d7766bb6d5b97"
+    }
+  },
+  "tiled_predictions": {
+    "path": "experiments\\ball\\BALL-TILED-TRACKER-RETEST-EXP-0001\\tiled_tracker_frame_predictions_v1.csv",
+    "sha256": "d7cd257da7a43488fa6e712790dfc994f0d5154863823bf457b4b569fe304522"
+  },
+  "scoring": "Annotations were joined only after the label-blind tiled Viterbi outputs were frozen. Candidate recall uses any Top-10 proposal IoU>=0.50; identity uses selected-track IoU>=0.50; wrong switch uses selected IoU>=0.50 with any manual distractor. Center-only and full-window global runs are retained as separate references because their Viterbi contexts differ.",
+  "scope": "TRAIN only; no VALIDATION/TEST; no V4 promotion"
+}

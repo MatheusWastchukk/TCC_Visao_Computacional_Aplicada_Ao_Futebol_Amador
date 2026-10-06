@@ -1,0 +1,13 @@
+{
+  "experiment_id": "full_oversampled",
+  "prediction_only": true,
+  "sequences": 35,
+  "target_frames": 0,
+  "candidate_recall": null,
+  "identity_accuracy": null,
+  "wrong_ball_switch_rate": null,
+  "confidence": 0.01,
+  "max_candidates": 10,
+  "verifier_checkpoint": null,
+  "verifier_weight": 0.0
+}
