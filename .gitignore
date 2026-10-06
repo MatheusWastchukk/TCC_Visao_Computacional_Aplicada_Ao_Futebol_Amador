@@ -202,6 +202,7 @@ experiments/ball/GOAL-EVENT-BALL-PROPOSAL-QUALITY-AUDIT-EXP-0001/roi_geometry_di
 # Machine-specific Ultralytics configuration and experiment logs.
 Ultralytics/settings.json
 experiments/ball/**/*.log
+experiments/ball/**/*.md
 
 # Materialized YOLO labels duplicate the compact annotation CSVs and manifests.
 experiments/ball/BALL-HARD-POSITIVE-EXP-0001/dataset_*/labels/
