@@ -71,6 +71,165 @@ def latest_interim_manifest() -> Path:
     return manifests[-1]
 
 
+def validate_report90_outputs(artifacts: dict) -> dict:
+    """Reconcile the Report 90 candidate modes and compact TRAIN summaries."""
+    required = {
+        "docs/plans/89_relatorio_consolidacao_resultados_06-10_e_plano_fechamento_sprint.md",
+        "docs/plans/90_plano_final_consolidacao_freeze_r3d_opcional_06-10-2026.md",
+        "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/final_modes_v1.json",
+        "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/final_mode_selection_v1.csv",
+        "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/full_train_mode_grid_v1.csv",
+        "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/model_manifest_v1.json",
+        "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/run_manifest_v1.json",
+        "experiments/ball/REPORT90-CONSOLIDATION-EXP-0001/nested_mode_per_match_oof_v1.csv",
+        "experiments/ball/REPORT90-CONSOLIDATION-EXP-0001/nested_mode_goal_coverage_oof_v1.csv",
+        "experiments/ball/REPORT90-CONSOLIDATION-EXP-0001/nested_pareto_points_oof_v1.csv",
+        "experiments/ball/REPORT90-CONSOLIDATION-EXP-0001/nested_match_bootstrap_v1.csv",
+        "experiments/ball/REPORT90-BALL-TABLES-EXP-0001/ball_proposal_availability_v1.csv",
+        "experiments/ball/REPORT90-BALL-TABLES-EXP-0001/ball_tracking_identity_v1.csv",
+    }
+    missing = required - set(artifacts)
+    if missing:
+        raise ValueError(f"Interim snapshot omits Report 90 artifacts: {sorted(missing)}")
+
+    mode_dir = ROOT / "experiments/ball/REPORT90-FINAL-MODES-EXP-0001"
+    config = read_json(mode_dir / "final_modes_v1.json")
+    if config.get("status") != "TRAIN_SELECTED_CANDIDATES_NOT_YET_FINAL_FREEZE":
+        raise ValueError("Report 90 mode configs must remain candidates before the final freeze.")
+    scope = config.get("scope", "")
+    if "TRAIN only" not in scope or "TEST" not in scope or "VALIDATION" not in scope:
+        raise ValueError("Report 90 mode config does not declare TRAIN-only selection and unopened holdouts.")
+    if config.get("selection_metric_warning", "").find("in-sample") < 0:
+        raise ValueError("Full-TRAIN selection results must be explicitly marked in-sample.")
+    expected_modes = {
+        "FAST_V1": (30, "NO_RESCUE", "TEMPORAL", 60, 30, 119, 29.683, 30.000),
+        "BALANCED_V1": (40, "CORE_RESCUE", "CORE40_RRF4_NET_RESCUE", 60, 40, 122, 39.398, 39.927),
+        "HIGH_RECALL_V1": (58, "CORE_RESCUE", "CORE35_FUSION10_NET10", 60, 55, 124, 53.662, 54.372),
+    }
+    modes = config.get("modes", {})
+    if set(modes) != set(expected_modes):
+        raise ValueError("Report 90 must contain exactly FAST_V1, BALANCED_V1 and HIGH_RECALL_V1.")
+    for name, expected in expected_modes.items():
+        row = modes[name]
+        observed = (
+            int(row["budget_minutes_per_match"]), row["selection_family"], row["method"],
+            int(row["window_seconds"]), int(row["k_per_match"]),
+            int(row["training_selection_covered_goals"]),
+            round(float(row["training_selection_mean_unique_minutes"]), 3),
+            round(float(row["training_selection_max_unique_minutes"]), 3),
+        )
+        if observed != expected:
+            raise ValueError(f"Report 90 fixed-mode selection changed for {name}: {observed}")
+        if float(row["training_selection_max_unique_minutes"]) > int(row["budget_minutes_per_match"]) + 1e-9:
+            raise ValueError(f"Report 90 mode exceeds its full-TRAIN selection budget: {name}")
+
+    run_manifest = read_json(mode_dir / "run_manifest_v1.json")
+    if not run_manifest.get("selection_is_in_sample") or "TRAIN only" not in run_manifest.get("scope", ""):
+        raise ValueError("Report 90 run manifest fails to identify in-sample TRAIN selection.")
+    if run_manifest.get("validation_test_policy") != "neither VALIDATION nor TEST was opened or used":
+        raise ValueError("Report 90 run manifest does not preserve the holdout boundary.")
+    input_paths = {
+        "temporal_features": "results/local_trajectory_dataset_train_fullpool_v1/temporal_group_dataset_local_trajectory_v1.csv",
+        "net_features": "results/net_motion_dataset_train_v1/temporal_group_dataset_net_motion_v1.csv",
+        "candidate_scores": "experiments/ball/GOAL-EVENT-FULL-POOL-VISUAL-RERANKER-EXP-0001/run_v1/candidate_scores_lomo_v1.csv",
+        "candidate_embeddings": "experiments/ball/GOAL-EVENT-FULL-POOL-VISUAL-RERANKER-EXP-0001/run_v1_embeddings_checkpoint.npy",
+        "candidate_embedding_manifest": "experiments/ball/GOAL-EVENT-FULL-POOL-VISUAL-RERANKER-EXP-0001/run_v1_embeddings_checkpoint.json",
+        "verifier_predictions": "experiments/ball/GOAL-CLIP-TEMPORAL-SEQUENCE-EXP-0001/run_v1/predictions_lomo_v1.csv",
+        "verifier_embeddings": "experiments/ball/GOAL-CLIP-TEMPORAL-SEQUENCE-EXP-0001/run_v1/sequence_embeddings_v1.npz",
+        "goal_catalog": "results/local_trajectory_dataset_train_v2/goal_timestamps_train_subset_v1.csv",
+        "frozen_temporal_model": "experiments/ball/GOAL-EVENT-PIPELINE-FINAL-V1/temporal_ranker.joblib",
+    }
+    for name, expected_hash in run_manifest.get("inputs_sha256", {}).items():
+        if name not in input_paths:
+            raise ValueError(f"Unexpected Report 90 model input hash key: {name}")
+        verify_file_hash(ROOT / input_paths[name], expected_hash, f"Report 90 input {name}")
+    if set(run_manifest.get("inputs_sha256", {})) != set(input_paths):
+        raise ValueError("Report 90 run manifest input list is incomplete.")
+    verify_file_hash(
+        ROOT / "experiments/ball/select_report90_final_modes_v1.py",
+        run_manifest.get("script_sha256", ""),
+        "Report 90 selector script",
+    )
+    model_manifest = read_json(mode_dir / "model_manifest_v1.json")
+    for model_name, metadata in model_manifest.items():
+        model_path = ROOT / metadata["path"]
+        verify_file_hash(model_path, metadata["sha256"], f"Report 90 {model_name} model")
+        if run_manifest.get("model_hashes", {}).get(model_name, {}).get("sha256") != metadata["sha256"]:
+            raise ValueError(f"Report 90 model hashes disagree for {model_name}.")
+
+    consolidation = ROOT / "experiments/ball/REPORT90-CONSOLIDATION-EXP-0001"
+    consolidate_summary = read_json(consolidation / "summary_v1.json")
+    if consolidate_summary.get("bootstrap", {}).get("replicates") != 10000 or consolidate_summary.get("bootstrap", {}).get("seed") != 901006:
+        raise ValueError("Report 90 bootstrap protocol differs from the recorded paired 10,000-draw protocol.")
+    per_match = read_csv(consolidation / "nested_mode_per_match_oof_v1.csv")
+    per_goal = read_csv(consolidation / "nested_mode_goal_coverage_oof_v1.csv")
+    pareto = read_csv(consolidation / "nested_pareto_points_oof_v1.csv")
+    bootstrap = read_csv(consolidation / "nested_match_bootstrap_v1.csv")
+    if len(per_match) != 66 or len(per_goal) != 390 or len(pareto) != 15 or len(bootstrap) != 65:
+        raise ValueError("Report 90 Nested per-match/goal/Pareto/bootstrap table dimensions changed.")
+    expected_nested = {"FAST_V1": 88, "BALANCED_V1": 103, "HIGH_RECALL_V1": 111}
+    for mode, covered in expected_nested.items():
+        rows = [row for row in per_match if row["mode"] == mode]
+        goal_rows = [row for row in per_goal if row["mode"] == mode]
+        if len(rows) != 22 or sum(int(row["catalog_goals"]) for row in rows) != 130:
+            raise ValueError(f"Report 90 Nested per-match population changed for {mode}.")
+        if sum(int(row["covered_goals"]) for row in rows) != covered or len(goal_rows) != 130:
+            raise ValueError(f"Report 90 Nested OOF coverage changed for {mode}.")
+        if any(row["budget_exceeded"].lower() == "true" for row in rows):
+            raise ValueError(f"Report 90 Nested OOF mode exceeded its budget: {mode}")
+
+    ball_tables = ROOT / "experiments/ball/REPORT90-BALL-TABLES-EXP-0001"
+    proposals = read_csv(ball_tables / "ball_proposal_availability_v1.csv")
+    tracking = read_csv(ball_tables / "ball_tracking_identity_v1.csv")
+    if len(proposals) != 6 or len(tracking) != 20:
+        raise ValueError("Report 90 BALL tables changed dimensions or mixed evaluation populations.")
+    expected_hits = {
+        ("baseline", "global_current"): 71,
+        ("baseline", "global_permissive"): 85,
+        ("baseline", "global_plus_tiles_permissive"): 93,
+        ("oversampled", "global_current"): 72,
+        ("oversampled", "global_permissive"): 79,
+        ("oversampled", "global_plus_tiles_permissive"): 89,
+    }
+    observed_hits = {(row["checkpoint"], row["configuration"]): int(row["candidate_hits_iou_050"]) for row in proposals}
+    if observed_hits != expected_hits or any(int(row["positive_frames"]) != 104 for row in proposals):
+        raise ValueError(f"Report 90 BALL candidate-recall table changed: {observed_hits}")
+    track_positive = {
+        (row["checkpoint"], row["configuration"]): (int(row["candidate_hits"]), int(row["identity_correct_frames"]), int(row["wrong_ball_switch_frames"]))
+        for row in tracking if row["scope"] == "full" and row["event_role"] == "CATALOGED_GOAL"
+    }
+    expected_track = {
+        ("baseline", "global_current"): (397, 219, 37),
+        ("baseline", "global_plus_tiles_viterbi_top10"): (510, 304, 65),
+        ("baseline", "global_plus_tiles_viterbi_top3"): (415, 316, 59),
+        ("oversampled", "global_current"): (414, 216, 40),
+        ("oversampled", "global_plus_tiles_viterbi_top10"): (509, 298, 38),
+        ("oversampled", "global_plus_tiles_viterbi_top3"): (404, 302, 35),
+    }
+    if track_positive != expected_track or any(
+        int(row["sequence_count"]) != 29 or int(row["frames_per_sequence"]) != 41 or int(row["target_frames"]) != 1009
+        for row in tracking if row["scope"] == "full" and row["event_role"] == "CATALOGED_GOAL"
+    ):
+        raise ValueError(f"Report 90 BALL tracking table changed or has mixed denominators: {track_positive}")
+
+    report90 = (ROOT / "docs/plans/90_plano_final_consolidacao_freeze_r3d_opcional_06-10-2026.md").read_text(encoding="utf-8")
+    if "ADIADO POR AUSÊNCIA DE PRÉ-REQUISITO" not in report90 or "TEST segue fechado" not in report90:
+        raise ValueError("Report 90 does not record the R3D prerequisite gate and closed TEST decision.")
+    return {
+        "fixed_candidate_modes_verified": len(expected_modes),
+        "nested_oof_modes_verified": len(expected_nested),
+        "nested_per_match_rows": len(per_match),
+        "paired_bootstrap_rows": len(bootstrap),
+        "nested_pareto_points": len(pareto),
+        "ball_proposal_rows": len(proposals),
+        "ball_tracking_rows": len(tracking),
+        "model_hashes_verified": len(model_manifest),
+        "test_opened": False,
+        "modes_promoted_to_v4": False,
+        "r3d": "DEFERRED_PREREQUISITE_MISSING",
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -447,6 +606,7 @@ def main() -> int:
         raise ValueError("Final freeze must preserve the current V4 no-promotion decision.")
     if interim.get("decisions", {}).get("test") != "CLOSED":
         raise ValueError("Final freeze must preserve the closed TEST decision.")
+    report90_state = validate_report90_outputs(artifacts)
 
     if args.preflight:
         print(json.dumps({
@@ -456,6 +616,7 @@ def main() -> int:
             "source_interim_manifest": interim_path.relative_to(ROOT).as_posix(),
             "artifact_count": len(artifacts),
             "tracker_runs_hash_verified": len(tracker_summary.get("runs", {})),
+            "report90": report90_state,
             "writes_final_manifest": False,
         }, ensure_ascii=False))
         return 0
@@ -500,6 +661,7 @@ def main() -> int:
             "spatial_pair_outcomes_verified": len(pair_rows),
             "projected_volume_means_verified": len(observed_volume_means),
             "interim_artifacts_hash_verified": len(artifacts),
+            "report90": report90_state,
         },
         "decisions": interim["decisions"],
         "artifacts": artifacts,
