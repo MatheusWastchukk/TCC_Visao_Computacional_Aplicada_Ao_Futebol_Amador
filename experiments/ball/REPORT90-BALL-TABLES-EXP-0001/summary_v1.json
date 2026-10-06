@@ -1,0 +1,16 @@
+{
+  "experiment_id": "REPORT90-BALL-TABLES-EXP-0001",
+  "scope": "separate summaries of frozen TRAIN proposal and sequence-tracking evaluations; no VALIDATION/TEST",
+  "proposal_population": "104 VISIBLE/PARTIAL frames from five-match TRAIN holdout; IoU metrics apply to positive frames",
+  "tracking_population": "35 sequences x 41 frames; 29 cataloged-goal sequences and 6 confirmed no-goal controls; center scope frames 16-26",
+  "metric_population_warning": "proposal recall and sequence identity use different sample populations and must be reported in separate tables",
+  "proposal_inputs": [
+    "experiments/ball/BALL-PROPOSAL-CEILING-EXP-0001/proposal_ceiling_metrics_v1.csv",
+    "experiments/ball/BALL-TILED-INFERENCE-EXP-0001/tiled_inference_metrics_v1.csv"
+  ],
+  "tracking_inputs": [
+    "experiments/ball/BALL-TILED-TRACKER-RETEST-EXP-0001/tiled_tracker_scored_summary_v1.csv",
+    "experiments/ball/BALL-TILED-TRACKER-RETEST-EXP-0001/budget_grid_v1/tiled_tracker_budget_grid_summary_v1.csv"
+  ],
+  "interpretation": "tiled increases proposal availability; Top-3/Top-10 trading candidate recall against identity and switches remains exploratory and does not promote tracking to V4"
+}
