@@ -1,0 +1,22 @@
+{
+  "experiment_id": "BALL-POSITIVE-MISS-AUDIT-EXP-0002",
+  "scope": "TRAIN only; same frozen 127 positive frames from oracle tracker diagnostic",
+  "source": "experiments\\ball\\GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001\\ORACLE-TRACKER-BASELINE-EXP-0001\\detector_miss_review_v1\\positive_detector_misses_v1.csv",
+  "miss_frames": 127,
+  "proposal_status": {
+    "NO_TOP10_PROPOSAL": 6,
+    "TOP10_PROPOSALS_PRESENT_NO_MATCHING_GT": 121
+  },
+  "selected_tracker_box_status": {
+    "NO_TRACKER_SELECTED_BOX": 15,
+    "SELECTED_BOX_DISJOINT_FROM_GT": 104,
+    "SELECTED_BOX_PARTIAL_OVERLAP_IOU_LT_050": 8
+  },
+  "distinction": "candidate_count measures whether the detector returned any top-10 proposals; selected_box_json is the tracker's chosen box. A displaced tracker box is not evidence that a matching detector proposal existed.",
+  "limits": [
+    "The supplied CSV stores only proposal count, not coordinates for all ten proposals; top-10 proposal recall is not recomputed here.",
+    "Tracker box IoU is a spatial diagnostic, not a visual cause label.",
+    "visual_cause_tags remain pending; do not infer blur, occlusion, or contrast from box size or tracker displacement.",
+    "VALIDATION and TEST were not accessed."
+  ]
+}

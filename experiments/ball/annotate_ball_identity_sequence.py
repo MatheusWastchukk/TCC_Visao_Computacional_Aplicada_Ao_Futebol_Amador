@@ -23,6 +23,7 @@ def main() -> int:
     parser.add_argument("--output", type=Path, default=None)
     parser.add_argument("--pending-only", action="store_true")
     parser.add_argument("--max-preview-width", type=int, default=1280)
+    parser.add_argument("--max-preview-height", type=int, default=800)
     args = parser.parse_args()
     output = args.output or args.input
     with args.input.open(newline="", encoding="utf-8") as file:
@@ -34,6 +35,7 @@ def main() -> int:
 
     window = "Identidade temporal da bola"
     cv2.namedWindow(window, cv2.WINDOW_NORMAL)
+    window_size: tuple[int, int] | None = None
     state: dict[str, object] = {"drawing": False, "start": None, "draft": None, "scale": 1.0}
 
     def mouse(event: int, x: int, y: int, _flags: int, _param: object) -> None:
@@ -55,7 +57,8 @@ def main() -> int:
         image = cv2.imread(row["image_path"])
         if image is None:
             raise FileNotFoundError(row["image_path"])
-        scale = min(1.0, args.max_preview_width / image.shape[1])
+        available_height = max(1, args.max_preview_height - 100)
+        scale = min(1.0, args.max_preview_width / image.shape[1], available_height / image.shape[0])
         state.update({"drawing": False, "start": None, "draft": None, "scale": scale})
         target: tuple[int, int, int, int] | None = None
         distractors: list[tuple[int, int, int, int]] = []
@@ -77,6 +80,11 @@ def main() -> int:
             cv2.putText(canvas, "Arraste caixa | B bola da jogada | D distrator | V visivel | P parcial | N nao visivel | U incerto", (15, 58), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 220, 120), 2)
             cv2.putText(canvas, "R limpa caixa atual | C limpa distratores | S salva | Q sair", (15, 84), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 220, 120), 2)
             cv2.imshow(window, canvas)
+            shown_size = (canvas.shape[1], canvas.shape[0])
+            if shown_size != window_size:
+                cv2.resizeWindow(window, *shown_size)
+                cv2.moveWindow(window, 30, 30)
+                window_size = shown_size
             key = cv2.waitKeyEx(60)
             if key in {-1, 255}:
                 continue

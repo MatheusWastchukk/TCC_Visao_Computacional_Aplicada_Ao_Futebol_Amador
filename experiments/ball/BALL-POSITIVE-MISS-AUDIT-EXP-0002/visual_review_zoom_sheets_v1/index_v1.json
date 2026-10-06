@@ -1,0 +1,1022 @@
+{
+  "source_csv": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\BALL-POSITIVE-MISS-AUDIT-EXP-0002\\positive_miss_mechanism_v2.csv",
+  "scope": "127 frozen TRAIN misses; visualization only; no cause labels assigned",
+  "rows": [
+    {
+      "sequence_id": "oracle_pair_001_POS",
+      "match_id": "match_06",
+      "sequence_frame": 16,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_06/oracle_pair_001_POS_frame_016.jpg",
+      "card_index": 1,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_001_POS",
+      "match_id": "match_06",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_06/oracle_pair_001_POS_frame_019.jpg",
+      "card_index": 2,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_001_POS",
+      "match_id": "match_06",
+      "sequence_frame": 20,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_06/oracle_pair_001_POS_frame_020.jpg",
+      "card_index": 3,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_001_POS",
+      "match_id": "match_06",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_06/oracle_pair_001_POS_frame_022.jpg",
+      "card_index": 4,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_001_POS",
+      "match_id": "match_06",
+      "sequence_frame": 23,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_06/oracle_pair_001_POS_frame_023.jpg",
+      "card_index": 5,
+      "candidate_count": 8
+    },
+    {
+      "sequence_id": "oracle_pair_001_POS",
+      "match_id": "match_06",
+      "sequence_frame": 24,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_06/oracle_pair_001_POS_frame_024.jpg",
+      "card_index": 6,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_001_POS",
+      "match_id": "match_06",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_06/oracle_pair_001_POS_frame_025.jpg",
+      "card_index": 7,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_001_POS",
+      "match_id": "match_06",
+      "sequence_frame": 26,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_06/oracle_pair_001_POS_frame_026.jpg",
+      "card_index": 8,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_002_POS",
+      "match_id": "match_07",
+      "sequence_frame": 17,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_07/oracle_pair_002_POS_frame_017.jpg",
+      "card_index": 9,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_002_POS",
+      "match_id": "match_07",
+      "sequence_frame": 20,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_07/oracle_pair_002_POS_frame_020.jpg",
+      "card_index": 10,
+      "candidate_count": 9
+    },
+    {
+      "sequence_id": "oracle_pair_002_POS",
+      "match_id": "match_07",
+      "sequence_frame": 21,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_07/oracle_pair_002_POS_frame_021.jpg",
+      "card_index": 11,
+      "candidate_count": 9
+    },
+    {
+      "sequence_id": "oracle_pair_002_POS",
+      "match_id": "match_07",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_07/oracle_pair_002_POS_frame_022.jpg",
+      "card_index": 12,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_002_POS",
+      "match_id": "match_07",
+      "sequence_frame": 23,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_07/oracle_pair_002_POS_frame_023.jpg",
+      "card_index": 13,
+      "candidate_count": 5
+    },
+    {
+      "sequence_id": "oracle_pair_002_POS",
+      "match_id": "match_07",
+      "sequence_frame": 24,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_07/oracle_pair_002_POS_frame_024.jpg",
+      "card_index": 14,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_002_POS",
+      "match_id": "match_07",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_07/oracle_pair_002_POS_frame_025.jpg",
+      "card_index": 15,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_003_POS",
+      "match_id": "match_07",
+      "sequence_frame": 20,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_07/oracle_pair_003_POS_frame_020.jpg",
+      "card_index": 16,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_003_POS",
+      "match_id": "match_07",
+      "sequence_frame": 21,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_07/oracle_pair_003_POS_frame_021.jpg",
+      "card_index": 17,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_003_POS",
+      "match_id": "match_07",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_07/oracle_pair_003_POS_frame_022.jpg",
+      "card_index": 18,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_003_POS",
+      "match_id": "match_07",
+      "sequence_frame": 26,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_07/oracle_pair_003_POS_frame_026.jpg",
+      "card_index": 19,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_004_POS",
+      "match_id": "match_08",
+      "sequence_frame": 17,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_08/oracle_pair_004_POS_frame_017.jpg",
+      "card_index": 20,
+      "candidate_count": 2
+    },
+    {
+      "sequence_id": "oracle_pair_004_POS",
+      "match_id": "match_08",
+      "sequence_frame": 18,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_08/oracle_pair_004_POS_frame_018.jpg",
+      "card_index": 21,
+      "candidate_count": 0
+    },
+    {
+      "sequence_id": "oracle_pair_004_POS",
+      "match_id": "match_08",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_08/oracle_pair_004_POS_frame_019.jpg",
+      "card_index": 22,
+      "candidate_count": 1
+    },
+    {
+      "sequence_id": "oracle_pair_004_POS",
+      "match_id": "match_08",
+      "sequence_frame": 20,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_08/oracle_pair_004_POS_frame_020.jpg",
+      "card_index": 23,
+      "candidate_count": 2
+    },
+    {
+      "sequence_id": "oracle_pair_004_POS",
+      "match_id": "match_08",
+      "sequence_frame": 24,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_08/oracle_pair_004_POS_frame_024.jpg",
+      "card_index": 24,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_004_POS",
+      "match_id": "match_08",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_08/oracle_pair_004_POS_frame_025.jpg",
+      "card_index": 25,
+      "candidate_count": 5
+    },
+    {
+      "sequence_id": "oracle_pair_004_POS",
+      "match_id": "match_08",
+      "sequence_frame": 26,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_08/oracle_pair_004_POS_frame_026.jpg",
+      "card_index": 26,
+      "candidate_count": 2
+    },
+    {
+      "sequence_id": "oracle_pair_005_POS",
+      "match_id": "match_09",
+      "sequence_frame": 16,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_005_POS_frame_016.jpg",
+      "card_index": 27,
+      "candidate_count": 8
+    },
+    {
+      "sequence_id": "oracle_pair_005_POS",
+      "match_id": "match_09",
+      "sequence_frame": 17,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_005_POS_frame_017.jpg",
+      "card_index": 28,
+      "candidate_count": 6
+    },
+    {
+      "sequence_id": "oracle_pair_005_POS",
+      "match_id": "match_09",
+      "sequence_frame": 18,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_005_POS_frame_018.jpg",
+      "card_index": 29,
+      "candidate_count": 4
+    },
+    {
+      "sequence_id": "oracle_pair_005_POS",
+      "match_id": "match_09",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_005_POS_frame_019.jpg",
+      "card_index": 30,
+      "candidate_count": 8
+    },
+    {
+      "sequence_id": "oracle_pair_006_POS",
+      "match_id": "match_09",
+      "sequence_frame": 16,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_006_POS_frame_016.jpg",
+      "card_index": 31,
+      "candidate_count": 2
+    },
+    {
+      "sequence_id": "oracle_pair_006_POS",
+      "match_id": "match_09",
+      "sequence_frame": 17,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_006_POS_frame_017.jpg",
+      "card_index": 32,
+      "candidate_count": 6
+    },
+    {
+      "sequence_id": "oracle_pair_006_POS",
+      "match_id": "match_09",
+      "sequence_frame": 18,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_006_POS_frame_018.jpg",
+      "card_index": 33,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_006_POS",
+      "match_id": "match_09",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_006_POS_frame_019.jpg",
+      "card_index": 34,
+      "candidate_count": 0
+    },
+    {
+      "sequence_id": "oracle_pair_006_POS",
+      "match_id": "match_09",
+      "sequence_frame": 21,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_006_POS_frame_021.jpg",
+      "card_index": 35,
+      "candidate_count": 5
+    },
+    {
+      "sequence_id": "oracle_pair_006_POS",
+      "match_id": "match_09",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_006_POS_frame_022.jpg",
+      "card_index": 36,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_006_POS",
+      "match_id": "match_09",
+      "sequence_frame": 23,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_006_POS_frame_023.jpg",
+      "card_index": 37,
+      "candidate_count": 9
+    },
+    {
+      "sequence_id": "oracle_pair_006_POS",
+      "match_id": "match_09",
+      "sequence_frame": 24,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_006_POS_frame_024.jpg",
+      "card_index": 38,
+      "candidate_count": 2
+    },
+    {
+      "sequence_id": "oracle_pair_006_POS",
+      "match_id": "match_09",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_006_POS_frame_025.jpg",
+      "card_index": 39,
+      "candidate_count": 4
+    },
+    {
+      "sequence_id": "oracle_pair_006_POS",
+      "match_id": "match_09",
+      "sequence_frame": 26,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_006_POS_frame_026.jpg",
+      "card_index": 40,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_007_POS",
+      "match_id": "match_09",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_007_POS_frame_019.jpg",
+      "card_index": 41,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_007_POS",
+      "match_id": "match_09",
+      "sequence_frame": 23,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_007_POS_frame_023.jpg",
+      "card_index": 42,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_007_POS",
+      "match_id": "match_09",
+      "sequence_frame": 24,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_007_POS_frame_024.jpg",
+      "card_index": 43,
+      "candidate_count": 9
+    },
+    {
+      "sequence_id": "oracle_pair_007_POS",
+      "match_id": "match_09",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_007_POS_frame_025.jpg",
+      "card_index": 44,
+      "candidate_count": 8
+    },
+    {
+      "sequence_id": "oracle_pair_007_POS",
+      "match_id": "match_09",
+      "sequence_frame": 26,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_09/oracle_pair_007_POS_frame_026.jpg",
+      "card_index": 45,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_008_POS",
+      "match_id": "match_20",
+      "sequence_frame": 16,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_20/oracle_pair_008_POS_frame_016.jpg",
+      "card_index": 46,
+      "candidate_count": 4
+    },
+    {
+      "sequence_id": "oracle_pair_008_POS",
+      "match_id": "match_20",
+      "sequence_frame": 17,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_20/oracle_pair_008_POS_frame_017.jpg",
+      "card_index": 47,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_008_POS",
+      "match_id": "match_20",
+      "sequence_frame": 20,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_20/oracle_pair_008_POS_frame_020.jpg",
+      "card_index": 48,
+      "candidate_count": 8
+    },
+    {
+      "sequence_id": "oracle_pair_008_POS",
+      "match_id": "match_20",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_20/oracle_pair_008_POS_frame_022.jpg",
+      "card_index": 49,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_009_POS",
+      "match_id": "match_22",
+      "sequence_frame": 18,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_22/oracle_pair_009_POS_frame_018.jpg",
+      "card_index": 50,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_009_POS",
+      "match_id": "match_22",
+      "sequence_frame": 21,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_22/oracle_pair_009_POS_frame_021.jpg",
+      "card_index": 51,
+      "candidate_count": 9
+    },
+    {
+      "sequence_id": "oracle_pair_009_POS",
+      "match_id": "match_22",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_22/oracle_pair_009_POS_frame_022.jpg",
+      "card_index": 52,
+      "candidate_count": 8
+    },
+    {
+      "sequence_id": "oracle_pair_009_POS",
+      "match_id": "match_22",
+      "sequence_frame": 23,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_22/oracle_pair_009_POS_frame_023.jpg",
+      "card_index": 53,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_009_POS",
+      "match_id": "match_22",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_22/oracle_pair_009_POS_frame_025.jpg",
+      "card_index": 54,
+      "candidate_count": 5
+    },
+    {
+      "sequence_id": "oracle_pair_010_POS",
+      "match_id": "match_25",
+      "sequence_frame": 16,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_010_POS_frame_016.jpg",
+      "card_index": 55,
+      "candidate_count": 1
+    },
+    {
+      "sequence_id": "oracle_pair_010_POS",
+      "match_id": "match_25",
+      "sequence_frame": 17,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_010_POS_frame_017.jpg",
+      "card_index": 56,
+      "candidate_count": 4
+    },
+    {
+      "sequence_id": "oracle_pair_010_POS",
+      "match_id": "match_25",
+      "sequence_frame": 18,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_010_POS_frame_018.jpg",
+      "card_index": 57,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_010_POS",
+      "match_id": "match_25",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_010_POS_frame_019.jpg",
+      "card_index": 58,
+      "candidate_count": 0
+    },
+    {
+      "sequence_id": "oracle_pair_010_POS",
+      "match_id": "match_25",
+      "sequence_frame": 20,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_010_POS_frame_020.jpg",
+      "card_index": 59,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_010_POS",
+      "match_id": "match_25",
+      "sequence_frame": 24,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_010_POS_frame_024.jpg",
+      "card_index": 60,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_010_POS",
+      "match_id": "match_25",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_010_POS_frame_025.jpg",
+      "card_index": 61,
+      "candidate_count": 2
+    },
+    {
+      "sequence_id": "oracle_pair_010_POS",
+      "match_id": "match_25",
+      "sequence_frame": 26,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_010_POS_frame_026.jpg",
+      "card_index": 62,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_011_POS",
+      "match_id": "match_25",
+      "sequence_frame": 16,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_011_POS_frame_016.jpg",
+      "card_index": 63,
+      "candidate_count": 5
+    },
+    {
+      "sequence_id": "oracle_pair_011_POS",
+      "match_id": "match_25",
+      "sequence_frame": 17,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_011_POS_frame_017.jpg",
+      "card_index": 64,
+      "candidate_count": 1
+    },
+    {
+      "sequence_id": "oracle_pair_011_POS",
+      "match_id": "match_25",
+      "sequence_frame": 18,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_011_POS_frame_018.jpg",
+      "card_index": 65,
+      "candidate_count": 6
+    },
+    {
+      "sequence_id": "oracle_pair_011_POS",
+      "match_id": "match_25",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_011_POS_frame_019.jpg",
+      "card_index": 66,
+      "candidate_count": 4
+    },
+    {
+      "sequence_id": "oracle_pair_011_POS",
+      "match_id": "match_25",
+      "sequence_frame": 23,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_25/oracle_pair_011_POS_frame_023.jpg",
+      "card_index": 67,
+      "candidate_count": 4
+    },
+    {
+      "sequence_id": "oracle_pair_012_POS",
+      "match_id": "match_32",
+      "sequence_frame": 16,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_012_POS_frame_016.jpg",
+      "card_index": 68,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_012_POS",
+      "match_id": "match_32",
+      "sequence_frame": 17,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_012_POS_frame_017.jpg",
+      "card_index": 69,
+      "candidate_count": 6
+    },
+    {
+      "sequence_id": "oracle_pair_012_POS",
+      "match_id": "match_32",
+      "sequence_frame": 18,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_012_POS_frame_018.jpg",
+      "card_index": 70,
+      "candidate_count": 4
+    },
+    {
+      "sequence_id": "oracle_pair_012_POS",
+      "match_id": "match_32",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_012_POS_frame_019.jpg",
+      "card_index": 71,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_012_POS",
+      "match_id": "match_32",
+      "sequence_frame": 20,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_012_POS_frame_020.jpg",
+      "card_index": 72,
+      "candidate_count": 8
+    },
+    {
+      "sequence_id": "oracle_pair_012_POS",
+      "match_id": "match_32",
+      "sequence_frame": 21,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_012_POS_frame_021.jpg",
+      "card_index": 73,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_012_POS",
+      "match_id": "match_32",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_012_POS_frame_022.jpg",
+      "card_index": 74,
+      "candidate_count": 2
+    },
+    {
+      "sequence_id": "oracle_pair_012_POS",
+      "match_id": "match_32",
+      "sequence_frame": 23,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_012_POS_frame_023.jpg",
+      "card_index": 75,
+      "candidate_count": 5
+    },
+    {
+      "sequence_id": "oracle_pair_012_POS",
+      "match_id": "match_32",
+      "sequence_frame": 24,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_012_POS_frame_024.jpg",
+      "card_index": 76,
+      "candidate_count": 2
+    },
+    {
+      "sequence_id": "oracle_pair_012_POS",
+      "match_id": "match_32",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_012_POS_frame_025.jpg",
+      "card_index": 77,
+      "candidate_count": 0
+    },
+    {
+      "sequence_id": "oracle_pair_012_POS",
+      "match_id": "match_32",
+      "sequence_frame": 26,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_012_POS_frame_026.jpg",
+      "card_index": 78,
+      "candidate_count": 0
+    },
+    {
+      "sequence_id": "oracle_pair_013_POS",
+      "match_id": "match_32",
+      "sequence_frame": 18,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_013_POS_frame_018.jpg",
+      "card_index": 79,
+      "candidate_count": 8
+    },
+    {
+      "sequence_id": "oracle_pair_013_POS",
+      "match_id": "match_32",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_013_POS_frame_019.jpg",
+      "card_index": 80,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_013_POS",
+      "match_id": "match_32",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_013_POS_frame_022.jpg",
+      "card_index": 81,
+      "candidate_count": 1
+    },
+    {
+      "sequence_id": "oracle_pair_013_POS",
+      "match_id": "match_32",
+      "sequence_frame": 24,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_013_POS_frame_024.jpg",
+      "card_index": 82,
+      "candidate_count": 2
+    },
+    {
+      "sequence_id": "oracle_pair_013_POS",
+      "match_id": "match_32",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_013_POS_frame_025.jpg",
+      "card_index": 83,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_013_POS",
+      "match_id": "match_32",
+      "sequence_frame": 26,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_013_POS_frame_026.jpg",
+      "card_index": 84,
+      "candidate_count": 0
+    },
+    {
+      "sequence_id": "oracle_pair_014_POS",
+      "match_id": "match_32",
+      "sequence_frame": 18,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_014_POS_frame_018.jpg",
+      "card_index": 85,
+      "candidate_count": 6
+    },
+    {
+      "sequence_id": "oracle_pair_014_POS",
+      "match_id": "match_32",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_014_POS_frame_019.jpg",
+      "card_index": 86,
+      "candidate_count": 6
+    },
+    {
+      "sequence_id": "oracle_pair_014_POS",
+      "match_id": "match_32",
+      "sequence_frame": 20,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_014_POS_frame_020.jpg",
+      "card_index": 87,
+      "candidate_count": 4
+    },
+    {
+      "sequence_id": "oracle_pair_014_POS",
+      "match_id": "match_32",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_014_POS_frame_022.jpg",
+      "card_index": 88,
+      "candidate_count": 5
+    },
+    {
+      "sequence_id": "oracle_pair_014_POS",
+      "match_id": "match_32",
+      "sequence_frame": 23,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_014_POS_frame_023.jpg",
+      "card_index": 89,
+      "candidate_count": 2
+    },
+    {
+      "sequence_id": "oracle_pair_014_POS",
+      "match_id": "match_32",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_32/oracle_pair_014_POS_frame_025.jpg",
+      "card_index": 90,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_015_POS",
+      "match_id": "match_37",
+      "sequence_frame": 17,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_015_POS_frame_017.jpg",
+      "card_index": 91,
+      "candidate_count": 4
+    },
+    {
+      "sequence_id": "oracle_pair_015_POS",
+      "match_id": "match_37",
+      "sequence_frame": 18,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_015_POS_frame_018.jpg",
+      "card_index": 92,
+      "candidate_count": 5
+    },
+    {
+      "sequence_id": "oracle_pair_015_POS",
+      "match_id": "match_37",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_015_POS_frame_019.jpg",
+      "card_index": 93,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_015_POS",
+      "match_id": "match_37",
+      "sequence_frame": 20,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_015_POS_frame_020.jpg",
+      "card_index": 94,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_015_POS",
+      "match_id": "match_37",
+      "sequence_frame": 21,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_015_POS_frame_021.jpg",
+      "card_index": 95,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_015_POS",
+      "match_id": "match_37",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_015_POS_frame_022.jpg",
+      "card_index": 96,
+      "candidate_count": 9
+    },
+    {
+      "sequence_id": "oracle_pair_015_POS",
+      "match_id": "match_37",
+      "sequence_frame": 23,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_015_POS_frame_023.jpg",
+      "card_index": 97,
+      "candidate_count": 5
+    },
+    {
+      "sequence_id": "oracle_pair_015_POS",
+      "match_id": "match_37",
+      "sequence_frame": 24,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_015_POS_frame_024.jpg",
+      "card_index": 98,
+      "candidate_count": 8
+    },
+    {
+      "sequence_id": "oracle_pair_015_POS",
+      "match_id": "match_37",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_015_POS_frame_025.jpg",
+      "card_index": 99,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_015_POS",
+      "match_id": "match_37",
+      "sequence_frame": 26,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_015_POS_frame_026.jpg",
+      "card_index": 100,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_016_POS",
+      "match_id": "match_37",
+      "sequence_frame": 16,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_016_POS_frame_016.jpg",
+      "card_index": 101,
+      "candidate_count": 6
+    },
+    {
+      "sequence_id": "oracle_pair_016_POS",
+      "match_id": "match_37",
+      "sequence_frame": 17,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_016_POS_frame_017.jpg",
+      "card_index": 102,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_016_POS",
+      "match_id": "match_37",
+      "sequence_frame": 18,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_016_POS_frame_018.jpg",
+      "card_index": 103,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_016_POS",
+      "match_id": "match_37",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_016_POS_frame_019.jpg",
+      "card_index": 104,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_016_POS",
+      "match_id": "match_37",
+      "sequence_frame": 20,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_016_POS_frame_020.jpg",
+      "card_index": 105,
+      "candidate_count": 5
+    },
+    {
+      "sequence_id": "oracle_pair_016_POS",
+      "match_id": "match_37",
+      "sequence_frame": 21,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_016_POS_frame_021.jpg",
+      "card_index": 106,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_016_POS",
+      "match_id": "match_37",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_016_POS_frame_022.jpg",
+      "card_index": 107,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_016_POS",
+      "match_id": "match_37",
+      "sequence_frame": 23,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_016_POS_frame_023.jpg",
+      "card_index": 108,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_016_POS",
+      "match_id": "match_37",
+      "sequence_frame": 24,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_37/oracle_pair_016_POS_frame_024.jpg",
+      "card_index": 109,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_017_POS",
+      "match_id": "match_38",
+      "sequence_frame": 17,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_38/oracle_pair_017_POS_frame_017.jpg",
+      "card_index": 110,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_017_POS",
+      "match_id": "match_38",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_38/oracle_pair_017_POS_frame_022.jpg",
+      "card_index": 111,
+      "candidate_count": 8
+    },
+    {
+      "sequence_id": "oracle_pair_017_POS",
+      "match_id": "match_38",
+      "sequence_frame": 23,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_38/oracle_pair_017_POS_frame_023.jpg",
+      "card_index": 112,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_018_POS",
+      "match_id": "match_38",
+      "sequence_frame": 16,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_38/oracle_pair_018_POS_frame_016.jpg",
+      "card_index": 113,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_018_POS",
+      "match_id": "match_38",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_38/oracle_pair_018_POS_frame_022.jpg",
+      "card_index": 114,
+      "candidate_count": 4
+    },
+    {
+      "sequence_id": "oracle_pair_018_POS",
+      "match_id": "match_38",
+      "sequence_frame": 23,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_38/oracle_pair_018_POS_frame_023.jpg",
+      "card_index": 115,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_018_POS",
+      "match_id": "match_38",
+      "sequence_frame": 24,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_38/oracle_pair_018_POS_frame_024.jpg",
+      "card_index": 116,
+      "candidate_count": 2
+    },
+    {
+      "sequence_id": "oracle_pair_018_POS",
+      "match_id": "match_38",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_38/oracle_pair_018_POS_frame_025.jpg",
+      "card_index": 117,
+      "candidate_count": 2
+    },
+    {
+      "sequence_id": "oracle_pair_018_POS",
+      "match_id": "match_38",
+      "sequence_frame": 26,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_38/oracle_pair_018_POS_frame_026.jpg",
+      "card_index": 118,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_019_POS",
+      "match_id": "match_38",
+      "sequence_frame": 16,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_38/oracle_pair_019_POS_frame_016.jpg",
+      "card_index": 119,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_019_POS",
+      "match_id": "match_38",
+      "sequence_frame": 22,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_38/oracle_pair_019_POS_frame_022.jpg",
+      "card_index": 120,
+      "candidate_count": 7
+    },
+    {
+      "sequence_id": "oracle_pair_020_POS",
+      "match_id": "match_41",
+      "sequence_frame": 16,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_41/oracle_pair_020_POS_frame_016.jpg",
+      "card_index": 121,
+      "candidate_count": 5
+    },
+    {
+      "sequence_id": "oracle_pair_020_POS",
+      "match_id": "match_41",
+      "sequence_frame": 17,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_41/oracle_pair_020_POS_frame_017.jpg",
+      "card_index": 122,
+      "candidate_count": 5
+    },
+    {
+      "sequence_id": "oracle_pair_020_POS",
+      "match_id": "match_41",
+      "sequence_frame": 18,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_41/oracle_pair_020_POS_frame_018.jpg",
+      "card_index": 123,
+      "candidate_count": 6
+    },
+    {
+      "sequence_id": "oracle_pair_020_POS",
+      "match_id": "match_41",
+      "sequence_frame": 19,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_41/oracle_pair_020_POS_frame_019.jpg",
+      "card_index": 124,
+      "candidate_count": 8
+    },
+    {
+      "sequence_id": "oracle_pair_020_POS",
+      "match_id": "match_41",
+      "sequence_frame": 20,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_41/oracle_pair_020_POS_frame_020.jpg",
+      "card_index": 125,
+      "candidate_count": 10
+    },
+    {
+      "sequence_id": "oracle_pair_020_POS",
+      "match_id": "match_41",
+      "sequence_frame": 24,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_41/oracle_pair_020_POS_frame_024.jpg",
+      "card_index": 126,
+      "candidate_count": 3
+    },
+    {
+      "sequence_id": "oracle_pair_020_POS",
+      "match_id": "match_41",
+      "sequence_frame": 25,
+      "image_path": "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/oracle_frames_v1/match_41/oracle_pair_020_POS_frame_025.jpg",
+      "card_index": 127,
+      "candidate_count": 1
+    }
+  ]
+}

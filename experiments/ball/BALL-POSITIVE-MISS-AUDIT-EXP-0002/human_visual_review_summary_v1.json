@@ -1,0 +1,63 @@
+{
+  "experiment_id": "BALL-POSITIVE-MISS-AUDIT-EXP-0002",
+  "scope": "TRAIN-only descriptive summary of the 127 frozen positive miss frames",
+  "input_path": "experiments\\ball\\BALL-POSITIVE-MISS-AUDIT-EXP-0002\\positive_miss_mechanism_v2_annotated.csv",
+  "input_sha256": "4467c1b8b355cc4b170c5b590fe7751705cbaad101ccbeda12c27de5c87663a8",
+  "frames": 127,
+  "completed_visual_reviews": 127,
+  "frames_with_uncertain_tag": 10,
+  "frames_with_at_least_one_specific_visual_tag": 117,
+  "tag_counts_overlapping": {
+    "SMALL_BALL": 54,
+    "BLUR": 51,
+    "OCCLUSION_PLAYER": 15,
+    "OCCLUSION_GOALKEEPER": 8,
+    "OCCLUSION_NET": 0,
+    "LOW_CONTRAST": 31,
+    "FRAME_EDGE": 1,
+    "BAD_LOCALIZATION": 95,
+    "OTHER": 0,
+    "UNCERTAIN": 10
+  },
+  "tag_combination_counts": {
+    "BAD_LOCALIZATION": 27,
+    "BAD_LOCALIZATION;BLUR": 5,
+    "BAD_LOCALIZATION;BLUR;LOW_CONTRAST": 7,
+    "BAD_LOCALIZATION;BLUR;LOW_CONTRAST;SMALL_BALL": 4,
+    "BAD_LOCALIZATION;BLUR;OCCLUSION_PLAYER": 1,
+    "BAD_LOCALIZATION;BLUR;OCCLUSION_PLAYER;SMALL_BALL": 5,
+    "BAD_LOCALIZATION;BLUR;SMALL_BALL": 12,
+    "BAD_LOCALIZATION;LOW_CONTRAST": 8,
+    "BAD_LOCALIZATION;LOW_CONTRAST;SMALL_BALL": 8,
+    "BAD_LOCALIZATION;OCCLUSION_GOALKEEPER": 1,
+    "BAD_LOCALIZATION;OCCLUSION_GOALKEEPER;SMALL_BALL": 7,
+    "BAD_LOCALIZATION;OCCLUSION_PLAYER": 6,
+    "BAD_LOCALIZATION;SMALL_BALL": 4,
+    "BLUR": 2,
+    "BLUR;LOW_CONTRAST": 2,
+    "BLUR;OCCLUSION_PLAYER;SMALL_BALL": 2,
+    "BLUR;SMALL_BALL": 11,
+    "FRAME_EDGE": 1,
+    "LOW_CONTRAST": 2,
+    "OCCLUSION_PLAYER": 1,
+    "SMALL_BALL": 1,
+    "UNCERTAIN": 10
+  },
+  "objective_proposal_status": {
+    "TOP10_PROPOSALS_PRESENT_NO_MATCHING_GT": 121,
+    "NO_TOP10_PROPOSAL": 6
+  },
+  "objective_selected_tracker_box_status": {
+    "SELECTED_BOX_DISJOINT_FROM_GT": 104,
+    "SELECTED_BOX_PARTIAL_OVERLAP_IOU_LT_050": 8,
+    "NO_TRACKER_SELECTED_BOX": 15
+  },
+  "interpretation_limits": [
+    "Visual tags overlap and summarize reviewer judgments on this selected miss cohort.",
+    "The audit includes misses only, so tag frequency is not a miss-versus-recovery prevalence comparison.",
+    "Tags are descriptive observations, not causal estimates or automatic training labels.",
+    "Proposal count and selected tracker-box status remain separate objective measurements.",
+    "The Codex contact-sheet screening is stored separately and is not merged into these labels.",
+    "TRAIN only; no VALIDATION or TEST access."
+  ]
+}

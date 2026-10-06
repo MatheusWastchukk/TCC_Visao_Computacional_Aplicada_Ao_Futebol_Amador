@@ -1,0 +1,37 @@
+{
+  "experiment_id": "BALL-POSITIVE-MISS-AUDIT-EXP-0001",
+  "scope": "TRAIN only; 127 positive target frames from the frozen oracle tracker diagnostic",
+  "input": "experiments\\ball\\GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001\\ORACLE-TRACKER-BASELINE-EXP-0001\\detector_miss_review_v1\\positive_detector_misses_v1.csv",
+  "positive_miss_frames": 127,
+  "sequences": 20,
+  "visibility": {
+    "PARTIAL": 10,
+    "VISIBLE": 117
+  },
+  "gt_box_dimensions_px": {
+    "width_median": 18.0,
+    "height_median": 19.0,
+    "area_median_px2": 330.0,
+    "area_lt_400px2_count": 85,
+    "area_lt_400px2_fraction": 0.669291
+  },
+  "proposal_count_distribution": {
+    "0": 6,
+    "1": 5,
+    "2": 12,
+    "3": 17,
+    "4": 10,
+    "5": 12,
+    "6": 8,
+    "7": 19,
+    "8": 11,
+    "9": 6,
+    "10": 21
+  },
+  "proposal_status": {
+    "NO_TOP10_PROPOSAL": 6,
+    "TOP10_PRESENT_NO_IOU_050_MATCH": 121
+  },
+  "rule": "Area <400 px2 (20x20 square) is only a descriptive size flag, not a causal label or model gate. The original miss set is defined by no available candidate at IoU >=0.50; candidate_count distinguishes zero top-10 boxes from boxes with no compatible match.",
+  "warning": "No causal visual tags were inferred automatically. Visual cause tags remain pending, may overlap, and must be grounded in the frame/video; do not interpret dimensions or proposal_count alone as cause."
+}
