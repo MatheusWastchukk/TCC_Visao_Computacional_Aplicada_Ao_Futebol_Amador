@@ -198,3 +198,48 @@ experiments/ball/GOAL-EVENT-MISSED-GOAL-AUDIT-TRAIN-V1/overlay_clips_v1/
 experiments/ball/GOAL-EVENT-FULL-POOL-FUSION-FINAL-V1/*.joblib
 experiments/ball/GOAL-EVENT-FULL-POOL-VALIDATION-V1/full_pool_temporal_candidates_v1.csv
 experiments/ball/GOAL-EVENT-BALL-PROPOSAL-QUALITY-AUDIT-EXP-0001/roi_geometry_diagnostic_v1/roi_geometry_per_frame_v1.csv
+
+# Machine-specific Ultralytics configuration and experiment logs.
+Ultralytics/settings.json
+experiments/ball/**/*.log
+
+# Materialized YOLO labels duplicate the compact annotation CSVs and manifests.
+experiments/ball/BALL-HARD-POSITIVE-EXP-0001/dataset_*/labels/
+
+# Repeated interim snapshots; the frozen protocol and final results are tracked separately.
+experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v*.json
+
+# Regenerable, row-level experiment outputs. Keep compact summaries, protocols,
+# manifests, and human-reviewed annotation tables versioned.
+experiments/ball/**/*_raw_detections*.csv
+experiments/ball/**/*_by_frame*.csv
+experiments/ball/**/*_frame_predictions*.csv
+experiments/ball/**/*_frame_identity_results.csv
+experiments/ball/**/*_anchor_trajectory_predictions*.csv
+experiments/ball/**/anchor_trajectory_predictions*.csv
+experiments/ball/**/*_scored_frame_results*.csv
+experiments/ball/**/scored_frame_results*.csv
+experiments/ball/**/*_scored_by_frame*.csv
+experiments/ball/**/*_selected_candidates*.csv
+experiments/ball/**/*_selected_segments*.csv
+experiments/ball/**/*_selected_v1.csv
+experiments/ball/**/*_lomo_scores*.csv
+experiments/ball/**/*_scores*.csv
+experiments/ball/**/*_development_offsets*.csv
+experiments/ball/**/frame_identity_results.csv
+experiments/ball/**/tracker_candidates_blind_v1.csv
+experiments/ball/**/*_input_frames*.csv
+experiments/ball/**/selection_trace.csv
+experiments/ball/**/camera_motion_pairs_v1.csv
+experiments/ball/**/tracking_scoring_frames_*.csv
+experiments/ball/**/blind_tracker_inputs_*.csv
+experiments/ball/**/candidate_generation_progress_v1.json
+experiments/ball/**/*_frame_results*.csv
+experiments/ball/**/*_sequence_predictions*.csv
+experiments/ball/**/oracle_feature_frames_v1.csv
+experiments/ball/**/oracle_temporal_diagnostic_frames_v1.csv
+experiments/ball/BALL-HARD-POSITIVE-EXP-0001/dataset_*/manifest.csv
+
+# Keep compact validation outputs that are otherwise caught by broad suffix rules.
+!experiments/ball/TIERED-WINDOW-VALIDATION-CONFIRMATION-V1/validation_candidate_scores_net_motion_v1.csv
+!experiments/ball/TIERED-WINDOW-VALIDATION-CONFIRMATION-V1/tiered_window_validation_selected_v1.csv
