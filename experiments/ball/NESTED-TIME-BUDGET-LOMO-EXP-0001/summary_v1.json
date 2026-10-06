@@ -1,0 +1,55 @@
+{
+  "experiment_id": "NESTED-TIME-BUDGET-LOMO-EXP-0001",
+  "scope": "TRAIN-only nested LOMO; outer match excluded from model fitting, inner policy selection and evaluation; VALIDATION and TEST not accessed",
+  "matches": 22,
+  "catalog_goals": 130,
+  "common_candidate_groups": 5372,
+  "outer_folds": 22,
+  "budgets_minutes_per_match": [
+    30,
+    40,
+    45,
+    50,
+    58
+  ],
+  "budget_constraint": "hard cap: every inner development match must have merged unique video-minutes <= budget; held-out outer match compliance is measured and reported",
+  "grid": {
+    "methods": [
+      "TEMPORAL",
+      "RRF3",
+      "RRF4_NET",
+      "CORE35_FUSION10_NET10",
+      "CORE40_RRF4_NET_RESCUE"
+    ],
+    "k_per_match": [
+      20,
+      30,
+      40,
+      50,
+      55,
+      60
+    ],
+    "windows_seconds": [
+      30,
+      40,
+      45,
+      60
+    ],
+    "gap_seconds": 45.0,
+    "window_center": "frozen candidate center, reconstructed from source delivery_start_seconds + 20s"
+  },
+  "selection_rule": "among policies feasible on every inner match, maximize aggregate covered catalog goals, then minimize mean unique minutes, merged segments, and fixed grid complexity order",
+  "models": "Temporal/net-motion RandomForest (300 trees, min_samples_leaf=2, balanced, random_state=42); visual LogisticRegression on frozen ResNet18 candidate embeddings; fusion LogisticRegression on cross-fitted temporal+visual scores",
+  "input_sha256": {
+    "results\\local_trajectory_dataset_train_fullpool_v1\\temporal_group_dataset_local_trajectory_v1.csv": "bb86d2f2c775630f898a8e5613e24fb0077ee3d6e038ebf26760b384d6c3ad5d",
+    "results\\net_motion_dataset_train_v1\\temporal_group_dataset_net_motion_v1.csv": "960bf4f32476c7b59fa63e7dd93c9270f61418c36c5694fba6e5188c490b4c3b",
+    "experiments\\ball\\GOAL-EVENT-FULL-POOL-VISUAL-RERANKER-EXP-0001\\run_v1\\candidate_scores_lomo_v1.csv": "f7c638d17b3df212e470affbe7497d15e50da4e1f62680546e15d5f91a39ff44",
+    "experiments\\ball\\GOAL-EVENT-FULL-POOL-VISUAL-RERANKER-EXP-0001\\run_v1_embeddings_checkpoint.npy": "f72d2af9c6a3c17534d53168b9fb30bc50f89d50aa81d72403188e1dbdceb8fe",
+    "experiments\\ball\\GOAL-EVENT-FULL-POOL-VISUAL-RERANKER-EXP-0001\\run_v1_embeddings_checkpoint.json": "9b06f56642f35b86842de71af905f9ade9a6c7ffc3bec29a78df478f8626b965",
+    "experiments\\ball\\GOAL-CLIP-TEMPORAL-SEQUENCE-EXP-0001\\run_v1\\predictions_lomo_v1.csv": "0554c56d61567c4c0e0416392521e8a7376693ba0a668250a9bb7e0b6c4af55c",
+    "experiments\\ball\\GOAL-CLIP-TEMPORAL-SEQUENCE-EXP-0001\\run_v1\\sequence_embeddings_v1.npz": "a02fd5dad39a097d8727b53956a32b18045c348e403763b9d6b97318796ec3a6",
+    "results\\local_trajectory_dataset_train_v2\\goal_timestamps_train_subset_v1.csv": "49322fdefce1c9a6ecd27f31b6bf39fbb106b16ba3554451ed1dfe8274fb7646",
+    "experiments\\ball\\GOAL-EVENT-PIPELINE-FINAL-V1\\temporal_ranker.joblib": "b9a791c4eb3d57e384680a78591d10952c916585fec147c4e8534a925ffea6d1"
+  },
+  "interpretation": "TRAIN nested LOMO estimate only; not independent VALIDATION, not a final mode selection and not permission to open TEST"
+}
