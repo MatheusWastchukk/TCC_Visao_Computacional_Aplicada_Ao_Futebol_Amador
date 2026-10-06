@@ -1,0 +1,60 @@
+{
+  "experiment_id": "COMPLEMENTARITY-MATRIX-EXP-0001",
+  "scope": "TRAIN only; 22 matches; 5,372 common candidate groups; 130 completed catalog goals; OOF scores by match",
+  "inputs": [
+    {
+      "path": "experiments\\ball\\GOAL-EVENT-FULL-POOL-VISUAL-RERANKER-EXP-0001\\run_v1\\candidate_scores_lomo_v1.csv",
+      "sha256": "f7c638d17b3df212e470affbe7497d15e50da4e1f62680546e15d5f91a39ff44"
+    },
+    {
+      "path": "results\\local_trajectory_dataset_train_v2\\goal_timestamps_train_subset_v1.csv",
+      "sha256": "49322fdefce1c9a6ecd27f31b6bf39fbb106b16ba3554451ed1dfe8274fb7646"
+    },
+    {
+      "path": "results\\local_trajectory_lomo_train_v2\\lomo_predictions_v1.csv",
+      "sha256": "5294a203bb5d09c9f742e85b81cee2e78bf70fa4dc5a062a631d90e53f5b1de5"
+    },
+    {
+      "path": "results\\shot_motion_lomo_train_v1\\lomo_predictions_v1.csv",
+      "sha256": "c2ea0046cc507c3c3d79d9b5b302688b63bfe35fa49b677f651360e9472e0145"
+    },
+    {
+      "path": "results\\net_motion_lomo_train_v1\\lomo_predictions_v1.csv",
+      "sha256": "da0a617f654c777cc84dcaa0795bb739f5ba0b6e7d23d9ae07d09534a0ee45eb"
+    }
+  ],
+  "excluded": {
+    "candidate_groups": 370,
+    "reason": "expert LOMO scores missing for 3 matches/370 groups"
+  },
+  "methods": [
+    "rank_score",
+    "visual_score_goal",
+    "fusion_score_goal",
+    "local_trajectory",
+    "shot_motion",
+    "net_motion",
+    "RRF3_temporal_visual_fusion",
+    "RRF4_plus_local_trajectory",
+    "RRF4_plus_shot_motion",
+    "RRF4_plus_net_motion",
+    "RRF6_plus_all_three"
+  ],
+  "protocol": {
+    "delivery_window": "20+40 seconds as encoded in candidate input",
+    "temporal_dedup_gap_seconds": 45.0,
+    "limits_per_match": [
+      20,
+      40,
+      60,
+      80,
+      100
+    ],
+    "rrf_offset": 60,
+    "goal_coverage": "catalog timestamp lies within selected delivery interval",
+    "candidate_overlap": "Jaccard over selected (match_id, group_uid) sets",
+    "goal_overlap": "Jaccard over covered catalog goal IDs",
+    "selection": "candidate sets and goal labels are descriptive; no weights fitted or configuration promoted"
+  },
+  "warning": "Exploratory development comparison on TRAIN/LOMO. Results are limited to the common 22-match/130-goal population; no VALIDATION or TEST data accessed."
+}
