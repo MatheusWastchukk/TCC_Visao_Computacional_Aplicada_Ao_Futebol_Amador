@@ -1,0 +1,48 @@
+{
+  "experiment_id": "REPORT90-FINAL-MODES-EXP-0001",
+  "scope": "TRAIN only; fixed mode settings selected from frozen grid; TEST and VALIDATION not accessed",
+  "selection_is_in_sample": true,
+  "generalization_estimates_source": "NESTED-TIME-BUDGET-LOMO-EXP-0001 and NESTED-TIME-BUDGET-FAMILY-COMPARISON-V1",
+  "matches": 22,
+  "candidate_groups": 5372,
+  "catalog_goals": 130,
+  "oof_base_score_fit": "leave-one-match-out; held match excluded from temporal/net/visual base estimators",
+  "fusion_fit": "logistic regression fit on cross-fitted temporal+visual scores and TRAIN candidate labels",
+  "full_train_models": "temporal/net random forests and visual verifier refit on all TRAIN; used for operational bundle and in-sample configuration selection only",
+  "tie_break": "maximize covered catalog goals, then minimize mean unique minutes, merged segments, then fixed method/window/K complexity order",
+  "inputs_sha256": {
+    "temporal_features": "bb86d2f2c775630f898a8e5613e24fb0077ee3d6e038ebf26760b384d6c3ad5d",
+    "net_features": "960bf4f32476c7b59fa63e7dd93c9270f61418c36c5694fba6e5188c490b4c3b",
+    "candidate_scores": "f7c638d17b3df212e470affbe7497d15e50da4e1f62680546e15d5f91a39ff44",
+    "candidate_embeddings": "f72d2af9c6a3c17534d53168b9fb30bc50f89d50aa81d72403188e1dbdceb8fe",
+    "candidate_embedding_manifest": "9b06f56642f35b86842de71af905f9ade9a6c7ffc3bec29a78df478f8626b965",
+    "verifier_predictions": "0554c56d61567c4c0e0416392521e8a7376693ba0a668250a9bb7e0b6c4af55c",
+    "verifier_embeddings": "a02fd5dad39a097d8727b53956a32b18045c348e403763b9d6b97318796ec3a6",
+    "goal_catalog": "49322fdefce1c9a6ecd27f31b6bf39fbb106b16ba3554451ed1dfe8274fb7646",
+    "frozen_temporal_model": "b9a791c4eb3d57e384680a78591d10952c916585fec147c4e8534a925ffea6d1"
+  },
+  "script_sha256": "88516087cfc4c6f2229fad8dc59eda3984dbc0d7fcccb1b3c479a277c109caed",
+  "validation_test_policy": "neither VALIDATION nor TEST was opened or used",
+  "model_hashes": {
+    "temporal_ranker": {
+      "path": "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/models/temporal_ranker.joblib",
+      "sha256": "78f98426a483302bfa1cb93c290ebf9ed69f2d9d24d9a2215d8e0fcb024780ac",
+      "bytes": 7178155
+    },
+    "net_motion_ranker": {
+      "path": "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/models/net_motion_ranker.joblib",
+      "sha256": "fca4feced240da3b061cbdf9b2ca7a932c302a5824f1d2820dceb75356690bc9",
+      "bytes": 6963457
+    },
+    "visual_verifier": {
+      "path": "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/models/visual_verifier.joblib",
+      "sha256": "c4b31c8cab60d0af0bbd28f7284d7bb7958dbdecd3c93d5d4f84998949d87a1d",
+      "bytes": 116029
+    },
+    "fusion_ranker": {
+      "path": "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/models/fusion_ranker.joblib",
+      "sha256": "28efb6a42f3450daea0f046e463c26b899881ff9968bf3dc7437750d923a841b",
+      "bytes": 1442
+    }
+  }
+}

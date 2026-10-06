@@ -1,0 +1,22 @@
+{
+  "temporal_ranker": {
+    "path": "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/models/temporal_ranker.joblib",
+    "sha256": "78f98426a483302bfa1cb93c290ebf9ed69f2d9d24d9a2215d8e0fcb024780ac",
+    "bytes": 7178155
+  },
+  "net_motion_ranker": {
+    "path": "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/models/net_motion_ranker.joblib",
+    "sha256": "fca4feced240da3b061cbdf9b2ca7a932c302a5824f1d2820dceb75356690bc9",
+    "bytes": 6963457
+  },
+  "visual_verifier": {
+    "path": "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/models/visual_verifier.joblib",
+    "sha256": "c4b31c8cab60d0af0bbd28f7284d7bb7958dbdecd3c93d5d4f84998949d87a1d",
+    "bytes": 116029
+  },
+  "fusion_ranker": {
+    "path": "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/models/fusion_ranker.joblib",
+    "sha256": "28efb6a42f3450daea0f046e463c26b899881ff9968bf3dc7437750d923a841b",
+    "bytes": 1442
+  }
+}

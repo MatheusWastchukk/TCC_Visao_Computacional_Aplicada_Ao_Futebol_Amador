@@ -1,0 +1,127 @@
+{
+  "config_id": "REPORT90-FINAL-MODES-V1",
+  "status": "TRAIN_SELECTED_CANDIDATES_NOT_YET_FINAL_FREEZE",
+  "scope": "TRAIN only; fixed mode settings selected from frozen grid; TEST and VALIDATION not accessed",
+  "selection_metric_warning": "Full-TRAIN predictions are in-sample and are only used to choose a concrete setting from the pre-existing grid; use nested outer-fold results for performance estimates.",
+  "budgets_are": "unique selected video minutes per match; not human review time",
+  "grid": {
+    "methods": [
+      "TEMPORAL",
+      "RRF3",
+      "RRF4_NET",
+      "CORE35_FUSION10_NET10",
+      "CORE40_RRF4_NET_RESCUE"
+    ],
+    "budgets": [
+      30,
+      40,
+      45,
+      50,
+      58
+    ],
+    "windows_seconds": [
+      30,
+      40,
+      45,
+      60
+    ],
+    "k_per_match": [
+      20,
+      30,
+      40,
+      50,
+      55,
+      60
+    ],
+    "gap_seconds": 45.0
+  },
+  "modes": {
+    "FAST_V1": {
+      "budget_minutes_per_match": 30,
+      "selection_family": "NO_RESCUE",
+      "method": "TEMPORAL",
+      "window_seconds": 60,
+      "k_per_match": 30,
+      "gap_seconds": 45.0,
+      "training_selection_covered_goals": 119,
+      "training_selection_catalog_goals": 130,
+      "training_selection_recall": "0.915385",
+      "training_selection_mean_unique_minutes": "29.683",
+      "training_selection_max_unique_minutes": "30.000",
+      "training_selection_merged_segments": 605,
+      "models_manifest": "model_manifest_v1.json",
+      "rescue_enabled": false,
+      "ranking_sources": [
+        "temporal_ranker"
+      ]
+    },
+    "BALANCED_V1": {
+      "budget_minutes_per_match": 40,
+      "selection_family": "CORE_RESCUE",
+      "method": "CORE40_RRF4_NET_RESCUE",
+      "window_seconds": 60,
+      "k_per_match": 40,
+      "gap_seconds": 45.0,
+      "training_selection_covered_goals": 122,
+      "training_selection_catalog_goals": 130,
+      "training_selection_recall": "0.938462",
+      "training_selection_mean_unique_minutes": "39.398",
+      "training_selection_max_unique_minutes": "39.927",
+      "training_selection_merged_segments": 774,
+      "models_manifest": "model_manifest_v1.json",
+      "rescue_enabled": true,
+      "ranking_sources": [
+        "temporal_ranker",
+        "visual_verifier",
+        "fusion_ranker",
+        "net_motion_ranker"
+      ]
+    },
+    "HIGH_RECALL_V1": {
+      "budget_minutes_per_match": 58,
+      "selection_family": "CORE_RESCUE",
+      "method": "CORE35_FUSION10_NET10",
+      "window_seconds": 60,
+      "k_per_match": 55,
+      "gap_seconds": 45.0,
+      "training_selection_covered_goals": 124,
+      "training_selection_catalog_goals": 130,
+      "training_selection_recall": "0.953846",
+      "training_selection_mean_unique_minutes": "53.662",
+      "training_selection_max_unique_minutes": "54.372",
+      "training_selection_merged_segments": 976,
+      "models_manifest": "model_manifest_v1.json",
+      "rescue_enabled": true,
+      "ranking_sources": [
+        "temporal_ranker",
+        "fusion_ranker",
+        "net_motion_ranker"
+      ]
+    }
+  },
+  "model_files": {
+    "temporal_ranker": {
+      "path": "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/models/temporal_ranker.joblib",
+      "sha256": "78f98426a483302bfa1cb93c290ebf9ed69f2d9d24d9a2215d8e0fcb024780ac",
+      "bytes": 7178155
+    },
+    "net_motion_ranker": {
+      "path": "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/models/net_motion_ranker.joblib",
+      "sha256": "fca4feced240da3b061cbdf9b2ca7a932c302a5824f1d2820dceb75356690bc9",
+      "bytes": 6963457
+    },
+    "visual_verifier": {
+      "path": "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/models/visual_verifier.joblib",
+      "sha256": "c4b31c8cab60d0af0bbd28f7284d7bb7958dbdecd3c93d5d4f84998949d87a1d",
+      "bytes": 116029
+    },
+    "fusion_ranker": {
+      "path": "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/models/fusion_ranker.joblib",
+      "sha256": "28efb6a42f3450daea0f046e463c26b899881ff9968bf3dc7437750d923a841b",
+      "bytes": 1442
+    }
+  },
+  "mode_results_file": "final_mode_selection_v1.csv",
+  "full_train_grid_file": "full_train_mode_grid_v1.csv",
+  "score_diagnostic_file": "base_scores_oof_and_full_train_v1.csv"
+}
