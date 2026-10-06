@@ -1,0 +1,17 @@
+source,requested_rescue_budget_per_match,baseline_goals,protected_goals,incremental_goals,actual_rescue_candidates,mean_rescue_candidates_per_match,delta_unique_review_minutes_per_match,delta_merged_segments,incremental_goals_per_extra_minute,base_k,total_candidate_budget_max_per_match
+fusion_score_goal,5,107,114,7,106,4.818,4.464,39,1.568,60,65
+fusion_score_goal,10,107,115,8,201,9.136,8.374,74,0.955,60,70
+fusion_score_goal,15,107,117,10,287,13.045,11.836,89,0.845,60,75
+fusion_score_goal,20,107,119,12,360,16.364,14.794,100,0.811,60,80
+net_motion,5,107,113,6,106,4.818,4.434,35,1.353,60,65
+net_motion,10,107,117,10,202,9.182,8.415,73,1.188,60,70
+net_motion,15,107,118,11,288,13.091,11.918,83,0.923,60,75
+net_motion,20,107,119,12,357,16.227,14.672,90,0.818,60,80
+RRF3_temporal_visual_fusion,5,107,113,6,106,4.818,4.453,38,1.347,60,65
+RRF3_temporal_visual_fusion,10,107,115,8,201,9.136,8.342,71,0.959,60,70
+RRF3_temporal_visual_fusion,15,107,117,10,287,13.045,11.802,86,0.847,60,75
+RRF3_temporal_visual_fusion,20,107,119,12,360,16.364,14.738,95,0.814,60,80
+RRF4_plus_net_motion,5,107,114,7,106,4.818,4.473,40,1.565,60,65
+RRF4_plus_net_motion,10,107,115,8,201,9.136,8.390,72,0.953,60,70
+RRF4_plus_net_motion,15,107,118,11,287,13.045,11.844,83,0.929,60,75
+RRF4_plus_net_motion,20,107,120,13,360,16.364,14.787,97,0.879,60,80

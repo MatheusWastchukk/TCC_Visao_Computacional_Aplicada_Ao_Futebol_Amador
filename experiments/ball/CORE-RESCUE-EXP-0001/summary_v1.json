@@ -1,0 +1,96 @@
+{
+  "experiment_id": "CORE-RESCUE-EXP-0001",
+  "scope": "TRAIN only; 22 matches; 5,372 common candidate groups; 130 completed catalog goals; all input scores OOF by match",
+  "protocol": {
+    "core_method": "temporal rank_score",
+    "gap_seconds": 45.0,
+    "delivery_window": "20+40 seconds",
+    "budget": "fixed per match; compared with temporal Top-K at equal total K",
+    "rescue_rule": "source rank order; exclude candidates already selected and candidates within the frozen 45s gap",
+    "rescue_order": "fixed as listed in each variant; no fitted weights",
+    "limits_per_match": [
+      30,
+      40,
+      50,
+      55,
+      60
+    ]
+  },
+  "variants": [
+    {
+      "name": "CORE20_RESCUE10_NET",
+      "core": 20,
+      "rescues": [
+        [
+          "net_motion",
+          10
+        ]
+      ]
+    },
+    {
+      "name": "CORE30_RESCUE10_NET",
+      "core": 30,
+      "rescues": [
+        [
+          "net_motion",
+          10
+        ]
+      ]
+    },
+    {
+      "name": "CORE30_RESCUE20_NET",
+      "core": 30,
+      "rescues": [
+        [
+          "net_motion",
+          20
+        ]
+      ]
+    },
+    {
+      "name": "CORE35_RESCUE10_FUSION_RESCUE10_NET",
+      "core": 35,
+      "rescues": [
+        [
+          "fusion_score_goal",
+          10
+        ],
+        [
+          "net_motion",
+          10
+        ]
+      ]
+    },
+    {
+      "name": "CORE40_RESCUE10_NET",
+      "core": 40,
+      "rescues": [
+        [
+          "net_motion",
+          10
+        ]
+      ]
+    },
+    {
+      "name": "CORE40_RESCUE20_NET",
+      "core": 40,
+      "rescues": [
+        [
+          "net_motion",
+          20
+        ]
+      ]
+    },
+    {
+      "name": "CORE40_RESCUE20_RRF_NET",
+      "core": 40,
+      "rescues": [
+        [
+          "RRF4_plus_net_motion",
+          20
+        ]
+      ]
+    }
+  ],
+  "warning": "Exploratory development result on the common TRAIN/LOMO subset; not an operating-policy promotion. No VALIDATION or TEST data accessed."
+}

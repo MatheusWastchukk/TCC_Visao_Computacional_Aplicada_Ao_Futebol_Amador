@@ -1,0 +1,8 @@
+variant,core_k,rescue_spec,budget_k_per_match,covered_goals,baseline_temporal_same_budget_goals,net_goal_change_vs_baseline,goals_rescued_vs_baseline,baseline_goals_lost,selected_candidates,merged_segments,unique_review_minutes_per_match,baseline_unique_review_minutes_per_match
+CORE20_RESCUE10_NET,20,net_motion:10,30,75,72,3,12,9,660,604,29.641,29.644
+CORE30_RESCUE10_NET,30,net_motion:10,40,92,88,4,8,4,880,769,39.337,39.345
+CORE30_RESCUE20_NET,30,net_motion:20,50,103,99,4,7,3,1100,915,48.905,48.854
+CORE35_RESCUE10_FUSION_RESCUE10_NET,35,fusion_score_goal:10;net_motion:10,55,111,104,7,9,2,1210,979,53.613,53.532
+CORE40_RESCUE10_NET,40,net_motion:10,50,102,99,3,4,1,1100,920,48.925,48.854
+CORE40_RESCUE20_NET,40,net_motion:20,60,109,107,2,6,4,1320,1024,58.214,58.124
+CORE40_RESCUE20_RRF_NET,40,RRF4_plus_net_motion:20,60,114,107,7,8,1,1320,1032,58.308,58.124

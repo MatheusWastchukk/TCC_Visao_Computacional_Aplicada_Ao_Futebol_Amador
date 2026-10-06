@@ -1,0 +1,2 @@
+comparison,lomo_matches,catalog_goals,fixed_45_covered,adaptive_covered,goals_gained,goals_lost,mean_fixed_45_minutes,mean_adaptive_minutes,fixed_45_segments,adaptive_segments,mean_assigned_budget,easy_matches,medium_matches,hard_matches
+adaptive_vs_fixed_45_min_RRF4_rank,22,130,99,96,4,7,44.979,45.662,701,657,45.682,7,7,8

@@ -1,0 +1,54 @@
+{
+  "experiment_id": "SOURCE-WINDOW-LOMO-EXP-0001",
+  "scope": "TRAIN-only LOMO; 22 heldout match folds; 5,372 common groups; 130 goals; no VALIDATION/TEST or V4 promotion",
+  "inputs": [
+    {
+      "path": "experiments\\ball\\GOAL-EVENT-FULL-POOL-VISUAL-RERANKER-EXP-0001\\run_v1\\candidate_scores_lomo_v1.csv",
+      "sha256": "f7c638d17b3df212e470affbe7497d15e50da4e1f62680546e15d5f91a39ff44"
+    },
+    {
+      "path": "results\\local_trajectory_dataset_train_v2\\goal_timestamps_train_subset_v1.csv",
+      "sha256": "49322fdefce1c9a6ecd27f31b6bf39fbb106b16ba3554451ed1dfe8274fb7646"
+    },
+    {
+      "path": "results\\local_trajectory_lomo_train_v2\\lomo_predictions_v1.csv",
+      "sha256": "5294a203bb5d09c9f742e85b81cee2e78bf70fa4dc5a062a631d90e53f5b1de5"
+    },
+    {
+      "path": "results\\shot_motion_lomo_train_v1\\lomo_predictions_v1.csv",
+      "sha256": "c2ea0046cc507c3c3d79d9b5b302688b63bfe35fa49b677f651360e9472e0145"
+    },
+    {
+      "path": "results\\net_motion_lomo_train_v1\\lomo_predictions_v1.csv",
+      "sha256": "da0a617f654c777cc84dcaa0795bb739f5ba0b6e7d23d9ae07d09534a0ee45eb"
+    }
+  ],
+  "sources": [
+    "temporal",
+    "fusion",
+    "net_motion",
+    "RRF4",
+    "rescue"
+  ],
+  "k_per_match": 60,
+  "gap_seconds": 45.0,
+  "development_rule": "For each heldout match, fit P05/P95 of goal_timestamp minus the nearest candidate anchor among other 21 matches, per source; each source ranking uses its frozen LOMO scores.",
+  "rescue_rule": "Temporal Top-35 core, then up to 10 nonduplicate fusion and 10 nonduplicate net_motion additions with 45s gap, matching A2; this policy may yield 55 candidates.",
+  "interval_rule": "Uniform comparator is anchor-20s to anchor+40s; learned interval is anchor+P05(delta) to anchor+P95(delta), clipped at video start only.",
+  "quantiles": [
+    0.05,
+    0.95
+  ],
+  "interpretation": "Exploratory TRAIN leave-one-match-out development; quantile and source choices require independent confirmation.",
+  "all_reported_quantiles": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    0.95
+  ],
+  "quantile_output": "source_window_lomo_quantiles_v1.csv",
+  "methodological_limit": "The supplied source scores are frozen OOF scores. For an outer heldout match, development-match selections may use scores from models trained on that heldout match. Therefore these are diagnostic sensitivity results, not leakage-free nested LOMO; regenerate source predictions within each outer fold before promotion."
+}

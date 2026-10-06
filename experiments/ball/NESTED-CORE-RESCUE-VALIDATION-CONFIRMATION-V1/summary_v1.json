@@ -1,0 +1,14 @@
+{
+  "experiment_id": "NESTED-CORE-RESCUE-VALIDATION-CONFIRMATION-V1",
+  "scope": "one-shot VALIDATION scoring; all model scores frozen from TRAIN-only fits; no tuning from these labels; TEST not accessed",
+  "policy_frozen_from": "NESTED-CORE-RESCUE-LOMO-EXP-0001; CORE40 + RRF3 Top-10 rescue + net_motion Top-20 rescue; gap45; original 20+40-second review delivery windows",
+  "reference": "temporal Top-60 with gap45",
+  "gross_gains_vs_temporal": 2,
+  "gross_losses_vs_temporal": 0,
+  "validation_reuse_limitation": "The VALIDATION goal catalog had previously been inspected for the separate B4 confirmation. This A1 configuration and comparison were fixed from TRAIN before this scoring; treat as confirmatory evidence with shared-validation multiplicity, not as a pristine untouched batch.",
+  "decision": "Interpret once; no tuning or V4 promotion from this result.",
+  "inputs_sha256": {
+    "experiments\\ball\\TIERED-WINDOW-VALIDATION-CONFIRMATION-V1\\validation_candidate_scores_net_motion_v1.csv": "5cca9441aec77865f3a63d1a9cf70bebfb9529354b06025c514b35ea0877da8b",
+    "experiments\\ball\\GOAL-CATALOG-TIMESTAMP-ANNOTATION-VALIDATION-V1\\goal_catalog_timestamp_manifest_v1_annotated.csv": "b96013a40666ceb78322737b5390323b28b2dc05b4e40f514f076f58e9ccbe6b"
+  }
+}

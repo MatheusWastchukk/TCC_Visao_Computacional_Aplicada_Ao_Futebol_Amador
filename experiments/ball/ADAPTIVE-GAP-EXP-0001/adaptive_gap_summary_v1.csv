@@ -1,0 +1,3 @@
+variant,matches,catalog_goals,covered_goals,selected_candidates,mean_unique_minutes_per_match,total_segments,close_pairs_kept,gained_vs_baseline,lost_vs_baseline
+gap45_baseline,22,130,114,1320,58.321,1031,0,0,0
+adaptive_support_gap,22,130,113,1320,57.036,990,52,1,2

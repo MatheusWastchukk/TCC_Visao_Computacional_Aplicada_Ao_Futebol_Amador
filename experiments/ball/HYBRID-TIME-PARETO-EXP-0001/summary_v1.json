@@ -1,0 +1,61 @@
+{
+  "experiment_id": "HYBRID-TIME-PARETO-EXP-0001",
+  "scope": "TRAIN only; 22 matches; 5,372 common groups; 130 completed goals; no VALIDATION or TEST",
+  "inputs": [
+    {
+      "path": "experiments\\ball\\GOAL-EVENT-FULL-POOL-VISUAL-RERANKER-EXP-0001\\run_v1\\candidate_scores_lomo_v1.csv",
+      "sha256": "f7c638d17b3df212e470affbe7497d15e50da4e1f62680546e15d5f91a39ff44"
+    },
+    {
+      "path": "results\\local_trajectory_dataset_train_v2\\goal_timestamps_train_subset_v1.csv",
+      "sha256": "49322fdefce1c9a6ecd27f31b6bf39fbb106b16ba3554451ed1dfe8274fb7646"
+    },
+    {
+      "path": "results\\local_trajectory_lomo_train_v2\\lomo_predictions_v1.csv",
+      "sha256": "5294a203bb5d09c9f742e85b81cee2e78bf70fa4dc5a062a631d90e53f5b1de5"
+    },
+    {
+      "path": "results\\shot_motion_lomo_train_v1\\lomo_predictions_v1.csv",
+      "sha256": "c2ea0046cc507c3c3d79d9b5b302688b63bfe35fa49b677f651360e9472e0145"
+    },
+    {
+      "path": "results\\net_motion_lomo_train_v1\\lomo_predictions_v1.csv",
+      "sha256": "da0a617f654c777cc84dcaa0795bb739f5ba0b6e7d23d9ae07d09534a0ee45eb"
+    }
+  ],
+  "windows": {
+    "30": {
+      "pre_seconds": 10.0,
+      "post_seconds": 20.0
+    },
+    "40": {
+      "pre_seconds": 13.333333333333334,
+      "post_seconds": 26.666666666666668
+    },
+    "45": {
+      "pre_seconds": 15.0,
+      "post_seconds": 30.0
+    },
+    "60": {
+      "pre_seconds": 20.0,
+      "post_seconds": 40.0
+    }
+  },
+  "k_values": [
+    20,
+    30,
+    40,
+    50,
+    55,
+    60
+  ],
+  "gap_seconds": 45.0,
+  "methods": [
+    "temporal",
+    "RRF3",
+    "RRF4_net",
+    "CORE35_FUSION10_NET10",
+    "CORE40_RRF4_NET_RESCUE"
+  ],
+  "interpretation": "Exploratory TRAIN/LOMO curve; post-hoc selection; not independent validation or promotion. The rescue variants retain the temporal core first."
+}

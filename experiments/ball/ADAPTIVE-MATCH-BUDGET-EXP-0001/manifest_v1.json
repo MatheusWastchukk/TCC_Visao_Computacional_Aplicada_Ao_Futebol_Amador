@@ -1,0 +1,31 @@
+{
+  "experiment_id": "ADAPTIVE-MATCH-BUDGET-EXP-0001",
+  "scope": "TRAIN-only diagnostic LOMO; 22 matches; 5,372 common groups; 130 goals; no VALIDATION/TEST or V4 promotion",
+  "inputs": [
+    {
+      "path": "experiments\\ball\\GOAL-EVENT-FULL-POOL-VISUAL-RERANKER-EXP-0001\\run_v1\\candidate_scores_lomo_v1.csv",
+      "sha256": "f7c638d17b3df212e470affbe7497d15e50da4e1f62680546e15d5f91a39ff44"
+    },
+    {
+      "path": "results\\local_trajectory_dataset_train_v2\\goal_timestamps_train_subset_v1.csv",
+      "sha256": "49322fdefce1c9a6ecd27f31b6bf39fbb106b16ba3554451ed1dfe8274fb7646"
+    },
+    {
+      "path": "results\\local_trajectory_lomo_train_v2\\lomo_predictions_v1.csv",
+      "sha256": "5294a203bb5d09c9f742e85b81cee2e78bf70fa4dc5a062a631d90e53f5b1de5"
+    },
+    {
+      "path": "results\\shot_motion_lomo_train_v1\\lomo_predictions_v1.csv",
+      "sha256": "c2ea0046cc507c3c3d79d9b5b302688b63bfe35fa49b677f651360e9472e0145"
+    },
+    {
+      "path": "results\\net_motion_lomo_train_v1\\lomo_predictions_v1.csv",
+      "sha256": "da0a617f654c777cc84dcaa0795bb739f5ba0b6e7d23d9ae07d09534a0ee45eb"
+    }
+  ],
+  "feature": "mean RRF4 score ranks 1-10 minus rank-50 score; candidate scores only, no match labels",
+  "thresholds": "For each heldout match, P33/P67 of the feature across the other 21 matches; high gap=EASY 30min, middle=MEDIUM 45min, low=HARD 60min",
+  "selection": "RRF4 rank with incremental union-of-intervals cost, matching the B2 ranked budget selector",
+  "methodological_limit": "The frozen OOF scores for development matches may have been produced by models trained on the heldout match. This is not leakage-free nested LOMO; treat as diagnostic only.",
+  "interpretation": "Exploratory TRAIN comparison against fixed 45 unique minutes per match; no promotion."
+}

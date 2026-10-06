@@ -1,0 +1,45 @@
+{
+  "experiment_id": "SEGMENT-BUDGET-SELECTION-EXP-0001",
+  "scope": "TRAIN only; 22 matches; 5,372 common candidate groups; 130 catalog goals; no VALIDATION or TEST",
+  "inputs": [
+    {
+      "path": "experiments\\ball\\GOAL-EVENT-FULL-POOL-VISUAL-RERANKER-EXP-0001\\run_v1\\candidate_scores_lomo_v1.csv",
+      "sha256": "f7c638d17b3df212e470affbe7497d15e50da4e1f62680546e15d5f91a39ff44"
+    },
+    {
+      "path": "results\\local_trajectory_dataset_train_v2\\goal_timestamps_train_subset_v1.csv",
+      "sha256": "49322fdefce1c9a6ecd27f31b6bf39fbb106b16ba3554451ed1dfe8274fb7646"
+    },
+    {
+      "path": "results\\local_trajectory_lomo_train_v2\\lomo_predictions_v1.csv",
+      "sha256": "5294a203bb5d09c9f742e85b81cee2e78bf70fa4dc5a062a631d90e53f5b1de5"
+    },
+    {
+      "path": "results\\shot_motion_lomo_train_v1\\lomo_predictions_v1.csv",
+      "sha256": "c2ea0046cc507c3c3d79d9b5b302688b63bfe35fa49b677f651360e9472e0145"
+    },
+    {
+      "path": "results\\net_motion_lomo_train_v1\\lomo_predictions_v1.csv",
+      "sha256": "da0a617f654c777cc84dcaa0795bb739f5ba0b6e7d23d9ae07d09534a0ee45eb"
+    }
+  ],
+  "pool": "Union of per-source Top-60 candidate windows (ranked by temporal, visual, fusion, three LOMO experts, RRF3, RRF4+net); 45-second gap applied within each source",
+  "segmenting": "Candidate delivery intervals are clustered when they overlap; segment score features aggregate normalized rank support across candidates and sources. Budget cost is duration of selected segment intervals.",
+  "budgets_minutes_per_match": [
+    20,
+    30,
+    40,
+    50,
+    60
+  ],
+  "feature_rankers": [
+    "max_normalized_score",
+    "mean_top3_normalized_score",
+    "support_count",
+    "n_methods",
+    "n_candidates",
+    "source_diversity",
+    "best_rank_score"
+  ],
+  "interpretation": "Exploratory post-hoc TRAIN/LOMO segment-selection comparison. No validation or test data used and no promotion decision."
+}

@@ -1,0 +1,20 @@
+{
+  "experiment_id": "TIERED-WINDOW-VALIDATION-CONFIRMATION-V1",
+  "scope": "one-shot VALIDATION confirmation; TRAIN-only RandomForest net_motion; no TEST access",
+  "selection_frozen_before_validation": {
+    "k": 60,
+    "gap_seconds": 45,
+    "tier_rule": "A=support>=3/4 source Top-60 OR temporal rank<=35; B=exactly 2 source Top-60; C=otherwise",
+    "window_candidate": "A/B/C=40/45/60 seconds; centered using pre=1/3 and post=2/3",
+    "reference": "uniform 60/60/60"
+  },
+  "net_motion_model": "RandomForestClassifier(n_estimators=300,min_samples_leaf=2,class_weight=balanced,random_state=42) trained on TRAIN net-motion features only",
+  "validation_labels_used_only_for_final_scoring": true,
+  "inputs_sha256": {
+    "results\\net_motion_dataset_train_v1\\temporal_group_dataset_net_motion_v1.csv": "960bf4f32476c7b59fa63e7dd93c9270f61418c36c5694fba6e5188c490b4c3b",
+    "results\\shot_motion_dataset_validation_v1\\temporal_group_dataset_shot_motion_v1.csv": "a5991ecc54c073c92b442361f6c0ca677d982876f3c049b1df3104eacf6f5aa9",
+    "results\\net_motion_features_validation_v1\\net_motion_groups_v1.csv": "3f824f6d9135640d988f6289d26c81b4bf6c09874cb3c0fb9c3fbf060bbc7192",
+    "experiments\\ball\\GOAL-EVENT-FULL-POOL-VALIDATION-V1\\fusion_scored_v1\\candidate_fusion_scores_v1.csv": "9f1d3f94333d9e16bee05f0a1c873c94ed500e4033cd62156447912db33d4cb6",
+    "experiments\\ball\\GOAL-CATALOG-TIMESTAMP-ANNOTATION-VALIDATION-V1\\goal_catalog_timestamp_manifest_v1_annotated.csv": "b96013a40666ceb78322737b5390323b28b2dc05b4e40f514f076f58e9ccbe6b"
+  }
+}

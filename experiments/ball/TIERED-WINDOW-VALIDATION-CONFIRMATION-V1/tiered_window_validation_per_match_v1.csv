@@ -1,0 +1,17 @@
+variant,match_id,catalog_goals,covered_goals,selected_candidates,merged_segments,unique_review_minutes
+uniform_60_60_60,match_03,4,4,60,50,58.869
+uniform_60_60_60,match_05,10,10,43,28,41.090
+uniform_60_60_60,match_12,7,5,60,46,57.732
+uniform_60_60_60,match_14,4,4,60,45,57.916
+uniform_60_60_60,match_26,6,5,60,45,58.070
+uniform_60_60_60,match_30,5,4,60,50,58.769
+uniform_60_60_60,match_33,12,12,60,41,58.067
+uniform_60_60_60,match_42,3,3,60,51,58.933
+tier_40_45_60,match_03,4,4,60,58,45.564
+tier_40_45_60,match_05,10,9,43,42,29.398
+tier_40_45_60,match_12,7,4,60,58,44.335
+tier_40_45_60,match_14,4,3,60,60,45.667
+tier_40_45_60,match_26,6,4,60,57,44.342
+tier_40_45_60,match_30,5,4,60,59,45.607
+tier_40_45_60,match_33,12,11,60,57,44.883
+tier_40_45_60,match_42,3,2,60,58,47.020

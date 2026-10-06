@@ -1,0 +1,6 @@
+source,lomo_matches,catalog_goals,baseline_60s_covered,learned_covered,goals_gained_vs_60s,goals_lost_vs_60s,baseline_mean_minutes_per_match,learned_mean_minutes_per_match,baseline_segments,learned_segments,mean_learned_window_seconds
+temporal,22,130,107,93,0,14,58.130,38.435,1014,1320,38.435
+fusion,22,130,111,97,0,14,58.243,41.397,1027,1320,41.397
+net_motion,22,130,108,95,0,13,58.305,37.336,1036,1320,37.336
+RRF4,22,130,114,98,0,16,58.348,38.077,1032,1320,38.077
+rescue,22,130,111,98,0,13,53.627,37.400,978,1210,40.799
