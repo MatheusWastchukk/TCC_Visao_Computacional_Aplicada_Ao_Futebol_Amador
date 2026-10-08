@@ -15,6 +15,7 @@ import argparse
 import csv
 import hashlib
 import json
+import subprocess
 from collections import Counter, defaultdict
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -24,6 +25,12 @@ ROOT = Path(__file__).resolve().parents[2]
 INTERIM_DIR = ROOT / "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005"
 FINAL_DIR = ROOT / "experiments/ball/REPORT87-PD-SPRINT-FINAL-FREEZE-20261011"
 PLANNED_DATE = date(2026, 10, 11)
+CANDIDATE_COMMITS = [
+    ("a034c52f6b75f01f4dd22730f197af2984bafbdf", "feat(ranking): congela modos finais candidatos"),
+    ("b003298c8bd6e2d88defc1c9f9b081ced0c6200f", "feat(ranking): consolida bootstrap e pareto nested"),
+    ("c399f452b8ff1662e05260eda3125e7c0380b4ef", "feat(tracking): separa resultados de propostas e identidade ball"),
+    ("2bb5e6b9afd640b9f1c0a3ea2d662bb9a3bd27ce", "feat(freeze): integra resultados do plano 90 ao freeze canonico"),
+]
 ANNOTATIONS = ROOT / "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/frame_annotations_v1.csv"
 MISSES = ROOT / "experiments/ball/BALL-POSITIVE-MISS-AUDIT-EXP-0002/positive_miss_mechanism_v2_annotated.csv"
 MISS_SUMMARY = ROOT / "experiments/ball/BALL-POSITIVE-MISS-AUDIT-EXP-0002/human_visual_review_summary_v1.json"
@@ -69,6 +76,47 @@ def latest_interim_manifest() -> Path:
     if not manifests:
         raise FileNotFoundError(f"No interim freeze manifest found in {INTERIM_DIR}")
     return manifests[-1]
+
+
+def validate_candidate_commits() -> tuple[str, list[dict[str, str]]]:
+    """Ensure the four recorded implementation commits are in the current HEAD."""
+    head = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=ROOT, check=True, capture_output=True, text=True
+    ).stdout.strip()
+    records: list[dict[str, str]] = []
+    previous = None
+    for expected_sha, expected_subject in CANDIDATE_COMMITS:
+        exists = subprocess.run(
+            ["git", "cat-file", "-e", f"{expected_sha}^{{commit}}"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        if exists.returncode != 0:
+            raise ValueError(f"Candidate commit is missing: {expected_sha}")
+        is_ancestor = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", expected_sha, head], cwd=ROOT
+        )
+        if is_ancestor.returncode != 0:
+            raise ValueError(f"Candidate commit is not an ancestor of HEAD: {expected_sha}")
+        subject = subprocess.run(
+            ["git", "show", "-s", "--format=%s", expected_sha],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        if subject != expected_subject:
+            raise ValueError(f"Candidate commit subject changed for {expected_sha}: {subject}")
+        if previous is not None:
+            ordered = subprocess.run(
+                ["git", "merge-base", "--is-ancestor", previous, expected_sha], cwd=ROOT
+            )
+            if ordered.returncode != 0:
+                raise ValueError("Candidate commits are not in the recorded chronological order.")
+        records.append({"sha": expected_sha, "subject": subject})
+        previous = expected_sha
+    return head, records
 
 
 def validate_report90_outputs(artifacts: dict) -> dict:
@@ -607,6 +655,7 @@ def main() -> int:
     if interim.get("decisions", {}).get("test") != "CLOSED":
         raise ValueError("Final freeze must preserve the closed TEST decision.")
     report90_state = validate_report90_outputs(artifacts)
+    candidate_head_sha, candidate_commits = validate_candidate_commits()
 
     if args.preflight:
         print(json.dumps({
@@ -616,6 +665,8 @@ def main() -> int:
             "source_interim_manifest": interim_path.relative_to(ROOT).as_posix(),
             "artifact_count": len(artifacts),
             "tracker_runs_hash_verified": len(tracker_summary.get("runs", {})),
+            "candidate_head_sha": candidate_head_sha,
+            "candidate_commits": candidate_commits,
             "report90": report90_state,
             "writes_final_manifest": False,
         }, ensure_ascii=False))
@@ -628,6 +679,8 @@ def main() -> int:
         "planned_final_freeze_date": PLANNED_DATE.isoformat(),
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "scope": "TRAIN-only evidence; TEST closed; V4 unchanged and not promoted",
+        "candidate_head_sha": candidate_head_sha,
+        "candidate_commits": candidate_commits,
         "source_interim_manifest": {
             "path": interim_path.relative_to(ROOT).as_posix(),
             "sha256": sha256(interim_path),
