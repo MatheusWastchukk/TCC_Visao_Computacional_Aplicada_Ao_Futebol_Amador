@@ -39,9 +39,13 @@ data/processed/*
 data/Videos_Edited/
 data/Videos_Test_Fechado/
 docs/plans/
+!docs/plans/
+docs/plans/*
+!docs/plans/92_relatorio_consolidado_implementacoes_aplicacao_13-10-2026.md
 outputs/frames/*
 outputs/reports/*
 outputs/videos/*
+outputs/review_app/
 models/*
 experiments/**/artifacts/*
 experiments/ball/data/*
@@ -250,3 +254,4 @@ experiments/ball/NESTED-TIME-BUDGET-*/nested_time_budget_policy_selection_v1.csv
 # Keep compact validation outputs that are otherwise caught by broad suffix rules.
 !experiments/ball/TIERED-WINDOW-VALIDATION-CONFIRMATION-V1/validation_candidate_scores_net_motion_v1.csv
 !experiments/ball/TIERED-WINDOW-VALIDATION-CONFIRMATION-V1/tiered_window_validation_selected_v1.csv
+docs/plans/92_relatorio_consolidado_implementacoes_aplicacao_13-10-2026.md

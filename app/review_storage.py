@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import csv
+import json
 from pathlib import Path
+from typing import Any
 
 MODES = {"alta_cobertura", "cobertura_reduzida", "triagem_rapida"}
 
@@ -52,4 +54,23 @@ def write_annotation_rows(path: Path, fields: list[str], rows: list[dict[str, st
         writer = csv.DictWriter(file, fieldnames=fields, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
+    temporary.replace(path)
+
+
+def read_json(path: Path) -> dict[str, Any]:
+    """Lê metadados locais de uma análise persistida."""
+    with path.open(encoding="utf-8") as file:
+        value = json.load(file)
+    if not isinstance(value, dict):
+        raise ValueError("O arquivo de metadados da análise é inválido.")
+    return value
+
+
+def write_json_atomic(path: Path, value: dict[str, Any]) -> None:
+    """Grava metadados em UTF-8 e substitui o arquivo de forma atômica."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    with temporary.open("w", encoding="utf-8", newline="\n") as file:
+        json.dump(value, file, ensure_ascii=False, indent=2)
+        file.write("\n")
     temporary.replace(path)

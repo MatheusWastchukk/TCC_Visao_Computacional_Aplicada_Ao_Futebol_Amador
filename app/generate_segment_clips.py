@@ -26,8 +26,8 @@ def clip_bounds(start: float, end: float, duration: float) -> tuple[float, float
     return bounded_start, bounded_end
 
 
-def render_clip(source: Path, destination: Path, start: float, end: float, overlay_text: str, evidence_text: str = "") -> tuple[float, int]:
-    """Extrai e codifica apenas o intervalo solicitado, com overlay H.264."""
+def render_clip(source: Path, destination: Path, start: float, end: float) -> tuple[float, int]:
+    """Extrai e codifica o intervalo solicitado sem informações sobrepostas."""
     capture = cv2.VideoCapture(str(source))
     if not capture.isOpened():
         raise FileNotFoundError(f"Não foi possível abrir o vídeo: {source}")
@@ -43,18 +43,9 @@ def render_clip(source: Path, destination: Path, start: float, end: float, overl
         raise ValueError("O clipe não possui duração dentro do vídeo.")
     if not FFMPEG.is_file():
         raise RuntimeError("FFmpeg local não encontrado. Execute npm install na pasta desktop.")
-    number_match = re.search(r"(\d+)", destination.stem)
-    clip_title = f"Clipe {(number_match.group(1) if number_match else '---').zfill(3)}"
-    font = "C\\:/Windows/Fonts/arial.ttf"
-    filter_graph = (
-        "drawbox=x=12:y=12:w=min(iw-24\\,720):h=98:color=0x12362E@1.0:t=fill,"
-        f"drawtext=fontfile='{font}':text='{overlay_text}':x=26:y=23:fontsize=24:fontcolor=white,"
-        f"drawtext=fontfile='{font}':text='{clip_title}':x=26:y=52:fontsize=16:fontcolor=0xBEEBD6,"
-        f"drawtext=fontfile='{font}':text='{evidence_text}':x=26:y=76:fontsize=14:fontcolor=0xBEEBD6"
-    )
     command = [
         str(FFMPEG), "-y", "-ss", f"{bounded_start:.3f}", "-to", f"{bounded_end:.3f}", "-i", str(source),
-        "-vf", filter_graph, "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "22",
+        "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "22",
         "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(destination),
     ]
     completed = subprocess.run(command, capture_output=True, text=True, check=False)
@@ -82,9 +73,8 @@ def main(argv: list[str] | None = None, progress: Callable[[str, int], None] | N
         segment_match = re.search(r"(\d+)$", segment["segment_id"])
         number = (segment_match.group(1) if segment_match else str(index)).zfill(3)
         name = f"clipe_{number}_possible_goal.mp4"
-        evidence = f"Rank: {segment.get('rank_score', '—')} | Score: {segment.get('fusion_score_goal', '—')}"
-        duration, written = render_clip(args.video, args.output / name, float(segment["start_seconds"]), float(segment["end_seconds"]), "POSSIBLE_GOAL", evidence)
-        manifest.append({"segment_id": segment["segment_id"], "clip_filename": name, "duration_seconds": f"{duration:.3f}", "frames_written": written, "label": "POSSIBLE_GOAL"})
+        duration, written = render_clip(args.video, args.output / name, float(segment["start_seconds"]), float(segment["end_seconds"]))
+        manifest.append({"segment_id": segment["segment_id"], "clip_filename": name, "duration_seconds": f"{duration:.3f}", "frames_written": written, "label": "POSSIBLE_GOAL", "video_overlay": "none"})
         print(f"Clipe {index}/{len(segments)}: {name}", flush=True)
         if progress:
             progress(f"Gerando clipe {index}/{len(segments)}", 85 + round(15 * index / len(segments)))
