@@ -1,0 +1,13 @@
+﻿{
+    "attempt":  2,
+    "status":  "INFERENCE_COMPLETE",
+    "command":  ".\\.venv-rocm\\Scripts\\python.exe experiments/ball/run_frozen_v3_test_inference_v1.py --output experiments/ball/TEST-V3-FINAL-EVALUATION-20261019/attempt_02 --device cuda:0 --torch-threads 4 --reuse-mining",
+    "device":  "cuda:0",
+    "gpu":  "AMD Radeon RX 9060 XT",
+    "torch":  "2.9.1+rocm7.2.1",
+    "ultralytics":  "8.4.131",
+    "torchvision":  "0.24.1+rocm7.2.1",
+    "MIOPEN_USER_DB_PATH":  ".tmp/miopen_test_eval_20261019_02/user_db",
+    "MIOPEN_CUSTOM_CACHE_DIR":  ".tmp/miopen_test_eval_20261019_02/kernel_cache",
+    "reason_for_retry":  "Attempt 1 could not write lock files to the default MIOpen directory outside the writable workspace; a standalone GPU convolution preflight passed with workspace-local cache paths."
+}

@@ -1,0 +1,11 @@
+{
+  "status": "INFRASTRUCTURE_FAILURE_BEFORE_FIRST_TEST_FRAME",
+  "attempt": 1,
+  "command": ".\\.venv-rocm\\Scripts\\python.exe experiments/ball/run_frozen_v3_test_inference_v1.py --output experiments/ball/TEST-V3-FINAL-EVALUATION-20261019/attempt_01 --device cuda:0 --torch-threads 4",
+  "match_started": "match_01",
+  "frames_processed": 0,
+  "predictions_written": false,
+  "error": "MIOpen HIP lock initialization failed with native error 5 (Acesso negado) under C:\\Users\\mathe\\.miopen\\db\\miopen-lockfiles; torch raised RuntimeError: miopenStatusUnknownError during model warmup.",
+  "diagnosis": "The workspace process can read the default MIOpen database folder but its sandbox identity cannot write there. No TEST candidate scores were produced.",
+  "retry_allowed": "Same models, candidate parameters and policies; redirect MIOpen user database and kernel cache to writable workspace directories."
+}

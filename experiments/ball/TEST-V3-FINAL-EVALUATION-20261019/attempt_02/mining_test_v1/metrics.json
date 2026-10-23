@@ -1,0 +1,102 @@
+{
+  "experiment_id": "mining_test_v1",
+  "scope": "somente TEST",
+  "videos_processed": 9,
+  "candidate_events": 490,
+  "parameters": {
+    "split_manifest": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\datasets\\dataset_split_v1.csv",
+    "videos_dir": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\data\\Videos_Test_Fechado",
+    "video_path": null,
+    "video_id": "video",
+    "goal_model": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\runs\\detect\\experiments\\goal_geometry\\EXP-0092\\yolo11n_cpu_reference\\weights\\best.pt",
+    "ball_model": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt",
+    "output": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\TEST-V3-FINAL-EVALUATION-20261019\\attempt_02\\mining_test_v1",
+    "include_matches": [
+      "match_01",
+      "match_11",
+      "match_17",
+      "match_19",
+      "match_29",
+      "match_31",
+      "match_34",
+      "match_39",
+      "match_40"
+    ],
+    "expected_split": "test",
+    "analysis_fps": 5.0,
+    "goal_confidence": 0.25,
+    "ball_confidence": 0.05,
+    "goal_imgsz": 640,
+    "ball_imgsz": 960,
+    "roi_imgsz": null,
+    "roi_lateral_goal_widths": 2.0,
+    "roi_above_goal_heights": 3.0,
+    "roi_below_goal_heights": 2.0,
+    "goal_margin": 0.35,
+    "max_normalized_distance": 2.0,
+    "merge_gap_seconds": 3.0,
+    "minimum_hits": 2,
+    "min_separation_seconds": 45.0,
+    "max_candidates_per_match": 60,
+    "clip_pre_seconds": 10.0,
+    "clip_post_seconds": 20.0,
+    "device": "cuda:0"
+  },
+  "by_match": {
+    "match_01": {
+      "hits": 10687,
+      "groups": 227,
+      "selected": 60,
+      "elapsed_seconds": 1165.912
+    },
+    "match_11": {
+      "hits": 5354,
+      "groups": 95,
+      "selected": 32,
+      "elapsed_seconds": 556.582
+    },
+    "match_17": {
+      "hits": 16466,
+      "groups": 249,
+      "selected": 60,
+      "elapsed_seconds": 1842.824
+    },
+    "match_19": {
+      "hits": 5163,
+      "groups": 149,
+      "selected": 44,
+      "elapsed_seconds": 877.246
+    },
+    "match_29": {
+      "hits": 8307,
+      "groups": 219,
+      "selected": 60,
+      "elapsed_seconds": 1199.13
+    },
+    "match_31": {
+      "hits": 4296,
+      "groups": 255,
+      "selected": 60,
+      "elapsed_seconds": 1171.714
+    },
+    "match_34": {
+      "hits": 13100,
+      "groups": 158,
+      "selected": 54,
+      "elapsed_seconds": 774.475
+    },
+    "match_39": {
+      "hits": 10015,
+      "groups": 206,
+      "selected": 60,
+      "elapsed_seconds": 1561.811
+    },
+    "match_40": {
+      "hits": 10801,
+      "groups": 205,
+      "selected": 60,
+      "elapsed_seconds": 1696.44
+    }
+  },
+  "warning": "Gerador de hipóteses; não mede desempenho final nem confirma gol."
+}

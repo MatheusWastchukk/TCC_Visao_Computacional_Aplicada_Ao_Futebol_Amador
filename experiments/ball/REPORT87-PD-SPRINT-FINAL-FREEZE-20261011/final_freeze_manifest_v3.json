@@ -1,0 +1,983 @@
+{
+  "freeze_id": "REPORT87-PD-SPRINT-FINAL-FREEZE-20261011",
+  "manifest_version": 3,
+  "is_final_sprint_freeze": true,
+  "supersedes": "final_freeze_manifest_v2.json",
+  "created_at_utc": "2026-10-14T15:09:05.069908+00:00",
+  "scope": "TRAIN-only mode selection; TEST closed; Nested 25/25 preserved as primary evidence",
+  "source_interim_manifest": {
+    "path": "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v49.json",
+    "sha256": "02f5263b9930a4456d20d517c7df2dd3d58821e35dabaa8bc2dadae4592b6266",
+    "manifest_version": 49
+  },
+  "historical_v2_preflight": {
+    "status": "REPORT94_FULLPOOL_FREEZE_PREFLIGHT_OK",
+    "source_interim_manifest": "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v49.json",
+    "source_interim_sha256": "02f5263b9930a4456d20d517c7df2dd3d58821e35dabaa8bc2dadae4592b6266",
+    "legacy_preflight": {
+      "status": "FINAL_FREEZE_PREFLIGHT_OK",
+      "planned_final_freeze_date": "2026-10-11",
+      "current_date": "2026-10-14",
+      "source_interim_manifest": "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v49.json",
+      "artifact_count": 190,
+      "tracker_runs_hash_verified": 4,
+      "candidate_head_sha": "92a080dab4fc136edc6430f5e15366d1b0f4d1b7",
+      "candidate_commits": [
+        {
+          "sha": "a034c52f6b75f01f4dd22730f197af2984bafbdf",
+          "subject": "feat(ranking): congela modos finais candidatos"
+        },
+        {
+          "sha": "b003298c8bd6e2d88defc1c9f9b081ced0c6200f",
+          "subject": "feat(ranking): consolida bootstrap e pareto nested"
+        },
+        {
+          "sha": "c399f452b8ff1662e05260eda3125e7c0380b4ef",
+          "subject": "feat(tracking): separa resultados de propostas e identidade ball"
+        },
+        {
+          "sha": "2bb5e6b9afd640b9f1c0a3ea2d662bb9a3bd27ce",
+          "subject": "feat(freeze): integra resultados do plano 90 ao freeze canonico"
+        }
+      ],
+      "report90": {
+        "fixed_candidate_modes_verified": 3,
+        "nested_oof_modes_verified": 3,
+        "nested_per_match_rows": 66,
+        "paired_bootstrap_rows": 65,
+        "nested_pareto_points": 15,
+        "ball_proposal_rows": 6,
+        "ball_tracking_rows": 20,
+        "model_hashes_verified": 4,
+        "test_opened": false,
+        "modes_promoted_to_v4": false,
+        "r3d": "DEFERRED_PREREQUISITE_MISSING"
+      },
+      "writes_final_manifest": false
+    },
+    "nested": {
+      "matches": 25,
+      "candidate_groups": 5742,
+      "catalog_goals": 152,
+      "outer_rows": 375
+    },
+    "bootstrap_replicates": 10000,
+    "modes": {
+      "FAST_V2": [
+        30,
+        "NO_RESCUE",
+        "TEMPORAL",
+        45,
+        40
+      ],
+      "BALANCED_V2": [
+        40,
+        "CORE_RESCUE",
+        "CORE40_RRF4_NET_RESCUE",
+        60,
+        40
+      ],
+      "HIGH_RECALL_V2": [
+        58,
+        "CORE_RESCUE",
+        "CORE40_RRF4_NET_RESCUE",
+        60,
+        40
+      ]
+    },
+    "test_accessed": false,
+    "writes_final_manifest": false
+  },
+  "validated_state": {
+    "nested_primary": {
+      "matches": 25,
+      "candidate_groups": 5742,
+      "catalog_goals": 152,
+      "outer_folds": 25
+    },
+    "no_rescue_lomo_grid": {
+      "configurations": 72,
+      "oof_rows": 1800,
+      "matches": 25,
+      "catalog_goals": 152,
+      "role": "configuration_selection_only_not_independent_performance_estimate"
+    },
+    "selected_mode_count": 3,
+    "selected_modes": {
+      "FAST_V3": {
+        "budget_minutes_per_match": "30",
+        "method": "RRF4_NET",
+        "window_seconds": "30",
+        "k_per_match": "60",
+        "lomo_covered_goals_for_selection": "111",
+        "lomo_max_match_unique_minutes": "30.000000"
+      },
+      "BALANCED_V3": {
+        "budget_minutes_per_match": "40",
+        "method": "RRF4_NET",
+        "window_seconds": "40",
+        "k_per_match": "60",
+        "lomo_covered_goals_for_selection": "126",
+        "lomo_max_match_unique_minutes": "40.000000"
+      },
+      "HIGH_RECALL_V3": {
+        "budget_minutes_per_match": "58",
+        "method": "RRF4_NET",
+        "window_seconds": "60",
+        "k_per_match": "55",
+        "lomo_covered_goals_for_selection": "133",
+        "lomo_max_match_unique_minutes": "54.614617"
+      }
+    },
+    "model_hashes_verified": 4,
+    "test_accessed_before_freeze": false
+  },
+  "decisions": {
+    "test": "CLOSED_UNTIL_V3_MODE_CATALOG_TIMESTAMPS_ARE_BLINDLY_ANNOTATED",
+    "modes": "Freeze only distinct NO_RESCUE modes supported by TRAIN LOMO configuration selection; preserve Nested 25/25 as primary estimate; no tuning or winner selection after TEST",
+    "v4": "UNCHANGED; NO_PROMOTION_AUTHORIZED"
+  },
+  "frozen_test_protocol": {
+    "modes": {
+      "FAST_V3": {
+        "budget_minutes_per_match": 30,
+        "selection_family": "NO_RESCUE",
+        "method": "RRF4_NET",
+        "window_seconds": 30,
+        "k_per_match": 60,
+        "gap_seconds": 45.0,
+        "lomo_covered_goals_for_selection": 111,
+        "lomo_catalog_goals": 152,
+        "lomo_selection_recall": "0.730263",
+        "lomo_mean_unique_minutes": "29.380000",
+        "lomo_max_match_unique_minutes": "30.000000",
+        "metric_role": "LOMO_CV_USED_FOR_CONFIGURATION_SELECTION_NOT_UNBIASED_PERFORMANCE_ESTIMATE",
+        "models_manifest": "model_manifest_v3.json",
+        "rescue_enabled": false,
+        "ranking_sources": [
+          "temporal_ranker",
+          "visual_verifier",
+          "fusion_ranker",
+          "net_motion_ranker"
+        ]
+      },
+      "BALANCED_V3": {
+        "budget_minutes_per_match": 40,
+        "selection_family": "NO_RESCUE",
+        "method": "RRF4_NET",
+        "window_seconds": 40,
+        "k_per_match": 60,
+        "gap_seconds": 45.0,
+        "lomo_covered_goals_for_selection": 126,
+        "lomo_catalog_goals": 152,
+        "lomo_selection_recall": "0.828947",
+        "lomo_mean_unique_minutes": "39.173333",
+        "lomo_max_match_unique_minutes": "40.000000",
+        "metric_role": "LOMO_CV_USED_FOR_CONFIGURATION_SELECTION_NOT_UNBIASED_PERFORMANCE_ESTIMATE",
+        "models_manifest": "model_manifest_v3.json",
+        "rescue_enabled": false,
+        "ranking_sources": [
+          "temporal_ranker",
+          "visual_verifier",
+          "fusion_ranker",
+          "net_motion_ranker"
+        ]
+      },
+      "HIGH_RECALL_V3": {
+        "budget_minutes_per_match": 58,
+        "selection_family": "NO_RESCUE",
+        "method": "RRF4_NET",
+        "window_seconds": 60,
+        "k_per_match": 55,
+        "gap_seconds": 45.0,
+        "lomo_covered_goals_for_selection": 133,
+        "lomo_catalog_goals": 152,
+        "lomo_selection_recall": "0.875000",
+        "lomo_mean_unique_minutes": "52.864146",
+        "lomo_max_match_unique_minutes": "54.614617",
+        "metric_role": "LOMO_CV_USED_FOR_CONFIGURATION_SELECTION_NOT_UNBIASED_PERFORMANCE_ESTIMATE",
+        "models_manifest": "model_manifest_v3.json",
+        "rescue_enabled": false,
+        "ranking_sources": [
+          "temporal_ranker",
+          "visual_verifier",
+          "fusion_ranker",
+          "net_motion_ranker"
+        ]
+      }
+    },
+    "metrics": [
+      "catalog-goal recall",
+      "unique video minutes per match",
+      "merged segments per match",
+      "selected candidates per match",
+      "computational analysis time",
+      "paired per-match gains/losses"
+    ],
+    "goal_denominator": "only blindly annotated TEST catalog timestamps marked completed; NOT_EVALUABLE records are excluded and counted separately",
+    "aggregation": "report each frozen mode overall and per match; keep all frozen modes, do not select a winner using TEST",
+    "retuning": "no retuning, grid search or repeat TEST run after results are observed"
+  },
+  "artifacts": {
+    "docs/plans/87_relatorio_sprint_final_pd_ensemble_detector_tracking_02-10-2026.md": {
+      "sha256": "f4ce3e73f3b01eda6f0853980002cf6c973ae0c81b76a91b50220f833c93608a",
+      "bytes": 30322
+    },
+    "plano_tcc_jira.md": {
+      "sha256": "4b364e1eac658a5467d49cb0efce825ad4b964d6fcb5fcb7838a5f196676fe08",
+      "bytes": 3849
+    },
+    "experiments/ball/freeze_report87_interim_v1.py": {
+      "sha256": "b7a120446feff11df173fe0dab4b7fb1e8ee7034bc70e1999451010aefb229c0",
+      "bytes": 21851
+    },
+    "experiments/ball/finalize_report87_sprint_v1.py": {
+      "sha256": "601ee3c34ba9ac9ddad01634009892d9bd66a6f58d68f1f9a58e8cbf391872c2",
+      "bytes": 41505
+    },
+    "experiments/ball/build_complementarity_matrix_v1.py": {
+      "sha256": "8b567debffa2c5b6631580b25a84b56da37c09079f7410529ff3fafe1ecbae1d",
+      "bytes": 12969
+    },
+    "experiments/ball/COMPLEMENTARITY-MATRIX-EXP-0001/README.md": {
+      "sha256": "97ea009986681d9be2569ff42215183e84bcfda85b7e175529bf9bfaae1d6693",
+      "bytes": 3427
+    },
+    "experiments/ball/COMPLEMENTARITY-MATRIX-EXP-0001/summary_v1.json": {
+      "sha256": "0900ae2f2e1286461b771a9d888009e44abce1d9f9edaf3a682001632f8895d1",
+      "bytes": 2337
+    },
+    "experiments/ball/COMPLEMENTARITY-MATRIX-EXP-0001/method_coverage_v1.csv": {
+      "sha256": "9e7bd008063671f0ffcf42173a6c42f9299503acff012872903d8377cb1f4f7f",
+      "bytes": 2691
+    },
+    "experiments/ball/COMPLEMENTARITY-MATRIX-EXP-0001/pairwise_complementarity_v1.csv": {
+      "sha256": "f82d24a2b18875dcb18772faabf1e37baab1e0fb3e7a9371a48fc8fe5abd0ab6",
+      "bytes": 26784
+    },
+    "experiments/ball/COMPLEMENTARITY-MATRIX-EXP-0001/goal_coverage_by_method_v1.csv": {
+      "sha256": "60fb94f1569ed4a7af6c202a6ceee7b544686bfd39bf517a9ffc9bd537d6ff62",
+      "bytes": 458209
+    },
+    "experiments/ball/HYBRID-META-RANKING-EXP-0001/README.md": {
+      "sha256": "1f52edcdd46fcc10e7000c3b393f0ce7350b874d3119651b76a1fa19ef247373",
+      "bytes": 2847
+    },
+    "experiments/ball/HYBRID-META-RANKING-EXP-0001/summary_v1.json": {
+      "sha256": "9f4c82afe4869c3d785b691cd648b4e171865654e0bb10e2ced167f1aca0b585",
+      "bytes": 2637
+    },
+    "experiments/ball/HYBRID-META-RANKING-EXP-0001/core_rescue_comparison_v1.csv": {
+      "sha256": "5b61eac46978a11d8c752f48220c8029629b3aea000c38a667666a8212c265b9",
+      "bytes": 1253
+    },
+    "experiments/ball/HYBRID-META-RANKING-EXP-0001/core_rescue_by_match_v1.csv": {
+      "sha256": "e863c4364f3972a884abde753b9395a5736655629d6a077f2d38a050734c3857",
+      "bytes": 9229
+    },
+    "experiments/ball/HYBRID-META-RANKING-EXP-0001/core_rescue_goal_coverage_v1.csv": {
+      "sha256": "4b8b6fc7d2d2e2c5f2d71c5747d8cd677b3ff2d303f6dd5b0902b980b91fb012",
+      "bytes": 90811
+    },
+    "experiments/ball/HYBRID-META-RANKING-EXP-0001/core_rescue_selected_candidates_v1.csv": {
+      "sha256": "ea787375224549ce8fb578736a22507408587a450d537311fa9d150d6af640ff",
+      "bytes": 1579281
+    },
+    "experiments/ball/GOAL-EVENT-BALL-EVIDENCE-RRF-ENSEMBLE-EXP-0001/summary_v1.json": {
+      "sha256": "4a37ad26dacd86e34b2532b0dee832124a9a6d531ffadcf94acea7e26b9087a9",
+      "bytes": 1103
+    },
+    "experiments/ball/GOAL-EVENT-BALL-EVIDENCE-RRF-ENSEMBLE-EXP-0001/recall_at_k_comparison_v1.csv": {
+      "sha256": "2828e9a8fa44d6280adc11be96682eca5a60d90149eed089ae8b0294d97c1145",
+      "bytes": 2824
+    },
+    "experiments/ball/BALL-POSITIVE-MISS-AUDIT-EXP-0002/README.md": {
+      "sha256": "f37f95bcc4e98c8b8e4c001e1c5c849334330b1cede968f84414f91200419c48",
+      "bytes": 3099
+    },
+    "experiments/ball/BALL-POSITIVE-MISS-AUDIT-EXP-0002/summarize_human_miss_review_v1.py": {
+      "sha256": "15fede09511656613ed23e6522e5a0d250b57ea5df35104746a02eb28510e439",
+      "bytes": 4676
+    },
+    "experiments/ball/BALL-POSITIVE-MISS-AUDIT-EXP-0002/positive_miss_mechanism_v2_annotated.csv": {
+      "sha256": "4467c1b8b355cc4b170c5b590fe7751705cbaad101ccbeda12c27de5c87663a8",
+      "bytes": 53280
+    },
+    "experiments/ball/BALL-POSITIVE-MISS-AUDIT-EXP-0002/human_visual_review_summary_v1.json": {
+      "sha256": "089c20b6486944d6fbd42adf31d6d603f950461e0dfa56117f9c0ca34a586087",
+      "bytes": 2526
+    },
+    "experiments/ball/BALL-POSITIVE-MISS-AUDIT-EXP-0002/human_visual_review_summary_v1.md": {
+      "sha256": "3b2fb8be83e3d50cbd0c86aa9196ac9d883b17b51443ae08d13e0a2abdfec3a8",
+      "bytes": 820
+    },
+    "experiments/ball/BALL-HARD-POSITIVE-EXP-0001/protocol_v1.json": {
+      "sha256": "08a15be505e88b8011d171b1f6a917a7799a41d969c42c4deec5519b15139cf9",
+      "bytes": 4831
+    },
+    "experiments/ball/BALL-HARD-POSITIVE-EXP-0001/holdout_evaluation_v1/protocol_v1.json": {
+      "sha256": "67a1d6a96c8c87ae85ecb7f9a3bca53528a2ad0b6d6cc1c2a59b737d4d81dc70",
+      "bytes": 2977
+    },
+    "experiments/ball/BALL-HARD-POSITIVE-EXP-0001/holdout_evaluation_v1/holdout_summary_v1.csv": {
+      "sha256": "466db6a5a7009cb7dd844afc5faef5a280d765207b3d9692a942c0ad91d2957f",
+      "bytes": 2057
+    },
+    "experiments/ball/BALL-HARD-POSITIVE-EXP-0001/holdout_evaluation_v1/tracker_gate_decision_v1.json": {
+      "sha256": "022626fbb6a16792e5c435e06e40b1e80a7cce1f4701da74cb95ed5eb99544d0",
+      "bytes": 1074
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/README.md": {
+      "sha256": "30c57e6811e6fa4d3605749f2ec2bcbf7287aab7e055b57aef1b7c7f921e566d",
+      "bytes": 6610
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/protocol_v1.json": {
+      "sha256": "1003bf58d9e23eca8e364be42e39356a227b294774fb5bfeeb9ca932b60b0b79",
+      "bytes": 2865
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/event_manifest_v1.csv": {
+      "sha256": "339f9b32f39218fec1c699b0946d57f298120ab468eeb0fd978eaaa04805175b",
+      "bytes": 9474
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/annotation_freeze_v1.json": {
+      "sha256": "efdb8733c7e5b3a0a6eb87aa00d4d3ef515961aba1fc9c882986ebaf2010f168",
+      "bytes": 1869
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/tracker_retest_metrics_v1.json": {
+      "sha256": "3b17a64f2043d0db8cf7e91f3bf77bef92209e9de1b6a34fc386707ac391d89a",
+      "bytes": 3024
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/tracker_retest_group_metrics_v1.csv": {
+      "sha256": "725c5912fed98318203325b96049b40d1cca377e23ddd7aa7b6a1a7b376edc29",
+      "bytes": 2816
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/tracker_retest_sequence_metrics_v1.csv": {
+      "sha256": "b2de4fbbdbd705ffd4334e67447d629e74096d6b60ac22d4992de63ae15f6bd4",
+      "bytes": 21680
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/tracker_retest_pair_metrics_v1.csv": {
+      "sha256": "80d9cd7be6f2c205c0ffbf0ca60e6aa40763f1ac896a935402f2c78abbb0ad54",
+      "bytes": 4771
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/tracking_scoring_frames_center_v1.csv": {
+      "sha256": "6e0fac29a85570d64dc423136a097385babf2744da2ba306e703fc1c6312f1f2",
+      "bytes": 181533
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/tracking_scoring_frames_full_v1.csv": {
+      "sha256": "7cd62c5ba4a7599bbe5ddcf4702e2a8f05bbe8d4c45b90ae8816000c4b8d9aa0",
+      "bytes": 661089
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/blind_tracker_input_freeze_v1.json": {
+      "sha256": "7dbc95db15d7c9d62d53cdafaef4c8015b559e950004cc3b0d8d1080d0a682b3",
+      "bytes": 1098
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/blind_tracker_run_freeze_v1.json": {
+      "sha256": "bba19c8340c96ac9e7b710657e6f1a2fdf07046b1410dc2b6e15e136184131c2",
+      "bytes": 3709
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/ball_identity_only_v1/annotation_freeze_v1.json": {
+      "sha256": "b15b054cec10804a7a26f9f3a3c4c349620a57d03dc6e2278d1aa0dafd35fdf7",
+      "bytes": 1930
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/ball_identity_only_v1/tracker_retest_metrics_v1.json": {
+      "sha256": "f753d2315fef203d172d975833aeb53f02bcfca1cb2e90d2c801f6ea280783a8",
+      "bytes": 3098
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/ball_identity_only_v1/tracker_retest_group_metrics_v1.csv": {
+      "sha256": "725c5912fed98318203325b96049b40d1cca377e23ddd7aa7b6a1a7b376edc29",
+      "bytes": 2816
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/ball_identity_only_v1/tracker_retest_sequence_metrics_v1.csv": {
+      "sha256": "cc5dd55838c6e6c6cebdb687e0d51811da6dca039100bc2b064e528d654b2cee",
+      "bytes": 16813
+    },
+    "experiments/ball/BALL-TRAJECTORY-ANCHOR-EXP-0001/protocol_v1.json": {
+      "sha256": "b736f84b33f3c57a7f20bba625ed922dd5fb36385962a5b2ed5a4d132237618c",
+      "bytes": 2418
+    },
+    "experiments/ball/BALL-TRAJECTORY-ANCHOR-EXP-0001/blind_replay_freeze_v1.json": {
+      "sha256": "e5aefc8aff317130ef9880fbc2d43456093040227c5b207357899e3897c789a2",
+      "bytes": 2962
+    },
+    "experiments/ball/BALL-TRAJECTORY-ANCHOR-EXP-0001/scored_summary_v1.csv": {
+      "sha256": "59bcace00bdf9cc080c2746dfb6cadc951a8b8874118e68365ebbf586b9f3d8c",
+      "bytes": 2151
+    },
+    "experiments/ball/BALL-TRAJECTORY-ANCHOR-EXP-0001/scored_frame_results_v1.csv": {
+      "sha256": "248aa846bf0e49ea65b9ef8a182e670b0fc93f592f22ef83ed9d650dc21fe74a",
+      "bytes": 1967554
+    },
+    "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/pairwise_control_audit_v2_prior50_annotated.csv": {
+      "sha256": "4703401975d19febb7ce9007810b8dce922ecf14baf7d50d0bc09a179f3ec96a",
+      "bytes": 10888
+    },
+    "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/pairwise_control_audit_v2_batch2_annotated.csv": {
+      "sha256": "3ccec6c084522d6e71980366934f2edfdf3cebea86ed832fdbc084d22ac8e34f",
+      "bytes": 11790
+    },
+    "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/PROGRESSIVE-HARDNEG-EXP-0001-CHECKPOINT100/reviewed_hard_negative_reranking.json": {
+      "sha256": "4918eb82931f6d0986b26c8107ef805c777f05ad8d8270acb21c0792e4852522",
+      "bytes": 1527
+    },
+    "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/PROGRESSIVE-HARDNEG-EXP-0001-CHECKPOINT100/reviewed_hard_negative_reranking.md": {
+      "sha256": "69c4e8e482b9f3b6eaaa9e31fb4111cfb4d4ea7c8fe8b22c7a4fe844a80060d1",
+      "bytes": 3288
+    },
+    "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/PROGRESSIVE-HARDNEG-EXP-0001-CHECKPOINT100/reviewed_hard_negative_lomo_scores.csv": {
+      "sha256": "47847a2c118957f70fe80d099d6f05a267976b5353589d0ee84aec0f641f4a64",
+      "bytes": 2275640
+    },
+    "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/PROGRESSIVE-HARDNEG-EXP-0001-CHECKPOINT100/reviewed_hard_negative_pairwise_lomo.csv": {
+      "sha256": "7a1ebf43baf11b9a67f9c4ccc47e02e99e8fbd420b47ecfdc31555bc116156a2",
+      "bytes": 82460
+    },
+    "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/PROGRESSIVE-HARDNEG-EXP-0001-CHECKPOINT100/reviewed_hard_negative_rerank_by_match.csv": {
+      "sha256": "a8a2f009af83a3e15f6081fda4e75468bcbdb99c35873454e14128419e9983f0",
+      "bytes": 19679
+    },
+    "experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/PROGRESSIVE-HARDNEG-EXP-0001-CHECKPOINT100/reviewed_hard_negative_rerank_summary.csv": {
+      "sha256": "e791dfb226644895366b3d8a0a3955a51c3bb19cd9acc52723d87f27e5e9ea64",
+      "bytes": 1455
+    },
+    "docs/plans/89_relatorio_consolidacao_resultados_06-10_e_plano_fechamento_sprint.md": {
+      "sha256": "704e807c2e363d31f83f6f279ba1349d90305c8c5834586c48beb18d767ddd72",
+      "bytes": 24659
+    },
+    "docs/plans/90_plano_final_consolidacao_freeze_r3d_opcional_06-10-2026.md": {
+      "sha256": "077c5e1794c75abcbb14cc5d24ab4eab622b14badc66b43664c847f0e44b31d7",
+      "bytes": 39823
+    },
+    "experiments/ball/evaluate_nested_time_budget_lomo_v1.py": {
+      "sha256": "acb73c0434b5b2e2937c22f485f764afb5d414b804dd8240867543f8bba11114",
+      "bytes": 29178
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-LOMO-EXP-0001/summary_v1.json": {
+      "sha256": "c27f1badefab2fbbccae1457ad3eccbeb33e29f2dcb6c6c5d593ce92354dfc4a",
+      "bytes": 3140
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-LOMO-EXP-0001/nested_time_budget_summary_v1.csv": {
+      "sha256": "3eae12875c1c5c4566de70225082b512d0abfaa99be27cc963a8b9dd0d9f513b",
+      "bytes": 800
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-LOMO-EXP-0001/nested_time_budget_outer_folds_v1.csv": {
+      "sha256": "885fa79eaa347a672a2cb6f22ad236b6f2113ca77611d92d505dd782d8b94411",
+      "bytes": 8614
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-LOMO-EXP-0001/nested_time_budget_goal_coverage_v1.csv": {
+      "sha256": "292b4f0eee73f82719257bf7f55c063d35dbb50611156b0cb019887eb873f2b7",
+      "bytes": 46561
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-FAMILY-COMPARISON-V1/summary_v1.json": {
+      "sha256": "088767170cfed46246854c4a1f59aa54a1b6d860f735c6952223d8a67690194d",
+      "bytes": 3670
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-FAMILY-COMPARISON-V1/nested_time_budget_summary_v1.csv": {
+      "sha256": "6fc8ce26a6ac39206d1eaf93c07abb06c329d4c67656a1ec0616bc276bd8a9f6",
+      "bytes": 3140
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-FAMILY-COMPARISON-V1/nested_time_budget_outer_folds_v1.csv": {
+      "sha256": "acd067d8fe27cb53a9ebc2d2a60689e3c6be6b12acffe209ed311acd2002e83c",
+      "bytes": 29821
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-FAMILY-COMPARISON-V1/nested_time_budget_goal_coverage_v1.csv": {
+      "sha256": "186cc7097b5740b39904d52f823cc4440cd8db81a6f4d1128d6639d99cab3cad",
+      "bytes": 166989
+    },
+    "experiments/ball/select_report90_final_modes_v1.py": {
+      "sha256": "88516087cfc4c6f2229fad8dc59eda3984dbc0d7fcccb1b3c479a277c109caed",
+      "bytes": 18103
+    },
+    "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/final_modes_v1.json": {
+      "sha256": "cd8bd6170e6a92eda7686d36d57eecaf9c9a1c06f6282e38a8af08a0f227e60a",
+      "bytes": 4326
+    },
+    "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/final_mode_selection_v1.csv": {
+      "sha256": "c701c27b94e33f46150d4633080719b9822b3e9ae191d4274f2fa059c981a224",
+      "bytes": 1033
+    },
+    "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/full_train_mode_grid_v1.csv": {
+      "sha256": "7c9c89cb4562547d092d3a221f05a0c997ffb19d280151deb6fc44ac838123d4",
+      "bytes": 24234
+    },
+    "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/model_manifest_v1.json": {
+      "sha256": "abdb0eeea97e83fe075a1ac6f5600c6df7586c42d5502193e9fbe012dcc01218",
+      "bytes": 913
+    },
+    "experiments/ball/REPORT90-FINAL-MODES-EXP-0001/run_manifest_v1.json": {
+      "sha256": "d1d3a5e2cb7c04ac08ecec8bc60b7003ae4c617547e4a4a2a9939f89dce9730b",
+      "bytes": 2949
+    },
+    "experiments/ball/summarize_report90_nested_oof_v1.py": {
+      "sha256": "cae59c13e3a3adfb8ace6365c79468caa67d7d6fb3103a77a855222d3a1e082f",
+      "bytes": 12885
+    },
+    "experiments/ball/REPORT90-CONSOLIDATION-EXP-0001/summary_v1.json": {
+      "sha256": "e4dc40659d00cd5ee8726764884ed5e029169eca04c37cc2ff34e83964117930",
+      "bytes": 1736
+    },
+    "experiments/ball/REPORT90-CONSOLIDATION-EXP-0001/nested_mode_per_match_oof_v1.csv": {
+      "sha256": "4357e571fcd691481e37fc955bc5fe02cc297c530747e70c867258ef14bcbe83",
+      "bytes": 7667
+    },
+    "experiments/ball/REPORT90-CONSOLIDATION-EXP-0001/nested_mode_goal_coverage_oof_v1.csv": {
+      "sha256": "1cd99dadfe99fd963606386442981d6ee99790ba17104b1703f2c7c825f7be85",
+      "bytes": 48147
+    },
+    "experiments/ball/REPORT90-CONSOLIDATION-EXP-0001/nested_pareto_points_oof_v1.csv": {
+      "sha256": "6cbbbcb05e9467347dfd4641c9ba57c9e294e2b6e5777aaadcfc65fe086e403a",
+      "bytes": 1360
+    },
+    "experiments/ball/REPORT90-CONSOLIDATION-EXP-0001/nested_match_bootstrap_v1.csv": {
+      "sha256": "698af1462d639a0604c0c7248b1203f8db11699417e854257f3d04859bb76989",
+      "bytes": 15373
+    },
+    "docs/plans/94_plano_execucao_nested_lomo_fullpool_25_train_14-10-2026.md": {
+      "sha256": "2ca757ce4418f4b25cd8178e620b08c05ae4ac16a6a21b147629c95e1c2c21ee",
+      "bytes": 9168
+    },
+    "docs/plans/95_resultados_nested_lomo_fullpool_25_train_14-10-2026.md": {
+      "sha256": "2eb93a4899066cc84b9c0d3a2724c2342bb735947e737abeb9d7c6dc4552c727",
+      "bytes": 6737
+    },
+    "experiments/ball/assemble_net_motion_dataset_fullpool_v1.py": {
+      "sha256": "e78a7e138f932f3742facb50ab7ed2006d44b6bb826a97afcabab48c4d5f208b",
+      "bytes": 9315
+    },
+    "experiments/ball/evaluate_nested_time_budget_lomo_fullpool_v1.py": {
+      "sha256": "09dc3a5ee81dd2bdc9900f4564fa9c1e3d113573b44858479f434aae10e92733",
+      "bytes": 29301
+    },
+    "experiments/ball/summarize_nested_fullpool_oof_v1.py": {
+      "sha256": "5dd8bb686bc05d6c6e2c8a870809ad9d4819e07b36f547d0f1e9fc06adaf8712",
+      "bytes": 12893
+    },
+    "experiments/ball/select_nested_fullpool_modes_v2.py": {
+      "sha256": "72c7ce8c717abe28e29a9bdadb6286112ef74b3a6aec1cec80e3fa437b3c32ca",
+      "bytes": 18136
+    },
+    "experiments/ball/finalize_report94_fullpool_v2.py": {
+      "sha256": "98b00f16eae709d32c2f1e355fcb010c35ad3762b51f8f8c4f3fb6cc70f364a1",
+      "bytes": 12533
+    },
+    "results/net_motion_features_train_fullpool_recovered_v1/metrics.json": {
+      "sha256": "94a7b1a464d85948590406205157b5ab6e1532d62a5a06aa01a8614f87ef01ae",
+      "bytes": 175
+    },
+    "results/net_motion_features_train_fullpool_recovered_v1/net_motion_groups_v1.csv": {
+      "sha256": "a9ada7d6f9d6896275ad3a74287a4f9c9c8cb9f491d02599c5676c522debf25d",
+      "bytes": 31713
+    },
+    "results/rich_temporal_dataset_train_fullpool_nested_v1/summary_v1.json": {
+      "sha256": "9995c7f2444863084f2b35fd6a88cba962894b2ce548c1931ac0b50403ddd318",
+      "bytes": 931
+    },
+    "results/rich_temporal_dataset_train_fullpool_nested_v1/temporal_group_dataset_v1.csv": {
+      "sha256": "444b7933ae285ba0cefadfb9ae0b6124c491c919250275f1b59e0769acf4e2df",
+      "bytes": 2904046
+    },
+    "results/net_motion_dataset_train_fullpool_nested_v1/goal_timestamps_train_subset_v1.csv": {
+      "sha256": "51b35a4f9b59057da25939453ec6bc9a6b13f2a2d5aa8c01e3fd057ff4c40b44",
+      "bytes": 28466
+    },
+    "results/net_motion_dataset_train_fullpool_nested_v1/summary_v1.json": {
+      "sha256": "9f94a4678f076d22ed7bf2fe3710350c825df29d3ac3ff484873a64e5aa65927",
+      "bytes": 3419
+    },
+    "results/net_motion_dataset_train_fullpool_nested_v1/temporal_group_dataset_net_motion_v1.csv": {
+      "sha256": "d8fb1948d4cc63423bb06631d698c2e4fad74cd0c89773aad132eb23fff3cca2",
+      "bytes": 3098211
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-FULLPOOL-25-TRAIN-V1/summary_v1.json": {
+      "sha256": "8d383095fd4dda983f066ff5b1dc7ed82507b7ad22fd9022351f1e9654bdee20",
+      "bytes": 3813
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-FULLPOOL-25-TRAIN-V1/nested_time_budget_summary_v1.csv": {
+      "sha256": "74b2768f03776b79d5cb5238b0b09bb3b1d0c32496d8dd45df752379ef61429e",
+      "bytes": 3088
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-FULLPOOL-25-TRAIN-V1/nested_time_budget_outer_folds_v1.csv": {
+      "sha256": "944a23f9ee6297a3e542c524c9fb7973d107dafcff0b1767c6d4b08677af5240",
+      "bytes": 34118
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-FULLPOOL-25-TRAIN-V1/nested_time_budget_goal_coverage_v1.csv": {
+      "sha256": "e12c7653a1d71206a7904590498a0699bf53e7a0fee09fc5667e9b4092b3084d",
+      "bytes": 195870
+    },
+    "experiments/ball/NESTED-TIME-BUDGET-FULLPOOL-25-TRAIN-V1/nested_time_budget_policy_selection_v1.csv": {
+      "sha256": "28b1fdb51a087b8ac6b59b82bb5e0047eae1b3cd4e7c9c4e7d74ac603414508a",
+      "bytes": 1536649
+    },
+    "experiments/ball/REPORT94-FULLPOOL-CONSOLIDATION-V1/summary_v1.json": {
+      "sha256": "11796c4061ca4cd2f8bf4b8b4e81a5292260fb61aba4a2d5e959e41316ad35fb",
+      "bytes": 1741
+    },
+    "experiments/ball/REPORT94-FULLPOOL-CONSOLIDATION-V1/nested_mode_per_match_oof_v1.csv": {
+      "sha256": "d618c280090bcca1698f9192b56c658ccd52c3ba6598d3ba08b545ef7af711e4",
+      "bytes": 8665
+    },
+    "experiments/ball/REPORT94-FULLPOOL-CONSOLIDATION-V1/nested_mode_goal_coverage_oof_v1.csv": {
+      "sha256": "5530068b5838b4fdb34ab5a6613df1f89daff9cae514e76c5f435e35a363d0c5",
+      "bytes": 56062
+    },
+    "experiments/ball/REPORT94-FULLPOOL-CONSOLIDATION-V1/nested_pareto_points_oof_v1.csv": {
+      "sha256": "b3e5402658c4bd885ac97a3f93704a2284d0655b4a46cf1bc0c8ea2a946afb5a",
+      "bytes": 1345
+    },
+    "experiments/ball/REPORT94-FULLPOOL-CONSOLIDATION-V1/nested_match_bootstrap_v1.csv": {
+      "sha256": "b9bfe028943285693b47c08067142b348451c21bf24a98e2739eaec3da91b043",
+      "bytes": 15412
+    },
+    "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/final_modes_v2.json": {
+      "sha256": "f13b629ddd497f5c2fac413d553de8bcda92fc0773ec4e41fa3fa2e396cae808",
+      "bytes": 4395
+    },
+    "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/final_mode_selection_v2.csv": {
+      "sha256": "837f00ede92f71ea37c4bb8b0924166e0f3553ba1322d2a6d4c63295108eb5c8",
+      "bytes": 1054
+    },
+    "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/full_train_mode_grid_v2.csv": {
+      "sha256": "657c78ebe20e5b19327be65a0cd9f827caaddfbb509130eff47a6fa69b06b90e",
+      "bytes": 24167
+    },
+    "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/base_scores_oof_and_full_train_v2.csv": {
+      "sha256": "bf2822a36ad2557b3784836ac11208f52799d097165b96cb1be93fc971fcc960",
+      "bytes": 842815
+    },
+    "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/model_manifest_v2.json": {
+      "sha256": "6d633cb03af6ade8b813efbd6b87a5ee79b1daf3cd160ffc1b83aff3a78c4635",
+      "bytes": 925
+    },
+    "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/run_manifest_v2.json": {
+      "sha256": "53b2a1e934d053f194a14f19a220acce5a4b83eef4b963ff2f74ae96a01541d6",
+      "bytes": 2945
+    },
+    "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/models/temporal_ranker.joblib": {
+      "sha256": "08c1aeeae283284d1128b59deb94a25738312e23fc8f08518591f7a71fcdfbac",
+      "bytes": 7990395
+    },
+    "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/models/net_motion_ranker.joblib": {
+      "sha256": "6b59901e214d8854beee20c80018db77fe272f15b3895f295c4fc2040d01e87c",
+      "bytes": 7801137
+    },
+    "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/models/visual_verifier.joblib": {
+      "sha256": "c4b31c8cab60d0af0bbd28f7284d7bb7958dbdecd3c93d5d4f84998949d87a1d",
+      "bytes": 116029
+    },
+    "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/models/fusion_ranker.joblib": {
+      "sha256": "cd1228d242a3a1a53e39f1866d630e6640d477c3824286010f008fb9ba839b11",
+      "bytes": 1442
+    },
+    "docs/plans/98_plano_selecao_modos_lomo_no_rescue_v3_14-10-2026.md": {
+      "sha256": "b4d129d10fd9c9b3f89d7cabaee2a98973dfecd0323a29dbec06f3b7f3307a57",
+      "bytes": 3077
+    },
+    "docs/plans/99_resultados_selecao_modos_lomo_no_rescue_v3_14-10-2026.md": {
+      "sha256": "92d929d55203c5ae960205afcabf55b8b7f39ff9d425afeb8a18972f17f62bd5",
+      "bytes": 4000
+    },
+    "experiments/ball/select_no_rescue_modes_lomo_v3.py": {
+      "sha256": "9efdd4d6120a29e2a27998dd182e0b71d6da9e22cca8f3a5ca3dab9061e04c8f",
+      "bytes": 18670
+    },
+    "experiments/ball/materialize_report98_modes_v3.py": {
+      "sha256": "2f3f08ea4cae0324218acecd538775959ca003a7614894a87b16c0902eb19eda",
+      "bytes": 5075
+    },
+    "experiments/ball/finalize_report98_modes_v3.py": {
+      "sha256": "d72d0e625b08b1d9bfbdeb86fd463a45a088a72df923b1c7fc94274bc013638a",
+      "bytes": 9345
+    },
+    "experiments/ball/prepare_test_goal_catalog_manifest_v3.py": {
+      "sha256": "2b4820fed6b4ffadad545b78a16f2daf428c2c800e9826de5112cec92db1a74f",
+      "bytes": 3192
+    },
+    "experiments/ball/annotate_test_goal_catalog_timestamps_v3.py": {
+      "sha256": "5df02927c475a418421ba28a06c9cf2dbc852b390db0ba2c0d0b53e51a620475",
+      "bytes": 8519
+    },
+    "experiments/ball/REPORT98-NO-RESCUE-MODES-LOMO-V3/selection_manifest_v3.json": {
+      "sha256": "2c8da22d6d2cd1ef892ea8ce7cd11d9d2313b65df7d4aa7445151d10e349c271",
+      "bytes": 4395
+    },
+    "experiments/ball/REPORT98-NO-RESCUE-MODES-LOMO-V3/fixed_policy_lomo_by_match_v3.csv": {
+      "sha256": "8bf21693db45b4e0513c04ae37a2269a36b9433f83660b963ac36b3223960c4f",
+      "bytes": 450667
+    },
+    "experiments/ball/REPORT98-NO-RESCUE-MODES-LOMO-V3/fixed_policy_lomo_summary_v3.csv": {
+      "sha256": "60c403450484946d9a3d41edee8bd02f2c2ddb78ef719c3d7929bb726041ea8d",
+      "bytes": 12761
+    },
+    "experiments/ball/REPORT98-NO-RESCUE-MODES-LOMO-V3/final_mode_selection_v3.csv": {
+      "sha256": "7fb02936fdf421fceaa8cb5b15fd743adb9db6bcd91c8b5038a7226de7815403",
+      "bytes": 777
+    },
+    "experiments/ball/REPORT98-NO-RESCUE-MODES-LOMO-V3/final_modes_v3.json": {
+      "sha256": "6f06c88247d7b64937dfd36ad84f0f2a02192896176fc03c97b14818bd80f2da",
+      "bytes": 3550
+    },
+    "experiments/ball/REPORT98-NO-RESCUE-MODES-LOMO-V3/run_manifest_v3.json": {
+      "sha256": "5565a32a8fe360467343852ea4c32cc2d2929f139506b6caca49182d4738b9c9",
+      "bytes": 1731
+    },
+    "experiments/ball/REPORT98-NO-RESCUE-MODES-LOMO-V3/model_manifest_v3.json": {
+      "sha256": "6d633cb03af6ade8b813efbd6b87a5ee79b1daf3cd160ffc1b83aff3a78c4635",
+      "bytes": 925
+    },
+    "experiments/ball/build_report90_ball_tables_v1.py": {
+      "sha256": "9043bc8079d1dd641728d88c2b16140522c965b2a7e2d2d2557ff37429c9cf00",
+      "bytes": 9545
+    },
+    "experiments/ball/REPORT90-BALL-TABLES-EXP-0001/summary_v1.json": {
+      "sha256": "20eb976b22f3455f17ac9eccc528a6785e5b244e2f84db4bf7efc9c8f32961e5",
+      "bytes": 1215
+    },
+    "experiments/ball/REPORT90-BALL-TABLES-EXP-0001/ball_proposal_availability_v1.csv": {
+      "sha256": "8a2b5c7c2d434a90b13fa32521ed244f193932889fcac8d38cdce4cadbe08a48",
+      "bytes": 1899
+    },
+    "experiments/ball/REPORT90-BALL-TABLES-EXP-0001/ball_tracking_identity_v1.csv": {
+      "sha256": "efd56dafa431007af47212af9f71e96d627b99dd8286a8bd5cf00bf9467c744f",
+      "bytes": 4672
+    },
+    "experiments/ball/BALL-PROPOSAL-CEILING-EXP-0001/summary_v1.json": {
+      "sha256": "ff50cb4a6da82d11c80c4ca4b2be1ae6bab7c6da5e5b68686e68bf6a04cb4a40",
+      "bytes": 1502
+    },
+    "experiments/ball/BALL-PROPOSAL-CEILING-EXP-0001/proposal_ceiling_metrics_v1.csv": {
+      "sha256": "aa663c7c5b41998de9d39e3febeb20649461754d125f5f42f940ec658a6cb3c6",
+      "bytes": 1671
+    },
+    "experiments/ball/BALL-TILED-INFERENCE-EXP-0001/summary_v1.json": {
+      "sha256": "c9c1f3c517e7dbcf41457a4641b29d00d7fead187c537ebe70d55c0e2608ca74",
+      "bytes": 1894
+    },
+    "experiments/ball/BALL-TILED-INFERENCE-EXP-0001/tiled_inference_metrics_v1.csv": {
+      "sha256": "ab36df9c1a5879f609f89b8d6be293b2b95cdca19c1c540c128173f204bc0647",
+      "bytes": 2057
+    },
+    "experiments/ball/BALL-TILED-TRACKER-RETEST-EXP-0001/tiled_tracker_run_freeze_v1.json": {
+      "sha256": "c8182ae91866cf6d6e9ad65f47125c25f51df2d8b856a3224fd3b6a0cd77df91",
+      "bytes": 1695
+    },
+    "experiments/ball/BALL-TILED-TRACKER-RETEST-EXP-0001/tiled_tracker_scored_summary_v1.csv": {
+      "sha256": "379c89ee11a5771510ade80b52062d577ffa61d66b068794cf0bfc1e380e45ff",
+      "bytes": 2844
+    },
+    "experiments/ball/BALL-TILED-TRACKER-RETEST-EXP-0001/budget_grid_v1/summary_v1.json": {
+      "sha256": "29ae6002690968c2a240b1b4d43a7464e14e79e4bf513780509150e44d216cc1",
+      "bytes": 1468
+    },
+    "experiments/ball/BALL-TILED-TRACKER-RETEST-EXP-0001/budget_grid_v1/tiled_tracker_budget_grid_summary_v1.csv": {
+      "sha256": "16e7c988830758626f6709c014bd9130379af7c5745fd9f496234471dc8fd783",
+      "bytes": 13274
+    },
+    "experiments/ball/BALL-TILED-TRACKER-RETEST-EXP-0001/budget_grid_v1/tiled_tracker_budget_grid_by_sequence_v1.csv": {
+      "sha256": "97d9ea61465b80dd8edbeae82d09694d486e269631ac58a441a7c3bcaec69798",
+      "bytes": 87314
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v1.json": {
+      "sha256": "95c922b51a6c0e3cf3bf689652498febc4014e9bce18958e45dc0cbb808106b6",
+      "bytes": 9072
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v2.json": {
+      "sha256": "fce7970f2037844c093490582dfe52edc6a9f867c20d46936b816927ba2d8d08",
+      "bytes": 9150
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v3.json": {
+      "sha256": "09201d1fe1c019df1bde5572e2be6a56a987231f9a731afd419fdc5e584665da",
+      "bytes": 9149
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v4.json": {
+      "sha256": "57ca9e58a8a62fd604765b1ca6fe5e8a2f09a58d8277f13b90582fdb00afc3d2",
+      "bytes": 9149
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v5.json": {
+      "sha256": "395b7e1ef18c9f42b3f77ba0fb4812fb0ec20dcd5cbfe200533b4ed66704289d",
+      "bytes": 10967
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v6.json": {
+      "sha256": "b6b2fa09a83ef60d84c145dee7d382280302763fff84f0c26e63ded4be640851",
+      "bytes": 11184
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v7.json": {
+      "sha256": "a9a5e29618e97c31b6701649bd28269cd8abf943735e15ed6e7278cca0ca828c",
+      "bytes": 11401
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v8.json": {
+      "sha256": "f375e002e9d1e39db685a5e9fdc94def2ef986128a76d4c9bd522b1c59ea3529",
+      "bytes": 11618
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v9.json": {
+      "sha256": "89a415ee978f8ad418920a663c6fbbd28f5b3d76dd91aa5083fdd0a0cb251582",
+      "bytes": 11835
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v10.json": {
+      "sha256": "ab5dab1882b971f600d30632dc86ca74ea47e4fbcda14fd3b63cec5e9cc8563b",
+      "bytes": 13090
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v11.json": {
+      "sha256": "10202824e403a8d53262750e9cf79f0768891ebad204eaf55d31a1782b67382c",
+      "bytes": 13309
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v12.json": {
+      "sha256": "576a74d331cee0eea561464408856642c7aebd0e912b62f1f92b0a13a68e3a52",
+      "bytes": 13527
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v13.json": {
+      "sha256": "a1c1611eed4083584f7b6504f858ebf9500296c25c9a2b4d84a4e081f8e03741",
+      "bytes": 13745
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v14.json": {
+      "sha256": "818e6489b2f87405a616bc63df12b6de695d71013efe3231d537fd3bdbcb1630",
+      "bytes": 15049
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v15.json": {
+      "sha256": "47417d64d4324bf4808a9acba7c047ff147c82942fb4e83e4ddf61df6a1188a1",
+      "bytes": 15267
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v16.json": {
+      "sha256": "fcc3c269da6fda40f9b3a1b5a0e84ab0f9582b11298b696e2a16987e54d80b01",
+      "bytes": 15485
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v17.json": {
+      "sha256": "9d49b86c5cdb4cdff6dc7a3553c4a35fd2589bc2cc2f67b9f47768188ac2dca5",
+      "bytes": 15703
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v18.json": {
+      "sha256": "647adb66b6f4f043e8a60266e52f538b10ef20e423c853956347adf1fa1d8108",
+      "bytes": 15921
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v19.json": {
+      "sha256": "4940ab7ac15bbbfd4c9bddadd1fb36a53e458fbb5db45fd3b560da8e182fe98f",
+      "bytes": 16139
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v20.json": {
+      "sha256": "37d308cbb0ca288e588f3fbdbae3a492b033eaf531d321cb8edf9468ed4b9ac2",
+      "bytes": 16357
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v21.json": {
+      "sha256": "a860b685430bef8055139778abe3db570c70982259bfdd18c722f2d252f22257",
+      "bytes": 16575
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v22.json": {
+      "sha256": "9c6e065b1e53a2d8a6c93d2999b969b5aed819f0ec634c6f74c14f5ad2c8211a",
+      "bytes": 16793
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v23.json": {
+      "sha256": "4ab7a8908630593e5d39b03d8edaa53d74ae1de430b04cd87304c1a44ba85b49",
+      "bytes": 17011
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v24.json": {
+      "sha256": "9630692d573fb1744675c386baa48cb881c5ef13bb384e238333e904ff6de7df",
+      "bytes": 17229
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v25.json": {
+      "sha256": "09e830ef4486ea642fc2ae7c573eab3bfda40ec8f425c61aba895591d1c962fd",
+      "bytes": 17447
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v26.json": {
+      "sha256": "907339baeb358dcd0d0a8ecaf5e4f95cb2d32f2ff76ae473bb2c589853368a67",
+      "bytes": 17665
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v27.json": {
+      "sha256": "b0f9b8aabbe320089cbbf49326aa08948c8fe418198f2de4011837181fe7f3c9",
+      "bytes": 17883
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v28.json": {
+      "sha256": "c6902b98dee38545b69bc338ecda446c8eab8ec0f6984710396a6a74de6b9a28",
+      "bytes": 18101
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v29.json": {
+      "sha256": "3c282166f28f84efd7f80935f1ea9f95e2e817a2867d2d192b21caac88e6279a",
+      "bytes": 18319
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v30.json": {
+      "sha256": "4db37a397033aa479221890917160e5f9f67be4b0422b79903a78ed74f8c26e6",
+      "bytes": 18537
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v31.json": {
+      "sha256": "fac4f71f32bc7a4ff7fd3f3c79a3eb18ef317017d346deea999c0ec0e409367e",
+      "bytes": 19912
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v32.json": {
+      "sha256": "a7122f8a3de6b574405f97e42f69b66f5d46e2c1b2d6b4c0bf0efea731199161",
+      "bytes": 20130
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v33.json": {
+      "sha256": "7e5ddc643627e9c33878872bfd52858a3d5ab892943442fe0b67debd5c311b77",
+      "bytes": 20348
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v34.json": {
+      "sha256": "f921b4949a1087fa9844fac61a1f30aa8ebb8d4fd98150c934e13643708f1dd2",
+      "bytes": 20775
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v35.json": {
+      "sha256": "deaaafd30e74e9f0b404972c32e5345ad515f1f94922ebee4f37e7e33c08dcfa",
+      "bytes": 20993
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v36.json": {
+      "sha256": "8e25600ea5b9115c835a3080c8c76e79c5ed059b9122e75099c2e3f211ab0cde",
+      "bytes": 28467
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v37.json": {
+      "sha256": "3240830f273644155a9841a359107050dae159ff4f9035ca4dc1fee102745e98",
+      "bytes": 28685
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v38.json": {
+      "sha256": "4ff7238ef708d0477dbfb0ac61eb5f2d344656e7c4b056ecaaaf17185b3bca0e",
+      "bytes": 28903
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v39.json": {
+      "sha256": "a8857087b456a3713ca6b2a21cf0d535500e946f29b6cedf8efbb5e67677c11c",
+      "bytes": 29121
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v40.json": {
+      "sha256": "d23ea6ec29fda3e5ac5cfe0feeb6be942e7c935f4ccb8ffb0268fb98c0c20e58",
+      "bytes": 29339
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v41.json": {
+      "sha256": "379ed892903e5508d7b12146b329e088b811c2f440ac9bc1498b60d51ee35283",
+      "bytes": 29557
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v42.json": {
+      "sha256": "03eb062f3d466b17c1d10879692bdb5b3fb796d5a7fd957ed2770fda9894cc0a",
+      "bytes": 29775
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v43.json": {
+      "sha256": "b4b2fa70b554b6adc2955733230004ea9685ecb839635c5c3e115292ec9ee29e",
+      "bytes": 29993
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v44.json": {
+      "sha256": "4cadcc4c7d1ff8fb3e9d7ab3633f2f3b60de82843e0aa00548b4259fecb7a257",
+      "bytes": 30211
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v45.json": {
+      "sha256": "393bf8b8cbf417f515e92e2f52c9fb33e7c5bdf64df4698854a001c320b2a70f",
+      "bytes": 30429
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v46.json": {
+      "sha256": "bfedb9a461d359156e479936ff01516c3599b582ee32b52c9fe846f3d2cecc1e",
+      "bytes": 37333
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v47.json": {
+      "sha256": "378aecef99e6cbe045aff9d035266ec3cf530102a91e78f98ab842118a8db68a",
+      "bytes": 37726
+    },
+    "experiments/ball/REPORT87-PD-SPRINT-INTERIM-FREEZE-20261005/interim_freeze_manifest_v48.json": {
+      "sha256": "5fd5a65c2cfd2800d9180785817f754c71b0b9b0050cbd81157611389f0597bb",
+      "bytes": 37944
+    },
+    "runs/detect/experiments/ball/BALL-HARD-POSITIVE-EXP-0001/train/baseline/weights/last.pt": {
+      "sha256": "9f162fa47fcf8c7f06b774f34e56bfecc6025373f5e5fd208204e1afd5ebcb01",
+      "bytes": 5484762
+    },
+    "runs/detect/experiments/ball/BALL-HARD-POSITIVE-EXP-0001/train/oversampled/weights/last.pt": {
+      "sha256": "a028fbfcda1e4d0cb17de83418724ce71e630024491e53f84e2820a61749b7d5",
+      "bytes": 5484634
+    },
+    "experiments/ball/ORACLE-TRACKER-RETEST-EXP-0001/frame_annotations_v1.csv": {
+      "sha256": "b016b99ea5c61e5d928a313697f1e4ee6d2a0762dc352b2596f10252f1261565",
+      "bytes": 661089
+    }
+  }
+}

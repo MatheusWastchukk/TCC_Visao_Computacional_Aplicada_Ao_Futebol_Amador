@@ -1,0 +1,88 @@
+{
+  "status": "TEST_V3_METRICS_COMPLETE",
+  "scope": "TEST9, 57 timestamps humanos congelados, cobertura de candidatos; não precisão de gols",
+  "catalog_freeze_manifest": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\GOAL-CATALOG-TIMESTAMP-ANNOTATION-TEST-V3\\test_catalog_freeze_manifest_v1.json",
+  "catalog_sha256": "593fabd777d0e0cf99f723d7a3853d7c8c5d08e951ce54224300204fd824f1b4",
+  "inference_manifest": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\TEST-V3-FINAL-EVALUATION-20261019\\attempt_02\\inference_manifest_test_v1.json",
+  "inference_manifest_sha256": "d6c61804e89c3adc5d384f3db6a37cf9cddd7f71460c1278c690a2031a4d88d4",
+  "catalog_goals": 57,
+  "matches": 9,
+  "policies": {
+    "FAST_V3": {
+      "covered_goals": 45,
+      "catalog_goals": 57,
+      "coverage_percent": 78.94736842105263,
+      "mean_unique_minutes_per_match": 27.27337308641975,
+      "mean_video_percent_per_match": 35.78701115704822,
+      "mean_merged_segments_per_match": 54.77777777777778,
+      "mean_selected_candidates_per_match": 54.77777777777778,
+      "total_unique_video_minutes": 245.46035777777774,
+      "total_original_video_minutes": 707.7970861111112,
+      "overall_video_percent": 34.679481251671184,
+      "matches_over_budget": 0
+    },
+    "BALANCED_V3": {
+      "covered_goals": 50,
+      "catalog_goals": 57,
+      "coverage_percent": 87.71929824561404,
+      "mean_unique_minutes_per_match": 36.34314654197531,
+      "mean_video_percent_per_match": 47.686893157569344,
+      "mean_merged_segments_per_match": 54.77777777777778,
+      "mean_selected_candidates_per_match": 54.77777777777778,
+      "total_unique_video_minutes": 327.0883188777778,
+      "total_original_video_minutes": 707.7970861111112,
+      "overall_video_percent": 46.21215957173789,
+      "matches_over_budget": 0
+    },
+    "HIGH_RECALL_V3": {
+      "covered_goals": 54,
+      "catalog_goals": 57,
+      "coverage_percent": 94.73684210526316,
+      "mean_unique_minutes_per_match": 49.60119851851852,
+      "mean_video_percent_per_match": 65.63094243606321,
+      "mean_merged_segments_per_match": 38.22222222222222,
+      "mean_selected_candidates_per_match": 51.44444444444444,
+      "total_unique_video_minutes": 446.4107866666667,
+      "total_original_video_minutes": 707.7970861111112,
+      "overall_video_percent": 63.07044708525239,
+      "matches_over_budget": 0
+    }
+  },
+  "paired_gains_losses": [
+    {
+      "mode_a": "FAST_V3",
+      "mode_b": "BALANCED_V3",
+      "covered_by_both": 45,
+      "only_a": 0,
+      "only_b": 5,
+      "neither": 7
+    },
+    {
+      "mode_a": "FAST_V3",
+      "mode_b": "HIGH_RECALL_V3",
+      "covered_by_both": 44,
+      "only_a": 1,
+      "only_b": 10,
+      "neither": 2
+    },
+    {
+      "mode_a": "BALANCED_V3",
+      "mode_b": "HIGH_RECALL_V3",
+      "covered_by_both": 49,
+      "only_a": 1,
+      "only_b": 5,
+      "neither": 2
+    }
+  ],
+  "interval_rule": "início <= timestamp humano <= fim, tolerância adicional zero; união de intervalos limitada à duração do vídeo",
+  "candidate_pool_groups": 1757,
+  "computational_time": {
+    "mining_wall": 10846.134,
+    "temporal_feature_generation": 1.5167062999680638,
+    "net_motion_extraction": 466.03180850000354,
+    "visual_embedding_extraction": 1826.5430116998614,
+    "model_scoring": 0.34359539998695254,
+    "fixed_policy_selection_and_unions": 0.08275990001857281
+  },
+  "warning": "Resultados TEST são descritivos do conjunto independente; não escolher vencedor, ajustar políticas ou retreinar com base neles."
+}

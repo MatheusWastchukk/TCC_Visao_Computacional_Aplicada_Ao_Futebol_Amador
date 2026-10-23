@@ -9,6 +9,7 @@ import argparse
 import csv
 import json
 import math
+import time
 from collections import defaultdict
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -284,7 +285,7 @@ def main(
     parser.add_argument("--ball-model", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--include-matches", nargs="+", default=None)
-    parser.add_argument("--expected-split", choices=["train", "validation", "external"], default="train")
+    parser.add_argument("--expected-split", choices=["train", "validation", "test", "external"], default="train")
     parser.add_argument("--analysis-fps", type=float, default=5.0)
     parser.add_argument("--goal-confidence", type=float, default=0.25)
     parser.add_argument("--ball-confidence", type=float, default=0.05)
@@ -329,6 +330,7 @@ def main(
     processed_matches: list[str] = []
     for video_index, video in enumerate(videos):
         print(f"Iniciando: {video['match_id']}", flush=True)
+        match_started = time.perf_counter()
         last_console_progress = [-1]
         def report_frames(current: int, total: int, index: int = video_index) -> None:
             if progress:
@@ -343,7 +345,10 @@ def main(
         hits = collect_hits(video, args.videos_dir, goal_model, ball_model, args, report_frames)
         groups = group_hits(hits, args.merge_gap_seconds, args.minimum_hits)
         selected = select_diverse_groups(groups, args)
-        summary_by_match[video["match_id"]] = {"hits": len(hits), "groups": len(groups), "selected": len(selected)}
+        summary_by_match[video["match_id"]] = {
+            "hits": len(hits), "groups": len(groups), "selected": len(selected),
+            "elapsed_seconds": round(time.perf_counter() - match_started, 3),
+        }
         for hit in hits:
             all_frame_rows.append({
                 "match_id": hit.match_id, "video_filename": hit.video_filename,

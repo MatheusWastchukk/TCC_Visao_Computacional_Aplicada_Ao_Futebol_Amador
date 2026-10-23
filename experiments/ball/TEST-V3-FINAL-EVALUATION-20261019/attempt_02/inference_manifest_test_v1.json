@@ -1,0 +1,179 @@
+{
+  "status": "TEST_V3_INFERENCE_COMPLETE",
+  "scope": "TEST9, três políticas fixas V3; ranking não consultou timestamps ou rótulos TEST",
+  "created_at_utc": "2026-10-20T02:18:22Z",
+  "split": "test",
+  "matches": 9,
+  "candidate_groups": 1757,
+  "policies": {
+    "FAST_V3": {
+      "budget_minutes_per_match": 30,
+      "method": "RRF4_NET",
+      "window_seconds": 30,
+      "k_per_match": 60,
+      "gap_seconds": 45.0,
+      "rescue_enabled": false
+    },
+    "BALANCED_V3": {
+      "budget_minutes_per_match": 40,
+      "method": "RRF4_NET",
+      "window_seconds": 40,
+      "k_per_match": 60,
+      "gap_seconds": 45.0,
+      "rescue_enabled": false
+    },
+    "HIGH_RECALL_V3": {
+      "budget_minutes_per_match": 58,
+      "method": "RRF4_NET",
+      "window_seconds": 60,
+      "k_per_match": 55,
+      "gap_seconds": 45.0,
+      "rescue_enabled": false
+    }
+  },
+  "parameters": {
+    "split_manifest": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\datasets\\dataset_split_v1.csv",
+    "videos_dir": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\data\\Videos_Test_Fechado",
+    "video_path": null,
+    "video_id": "video",
+    "goal_model": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\runs\\detect\\experiments\\goal_geometry\\EXP-0092\\yolo11n_cpu_reference\\weights\\best.pt",
+    "ball_model": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt",
+    "output": "C:\\Users\\mathe\\Documents\\tcc_deteccao_analise_de_videos_de _futebol\\experiments\\ball\\TEST-V3-FINAL-EVALUATION-20261019\\attempt_02\\mining_test_v1",
+    "include_matches": [
+      "match_01",
+      "match_11",
+      "match_17",
+      "match_19",
+      "match_29",
+      "match_31",
+      "match_34",
+      "match_39",
+      "match_40"
+    ],
+    "expected_split": "test",
+    "analysis_fps": 5.0,
+    "goal_confidence": 0.25,
+    "ball_confidence": 0.05,
+    "goal_imgsz": 640,
+    "ball_imgsz": 960,
+    "roi_imgsz": null,
+    "roi_lateral_goal_widths": 2.0,
+    "roi_above_goal_heights": 3.0,
+    "roi_below_goal_heights": 2.0,
+    "goal_margin": 0.35,
+    "max_normalized_distance": 2.0,
+    "merge_gap_seconds": 3.0,
+    "minimum_hits": 2,
+    "min_separation_seconds": 45.0,
+    "max_candidates_per_match": 60,
+    "clip_pre_seconds": 10.0,
+    "clip_post_seconds": 20.0,
+    "device": "cuda:0"
+  },
+  "per_match_mining": {
+    "match_01": {
+      "hits": 10687,
+      "groups": 227,
+      "selected": 60,
+      "elapsed_seconds": 1165.912
+    },
+    "match_11": {
+      "hits": 5354,
+      "groups": 95,
+      "selected": 32,
+      "elapsed_seconds": 556.582
+    },
+    "match_17": {
+      "hits": 16466,
+      "groups": 249,
+      "selected": 60,
+      "elapsed_seconds": 1842.824
+    },
+    "match_19": {
+      "hits": 5163,
+      "groups": 149,
+      "selected": 44,
+      "elapsed_seconds": 877.246
+    },
+    "match_29": {
+      "hits": 8307,
+      "groups": 219,
+      "selected": 60,
+      "elapsed_seconds": 1199.13
+    },
+    "match_31": {
+      "hits": 4296,
+      "groups": 255,
+      "selected": 60,
+      "elapsed_seconds": 1171.714
+    },
+    "match_34": {
+      "hits": 13100,
+      "groups": 158,
+      "selected": 54,
+      "elapsed_seconds": 774.475
+    },
+    "match_39": {
+      "hits": 10015,
+      "groups": 206,
+      "selected": 60,
+      "elapsed_seconds": 1561.811
+    },
+    "match_40": {
+      "hits": 10801,
+      "groups": 205,
+      "selected": 60,
+      "elapsed_seconds": 1696.44
+    }
+  },
+  "mining_wall_seconds": 10846.134,
+  "stage_runtime_seconds": {
+    "mining_wall": 10846.134,
+    "temporal_feature_generation": 1.5167062999680638,
+    "net_motion_extraction": 466.03180850000354,
+    "visual_embedding_extraction": 1826.5430116998614,
+    "model_scoring": 0.34359539998695254,
+    "fixed_policy_selection_and_unions": 0.08275990001857281
+  },
+  "device": "cuda:0",
+  "torch_version": "2.9.1+rocm7.2.1",
+  "gpu": "AMD Radeon RX 9060 XT",
+  "resnet_weights_enum": "ResNet18_Weights.IMAGENET1K_V1",
+  "resnet_checkpoint_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+  "source_sha256": {
+    "experiments\\ball\\run_frozen_v3_test_inference_v1.py": "93cd57ebcb3980bc050df2d6ff11fc3af227a5eaf079dc5798a64e6796de239e",
+    "experiments\\ball\\mine_goal_event_candidates_v1.py": "1c28e3098297290a33a24d9cb9eb31f13cf5179c1ac8a8bc3b3854ec77c76c1f",
+    "experiments\\ball\\extract_net_motion_features_v1.py": "b40fc40aa3a6c5c4701e843065dda1bf2672ebccc6806a09466528bac66e006a",
+    "experiments\\ball\\evaluate_nested_time_budget_lomo_fullpool_v1.py": "09dc3a5ee81dd2bdc9900f4564fa9c1e3d113573b44858479f434aae10e92733",
+    "experiments\\ball\\evaluate_goal_clip_pretrained_verifier_lomo_v1.py": "9b93335920338826fff2163fe4fcaaceb801e5f2449c06d3d3b3f801666790ad",
+    "experiments\\ball\\extract_local_trajectory_features_v1.py": "70c373cd305b60fb0436fba21ecd8cd0f233c19b87e7d83d1a8db9f85aef5f30",
+    "src\\events\\net_motion_v1.py": "1e2197704107205c104815c66bdb3c2b38a9e3118490d31e558e4c20e90c6920",
+    "experiments\\ball\\prepare_goal_event_temporal_dataset_v1.py": "d70bb1bb502ced8146b9ae130a3fd251c72a1f70b42191c5b6e7e535d8d5182b",
+    "experiments\\ball\\prepare_goal_event_rich_temporal_dataset_v1.py": "67f376e20c59d48d00d5ae189c6c3515a51a07365cf31d152099e6100d429eb2",
+    "experiments\\ball\\REPORT87-PD-SPRINT-FINAL-FREEZE-20261011\\final_freeze_manifest_v3.json": "f4d66773e2d2d01d215f2c81d3d6fb68bbf7e640fc6af67c65e02205d79f3c4f",
+    "experiments\\ball\\REPORT98-NO-RESCUE-MODES-LOMO-V3\\model_manifest_v3.json": "6d633cb03af6ade8b813efbd6b87a5ee79b1daf3cd160ffc1b83aff3a78c4635",
+    "experiments\\datasets\\dataset_split_v1.csv": "a717fefb395300fa911284dbba05c3dd8b05d147175a8361ee6a015f3db4b58b",
+    "runs\\detect\\experiments\\goal_geometry\\EXP-0092\\yolo11n_cpu_reference\\weights\\best.pt": "76ebf39e7b6d76ff69b5f644fbb7d1d2c742c79bd5154af245cb6bd417bba5d1",
+    "runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt": "c7368e56ce8564a31d484312102b8aa056189307168a50a276757861a60a2615"
+  },
+  "model_sha256": {
+    "experiments\\ball\\REPORT94-FULLPOOL-FINAL-MODES-V2\\models\\temporal_ranker.joblib": "08c1aeeae283284d1128b59deb94a25738312e23fc8f08518591f7a71fcdfbac",
+    "experiments\\ball\\REPORT94-FULLPOOL-FINAL-MODES-V2\\models\\net_motion_ranker.joblib": "6b59901e214d8854beee20c80018db77fe272f15b3895f295c4fc2040d01e87c",
+    "experiments\\ball\\REPORT94-FULLPOOL-FINAL-MODES-V2\\models\\visual_verifier.joblib": "c4b31c8cab60d0af0bbd28f7284d7bb7958dbdecd3c93d5d4f84998949d87a1d",
+    "experiments\\ball\\REPORT94-FULLPOOL-FINAL-MODES-V2\\models\\fusion_ranker.joblib": "cd1228d242a3a1a53e39f1866d630e6640d477c3824286010f008fb9ba839b11"
+  },
+  "detector_sha256": {
+    "runs\\detect\\experiments\\goal_geometry\\EXP-0092\\yolo11n_cpu_reference\\weights\\best.pt": "76ebf39e7b6d76ff69b5f644fbb7d1d2c742c79bd5154af245cb6bd417bba5d1",
+    "runs\\detect\\experiments\\ball\\BALL-EXP-0005\\weights\\best.pt": "c7368e56ce8564a31d484312102b8aa056189307168a50a276757861a60a2615"
+  },
+  "embedding_sha256": "8bf8e6a038db45013a1d85ed094e6e6d3903b3646d913b62e31fb16103a488b8",
+  "features_sha256": "4a427701ca1b108cf9c605a272cd78fc32d0de1d99af57c47c8742013d0705e4",
+  "split_manifest_sha256": "a717fefb395300fa911284dbba05c3dd8b05d147175a8361ee6a015f3db4b58b",
+  "feature_groups": 1757,
+  "catalog_loaded_by_inference": false,
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch_threads": 4
+  }
+}

@@ -1,0 +1,8 @@
+﻿{
+    "experiment_id":  "net_motion_features_test_v1",
+    "scope":  "somente TEST; atributos usados pela inferência V3 congelada",
+    "groups":  1757,
+    "frame_gap_seconds":  0.2,
+    "scope_label_corrected_after_run":  true,
+    "scope_label_note":  "O helper preserva texto TRAIN genérico; a entrada efetiva foi candidate_frames_v1.csv da mineração TEST9."
+}

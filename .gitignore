@@ -259,6 +259,11 @@ experiments/ball/BALL-HARD-POSITIVE-EXP-0001/dataset_*/manifest.csv
 experiments/ball/GOAL-EVENT-RANKING-ERROR-DIAGNOSTIC-EXP-0001/full_clips_v1/README.txt
 experiments/ball/NESTED-TIME-BUDGET-*/nested_time_budget_policy_selection_v1.csv
 
+# Preserve the frozen protocol and compact human-audit/results notes for TEST V3.
+!experiments/ball/GOAL-CATALOG-TIMESTAMP-ANNOTATION-TEST-V3/test_evaluation_protocol_v1.md
+!experiments/ball/GOAL-CATALOG-TIMESTAMP-ANNOTATION-TEST-V3/annotation_audit_checkpoint_2026-10-19.md
+!experiments/ball/TEST-V3-FINAL-EVALUATION-20261019/test_v3_results_report.md
+
 # Keep compact validation outputs that are otherwise caught by broad suffix rules.
 !experiments/ball/TIERED-WINDOW-VALIDATION-CONFIRMATION-V1/validation_candidate_scores_net_motion_v1.csv
 !experiments/ball/TIERED-WINDOW-VALIDATION-CONFIRMATION-V1/tiered_window_validation_selected_v1.csv

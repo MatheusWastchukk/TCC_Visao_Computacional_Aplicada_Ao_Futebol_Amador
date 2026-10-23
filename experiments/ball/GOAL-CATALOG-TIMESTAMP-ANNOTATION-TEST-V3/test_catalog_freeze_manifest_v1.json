@@ -1,0 +1,27 @@
+﻿{
+    "status":  "HUMAN_TEST_CATALOG_FROZEN",
+    "frozen_at_utc":  "2026-10-19T22:29:00.178719+00:00",
+    "catalog_path":  "experiments/ball/GOAL-CATALOG-TIMESTAMP-ANNOTATION-TEST-V3/goal_catalog_timestamp_manifest_frozen_v1.csv",
+    "catalog_sha256":  "593fabd777d0e0cf99f723d7a3853d7c8c5d08e951ce54224300204fd824f1b4",
+    "source_annotated_path":  "experiments/ball/GOAL-CATALOG-TIMESTAMP-ANNOTATION-TEST-V3/goal_catalog_timestamp_manifest_completed_v1.csv",
+    "source_annotated_sha256":  "593fabd777d0e0cf99f723d7a3853d7c8c5d08e951ce54224300204fd824f1b4",
+    "base_catalog_path":  "experiments/ball/GOAL-CATALOG-TIMESTAMP-ANNOTATION-TEST-V3/goal_catalog_timestamp_manifest_v1.csv",
+    "base_catalog_sha256":  "8ac45b91327bc10da084670852bc8f2417eecb90e9b93599dcbaa676827f0262",
+    "v3_freeze_manifest_path":  "experiments/ball/REPORT87-PD-SPRINT-FINAL-FREEZE-20261011/final_freeze_manifest_v3.json",
+    "v3_freeze_manifest_sha256":  "f4d66773e2d2d01d215f2c81d3d6fb68bbf7e640fc6af67c65e02205d79f3c4f",
+    "repository_commit_at_freeze":  "92a080dab4fc136edc6430f5e15366d1b0f4d1b7",
+    "annotation":  {
+                       "records":  57,
+                       "matches":  9,
+                       "completed":  57,
+                       "not_evaluable":  0,
+                       "catalog_discrepancy":  0,
+                       "blindness":  "operator confirmed original videos and base catalog only; no AI outputs consulted",
+                       "timestamp_rule":  "operator marked the visual instant of the catalogued goal"
+                   },
+    "review_note":  "match_40 catalog goal 006 was intentionally revisited after it was missed on the first pass. Its earlier timeline position is consistent with the operator explanation and does not change the catalog event identity.",
+    "prediction_evaluation_started":  true,
+    "prediction_evaluation_completed":  true,
+    "prediction_evaluation_completed_at_utc":  "2026-10-20T02:18:22Z",
+    "results_report":  "experiments/ball/TEST-V3-FINAL-EVALUATION-20261019/test_v3_results_report.md"
+}
