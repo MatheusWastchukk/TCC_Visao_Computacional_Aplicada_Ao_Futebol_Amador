@@ -1,0 +1,22 @@
+{
+  "temporal_ranker": {
+    "path": "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/models/temporal_ranker.joblib",
+    "sha256": "08c1aeeae283284d1128b59deb94a25738312e23fc8f08518591f7a71fcdfbac",
+    "bytes": 7990395
+  },
+  "net_motion_ranker": {
+    "path": "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/models/net_motion_ranker.joblib",
+    "sha256": "6b59901e214d8854beee20c80018db77fe272f15b3895f295c4fc2040d01e87c",
+    "bytes": 7801137
+  },
+  "visual_verifier": {
+    "path": "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/models/visual_verifier.joblib",
+    "sha256": "c4b31c8cab60d0af0bbd28f7284d7bb7958dbdecd3c93d5d4f84998949d87a1d",
+    "bytes": 116029
+  },
+  "fusion_ranker": {
+    "path": "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/models/fusion_ranker.joblib",
+    "sha256": "cd1228d242a3a1a53e39f1866d630e6640d477c3824286010f008fb9ba839b11",
+    "bytes": 1442
+  }
+}

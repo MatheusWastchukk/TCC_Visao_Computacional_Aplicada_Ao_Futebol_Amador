@@ -1,0 +1,106 @@
+{
+  "config_id": "REPORT98-NO-RESCUE-MODES-LOMO-V3",
+  "status": "TRAIN_LOMO_CV_SELECTED_CANDIDATES_NOT_YET_FINAL_FREEZE",
+  "scope": "Full 25-match TRAIN only; VALIDATION and TEST not accessed",
+  "selection_metric_warning": "The fixed grid was selected using the same 25 outer LOMO outcomes; selected coverage is configuration-selection evidence, not an independent performance estimate. Nested 25/25 remains the primary estimate of the budget-selection procedure.",
+  "budgets_are": "unique selected video minutes per match; not human review time",
+  "grid": {
+    "methods": [
+      "TEMPORAL",
+      "RRF3",
+      "RRF4_NET"
+    ],
+    "budgets": [
+      30,
+      40,
+      58
+    ],
+    "windows_seconds": [
+      30,
+      40,
+      45,
+      60
+    ],
+    "k_per_match": [
+      20,
+      30,
+      40,
+      50,
+      55,
+      60
+    ],
+    "gap_seconds": 45.0
+  },
+  "modes": {
+    "FAST_V3": {
+      "budget_minutes_per_match": 30,
+      "selection_family": "NO_RESCUE",
+      "method": "RRF4_NET",
+      "window_seconds": 30,
+      "k_per_match": 60,
+      "gap_seconds": 45.0,
+      "lomo_covered_goals_for_selection": 111,
+      "lomo_catalog_goals": 152,
+      "lomo_selection_recall": "0.730263",
+      "lomo_mean_unique_minutes": "29.380000",
+      "lomo_max_match_unique_minutes": "30.000000",
+      "metric_role": "LOMO_CV_USED_FOR_CONFIGURATION_SELECTION_NOT_UNBIASED_PERFORMANCE_ESTIMATE",
+      "models_manifest": "model_manifest_v3.json",
+      "rescue_enabled": false,
+      "ranking_sources": [
+        "temporal_ranker",
+        "visual_verifier",
+        "fusion_ranker",
+        "net_motion_ranker"
+      ]
+    },
+    "BALANCED_V3": {
+      "budget_minutes_per_match": 40,
+      "selection_family": "NO_RESCUE",
+      "method": "RRF4_NET",
+      "window_seconds": 40,
+      "k_per_match": 60,
+      "gap_seconds": 45.0,
+      "lomo_covered_goals_for_selection": 126,
+      "lomo_catalog_goals": 152,
+      "lomo_selection_recall": "0.828947",
+      "lomo_mean_unique_minutes": "39.173333",
+      "lomo_max_match_unique_minutes": "40.000000",
+      "metric_role": "LOMO_CV_USED_FOR_CONFIGURATION_SELECTION_NOT_UNBIASED_PERFORMANCE_ESTIMATE",
+      "models_manifest": "model_manifest_v3.json",
+      "rescue_enabled": false,
+      "ranking_sources": [
+        "temporal_ranker",
+        "visual_verifier",
+        "fusion_ranker",
+        "net_motion_ranker"
+      ]
+    },
+    "HIGH_RECALL_V3": {
+      "budget_minutes_per_match": 58,
+      "selection_family": "NO_RESCUE",
+      "method": "RRF4_NET",
+      "window_seconds": 60,
+      "k_per_match": 55,
+      "gap_seconds": 45.0,
+      "lomo_covered_goals_for_selection": 133,
+      "lomo_catalog_goals": 152,
+      "lomo_selection_recall": "0.875000",
+      "lomo_mean_unique_minutes": "52.864146",
+      "lomo_max_match_unique_minutes": "54.614617",
+      "metric_role": "LOMO_CV_USED_FOR_CONFIGURATION_SELECTION_NOT_UNBIASED_PERFORMANCE_ESTIMATE",
+      "models_manifest": "model_manifest_v3.json",
+      "rescue_enabled": false,
+      "ranking_sources": [
+        "temporal_ranker",
+        "visual_verifier",
+        "fusion_ranker",
+        "net_motion_ranker"
+      ]
+    }
+  },
+  "mode_results_file": "final_mode_selection_v3.csv",
+  "lomo_grid_file": "fixed_policy_lomo_summary_v3.csv",
+  "oof_rows_file": "fixed_policy_lomo_by_match_v3.csv",
+  "models": "Reuse unchanged full-TRAIN model bundle from REPORT94 V2; only no-rescue policies are enabled."
+}

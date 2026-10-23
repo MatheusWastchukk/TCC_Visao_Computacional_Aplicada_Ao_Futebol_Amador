@@ -1,0 +1,40 @@
+{
+  "experiment_id": "REPORT98-NO-RESCUE-MODES-LOMO-V3",
+  "created_at_utc": "2026-10-14T15:08:26.998742+00:00",
+  "selection_is_configuration_selection": true,
+  "generalization_estimates_source": "NESTED-TIME-BUDGET-FULLPOOL-25-TRAIN-V1",
+  "matches": 25,
+  "candidate_groups": 5742,
+  "catalog_goals": 152,
+  "selected_modes": [
+    "FAST_V3",
+    "BALANCED_V3",
+    "HIGH_RECALL_V3"
+  ],
+  "parent_model_bundle": "REPORT94-FULLPOOL-FINAL-MODES-V2",
+  "model_hashes": {
+    "temporal_ranker": {
+      "path": "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/models/temporal_ranker.joblib",
+      "sha256": "08c1aeeae283284d1128b59deb94a25738312e23fc8f08518591f7a71fcdfbac",
+      "bytes": 7990395
+    },
+    "net_motion_ranker": {
+      "path": "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/models/net_motion_ranker.joblib",
+      "sha256": "6b59901e214d8854beee20c80018db77fe272f15b3895f295c4fc2040d01e87c",
+      "bytes": 7801137
+    },
+    "visual_verifier": {
+      "path": "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/models/visual_verifier.joblib",
+      "sha256": "c4b31c8cab60d0af0bbd28f7284d7bb7958dbdecd3c93d5d4f84998949d87a1d",
+      "bytes": 116029
+    },
+    "fusion_ranker": {
+      "path": "experiments/ball/REPORT94-FULLPOOL-FINAL-MODES-V2/models/fusion_ranker.joblib",
+      "sha256": "cd1228d242a3a1a53e39f1866d630e6640d477c3824286010f008fb9ba839b11",
+      "bytes": 1442
+    }
+  },
+  "selection_manifest_sha256": "2c8da22d6d2cd1ef892ea8ce7cd11d9d2313b65df7d4aa7445151d10e349c271",
+  "selection_table_sha256": "7fb02936fdf421fceaa8cb5b15fd743adb9db6bcd91c8b5038a7226de7815403",
+  "validation_test_policy": "neither VALIDATION nor TEST was opened or used"
+}

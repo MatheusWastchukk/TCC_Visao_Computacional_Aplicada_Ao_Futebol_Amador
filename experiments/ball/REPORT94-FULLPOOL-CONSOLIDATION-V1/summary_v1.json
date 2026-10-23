@@ -1,0 +1,45 @@
+{
+  "experiment_id": "REPORT94-FULLPOOL-CONSOLIDATION-V1",
+  "scope": "TRAIN-only post-processing of 25-match nested outer-fold outputs; no model or policy retuning",
+  "inputs": {
+    "summary": {
+      "path": "experiments/ball/NESTED-TIME-BUDGET-FULLPOOL-25-TRAIN-V1/nested_time_budget_summary_v1.csv",
+      "rows": 15
+    },
+    "outer_folds": {
+      "path": "experiments/ball/NESTED-TIME-BUDGET-FULLPOOL-25-TRAIN-V1/nested_time_budget_outer_folds_v1.csv",
+      "rows": 375
+    },
+    "goal_coverage": {
+      "path": "experiments/ball/NESTED-TIME-BUDGET-FULLPOOL-25-TRAIN-V1/nested_time_budget_goal_coverage_v1.csv",
+      "rows": 2280
+    }
+  },
+  "mode_mapping": {
+    "FAST_V2": {
+      "budget_minutes_per_match": 30,
+      "policy_family": "NO_RESCUE"
+    },
+    "BALANCED_V2": {
+      "budget_minutes_per_match": 40,
+      "policy_family": "CORE_RESCUE"
+    },
+    "HIGH_RECALL_V2": {
+      "budget_minutes_per_match": 58,
+      "policy_family": "CORE_RESCUE"
+    }
+  },
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 901006,
+    "resampling_unit": "match_id",
+    "paired": true
+  },
+  "pareto_scope": "only the 15 nested family x budget points; older exploratory points excluded",
+  "interpretation": "bootstrap intervals describe between-match uncertainty in TRAIN nested outer-fold outputs; full-TRAIN final-mode selection is a separate in-sample config-selection step",
+  "limits": [
+    "these estimates apply to nested family/budget selection procedures, not the exact fixed config selected on all TRAIN",
+    "bootstrap does not capture all training-set, model or policy-selection uncertainty",
+    "intervals are descriptive and not a formal superiority test"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "experiment_id": "REPORT98-NO-RESCUE-MODES-LOMO-V3",
+  "scope": "TRAIN-only; all 25 held matches scored out of fold; VALIDATION and TEST not read",
+  "population": {
+    "matches": 25,
+    "candidate_groups": 5742,
+    "catalog_goals": 152
+  },
+  "methods": [
+    "TEMPORAL",
+    "RRF3",
+    "RRF4_NET"
+  ],
+  "windows_seconds": [
+    30,
+    40,
+    45,
+    60
+  ],
+  "k_per_match": [
+    20,
+    30,
+    40,
+    50,
+    55,
+    60
+  ],
+  "gap_seconds": 45.0,
+  "mode_budget_tiers": {
+    "FAST_V3": 30,
+    "BALANCED_V3": 40,
+    "HIGH_RECALL_V3": 58
+  },
+  "selection_rule": "within each tier, require max LOMO minutes within cap; maximize covered catalog goals, then minimize mean unique minutes, merged segments, and frozen complexity order; emit next tier only if it has a distinct policy and strictly higher LOMO coverage",
+  "methodological_note": "LOMO predictions are out of fold for every held match; searching 72 fixed configurations on these same OOF outcomes is still configuration selection, so its winning coverage is not an unbiased performance estimate. The separate 25-fold Nested result estimates the policy-selection procedure.",
+  "models": "Each outer match excluded from temporal/net RandomForest, visual verifier and fusion fitting. Fusion training uses only cross-fitted base scores from the 24 development matches.",
+  "inputs_sha256": {
+    "temporal_features": "bb86d2f2c775630f898a8e5613e24fb0077ee3d6e038ebf26760b384d6c3ad5d",
+    "net_features": "d8fb1948d4cc63423bb06631d698c2e4fad74cd0c89773aad132eb23fff3cca2",
+    "candidate_scores": "f7c638d17b3df212e470affbe7497d15e50da4e1f62680546e15d5f91a39ff44",
+    "candidate_embeddings": "f72d2af9c6a3c17534d53168b9fb30bc50f89d50aa81d72403188e1dbdceb8fe",
+    "candidate_embedding_manifest": "9b06f56642f35b86842de71af905f9ade9a6c7ffc3bec29a78df478f8626b965",
+    "verifier_predictions": "0554c56d61567c4c0e0416392521e8a7376693ba0a668250a9bb7e0b6c4af55c",
+    "verifier_embeddings": "a02fd5dad39a097d8727b53956a32b18045c348e403763b9d6b97318796ec3a6",
+    "goal_catalog": "51b35a4f9b59057da25939453ec6bc9a6b13f2a2d5aa8c01e3fd057ff4c40b44",
+    "frozen_temporal_model": "b9a791c4eb3d57e384680a78591d10952c916585fec147c4e8534a925ffea6d1"
+  },
+  "script_sha256": "9efdd4d6120a29e2a27998dd182e0b71d6da9e22cca8f3a5ca3dab9061e04c8f",
+  "selected_mode_count": 3,
+  "selected_modes": [
+    {
+      "mode": "FAST_V3",
+      "budget_minutes_per_match": 30,
+      "method": "RRF4_NET",
+      "window_seconds": 30,
+      "k_per_match": 60,
+      "gap_seconds": 45.0,
+      "lomo_covered_goals_for_selection": 111,
+      "lomo_catalog_goals": 152,
+      "lomo_selection_recall": "0.730263",
+      "lomo_mean_unique_minutes": "29.380000",
+      "lomo_max_match_unique_minutes": "30.000000",
+      "lomo_mean_merged_segments": "58.760000",
+      "lomo_mean_selected_candidates": "58.760000",
+      "metric_role": "LOMO_CV_USED_FOR_CONFIGURATION_SELECTION_NOT_UNBIASED_PERFORMANCE_ESTIMATE"
+    },
+    {
+      "mode": "BALANCED_V3",
+      "budget_minutes_per_match": 40,
+      "method": "RRF4_NET",
+      "window_seconds": 40,
+      "k_per_match": 60,
+      "gap_seconds": 45.0,
+      "lomo_covered_goals_for_selection": 126,
+      "lomo_catalog_goals": 152,
+      "lomo_selection_recall": "0.828947",
+      "lomo_mean_unique_minutes": "39.173333",
+      "lomo_max_match_unique_minutes": "40.000000",
+      "lomo_mean_merged_segments": "58.760000",
+      "lomo_mean_selected_candidates": "58.760000",
+      "metric_role": "LOMO_CV_USED_FOR_CONFIGURATION_SELECTION_NOT_UNBIASED_PERFORMANCE_ESTIMATE"
+    },
+    {
+      "mode": "HIGH_RECALL_V3",
+      "budget_minutes_per_match": 58,
+      "method": "RRF4_NET",
+      "window_seconds": 60,
+      "k_per_match": 55,
+      "gap_seconds": 45.0,
+      "lomo_covered_goals_for_selection": 133,
+      "lomo_catalog_goals": 152,
+      "lomo_selection_recall": "0.875000",
+      "lomo_mean_unique_minutes": "52.864146",
+      "lomo_max_match_unique_minutes": "54.614617",
+      "lomo_mean_merged_segments": "43.960000",
+      "lomo_mean_selected_candidates": "54.160000",
+      "metric_role": "LOMO_CV_USED_FOR_CONFIGURATION_SELECTION_NOT_UNBIASED_PERFORMANCE_ESTIMATE"
+    }
+  ],
+  "test_policy": "TEST has not been opened or used for model inference; freeze V3 before TEST evaluation"
+}
