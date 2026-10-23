@@ -42,6 +42,14 @@ docs/plans/
 !docs/plans/
 docs/plans/*
 !docs/plans/92_relatorio_consolidado_implementacoes_aplicacao_13-10-2026.md
+!docs/plans/94_plano_execucao_nested_lomo_fullpool_25_train_14-10-2026.md
+!docs/plans/95_resultados_nested_lomo_fullpool_25_train_14-10-2026.md
+!docs/plans/96_estado_pos_freeze_e_prontidao_test_14-10-2026.md
+!docs/plans/97_relatorio_execucao_nested_25_train_freeze_v2_14-10-2026.md
+!docs/plans/98_plano_selecao_modos_lomo_no_rescue_v3_14-10-2026.md
+!docs/plans/99_resultados_selecao_modos_lomo_no_rescue_v3_14-10-2026.md
+!docs/plans/101_auditoria_pre_test_v3_17-10-2026.md
+!docs/plans/102_protocolo_anotacao_cega_timestamps_test_v3_17-10-2026.md
 outputs/frames/*
 outputs/reports/*
 outputs/videos/*
@@ -255,3 +263,4 @@ experiments/ball/NESTED-TIME-BUDGET-*/nested_time_budget_policy_selection_v1.csv
 !experiments/ball/TIERED-WINDOW-VALIDATION-CONFIRMATION-V1/validation_candidate_scores_net_motion_v1.csv
 !experiments/ball/TIERED-WINDOW-VALIDATION-CONFIRMATION-V1/tiered_window_validation_selected_v1.csv
 docs/plans/92_relatorio_consolidado_implementacoes_aplicacao_13-10-2026.md
+docs/TCC_Matheus_Wastchuk.tex
