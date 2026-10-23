@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ArrowLeft, ArrowRight, CircleHelp, Download, FolderOpen, Moon, Play, Sun, Trash2, Video } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle2, CircleAlert, CircleHelp, Download, FolderOpen, Moon, Play, Sun, Trash2, Video } from 'lucide-react';
 import './style.css';
 
 const API = 'http://127.0.0.1:8765';
@@ -28,6 +28,7 @@ function App() {
   const [selected, setSelected] = useState(new Set());
   const [dark, setDark] = useState(false);
   const [error, setError] = useState('');
+  const [analysisErrorDialog, setAnalysisErrorDialog] = useState(null);
   const [notice, setNotice] = useState('');
   const [savingClips, setSavingClips] = useState(new Set());
   const [preparingDownloads, setPreparingDownloads] = useState(new Set());
@@ -36,6 +37,8 @@ function App() {
   const [preparingExport, setPreparingExport] = useState('');
   const [filter, setFilter] = useState('all');
   const [notes, setNotes] = useState('');
+  const [notesEditing, setNotesEditing] = useState(true);
+  const [showNotesSavedModal, setShowNotesSavedModal] = useState(false);
   const [autoAdvance, setAutoAdvance] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
   const [videoMode, setVideoMode] = useState('clip');
@@ -89,7 +92,8 @@ function App() {
 
   const startAnalysis = async () => {
     if (!videoPath) return;
-    setError(''); setNotice(''); setClips([]); setCurrentClip(null); setSelected(new Set());
+    setAnalysisErrorDialog(null);
+    setError(''); setNotice(''); setClips([]); setCurrentClip(null); setNotes(''); setNotesEditing(true); setSelected(new Set());
     setStatus({ status: 'starting', stage: 'Iniciando análise', progress: 0 });
     try {
       const response = await fetch(`${API}/sessions`, {
@@ -101,11 +105,14 @@ function App() {
       setSessionId(payload.session_id);
     } catch (caught) {
       setStatus(null);
-      setError(caught.message || 'Não foi possível conectar à API local. Feche e inicie novamente o aplicativo.');
+      const detail = caught.message || 'Não foi possível conectar à API local. Feche e inicie novamente o aplicativo.';
+      setError(detail);
+      setAnalysisErrorDialog({ title: 'Não foi possível iniciar a análise', message: 'Confira o vídeo selecionado e a conexão com o serviço local antes de tentar novamente.', detail });
     }
   };
 
   const openSession = async (id) => {
+    setAnalysisErrorDialog(null);
     setError(''); setNotice(''); setSessionId(''); setStatus(null); setClips([]); setCurrentClip(null);
     try {
       const response = await fetch(`${API}/sessions/${id}`);
@@ -141,10 +148,13 @@ function App() {
           const selectedClip = items.find((item) => item.segment_id === next.current_segment_id) || items[0] || null;
           setCurrentClip(selectedClip);
           setNotes(selectedClip?.notes || '');
+          setNotesEditing(!selectedClip?.notes);
           return;
         }
         if (next.status === 'failed') {
-          setError(next.error || 'A análise não foi concluída.');
+          const detail = next.error || 'A análise não foi concluída.';
+          setError(detail);
+          setAnalysisErrorDialog({ title: 'Não foi possível concluir a análise', message: 'Confira se o arquivo de vídeo é válido e tente iniciar uma nova análise.', detail });
           return;
         }
         timer = setTimeout(poll, 700);
@@ -188,7 +198,7 @@ function App() {
 
   const selectClip = (clip) => {
     const seekTime = videoMode === 'source' ? Number(clip?.timestamp_seconds || clip?.start_seconds || 0) : 0;
-    setCurrentClip(clip); setNotes(clip?.notes || ''); setVideoTime(seekTime);
+    setCurrentClip(clip); setNotes(clip?.notes || ''); setNotesEditing(!clip?.notes); setVideoTime(seekTime);
     setStoryboard([]);
     logTelemetry('candidate_opened', clip.candidate_id);
     saveSessionState({ current_segment_id: clip.segment_id, current_time: seekTime });
@@ -240,7 +250,13 @@ function App() {
     if (saved && autoAdvance) navigateClip(1);
   };
   const returnToPending = () => updateReview({ review_status: 'pending' }, { annotation_status: 'pending' });
-  const saveNotes = () => updateReview({ notes }, { notes });
+  const saveNotes = async () => {
+    const saved = await updateReview({ notes }, { notes });
+    if (saved) {
+      setNotesEditing(false);
+      setShowNotesSavedModal(true);
+    }
+  };
 
   const downloadUrl = (clip) => `${API}/sessions/${sessionId}/clips/${clip.segment_id}/download`;
   const downloadClip = async (clip) => {
@@ -366,10 +382,14 @@ function App() {
   useEffect(() => {
     const onKeyDown = (event) => {
       const target = event.target;
-      if (target instanceof HTMLElement && (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON', 'SUMMARY'].includes(target.tagName) || target.isContentEditable)) return;
       if (!sessionId || !currentClip) return;
       if (event.repeat) return;
       const player = videoRef.current;
+      const textEntryFocused = target instanceof HTMLElement && (['INPUT', 'TEXTAREA'].includes(target.tagName) || target.isContentEditable);
+      if (!textEntryFocused && (event.key === '[' || event.key === ']')) {
+        event.preventDefault(); event.stopPropagation(); stepRate(event.key === '[' ? -1 : 1); return;
+      }
+      if (target instanceof HTMLElement && (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON', 'SUMMARY'].includes(target.tagName) || target.isContentEditable)) return;
       if (event.code === 'Space') { event.preventDefault(); event.stopPropagation(); if (player?.paused) player.play(); else player?.pause(); }
       else if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
         event.preventDefault(); event.stopPropagation(); if (player) player.currentTime = Math.max(0, player.currentTime + (event.key === 'ArrowLeft' ? -1 : 1) * (event.ctrlKey ? 10 : event.shiftKey ? 1 : 5));
@@ -377,8 +397,6 @@ function App() {
       else if (event.key.toLowerCase() === 'd') navigateClip(1);
       else if (event.key === ',') { event.preventDefault(); const step = 1 / Number(status?.video_fps || 30); if (player) player.currentTime = Math.max(0, player.currentTime - step); setNotice(`Avanço aproximado de um frame (${step.toFixed(4)} s).`); }
       else if (event.key === '.') { event.preventDefault(); const step = 1 / Number(status?.video_fps || 30); if (player) player.currentTime += step; setNotice(`Avanço aproximado de um frame (${step.toFixed(4)} s).`); }
-      else if (event.key === '[') { event.preventDefault(); stepRate(-1); }
-      else if (event.key === ']') { event.preventDefault(); stepRate(1); }
       else if (event.key === '1') markClip('GOAL');
       else if (event.key === '2') markClip('NO_GOAL');
       else if (event.key === '3') markClip('NOT_EVALUABLE');
@@ -413,7 +431,7 @@ function App() {
 
   return <main className={`${dark ? 'dark' : ''} ${focusMode ? 'focus-mode' : ''}`}>
     <header><div><p>Revisão assistida de candidatos</p><h1>Goal Event Review</h1></div><div className="header-actions">{sessionId && <button onClick={() => { setSessionId(''); setStatus(null); setClips([]); setCurrentClip(null); setError(''); refreshSessions(); }}><ArrowLeft />Histórico</button>}<button className="icon" onClick={() => setDark(!dark)} title="Alternar tema">{dark ? <Sun /> : <Moon />}</button></div></header>
-    {error && <p className="notice error" role="alert">{error}</p>}
+    {error && !analysisErrorDialog && <p className="notice error" role="alert">{error}</p>}
     {notice && <p className="notice" role="status">{notice}</p>}
 
     {showDashboard && <>
@@ -428,7 +446,7 @@ function App() {
       {status && ['running', 'starting'].includes(status.status) && <section className="progress"><div className="progress-top"><div><b>{status.stage}</b><small>{progressText(status)}</small></div><strong>{Number(status.progress || 0).toFixed(2).replace('.', ',')}%</strong></div><div className="progress-track"><span style={{ width: `${Math.max(0, Math.min(Number(status.progress || 0), 100))}%` }} /></div></section>}
       {metrics && <section className="metrics"><div><span><b>Processador</b><small>{metrics.processor === 'GPU' ? metrics.device_name : metrics.cpu_name} · {metrics.processor}</small></span></div><div><span><b>CPU do processo</b><small>{metrics.process_cpu_percent}%</small></span></div><div><span><b>Memória RAM</b><small>{metrics.process_ram_mb} MB · {metrics.process_ram_percent}%</small></span></div><div><span><b>Uso de GPU</b><small>{metrics.gpu_utilization_percent != null ? `${metrics.gpu_utilization_percent}%` : 'Indisponível neste ambiente'}</small></span></div><div><span><b>Memória da GPU</b><small>{metrics.gpu_memory_used_mb != null ? `${metrics.gpu_memory_used_mb} / ${metrics.gpu_memory_total_mb} MB · ${metrics.gpu_memory_percent}%` : 'Indisponível'}</small></span></div><div><span><b>Tempo de processamento</b><small>{formatDuration(status?.elapsed)}</small></span></div></section>}
       {status?.status === 'interrupted' && <section className="empty compact"><Video /><h2>Análise interrompida</h2><p>As decisões já persistidas continuam no histórico. Para processar o vídeo novamente, inicie uma nova análise.</p></section>}
-      {status?.status === 'failed' && <section className="empty compact"><Video /><h2>Não foi possível concluir a análise</h2><p>As informações de erro estão acima. Corrija o problema e inicie uma nova análise.</p></section>}
+      {status?.status === 'failed' && <section className="empty compact"><Video /><h2>Não foi possível concluir a análise</h2><p>Confira o aviso de erro e corrija o arquivo antes de iniciar outra análise.</p></section>}
       {status?.status === 'completed' && clips.length === 0 && <section className="empty compact"><Video /><h2>Nenhum clipe disponível</h2><p>O resultado desta análise não contém clipes para revisar.</p></section>}
       {clips.length > 0 && <section className="workspace">
         <aside><div className="listhead"><div><h2>Candidatos</h2><small>{selected.size ? `${selected.size} selecionado(s)` : `${visibleClips.length} de ${clips.length}`}</small><small className="list-order-help">Ordenados pelo ranking do algoritmo.</small></div><button className="download-selected" disabled={preparingCompilation || !selected.size} onClick={downloadSelected}>{preparingCompilation ? 'Preparando…' : 'Compilar selecionados'}</button></div>
@@ -447,10 +465,12 @@ function App() {
           {videoMode === 'source' && <div className="timeline"><p className="timeline-help">Partida completa: as faixas verdes mostram onde estão os clipes. Clique numa faixa para abrir esse candidato; arraste o controle para navegar pelo vídeo.</p><div className="timeline-input"><input ref={timelineRef} type="range" min="0" max={status?.video_duration_seconds || 1} step="0.1" defaultValue={videoTime} aria-label="Posição na partida completa" onPointerUp={() => saveSessionState({ current_segment_id: currentClip.segment_id, current_time: videoRef.current?.currentTime || videoTime }, true)} onChange={(event) => { const value = Number(event.target.value); if (videoRef.current) videoRef.current.currentTime = value; setVideoTime(value); }} /><div className="timeline-markers">{clips.map((clip, clipIndex) => { const total = Number(status?.video_duration_seconds || 1); const start = Number(clip.start_seconds || 0); const end = Number(clip.end_seconds || start); return <button key={clip.segment_id} className={clip.segment_id === currentClip.segment_id ? 'active' : ''} style={{ left: `${Math.max(0, Math.min(100, start / total * 100))}%`, width: `${Math.max(0.25, Math.min(100, (end - start) / total * 100))}%` }} title={`Candidato ${candidateNumber(clipIndex)} · ${clip.timestamp || formatDuration(clip.timestamp_seconds)}`} aria-label={`Ir para candidato ${candidateNumber(clipIndex)}`} onClick={() => selectClip(clip)} />; })}</div></div><div className="timeline-legend"><span><i className="legend-clip" />Intervalo de clipe candidato</span><span><i className="legend-current" />Candidato selecionado</span></div><div className="timeline-labels"><span ref={timelineTimeRef}>{formatDuration(videoTime)}</span><span>{formatDuration(status?.video_duration_seconds)}</span></div></div>}
           {storyboard.length > 0 && <><p className="storyboard-help">Storyboard: cinco quadros próximos ao momento do candidato para dar contexto visual. Clique em um quadro para ir até aquele instante.</p><div className="storyboard" aria-label="Storyboard do candidato">{storyboard.map((frame) => <button key={frame.offset_seconds} title={`Ir para ${formatDuration(frame.timestamp_seconds)} no vídeo`} onClick={() => { const target = videoMode === 'source' ? frame.timestamp_seconds : frame.clip_time_seconds; if (videoRef.current) videoRef.current.currentTime = target; setVideoTime(target); }}><img src={frame.image_url} alt={`Quadro em T${frame.offset_seconds >= 0 ? '+' : ''}${frame.offset_seconds} segundos`} /><small>T{frame.offset_seconds >= 0 ? '+' : ''}{frame.offset_seconds}s</small></button>)}</div></>}
           <div className="tags"><div><b>Decisão humana</b><small>O score é uma ordenação operacional, não uma probabilidade de gol.</small></div><div className="tag-buttons">{TAGS.map((tag) => <button disabled={savingClips.has(currentClip.segment_id)} className={`${tag} ${currentClip.human_label === tag ? 'selected-tag' : ''}`} onClick={() => markClip(tag)} key={tag}>{tag}</button>)}<button className="defer-button" disabled={savingClips.has(currentClip.segment_id) || Boolean(currentClip.human_label) || currentClip.annotation_status === 'deferred'} onClick={deferClip}>{currentClip.annotation_status === 'deferred' ? 'Adiado ✓' : 'Revisar depois'}</button>{currentClip.annotation_status === 'deferred' && <button onClick={returnToPending} disabled={savingClips.has(currentClip.segment_id)}>Voltar a pendente</button>}</div></div>
-          <div className="notes"><label htmlFor="clip-notes">Notas da revisão</label><textarea id="clip-notes" rows="3" value={notes} onChange={(event) => setNotes(event.target.value)} placeholder="Observações humanas opcionais" /><button onClick={saveNotes} disabled={savingClips.has(currentClip.segment_id)}>Salvar nota</button><small>Estado atual: {reviewText(currentClip.annotation_status)}</small></div>
+          <div className="notes"><label htmlFor="clip-notes">Notas da revisão</label><textarea id="clip-notes" rows="3" value={notes} readOnly={!notesEditing} onChange={(event) => setNotes(event.target.value)} placeholder="Observações humanas opcionais" /><button onClick={() => { if (notesEditing) saveNotes(); else setNotesEditing(true); }} disabled={savingClips.has(currentClip.segment_id)}>{notesEditing ? 'Salvar nota' : 'Editar nota'}</button><small>Estado atual: {reviewText(currentClip.annotation_status)}</small></div>
         </>}</article>
       </section>}
     </>}
+    {showNotesSavedModal && <div className="modal-backdrop note-modal-backdrop" role="presentation"><section className="progress-modal note-saved-modal" role="dialog" aria-modal="true" aria-labelledby="note-saved-title" aria-describedby="note-saved-description" onKeyDown={(event) => { if (event.key === 'Escape') setShowNotesSavedModal(false); }}><CheckCircle2 className="note-saved-icon" aria-hidden="true" /><h2 id="note-saved-title">Nota salva</h2><p id="note-saved-description">A nota foi salva para este candidato.</p><button autoFocus onClick={() => setShowNotesSavedModal(false)}>Entendi</button></section></div>}
+    {analysisErrorDialog && <div className="modal-backdrop note-modal-backdrop" role="presentation"><section className="progress-modal note-saved-modal analysis-error-modal" role="dialog" aria-modal="true" aria-labelledby="analysis-error-title" aria-describedby="analysis-error-description" onKeyDown={(event) => { if (event.key === 'Escape') setAnalysisErrorDialog(null); }}><CircleAlert className="analysis-error-icon" aria-hidden="true" /><h2 id="analysis-error-title">{analysisErrorDialog.title}</h2><p id="analysis-error-description">{analysisErrorDialog.message}</p>{analysisErrorDialog.detail && <details className="analysis-error-details"><summary>Detalhes técnicos</summary><pre>{analysisErrorDialog.detail}</pre></details>}<button autoFocus onClick={() => setAnalysisErrorDialog(null)}>Entendi</button></section></div>}
     {compilationProgress && <div className="modal-backdrop" role="presentation"><section className="progress-modal" role="dialog" aria-modal="true" aria-labelledby="compilation-title"><h2 id="compilation-title">Compilando e baixando clipes</h2><p>{compilationProgress.phase === 'download' ? compilationProgress.stage : compilationProgress.stage || 'Preparando clipes selecionados'}</p><div className="progress-track"><span style={{ width: `${compiledDownloadPercent}%` }} /></div><div className="progress-modal-meta"><b>{compiledDownloadPercent.toFixed(0)}%</b>{compilationProgress.phase === 'download' && compilationProgress.totalBytes > 0 && <small>{(compilationProgress.receivedBytes / 1024 / 1024).toFixed(1)} / {(compilationProgress.totalBytes / 1024 / 1024).toFixed(1)} MB</small>}</div><button onClick={cancelCompilation}>Cancelar</button></section></div>}
   </main>;
 }

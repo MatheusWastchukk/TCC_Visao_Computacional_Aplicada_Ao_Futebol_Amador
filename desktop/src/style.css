@@ -144,6 +144,22 @@ kbd { border: 1px solid #c9cec8; border-radius: 4px; padding: 1px 4px; font-size
 .progress-modal h2 { margin: 2px 0 8px; }
 .progress-modal p { color: #71847c; margin: 0 0 18px; }
 .progress-modal-meta { display: flex; justify-content: space-between; margin: 8px 0 18px; font-variant-numeric: tabular-nums; }
+.note-saved-modal { width: min(420px, 100%); padding: 26px; text-align: center; }
+.note-saved-modal h2 { margin: 8px 0; }
+.note-saved-modal p { margin-bottom: 20px; }
+.note-saved-modal button { min-width: 110px; background: #174d3f; color: #fff; border-color: #174d3f; }
+.dark .note-saved-modal button { background: #83bda4; color: #14201c; border-color: #83bda4; }
+.note-saved-icon { width: 36px; height: 36px; color: #39815f; }
+.dark .note-saved-icon { color: #83bda4; }
+.analysis-error-modal h2 { color: #8f3027; }
+.analysis-error-modal button { margin-top: 20px; }
+.analysis-error-icon { width: 38px; height: 38px; color: #c34232; }
+.analysis-error-details { margin: 0 0 14px; text-align: left; color: #53645d; }
+.analysis-error-details summary { cursor: pointer; font-weight: 600; }
+.analysis-error-details pre { max-height: 180px; overflow: auto; margin: 8px 0 0; padding: 10px; border-radius: 6px; background: #f1f3f1; color: #36433d; white-space: pre-wrap; overflow-wrap: anywhere; font: 12px/1.45 ui-monospace, Consolas, monospace; }
+.dark .analysis-error-modal h2, .dark .analysis-error-icon { color: #ff9b8e; }
+.dark .analysis-error-details { color: #c3d1c9; }
+.dark .analysis-error-details pre { background: #202a25; color: #e0e9e4; }
 .GOAL { border-color: #70ae84; }.NO_GOAL { border-color: #dc7c7c; }.NOT_EVALUABLE { border-color: #d5a82f; }
 .dark button.GOAL { color: #9ee5b5; border-color: #70ae84; }.dark button.NO_GOAL { color: #ffabab; border-color: #dc7c7c; }.dark button.NOT_EVALUABLE { color: #ffe08a; border-color: #d5a82f; }
 @media (max-width: 900px) { main { padding: 18px; }.workspace { grid-template-columns: 1fr; min-height: 0; }.setup { flex-wrap: wrap; } aside { border: 0; padding: 0; min-height: 350px; }.session-heading { align-items: flex-start; flex-direction: column; }.export-actions { flex-wrap: wrap; }.clip-list { flex: none; max-height: 45vh; }.metrics { flex-wrap: wrap; gap: 12px; }.metrics > div + div { border-left: 0; padding-left: 0; }.session-card { align-items: flex-start; flex-wrap: wrap; }.export-help { flex-basis: 100%; max-width: none; } }

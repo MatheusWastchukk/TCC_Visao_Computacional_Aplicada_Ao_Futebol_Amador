@@ -21,12 +21,15 @@ function apiIsReady() {
   });
 }
 
-async function waitForApi() {
-  for (let attempt = 0; attempt < 40; attempt += 1) {
-    if (await apiIsReady()) return true;
+async function waitForApi(child, timeoutMs = 60000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    if (await apiIsReady()) return { ready: true };
+    if (child.spawnError) return { ready: false, reason: `Falha ao iniciar o Python: ${child.spawnError.message}` };
+    if (child.exitCode !== null) return { ready: false, reason: `O processo da API encerrou com código ${child.exitCode}.` };
     await new Promise((resolve) => setTimeout(resolve, 250));
   }
-  return false;
+  return { ready: false, reason: `A API não respondeu em ${Math.round(timeoutMs / 1000)} segundos.` };
 }
 
 function createWindow() {
@@ -89,10 +92,15 @@ app.whenReady().then(async () => {
   Menu.setApplicationMenu(null);
   const root = path.join(__dirname, '..', '..');
   api = spawn(path.join(root, '.venv-rocm', 'Scripts', 'python.exe'), ['-m', 'uvicorn', 'backend.server:app', '--port', '8765'], { cwd: root, windowsHide: true });
+  api.on('error', (error) => {
+    api.spawnError = error;
+    console.error(`[API] Não foi possível iniciar o processo Python: ${error.message}`);
+  });
   api.stdout.on('data', (data) => process.stdout.write(`[API] ${data}`));
   api.stderr.on('data', (data) => process.stderr.write(`[API] ${data}`));
-  if (!await waitForApi()) {
-    dialog.showErrorBox('Não foi possível iniciar a API', 'A interface será aberta, mas a análise de vídeo não estará disponível. Feche as janelas do aplicativo e tente novamente.');
+  const apiStatus = await waitForApi(api);
+  if (!apiStatus.ready) {
+    dialog.showErrorBox('Não foi possível iniciar a API', `${apiStatus.reason}\n\nA interface será aberta, mas a análise de vídeo não estará disponível. Consulte a saída do terminal para ver os detalhes.`);
   }
   createWindow();
 });
