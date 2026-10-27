@@ -1,7 +1,7 @@
 """Pontua visualmente e combina candidatos sem consultar rótulos de referência."""
 from __future__ import annotations
 
-from collections.abc import Iterable
+from collections.abc import Callable, Iterable
 from pathlib import Path
 
 import cv2
@@ -42,7 +42,10 @@ def read_clip_frames(video_path: Path, start: float, end: float, count: int = 8)
     return frames
 
 
-def visual_scores(candidates: Iterable[dict[str, str]], videos_dir: Path, verifier_path: Path, torch_threads: int = 4) -> list[dict[str, str]]:
+def visual_scores(
+    candidates: Iterable[dict[str, str]], videos_dir: Path, verifier_path: Path,
+    torch_threads: int = 4, cancel_check: Callable[[], None] | None = None,
+) -> list[dict[str, str]]:
     """Aplica o verificador congelado como escore de reordenação, nunca como decisão binária."""
     rows = [dict(row) for row in candidates]
     frozen = joblib.load(verifier_path)
@@ -56,6 +59,8 @@ def visual_scores(candidates: Iterable[dict[str, str]], videos_dir: Path, verifi
     batches: list[torch.Tensor] = []
     embeddings: list[np.ndarray] = []
     for index, row in enumerate(rows, start=1):
+        if cancel_check:
+            cancel_check()
         frames = read_clip_frames(videos_dir / row["video_filename"], float(row["candidate_start_seconds"]), float(row["candidate_end_seconds"]))
         batches.append(torch.stack([transform(frame) for frame in frames]))
         if len(batches) == 8 or index == len(rows):
@@ -64,6 +69,8 @@ def visual_scores(candidates: Iterable[dict[str, str]], videos_dir: Path, verifi
             embeddings.extend(encoded[offset * 8:(offset + 1) * 8].reshape(-1) for offset in range(len(batches)))
             batches.clear()
     scores = frozen["model"].predict_proba(np.stack(embeddings))[:, 1]
+    if cancel_check:
+        cancel_check()
     return [{**row, "visual_score_goal": f"{float(score):.8f}"} for row, score in zip(rows, scores)]
 
 

@@ -1,0 +1,538 @@
+{
+  "manifest_version": 1,
+  "status": "DRAFT_NOT_A_RELEASE",
+  "created_at": "2026-10-26",
+  "scope": "Reprodução local do código e das evidências congeladas. O artigo é desenvolvido no Overleaf e seus fontes, PDF, template e figuras ficam fora deste repositório/pacote. Não autoriza retuning ou escolha de políticas com base em TEST.",
+  "source": {
+    "base_commit": "65745a5553da7b7f1563b410e3651e268bccb228",
+    "working_tree_clean": false,
+    "current_documents_and_artifacts_match_commit": false,
+    "note": "Working tree remains dirty. A temporary validation snapshot passed npm install/build and metrics aggregation; it is not a release snapshot. No article assets are included.",
+    "dirty_file_count": 33,
+    "inventory_note": "Inventory excludes this manifest and its detached checksum; ignored local article export and derived embedding are listed under not_included_by_default."
+  },
+  "application": {
+    "current_ui": "Electron/React + FastAPI, operational V4",
+    "e2e_version": "0.4.0",
+    "legacy_build": {
+      "path": "release/GoalEventReview/",
+      "build_date": "2026-09-17",
+      "technology": "PyInstaller + PySide6",
+      "status": "EXCLUDED_UNVERIFIED_OLD_ARCHITECTURE",
+      "reason": "Não corresponde ao Electron V4 validado em outubro; o spec contém caminhos absolutos locais e artefatos da arquitetura anterior."
+    }
+  },
+  "dependencies": [
+    {
+      "path": "requirements.txt",
+      "sha256": "A222D1017B56CEA2AD2D19B367B77541BDE16376368DC5FF882C3E6D631AE84D",
+      "status": "INVENTORIED",
+      "note": "Runtime base excludes Ultralytics; install the matching AMD ROCm wheels first."
+    },
+    {
+      "path": "desktop/package.json",
+      "sha256": "452CED65D27168E398A1F15721B463B0CA4C008F62638A1A996CBCA5A7D3989A",
+      "status": "INVENTORIED",
+      "note": "Direct versions pinned; compatible security updates applied and clean-snapshot build passed."
+    },
+    {
+      "path": "desktop/package-lock.json",
+      "sha256": "BD8E9FC67E031454ABE97A4D1A9BB978CF38A6FFB5DA1F1D875B5BFA7D8B2870",
+      "status": "INVENTORIED"
+    },
+    {
+      "path": "configs/.gitkeep",
+      "status": "EMPTY_EXCEPT_GITKEEP",
+      "note": "Os parâmetros V3 devem ser obtidos dos manifests congelados.",
+      "sha256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "status": "OPTIONAL_DEVELOPMENT_DEPENDENCIES",
+      "sha256": "90B8F8CC371C3DEC15AAADCA5E55E06E626B5C6E779BCC92C55801549BB78203"
+    },
+    {
+      "path": "requirements-experiments.txt",
+      "status": "OPTIONAL_EXPERIMENT_DEPENDENCIES",
+      "sha256": "77B2FFE0F976FDC7D804A6A3775F8120BCFDB59B4D1B41F30A6F3A005D3CCDFD",
+      "note": "Optional experimental group includes Ultralytics 8.4.131; not clean-copy installed."
+    },
+    {
+      "path": "pyproject.toml",
+      "status": "PYTHON_TOOLING_CONFIGURATION",
+      "sha256": "237E161FC2216C3F2D1891199FE2ECCE7C8C90B156EDD24E7FB4297C4FEEC128"
+    }
+  ],
+  "primary_artifacts": [
+    {
+      "path": "experiments/ball/REPORT87-PD-SPRINT-FINAL-FREEZE-20261011/final_freeze_manifest_v3.json",
+      "sha256": "F4D66773E2D2D01D215F2C81D3D6FB68BBF7E640FC6AF67C65E02205D79F3C4F",
+      "status": "FROZEN_SOURCE_MANIFEST"
+    },
+    {
+      "path": "experiments/ball/GOAL-CATALOG-TIMESTAMP-ANNOTATION-TEST-V3/test_catalog_freeze_manifest_v1.json",
+      "sha256": "C2D1D289C30DBDF49280E677F48EAC63C77C210178A6FD04BDFF4B7B2F41E578",
+      "status": "FROZEN_HUMAN_CATALOG_MANIFEST"
+    },
+    {
+      "path": "experiments/ball/TEST-V3-FINAL-EVALUATION-20261019/attempt_02/inference_manifest_test_v1.json",
+      "sha256": "D6C61804E89C3ADC5D384F3DB6A37CF9CDDD7F71460C1278C690A2031A4D88D4",
+      "status": "FROZEN_INFERENCE_MANIFEST"
+    },
+    {
+      "path": "experiments/ball/TEST-V3-FINAL-EVALUATION-20261019/metrics_v1/summary_test_v1.json",
+      "sha256": "A1213514E263FB0972BDB31726F1B0F4FFDA6A2F00533B058B16B1DC69377033",
+      "status": "METRICS_REPRODUCED; DISTRIBUTION_RIGHTS_PENDING"
+    },
+    {
+      "path": "experiments/ball/TEST-V3-FINAL-EVALUATION-20261019/metrics_v1/per_match_test_v1.csv",
+      "sha256": "B184FBE616B1E6A19CE0DCFD89BB39540CAB3299EC59023DABACA7E0D5703D15",
+      "status": "METRICS_REPRODUCED; DISTRIBUTION_RIGHTS_PENDING"
+    },
+    {
+      "path": "experiments/ball/TEST-V3-FINAL-EVALUATION-20261019/metrics_v1/paired_mode_gains_test_v1.csv",
+      "sha256": "4E4B04ED0430755CAF9FDCFFB2E46F5B87B1A37C9701B369C687979DBC98D6BA",
+      "status": "METRICS_REPRODUCED; DISTRIBUTION_RIGHTS_PENDING"
+    },
+    {
+      "path": "experiments/ball/TEST-V3-FINAL-EVALUATION-20261019/metrics_v1/goal_coverage_test_v1.csv",
+      "sha256": "263AAB525BCE579C07C69F18D76B10E85375780C11E45F18AA132DCC11E78ADA",
+      "status": "METRICS_REPRODUCED; DISTRIBUTION_RIGHTS_PENDING"
+    },
+    {
+      "path": "README.md",
+      "status": "PROJECT_SOURCE_OR_EVIDENCE",
+      "sha256": "6D4E948C89EF6C454F60BD0BD744AB4DC42830EAACEF6257A5DF2A331D43A8FA"
+    },
+    {
+      "path": "docs/entrega_reprodutivel.md",
+      "status": "PROJECT_SOURCE_OR_EVIDENCE",
+      "sha256": "681A9C923F32B80E2F56091FD6AD8D23496217E1C42E42F047E56E8941DF9732"
+    },
+    {
+      "path": "docs/ambiente_reproducao.md",
+      "status": "PROJECT_SOURCE_OR_EVIDENCE",
+      "sha256": "C1B30BD36B28245468CC715EDE032EEA233E67258E76D5D444F5026AD3598814"
+    },
+    {
+      "path": "docs/rastreabilidade.md",
+      "status": "PROJECT_SOURCE_OR_EVIDENCE",
+      "sha256": "70B930ABCC99FD9C74705B27B1E36806878990674914CADA3747EB5B67E3EA65"
+    },
+    {
+      "path": "docs/requisitos.md",
+      "status": "PROJECT_SOURCE_OR_EVIDENCE",
+      "sha256": "10112A5D710591023410136798AF5808C784349C3656C9CFBD26D48817720539"
+    },
+    {
+      "path": "docs/plans/application_e2e_matrix_2026-10-20.csv",
+      "status": "PROJECT_SOURCE_OR_EVIDENCE",
+      "sha256": "FC57E8562364B3B4860C23CBB7A3B680981CAAFF90ACBF556436A75E0BC2EB07"
+    },
+    {
+      "path": "docs/plans/105_relatorio_direcionamento_final_tcc_25-10-2026.md",
+      "status": "REPOSITORY_SCOPE_NOTE",
+      "sha256": "C2F036616E0AEFCBC88C05511BEAF2768923464B49DBA0B379160A124658B4D2"
+    },
+    {
+      "path": "requirements.txt",
+      "status": "CORE_RUNTIME_DEPENDENCIES",
+      "sha256": "A222D1017B56CEA2AD2D19B367B77541BDE16376368DC5FF882C3E6D631AE84D"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "status": "OPTIONAL_DEVELOPMENT_DEPENDENCIES",
+      "sha256": "90B8F8CC371C3DEC15AAADCA5E55E06E626B5C6E779BCC92C55801549BB78203"
+    },
+    {
+      "path": "requirements-experiments.txt",
+      "status": "OPTIONAL_EXPERIMENT_DEPENDENCIES",
+      "sha256": "77B2FFE0F976FDC7D804A6A3775F8120BCFDB59B4D1B41F30A6F3A005D3CCDFD"
+    },
+    {
+      "path": "pyproject.toml",
+      "status": "PYTHON_TOOLING_CONFIGURATION",
+      "sha256": "237E161FC2216C3F2D1891199FE2ECCE7C8C90B156EDD24E7FB4297C4FEEC128"
+    },
+    {
+      "path": "desktop/package.json",
+      "status": "PINNED_DESKTOP_MANIFEST",
+      "sha256": "452CED65D27168E398A1F15721B463B0CA4C008F62638A1A996CBCA5A7D3989A"
+    },
+    {
+      "path": "desktop/package-lock.json",
+      "status": "PINNED_DESKTOP_LOCKFILE",
+      "sha256": "BD8E9FC67E031454ABE97A4D1A9BB978CF38A6FFB5DA1F1D875B5BFA7D8B2870"
+    },
+    {
+      "path": "experiments/ball/evaluate_frozen_v3_test_metrics_v1.py",
+      "status": "METRICS_REPRODUCTION_SCRIPT",
+      "sha256": "6441A31261C097ACD75049AE136A05B0DB1A27DB7F6841E08872C503578CA6A9"
+    },
+    {
+      "path": "docs/plans/106_reproducao_limpa_metricas_test_v3_26-10-2026.md",
+      "status": "METRICS_REPRODUCTION_REPORT",
+      "sha256": "EAE65334F2172F460D5E2C74EB0E8C6C8854E5661F8390625725E6088013C827"
+    },
+    {
+      "path": "docs/auditoria_licencas_pacote.md",
+      "status": "PRELIMINARY_LICENSE_AUDIT",
+      "sha256": "59B215B943CDE56957CECF4337DD8BAB462D1C347B2E05FBCFD2CBE7FB9C5D0A"
+    }
+  ],
+  "not_included_by_default": [
+    {
+      "item": "Original 42 match videos and derived clips",
+      "status": "EXCLUDED",
+      "reason": "Large/local media; distribution rights and participant/privacy conditions not audited."
+    },
+    {
+      "item": "Model weights and checkpoints",
+      "status": "EXCLUDED_PENDING_LICENSE_AUDIT",
+      "reason": "Need verify licenses, exact hashes, retrieval instructions, and whether files correspond to the frozen V3 evaluation."
+    },
+    {
+      "item": "Python virtual environments, ROCm/MIOpen caches, local sessions, temporary outputs",
+      "status": "EXCLUDED_REGENERABLE"
+    },
+    {
+      "item": "experiments/ball/TEST-V3-FINAL-EVALUATION-20261019/attempt_02/candidate_embeddings_test_v1.npy",
+      "status": "EXCLUDED_FROM_DELIVERY",
+      "size_bytes": 28786816,
+      "reason": "Embedding derivado e não necessário para reproduzir as métricas salvas; mantido localmente e ignorado pelo Git."
+    },
+    {
+      "item": "Article source, PDF, template and figures",
+      "status": "OUT_OF_SCOPE_OVERLEAF",
+      "reason": "O artigo é desenvolvido no Overleaf; estes itens não são dependências do pacote do repositório local."
+    },
+    {
+      "item": "requirements-directml.txt",
+      "status": "EXCLUDED_OLD_LOCAL_EXPERIMENT",
+      "reason": "Ignored local DirectML attempt with older Torch versions; not used by the supported V4 ROCm environment."
+    },
+    {
+      "item": "Frozen TEST catalog, inference candidate CSVs and derived result CSVs",
+      "status": "EXCLUDED_PENDING_RIGHTS_REVIEW",
+      "reason": "Needed for the metrics-only reproduction route, but derived from third-party match videos; distribution permission is not yet documented."
+    }
+  ],
+  "blocking_items_for_final_release": [
+    "Confirm a distribution license/permission for project source before publishing.",
+    "Confirm rights for frozen TEST catalog, candidate CSVs, videos, weights/checkpoints and other external data before including them.",
+    "Review ffmpeg-static package/binary license notices and installation behavior for the chosen distribution format.",
+    "Install the Python base and selected optional groups in a clean copy; record environment versions and hashes.",
+    "Create an intentional, selectively staged local source snapshot and refresh the final manifest after scope and rights are settled."
+  ],
+  "assertions": {
+    "current_electron_app_is_portable": false,
+    "legacy_pyinstaller_build_represents_current_electron_e2e": false,
+    "test_metrics_reproduced_from_frozen_artifacts": true,
+    "article_is_in_local_package_scope": false,
+    "python_base_pins_match_observed_environment": true,
+    "optional_python_groups_installed_and_validated": false,
+    "desktop_direct_dependencies_match_lockfile": true,
+    "desktop_clean_install_verified": true,
+    "desktop_npm_audit_zero_vulnerabilities": true,
+    "frozen_metrics_reproduced_in_minimal_copy": true,
+    "full_python_environment_clean_copy_verified": false,
+    "project_distribution_license_declared": false,
+    "external_data_distribution_rights_confirmed": false,
+    "desktop_clean_snapshot_build_verified": true,
+    "frozen_metrics_reproduced_in_source_snapshot": true
+  },
+  "environment_observed": {
+    "python": "3.12.10 (.venv-rocm)",
+    "torch": "2.9.1+rocm7.2.1",
+    "torchvision": "0.24.1+rocm7.2.1",
+    "torchaudio": "not installed",
+    "opencv_python": "5.0.0.93",
+    "numpy": "2.3.5",
+    "pandas": "3.0.5",
+    "ultralytics": "8.4.131 installed locally; optional experimental dependency, not imported by the core V4 app",
+    "node": "24.19.0",
+    "npm": "11.17.0",
+    "ffmpeg": "ffmpeg-static 5.3.0 installed; executable present in desktop/node_modules; npm warned its postinstall script is not approved; ffmpeg not on PATH",
+    "note": "npm ci, npm ls --depth=0, audit and Vite build passed in a clean source snapshot. Frozen metrics reproduced from saved CSVs with 1e-12 tolerance. Optional Python groups and a clean Python/ROCm installation remain unverified; external distribution rights remain unresolved.",
+    "electron": "44.9.3",
+    "vite": "8.3.5",
+    "react": "19.3.0",
+    "python_dependency_groups": [
+      "requirements.txt: runtime base; no Ultralytics",
+      "requirements-dev.txt: optional, not clean-copy installed",
+      "requirements-experiments.txt: optional, includes Ultralytics, not clean-copy installed"
+    ],
+    "concurrently": "10.0.6",
+    "npm_audit": "0 vulnerabilities after compatible updates on 2026-10-26"
+  },
+  "working_tree_inventory": [
+    {
+      "path": ".gitignore",
+      "git_status": "MODIFIED",
+      "size_bytes": 12672,
+      "sha256": "04E695AAAD2897095A703396E4C434A449E8A1BD437E7D4689750F545F90FBF0",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "app/analyze_match.py",
+      "git_status": "MODIFIED",
+      "size_bytes": 8725,
+      "sha256": "420B511366DC27A8ECECE51EFF81E61DC5237EC69648352D8018F1EAD9D4AF41",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "app/generate_segment_clips.py",
+      "git_status": "MODIFIED",
+      "size_bytes": 5432,
+      "sha256": "40621363772C0568A95A3A931690BEE14A89FD4B60E23836EDC8A0FA771A8709",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "backend/server.py",
+      "git_status": "MODIFIED",
+      "size_bytes": 47533,
+      "sha256": "719C7B414E51740022B99DFD3DD299147FFC707AF995A5266922E0B0280234D8",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "desktop/package-lock.json",
+      "git_status": "MODIFIED",
+      "size_bytes": 62172,
+      "sha256": "BD8E9FC67E031454ABE97A4D1A9BB978CF38A6FFB5DA1F1D875B5BFA7D8B2870",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "desktop/package.json",
+      "git_status": "MODIFIED",
+      "size_bytes": 416,
+      "sha256": "452CED65D27168E398A1F15721B463B0CA4C008F62638A1A996CBCA5A7D3989A",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "desktop/src/main.jsx",
+      "git_status": "MODIFIED",
+      "size_bytes": 45899,
+      "sha256": "5330D9D7976ECF892B722B3C73DCC11D44B7F15B19AE0E7B17DE93E5DAE880ED",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "desktop/src/style.css",
+      "git_status": "MODIFIED",
+      "size_bytes": 14496,
+      "sha256": "7009D1872DD8E62921437596A0212C4C72B34A1F29EACCD0368E81A05BF294F8",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "desktop/vite.config.js",
+      "git_status": "DELETED",
+      "size_bytes": 0,
+      "sha256": null,
+      "source_head_size_bytes": 156,
+      "source_head_sha256": "8FB0CAF94889FDAA88314F2CC54002FFBB921557E53CDD9071ECC83E2EEAAB0E",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "desktop/vite.config.mjs",
+      "git_status": "MODIFIED",
+      "size_bytes": 156,
+      "sha256": "8FB0CAF94889FDAA88314F2CC54002FFBB921557E53CDD9071ECC83E2EEAAB0E",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/ambiente_reproducao.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 4565,
+      "sha256": "C1B30BD36B28245468CC715EDE032EEA233E67258E76D5D444F5026AD3598814",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/auditoria_licencas_pacote.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 3436,
+      "sha256": "59B215B943CDE56957CECF4337DD8BAB462D1C347B2E05FBCFD2CBE7FB9C5D0A",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/entrega_reprodutivel.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 9080,
+      "sha256": "681A9C923F32B80E2F56091FD6AD8D23496217E1C42E42F047E56E8941DF9732",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/101_auditoria_pre_test_v3_17-10-2026.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 3632,
+      "sha256": "CA9814F50F421B41C0CAB29C470F5032EC73B515C1D29F8B6AF7462C009AAFB6",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/102_protocolo_anotacao_cega_timestamps_test_v3_17-10-2026.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 4544,
+      "sha256": "099ADD8BE62C41C455626AFC437B68D99339593C285E601C8ED7FA4283E8C28B",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/102_relatorio_atualizacao_artigo_resultados_test_v3_20-10-2026.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 15079,
+      "sha256": "DC8CA5114608318CC5B5867885C83FEB9613A120037F13ABC0EC87D31F515416",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/103_auditoria_pos_test_parecer_orientador_plano_final_23-10-2026.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 25945,
+      "sha256": "A260752FC2EC9153DAD56EE7ECBDFE37516C07E16C3289BFC4F82CB5D8906B0D",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/104_plano_piloto_revisao_humana_train.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 6933,
+      "sha256": "DD7F861551B5AFD97B4713C4F5E00FCD449A6B46391CB1733F7C29CF3F1F2E51",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/105_relatorio_direcionamento_final_tcc_25-10-2026.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 21153,
+      "sha256": "C2F036616E0AEFCBC88C05511BEAF2768923464B49DBA0B379160A124658B4D2",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/106_reproducao_limpa_metricas_test_v3_26-10-2026.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 5475,
+      "sha256": "EAE65334F2172F460D5E2C74EB0E8C6C8854E5661F8390625725E6088013C827",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/94_plano_execucao_nested_lomo_fullpool_25_train_14-10-2026.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 9173,
+      "sha256": "7997E6DEB9CCC6A17F6CB263359F3A29C187239FF69012D51D597ECCED0AAC74",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/95_resultados_nested_lomo_fullpool_25_train_14-10-2026.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 6742,
+      "sha256": "662F0A41FCE48BB0292CD7A8BD6FC945295388751589001D2933D2302D27931A",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/96_estado_pos_freeze_e_prontidao_test_14-10-2026.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 3572,
+      "sha256": "D15D12CEE568B56A0CB5995E3F44533F764C6AC7ABEE2C770AEE974986B7E125",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/97_relatorio_execucao_nested_25_train_freeze_v2_14-10-2026.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 10459,
+      "sha256": "84B593836AF011CA3575A5AB8FEC09C33221423D1A96C182192BE2EC7452CF52",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/98_plano_selecao_modos_lomo_no_rescue_v3_14-10-2026.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 3079,
+      "sha256": "A21FA37344EAA4CA597A7E2BC1DA89C90BF58B04FCE49335F698275EA6D32AA8",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/99_resultados_selecao_modos_lomo_no_rescue_v3_14-10-2026.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 4004,
+      "sha256": "3E8CD2126313AF789745D0D7E8F1B71590A979D500B1873A6E81AB2869BDB7A0",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/plans/application_e2e_matrix_2026-10-20.csv",
+      "git_status": "MODIFIED",
+      "size_bytes": 8009,
+      "sha256": "FC57E8562364B3B4860C23CBB7A3B680981CAAFF90ACBF556436A75E0BC2EB07",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/rastreabilidade.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 5074,
+      "sha256": "70B930ABCC99FD9C74705B27B1E36806878990674914CADA3747EB5B67E3EA65",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "docs/requisitos.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 5252,
+      "sha256": "10112A5D710591023410136798AF5808C784349C3656C9CFBD26D48817720539",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "experiments/ball/evaluate_frozen_v3_test_metrics_v1.py",
+      "git_status": "MODIFIED",
+      "size_bytes": 11904,
+      "sha256": "6441A31261C097ACD75049AE136A05B0DB1A27DB7F6841E08872C503578CA6A9",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "experiments/ball/freeze_report87_interim_v1.py",
+      "git_status": "MODIFIED",
+      "size_bytes": 22075,
+      "sha256": "033A5D47A0A6082F3C89D396E6F883A5E06EC798E24444FD5C297A933E8EDB8C",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "plano_tcc_jira.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 15026,
+      "sha256": "A124BE112786ACD2090779E0FEDB59D70BA07E9DBD9E42839E7B85D86CD57FD3",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "pyproject.toml",
+      "git_status": "MODIFIED",
+      "size_bytes": 332,
+      "sha256": "237E161FC2216C3F2D1891199FE2ECCE7C8C90B156EDD24E7FB4297C4FEEC128",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "README.md",
+      "git_status": "MODIFIED",
+      "size_bytes": 4321,
+      "sha256": "6D4E948C89EF6C454F60BD0BD744AB4DC42830EAACEF6257A5DF2A331D43A8FA",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "requirements-dev.txt",
+      "git_status": "MODIFIED",
+      "size_bytes": 148,
+      "sha256": "90B8F8CC371C3DEC15AAADCA5E55E06E626B5C6E779BCC92C55801549BB78203",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "requirements-experiments.txt",
+      "git_status": "MODIFIED",
+      "size_bytes": 202,
+      "sha256": "77B2FFE0F976FDC7D804A6A3775F8120BCFDB59B4D1B41F30A6F3A005D3CCDFD",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "requirements.txt",
+      "git_status": "MODIFIED",
+      "size_bytes": 463,
+      "sha256": "A222D1017B56CEA2AD2D19B367B77541BDE16376368DC5FF882C3E6D631AE84D",
+      "review_before_snapshot": true
+    },
+    {
+      "path": "src/events/visual_fusion_inference_v4.py",
+      "git_status": "MODIFIED",
+      "size_bytes": 4395,
+      "sha256": "66112F70B31F97ED46AE0760D63B371CEFA93BE0F75470834B01E3D0A8CEF437",
+      "review_before_snapshot": true
+    }
+  ]
+}

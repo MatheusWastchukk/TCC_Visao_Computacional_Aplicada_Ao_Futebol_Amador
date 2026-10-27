@@ -46,7 +46,11 @@ def load_script_main(path: Path) -> Callable[..., int]:
     return module.main
 
 
-def main(argv: list[str] | None = None, progress: ProgressCallback | None = None) -> int:
+def main(
+    argv: list[str] | None = None,
+    progress: ProgressCallback | None = None,
+    cancel_check: Callable[[], None] | None = None,
+) -> int:
     parser = argparse.ArgumentParser(description="Gera segmentos V4 a partir de um pool pontuado ou de uma partida TRAIN.")
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument("--candidate-scores", type=Path, help="CSV de até 60 candidatos com escores temporal e de fusão.")
@@ -67,6 +71,14 @@ def main(argv: list[str] | None = None, progress: ProgressCallback | None = None
     parser.add_argument("--mode", choices=sorted(MODES), default="cobertura_reduzida")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
+    def report(label: str, value: float) -> None:
+        if cancel_check:
+            cancel_check()
+        if progress:
+            progress(label, value)
+
+    if cancel_check:
+        cancel_check()
     if args.output.exists() and not args.resume:
         raise FileExistsError(f"A saída já existe: {args.output}")
     if args.resume and (not args.output.is_dir() or (args.output / "results.json").exists()):
@@ -92,8 +104,7 @@ def main(argv: list[str] | None = None, progress: ProgressCallback | None = None
         miner_output = args.output / "stages" / "mining"
         frames_path = miner_output / "candidate_frames_v1.csv"
         if not (args.resume and frames_path.is_file()):
-            if progress:
-                progress("Mineração de candidatos", 0)
+            report("Mineração de candidatos", 0)
             mine_main = load_script_main(PROJECT_ROOT / "experiments/ball/mine_goal_event_candidates_v1.py")
             mine_main(
                 ["--split-manifest", str(args.split_manifest), "--videos-dir", str(args.videos_dir),
@@ -105,20 +116,22 @@ def main(argv: list[str] | None = None, progress: ProgressCallback | None = None
                  "--device", str(args.device)]
                 + (["--roi-imgsz", str(args.roi_imgsz)] if args.roi_imgsz is not None else [])
                 + (["--video-path", str(args.video_path), "--video-id", args.match_id] if args.allow_arbitrary_video else []),
-                progress,
+                report if progress or cancel_check else None,
             )
-        if progress:
-            progress("Ranking temporal e fusão", 70)
+        report("Ranking temporal e fusão", 70)
         groups = temporal_groups(read_csv(miner_output / "candidate_frames_v1.csv"))
+        if cancel_check:
+            cancel_check()
         if not groups:
             raise RuntimeError("A mineração não produziu grupos temporais elegíveis.")
         temporal = select_wide_pool(groups, joblib.load(args.temporal_ranker))
-        visual = visual_scores(temporal, args.videos_dir, args.visual_verifier)
+        visual = visual_scores(temporal, args.videos_dir, args.visual_verifier, cancel_check=cancel_check)
+        if cancel_check:
+            cancel_check()
         candidates = fusion_scores(visual, args.fusion_model)
         args.output.mkdir(parents=True, exist_ok=True)
         write_csv(args.output / "wide_pool_scored.csv", candidates, list(candidates[0]))
-    if progress:
-        progress("União dos segmentos", 82)
+    report("União dos segmentos", 82)
     result = analyze_match(candidates, args.mode)
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / "results.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -130,8 +143,7 @@ def main(argv: list[str] | None = None, progress: ProgressCallback | None = None
     rows = [{**segment, "member_event_ids": ";".join(segment["member_event_ids"])} for segment in segments]
     fields = ["segment_id", "label", "start_seconds", "end_seconds", "start_hhmmss", "end_hhmmss", "duration_seconds", "representative_event_id", "representative_timestamp_seconds", "representative_time_hhmmss", "rank_score", "fusion_score_goal", "member_event_ids", "member_count"]
     write_csv(args.output / "segments.csv", rows, fields)
-    if progress:
-        progress("Segmentos prontos", 85)
+    report("Segmentos prontos", 85)
     print(json.dumps(result["summary"], ensure_ascii=False))
     return 0
 

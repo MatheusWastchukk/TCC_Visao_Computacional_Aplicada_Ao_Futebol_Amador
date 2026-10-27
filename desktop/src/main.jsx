@@ -31,6 +31,7 @@ function App() {
   const [analysisErrorDialog, setAnalysisErrorDialog] = useState(null);
   const [notice, setNotice] = useState('');
   const [savingClips, setSavingClips] = useState(new Set());
+  const [undoingDecision, setUndoingDecision] = useState(false);
   const [preparingDownloads, setPreparingDownloads] = useState(new Set());
   const [preparingCompilation, setPreparingCompilation] = useState(false);
   const [compilationProgress, setCompilationProgress] = useState(null);
@@ -111,6 +112,19 @@ function App() {
     }
   };
 
+  const cancelAnalysis = async () => {
+    if (!sessionId || !['running', 'starting'].includes(status?.status)) return;
+    try {
+      const response = await fetch(`${API}/sessions/${sessionId}/cancel`, { method: 'POST' });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.detail || 'Não foi possível cancelar a análise.');
+      setStatus((current) => ({ ...current, status: payload.status, stage: 'Cancelando análise' }));
+      setNotice('Cancelamento solicitado. Os arquivos parciais serão descartados quando o processamento parar.');
+    } catch (caught) {
+      setError(caught.message || 'Não foi possível cancelar a análise.');
+    }
+  };
+
   const openSession = async (id) => {
     setAnalysisErrorDialog(null);
     setError(''); setNotice(''); setSessionId(''); setStatus(null); setClips([]); setCurrentClip(null);
@@ -157,6 +171,12 @@ function App() {
           setAnalysisErrorDialog({ title: 'Não foi possível concluir a análise', message: 'Confira se o arquivo de vídeo é válido e tente iniciar uma nova análise.', detail });
           return;
         }
+        if (next.status === 'cancelled') {
+          setNotice('Análise cancelada. Os arquivos parciais foram descartados; as sessões concluídas continuam no histórico.');
+          await refreshSessions();
+          return;
+        }
+        if (next.status === 'interrupted') return;
         timer = setTimeout(poll, 700);
       } catch (caught) {
         if (!active) return;
@@ -226,6 +246,7 @@ function App() {
       const payload = await response.json();
       if (!response.ok) throw new Error(payload.detail || 'Não foi possível salvar a revisão.');
       if (patch.tag) logTelemetry('decision_saved', currentClip.candidate_id, patch.tag);
+      if (patch.tag) setStatus((current) => current ? { ...current, can_undo: payload.can_undo } : current);
       if (patch.review_status === 'deferred') logTelemetry('review_deferred', currentClip.candidate_id);
       if (patch.review_status === 'deferred') setNotice('Candidato marcado para revisar depois. Ele foi movido para o filtro “Revisar depois”.');
       if (patch.review_status === 'pending') setNotice('Candidato voltou para a lista de pendentes.');
@@ -244,6 +265,33 @@ function App() {
   const markClip = async (tag) => {
     const saved = await updateReview({ tag }, { human_label: tag, annotation_status: 'completed' });
     if (saved && autoAdvance) navigateClip(1);
+  };
+  const undoLastDecision = async () => {
+    if (!sessionId || !status?.can_undo || undoingDecision) return;
+    setUndoingDecision(true);
+    try {
+      const response = await fetch(`${API}/sessions/${sessionId}/undo`, { method: 'POST' });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.detail || 'Não foi possível desfazer a última decisão.');
+      const items = await refreshClips(sessionId);
+      setClips(items);
+      setStatus((current) => current ? { ...current, can_undo: payload.can_undo } : current);
+      const restoredClip = items.find((item) => item.segment_id === payload.segment_id);
+      if (restoredClip) {
+        setCurrentClip(restoredClip);
+        setNotes(restoredClip.notes || '');
+        setNotesEditing(!restoredClip.notes);
+        const seekTime = videoMode === 'source' ? Number(restoredClip.timestamp_seconds || restoredClip.start_seconds || 0) : 0;
+        setVideoTime(seekTime);
+        saveSessionState({ current_segment_id: restoredClip.segment_id, current_time: seekTime }, true);
+      }
+      setNotice('Última decisão desfeita. O candidato voltou ao estado anterior.');
+      await refreshSessions();
+    } catch (caught) {
+      setError(caught.message || 'Não foi possível desfazer a última decisão.');
+    } finally {
+      setUndoingDecision(false);
+    }
   };
   const deferClip = async () => {
     const saved = await updateReview({ review_status: 'deferred' }, { annotation_status: 'deferred' });
@@ -437,15 +485,16 @@ function App() {
     {showDashboard && <>
       <section className="setup"><input readOnly value={videoPath} placeholder="Selecione um vídeo" aria-label="Vídeo selecionado" /><button onClick={async () => setVideoPath(await window.desktop.selectVideo())}><FolderOpen />Selecionar vídeo</button><select value={mode} onChange={(event) => setMode(event.target.value)} aria-label="Modo operacional"><option value="alta_cobertura">Alta cobertura</option><option value="cobertura_reduzida">Cobertura reduzida</option><option value="triagem_rapida">Triagem rápida</option></select><button onClick={startAnalysis} disabled={!videoPath}><Play />Nova análise</button></section>
       <section><div className="listhead"><div><h2>Análises recentes</h2><small>{sessions.length} análise(s) local(is)</small></div></div>
-        {sessions.length === 0 ? <p className="muted">As análises que você iniciar ficarão disponíveis aqui para retomada.</p> : <div className="session-list">{sessions.map((item) => <div className="session-card" key={item.session_id} role="button" tabIndex={0} onClick={() => openSession(item.session_id)} onKeyDown={(event) => { if (event.key === 'Enter' && event.target === event.currentTarget) openSession(item.session_id); }}><span><b>{item.video_name || 'Vídeo'}</b><small>{modeText(item.mode)} · {item.created_at ? new Date(item.created_at).toLocaleString() : 'Data indisponível'}</small><small>Duração da análise: {item.elapsed ? formatDuration(item.elapsed) : '—'} · Equipamento: {item.metrics?.device_name || item.metrics?.cpu_name || '—'}</small></span><span className={`session-status ${item.status}`}>{item.status === 'completed' ? 'Concluída' : item.status === 'running' ? 'Processando' : item.status === 'interrupted' ? 'Interrompida' : item.status === 'failed' ? 'Falhou' : item.status}<small>{item.reviewed_count || 0} decisões</small></span><button className="icon small remove-session" title="Remover análise do histórico" aria-label={`Remover análise ${item.video_name || ''}`} disabled={item.status === 'running'} onClick={(event) => removeSession(event, item)}><Trash2 /></button></div>)}</div>}
+        {sessions.length === 0 ? <p className="muted">As análises que você iniciar ficarão disponíveis aqui para retomada.</p> : <div className="session-list">{sessions.map((item) => <div className="session-card" key={item.session_id} role="button" tabIndex={0} onClick={() => openSession(item.session_id)} onKeyDown={(event) => { if (event.key === 'Enter' && event.target === event.currentTarget) openSession(item.session_id); }}><span><b>{item.video_name || 'Vídeo'}</b><small>{modeText(item.mode)} · {item.created_at ? new Date(item.created_at).toLocaleString() : 'Data indisponível'}</small><small>Duração da análise: {item.elapsed ? formatDuration(item.elapsed) : '—'} · Equipamento: {item.metrics?.device_name || item.metrics?.cpu_name || '—'}</small></span><span className={`session-status ${item.status}`}>{item.status === 'completed' ? 'Concluída' : item.status === 'running' ? 'Processando' : item.status === 'cancelling' ? 'Cancelando' : item.status === 'cancelled' ? 'Cancelada' : item.status === 'interrupted' ? 'Interrompida' : item.status === 'failed' ? 'Falhou' : item.status}<small>{item.reviewed_count || 0} decisões</small></span><button className="icon small remove-session" title="Remover análise do histórico" aria-label={`Remover análise ${item.video_name || ''}`} disabled={['running', 'cancelling'].includes(item.status)} onClick={(event) => removeSession(event, item)}><Trash2 /></button></div>)}</div>}
       </section>
     </>}
 
     {sessionId && <>
       <section className="session-heading"><div><p>Análise local</p><h2>{status?.video_name || 'Vídeo'}</h2><small>Modo: {modeText(status?.mode)} · {status?.created_at ? new Date(status.created_at).toLocaleString() : ''}</small><details className="technical-details"><summary>Detalhes do processamento</summary><div><small>Tempo total: {formatDuration(status?.elapsed)}<br />Equipamento: {metrics?.device_name || metrics?.cpu_name || 'Não informado'} ({metrics?.processor || '—'})<br />CPU usada pelo processo: {metrics?.process_cpu_percent ?? '—'}% · RAM do processo: {metrics?.process_ram_mb ?? '—'} MB ({metrics?.process_ram_percent ?? '—'}%)<br />Uso de GPU: {metrics?.gpu_utilization_percent != null ? `${metrics.gpu_utilization_percent}%` : 'Indisponível neste ambiente'}<br />Memória da GPU: {metrics?.gpu_memory_used_mb != null ? `${metrics.gpu_memory_used_mb} / ${metrics.gpu_memory_total_mb} MB (${metrics.gpu_memory_percent}%)` : 'Não disponível'}<br />Aplicativo {status?.app_version} · Pipeline {status?.pipeline_version}<br /><span>As impressões SHA-256 ficam nos arquivos de auditoria para identificar os modelos e a configuração usados.</span></small></div></details></div><div className="export-actions"><span className="export-help">Relatório: resumo legível · CSV/JSON: dados detalhados</span><button disabled={preparingExport === 'html'} onClick={() => exportReview('html')}><Download />{preparingExport === 'html' ? 'Preparando relatório…' : 'Relatório legível'}</button><button disabled={preparingExport === 'csv'} onClick={() => exportReview('csv')}><Download />{preparingExport === 'csv' ? 'Preparando CSV…' : 'Dados em CSV'}</button><button disabled={preparingExport === 'json'} onClick={() => exportReview('json')}><Download />{preparingExport === 'json' ? 'Preparando JSON…' : 'Dados em JSON'}</button></div></section>
-      {status && ['running', 'starting'].includes(status.status) && <section className="progress"><div className="progress-top"><div><b>{status.stage}</b><small>{progressText(status)}</small></div><strong>{Number(status.progress || 0).toFixed(2).replace('.', ',')}%</strong></div><div className="progress-track"><span style={{ width: `${Math.max(0, Math.min(Number(status.progress || 0), 100))}%` }} /></div></section>}
+      {status && ['running', 'starting', 'cancelling'].includes(status.status) && <section className="progress"><div className="progress-top"><div><b>{status.stage}</b><small>{status.status === 'cancelling' ? 'Interrompendo o processamento e limpando os arquivos parciais' : progressText(status)}</small></div><strong>{Number(status.progress || 0).toFixed(2).replace('.', ',')}%</strong></div><div className="progress-track"><span style={{ width: `${Math.max(0, Math.min(Number(status.progress || 0), 100))}%` }} /></div><button className="cancel-analysis-button" disabled={status.status === 'cancelling'} onClick={cancelAnalysis}>{status.status === 'cancelling' ? 'Cancelando…' : 'Cancelar análise'}</button></section>}
       {metrics && <section className="metrics"><div><span><b>Processador</b><small>{metrics.processor === 'GPU' ? metrics.device_name : metrics.cpu_name} · {metrics.processor}</small></span></div><div><span><b>CPU do processo</b><small>{metrics.process_cpu_percent}%</small></span></div><div><span><b>Memória RAM</b><small>{metrics.process_ram_mb} MB · {metrics.process_ram_percent}%</small></span></div><div><span><b>Uso de GPU</b><small>{metrics.gpu_utilization_percent != null ? `${metrics.gpu_utilization_percent}%` : 'Indisponível neste ambiente'}</small></span></div><div><span><b>Memória da GPU</b><small>{metrics.gpu_memory_used_mb != null ? `${metrics.gpu_memory_used_mb} / ${metrics.gpu_memory_total_mb} MB · ${metrics.gpu_memory_percent}%` : 'Indisponível'}</small></span></div><div><span><b>Tempo de processamento</b><small>{formatDuration(status?.elapsed)}</small></span></div></section>}
       {status?.status === 'interrupted' && <section className="empty compact"><Video /><h2>Análise interrompida</h2><p>As decisões já persistidas continuam no histórico. Para processar o vídeo novamente, inicie uma nova análise.</p></section>}
+      {status?.status === 'cancelled' && <section className="empty compact"><Video /><h2>Análise cancelada</h2><p>A saída parcial foi removida. Inicie uma nova análise se quiser processar este vídeo novamente.</p></section>}
       {status?.status === 'failed' && <section className="empty compact"><Video /><h2>Não foi possível concluir a análise</h2><p>Confira o aviso de erro e corrija o arquivo antes de iniciar outra análise.</p></section>}
       {status?.status === 'completed' && clips.length === 0 && <section className="empty compact"><Video /><h2>Nenhum clipe disponível</h2><p>O resultado desta análise não contém clipes para revisar.</p></section>}
       {clips.length > 0 && <section className="workspace">
@@ -464,7 +513,7 @@ function App() {
           <div className="player-actions"><button disabled={currentIndex <= 0} onClick={() => navigateClip(-1)}><ArrowLeft />Anterior <kbd>A</kbd></button><span>{currentIndex + 1} / {clips.length}</span><button disabled={currentIndex >= clips.length - 1} onClick={() => navigateClip(1)}>Próximo <kbd>D</kbd><ArrowRight /></button><label>Velocidade<select value={playbackRate} onChange={(event) => setRate(Number(event.target.value))}>{[0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 3].map((rate) => <option key={rate} value={rate}>{rate}×</option>)}</select></label><details className="shortcut-help"><summary title="Atalhos do teclado" aria-label="Mostrar atalhos do teclado"><CircleHelp /></summary><div className="shortcut-popover"><b>Atalhos do teclado</b><p><kbd>Espaço</kbd> reproduzir/pausar &middot; <kbd>&larr;</kbd>/<kbd>&rarr;</kbd> 5 s &middot; <kbd>Shift</kbd> + setas 1 s &middot; <kbd>Ctrl</kbd> + setas 10 s &middot; <kbd>,</kbd>/<kbd>.</kbd> um frame &middot; <kbd>[</kbd>/<kbd>]</kbd> velocidade &middot; <kbd>A</kbd>/<kbd>D</kbd> candidato anterior/próximo &middot; <kbd>1</kbd>/<kbd>2</kbd>/<kbd>3</kbd> decisão &middot; <kbd>R</kbd> revisar depois &middot; <kbd>F</kbd> modo de foco.</p></div></details><button onClick={switchVideoMode}>{videoMode === 'source' ? 'Reproduzir clipe' : 'Partida completa'}</button><button onClick={loadStoryboard} disabled={loadingStoryboard}>{loadingStoryboard ? 'Gerando…' : 'Storyboard'}</button><button onClick={toggleFocus}>{focusMode ? 'Sair do foco' : 'Modo de foco'} <kbd>F</kbd></button></div>
           {videoMode === 'source' && <div className="timeline"><p className="timeline-help">Partida completa: as faixas verdes mostram onde estão os clipes. Clique numa faixa para abrir esse candidato; arraste o controle para navegar pelo vídeo.</p><div className="timeline-input"><input ref={timelineRef} type="range" min="0" max={status?.video_duration_seconds || 1} step="0.1" defaultValue={videoTime} aria-label="Posição na partida completa" onPointerUp={() => saveSessionState({ current_segment_id: currentClip.segment_id, current_time: videoRef.current?.currentTime || videoTime }, true)} onChange={(event) => { const value = Number(event.target.value); if (videoRef.current) videoRef.current.currentTime = value; setVideoTime(value); }} /><div className="timeline-markers">{clips.map((clip, clipIndex) => { const total = Number(status?.video_duration_seconds || 1); const start = Number(clip.start_seconds || 0); const end = Number(clip.end_seconds || start); return <button key={clip.segment_id} className={clip.segment_id === currentClip.segment_id ? 'active' : ''} style={{ left: `${Math.max(0, Math.min(100, start / total * 100))}%`, width: `${Math.max(0.25, Math.min(100, (end - start) / total * 100))}%` }} title={`Candidato ${candidateNumber(clipIndex)} · ${clip.timestamp || formatDuration(clip.timestamp_seconds)}`} aria-label={`Ir para candidato ${candidateNumber(clipIndex)}`} onClick={() => selectClip(clip)} />; })}</div></div><div className="timeline-legend"><span><i className="legend-clip" />Intervalo de clipe candidato</span><span><i className="legend-current" />Candidato selecionado</span></div><div className="timeline-labels"><span ref={timelineTimeRef}>{formatDuration(videoTime)}</span><span>{formatDuration(status?.video_duration_seconds)}</span></div></div>}
           {storyboard.length > 0 && <><p className="storyboard-help">Storyboard: cinco quadros próximos ao momento do candidato para dar contexto visual. Clique em um quadro para ir até aquele instante.</p><div className="storyboard" aria-label="Storyboard do candidato">{storyboard.map((frame) => <button key={frame.offset_seconds} title={`Ir para ${formatDuration(frame.timestamp_seconds)} no vídeo`} onClick={() => { const target = videoMode === 'source' ? frame.timestamp_seconds : frame.clip_time_seconds; if (videoRef.current) videoRef.current.currentTime = target; setVideoTime(target); }}><img src={frame.image_url} alt={`Quadro em T${frame.offset_seconds >= 0 ? '+' : ''}${frame.offset_seconds} segundos`} /><small>T{frame.offset_seconds >= 0 ? '+' : ''}{frame.offset_seconds}s</small></button>)}</div></>}
-          <div className="tags"><div><b>Decisão humana</b><small>O score é uma ordenação operacional, não uma probabilidade de gol.</small></div><div className="tag-buttons">{TAGS.map((tag) => <button disabled={savingClips.has(currentClip.segment_id)} className={`${tag} ${currentClip.human_label === tag ? 'selected-tag' : ''}`} onClick={() => markClip(tag)} key={tag}>{tag}</button>)}<button className="defer-button" disabled={savingClips.has(currentClip.segment_id) || Boolean(currentClip.human_label) || currentClip.annotation_status === 'deferred'} onClick={deferClip}>{currentClip.annotation_status === 'deferred' ? 'Adiado ✓' : 'Revisar depois'}</button>{currentClip.annotation_status === 'deferred' && <button onClick={returnToPending} disabled={savingClips.has(currentClip.segment_id)}>Voltar a pendente</button>}</div></div>
+          <div className="tags"><div><b>Decisão humana</b><small>O score é uma ordenação operacional, não uma probabilidade de gol.</small></div><div className="tag-buttons">{TAGS.map((tag) => <button disabled={savingClips.has(currentClip.segment_id)} className={`${tag} ${currentClip.human_label === tag ? 'selected-tag' : ''}`} onClick={() => markClip(tag)} key={tag}>{tag}</button>)}<button className="defer-button" disabled={savingClips.has(currentClip.segment_id) || Boolean(currentClip.human_label) || currentClip.annotation_status === 'deferred'} onClick={deferClip}>{currentClip.annotation_status === 'deferred' ? 'Adiado ✓' : 'Revisar depois'}</button>{currentClip.annotation_status === 'deferred' && <button onClick={returnToPending} disabled={savingClips.has(currentClip.segment_id)}>Voltar a pendente</button>}{status?.can_undo && <button className="undo-decision-button" onClick={undoLastDecision} disabled={undoingDecision || savingClips.size > 0}>{undoingDecision ? 'Desfazendo…' : 'Desfazer última decisão'}</button>}</div></div>
           <div className="notes"><label htmlFor="clip-notes">Notas da revisão</label><textarea id="clip-notes" rows="3" value={notes} readOnly={!notesEditing} onChange={(event) => setNotes(event.target.value)} placeholder="Observações humanas opcionais" /><button onClick={() => { if (notesEditing) saveNotes(); else setNotesEditing(true); }} disabled={savingClips.has(currentClip.segment_id)}>{notesEditing ? 'Salvar nota' : 'Editar nota'}</button><small>Estado atual: {reviewText(currentClip.annotation_status)}</small></div>
         </>}</article>
       </section>}

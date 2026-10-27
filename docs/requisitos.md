@@ -1,63 +1,49 @@
-# Requisitos do Projeto
+# Requisitos e critérios de aceite do TCC
 
-## Contexto
+## Escopo do trabalho
 
-Este documento transforma o escopo do TCC em requisitos testaveis para o prototipo de deteccao e analise de eventos em videos de futebol. Os requisitos estao divididos em obrigatorios e opcionais para manter o nucleo minimo defensavel do projeto claro durante o desenvolvimento.
+O projeto atende ao título oficial **Detecção e Análise de Eventos em Vídeos de Futebol Utilizando Técnicas de Visão Computacional**. O escopo efetivamente avaliado é a mineração e priorização de trechos potencialmente relacionados a gols para revisão humana. O sistema não confirma gols automaticamente.
 
-## Requisitos Funcionais Obrigatorios
+Pergunta de pesquisa: em partidas completas do corpus, quanto da cobertura dos timestamps de gols catalogados pode ser preservada por políticas fixas, selecionadas em TRAIN e aplicadas em TEST, sob diferentes tetos de minutos únicos por partida?
 
-| ID | Requisito | Comprovacao objetiva |
-|---|---|---|
-| RF-001 | O sistema deve permitir importar um arquivo de video local. | Informar o caminho de um video valido e confirmar que ele e aberto pelo pipeline. |
-| RF-002 | O sistema deve validar se o arquivo informado existe e pode ser lido como video. | Executar com arquivo valido, inexistente e invalido, registrando sucesso ou erro compreensivel. |
-| RF-003 | O sistema deve extrair metadados basicos do video, incluindo resolucao, FPS, quantidade de frames e duracao aproximada. | Comparar os metadados retornados com `ffprobe` ou OpenCV. |
-| RF-004 | O sistema deve processar o video frame a frame. | Registrar a contagem de frames processados em um trecho de teste. |
-| RF-005 | O sistema deve detectar jogadores em pelo menos parte dos frames usando modelo de visao computacional. | Gerar resultados estruturados e frames anotados para uma amostra de videos. |
-| RF-006 | O sistema deve tentar detectar a bola nos frames processados. | Registrar taxa de frames com bola detectada e exemplos visuais. |
-| RF-007 | O sistema deve rastrear a trajetoria da bola ao longo do tempo. | Exportar uma sequencia temporal com frame, timestamp e posicao estimada da bola. |
-| RF-008 | O sistema deve permitir definir ou carregar uma regiao do gol. | Carregar um arquivo de configuracao com coordenadas da regiao e validar seu formato. |
-| RF-018 | O sistema deve tentar localizar automaticamente a estrutura principal do gol em partidas completas. | Executar o piloto em 3 partidas e registrar precisao, revocacao, F1, IoU e falsos candidatos por hora. |
-| RF-019 | O sistema deve gerar janelas candidatas quando a estrutura do gol for confirmada temporalmente. | Registrar intervalos com inicio, fim, confianca media e criterio de agrupamento. |
-| RF-020 | O sistema deve retornar `NOT_EVALUABLE` quando nao houver condicao visual suficiente para decidir. | Testar casos com gol invisivel, bola ocluida, baixa confianca ou rastreamento perdido. |
-| RF-009 | O sistema deve executar a Abordagem A, baseada em regras espaciais e temporais. | Rodar a abordagem em clipes de teste e exportar resultado, confianca e frame de evidencia. |
-| RF-010 | O sistema deve executar a Abordagem B, baseada em classificacao temporal ou alternativa hibrida documentada. | Rodar a segunda abordagem no mesmo formato de entrada e saida da Abordagem A. |
-| RF-011 | O sistema deve gerar pelo menos um frame representativo anotado para cada evento candidato. | Conferir arquivo de imagem salvo em `outputs/frames`. |
-| RF-012 | O sistema deve exportar metricas de deteccao, rastreamento, evento e desempenho. | Conferir arquivo tabular ou JSON em `outputs/reports`. |
-| RF-013 | O sistema deve exibir o resultado em uma interface demonstravel para a banca. | Executar a interface local e completar um fluxo de analise. |
+## Requisitos da contribuição experimental
 
-## Requisitos Funcionais Opcionais
+| ID | Requisito | Critério de evidência | Estado |
+|---|---|---|---|
+| EXP-01 | Manter separados Candidate Pool, Nested LOMO, seleção de políticas e avaliação final. | População, protocolo, unidade e interpretação informados para cada resultado. | Atendido no artigo; tabela-síntese adicionada. |
+| EXP-02 | Avaliar o procedimento de seleção por partida e orçamento em TRAIN. | Nested LOMO 25/25, 5.742 grupos e 152 eventos avaliáveis, com resultados por orçamento. | Executado e documentado. |
+| EXP-03 | Avaliar políticas experimentais fixas em TEST sem retuning. | Freeze e manifests rastreáveis; timestamps humanos congelados antes da inferência; cobertura e minutos únicos reportados. | Executado uma vez; TEST fechado para seleção. |
+| EXP-04 | Definir cobertura de evento de modo reproduzível. | Timestamp humano pertence a pelo menos um intervalo selecionado; inclusão fechada e tolerância informadas. | Definido; tolerância adicional zero em TEST. |
+| EXP-05 | Distinguir cobertura de precisão e de esforço humano. | Limitações explícitas no resumo, método, discussão e conclusão. | Atendido; não há precisão ou tempo humano medidos. |
+| EXP-06 | Documentar limites da bola e do rastreamento. | Diferenciar proposta, identidade, continuidade e interpretação de evento, com evidência visual/quantitativa. | Atendido no artigo e relatórios. |
+| EXP-07 | Registrar decisões de promoção e não promoção de métodos. | Relatórios identificam resultados exploratórios, confirmatórios, diagnósticos e não promovidos. | Documentado no histórico experimental. |
 
-| ID | Requisito | Comprovacao objetiva |
-|---|---|---|
-| RF-014 | O sistema pode permitir anotacao manual assistida da regiao do gol pela interface. | Marcar uma regiao em tela e salvar o arquivo de configuracao. |
-| RF-015 | O sistema pode comparar lado a lado as saidas da Abordagem A e da Abordagem B. | Gerar uma tela ou relatorio com resultados das duas abordagens para o mesmo clipe. |
-| RF-016 | O sistema pode exportar video curto anotado alem de frames estaticos. | Conferir video anotado em `outputs/videos`. |
-| RF-017 | O sistema pode usar aceleracao por GPU quando disponivel. | Registrar backend, hardware e tempo de inferencia em experimento controlado. |
+## Requisitos da aplicação de revisão
 
-## Requisitos Nao Funcionais Obrigatorios
+| ID | Requisito | Critério de evidência | Estado |
+|---|---|---|---|
+| APP-01 | Abrir vídeos locais e reportar entradas inválidas com erro visível. | Cenários E2E de vídeo válido e MP4 inválido. | Exercitado manualmente. |
+| APP-02 | Permitir navegação, reprodução e inspeção de candidatos. | Player, seek, atalhos, storyboard e navegação exercitados. | Exercitado manualmente. |
+| APP-03 | Registrar decisões humanas e notas em sessão local. | Persistência, retomada e edição exercitadas. | Exercitado manualmente. |
+| APP-04 | Exportar dados e trechos da sessão. | Exportações HTML, CSV, JSON e MP4 exercitadas. | Exercitado manualmente. |
+| APP-05 | Identificar o pipeline operacional e guardar rastreabilidade da sessão. | Versão, pipeline, modo, dispositivo e artefatos visíveis/conferidos. | Exercitado; uso percentual da GPU indisponível no ambiente. |
+| APP-06 | Oferecer undo persistente da última classificação e cancelamento de análise em execução com limpeza da saída parcial. | E2E-06/E2E-07, build e verificações funcionais. | Implementado; ambos os fluxos foram retestados manualmente e confirmados pelo usuário em 25/10/2026. |
 
-| ID | Requisito | Comprovacao objetiva |
-|---|---|---|
-| RNF-001 | O projeto deve funcionar no Windows 11. | Executar instalacao e testes em ambiente Windows 11. |
-| RNF-002 | O pipeline minimo deve funcionar em CPU. | Executar um clipe curto sem depender de GPU. |
-| RNF-003 | O sistema deve registrar erros de forma compreensivel, sem falhar silenciosamente. | Executar casos invalidos e conferir mensagem/registro de erro. |
-| RNF-004 | Os experimentos devem ser reproduziveis. | Versionar configuracoes, dependencias e comandos usados em cada experimento. |
-| RNF-005 | As configuracoes do pipeline devem ficar em arquivos externos ao codigo. | Conferir arquivos em `configs/` usados pela execucao. |
-| RNF-006 | O sistema nao deve depender de transmissao ao vivo. | Executar somente com arquivos de video locais. |
-| RNF-007 | O sistema deve suportar o estudo com partidas completas e permitir amostragem ou recorte para reduzir custo. | Validar metadados de partidas completas e registrar taxa de amostragem usada no piloto. |
-| RNF-008 | Videos brutos, clipes grandes, pesos de modelo e saidas geradas nao devem ser versionados por engano. | Conferir `.gitignore` e `git status` antes dos commits. |
+A matriz registra 13 cenários aprovados conforme as evidências disponíveis. O usuário retestou E2E-06 e E2E-07 manualmente em 25/10/2026 e confirmou ambos. Isso não constitui estudo formal de usabilidade nem medição de latência do cancelamento.
 
-## Requisitos Nao Funcionais Opcionais
+## Requisitos de reprodução e distribuição
 
-| ID | Requisito | Comprovacao objetiva |
-|---|---|---|
-| RNF-009 | O projeto pode oferecer modo de demonstracao offline com resultados pre-processados. | Executar a demonstracao sem internet e sem processamento demorado. |
-| RNF-010 | O projeto pode exportar modelos para ONNX se isso facilitar portabilidade. | Gerar arquivo ONNX e executar inferencia com `onnxruntime`. |
-| RNF-011 | O projeto pode registrar comparacao entre CPU, GPU AMD e GPU NVIDIA. | Salvar relatorio de tempo e hardware em `experiments/hardware-spike`. |
+| ID | Requisito | Critério de evidência | Estado |
+|---|---|---|---|
+| REP-01 | Identificar commit, versão de ambiente, dependências, configurações e manifests. | Manifesto/checklist de entrega reproduzível com hashes e localização dos artefatos. | Manifesto preliminar criado; snapshot e hashes finais pendentes. |
+| REP-02 | Distinguir reprodução de métricas da repetição de inferência. | Instruções e recursos necessários separados para cada nível. | Distinção documentada em `docs/entrega_reprodutivel.md`. |
+| REP-03 | Declarar artefatos não incluídos. | Vídeos, pesos, ambientes volumosos/licenciados e requisitos de runtime listados. | Exclusões e build legado documentados; licenças e pacote final pendentes. |
+| REP-04 | Não reabrir TEST para desenvolver ou escolher políticas. | Congelamento, hashes e separação entre código de avaliação e ajuste. | Regra vigente. |
 
-## Checklist de Revisao
+## Fora do que foi demonstrado
 
-- Cada requisito possui identificador unico.
-- Requisitos obrigatorios e opcionais estao separados.
-- Cada requisito possui uma forma objetiva de comprovacao.
-- O escopo minimo permanece alinhado ao plano do TCC.
+- Precisão/recall geral de detecção automática de gols ou taxa de falsos candidatos confirmada por especialistas.
+- Economia de tempo humano ou melhoria de decisão em estudo controlado.
+- Generalização para domínios de câmera/competição não representados no corpus.
+- Empacotamento portátil autocontido ou execução confiável em CPU sem GPU.
+- Integração das políticas V3 experimentais nos modos V4 da interface.

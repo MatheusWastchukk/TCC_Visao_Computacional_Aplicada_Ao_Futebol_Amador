@@ -1,0 +1,6 @@
+# Dependências opcionais para scripts experimentais antigos; não instaladas/validadas no ambiente atual.
+-r requirements.txt
+xgboost==3.2.0
+onnx==1.22.0
+onnxruntime==1.27.0
+ultralytics==8.4.131

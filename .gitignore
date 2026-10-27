@@ -33,6 +33,7 @@ htmlcov/
 
 # Data and generated artifacts
 plano_tcc_jira.md
+!plano_tcc_jira.md
 data/raw/*
 data/clips/*
 data/processed/*
@@ -44,6 +45,12 @@ docs/plans/*
 !docs/plans/92_relatorio_consolidado_implementacoes_aplicacao_13-10-2026.md
 !docs/plans/94_plano_execucao_nested_lomo_fullpool_25_train_14-10-2026.md
 !docs/plans/95_resultados_nested_lomo_fullpool_25_train_14-10-2026.md
+!docs/plans/102_relatorio_atualizacao_artigo_resultados_test_v3_20-10-2026.md
+!docs/plans/application_e2e_matrix_2026-10-20.csv
+!docs/plans/103_auditoria_pos_test_parecer_orientador_plano_final_23-10-2026.md
+!docs/plans/104_plano_piloto_revisao_humana_train.md
+!docs/plans/105_relatorio_direcionamento_final_tcc_25-10-2026.md
+!docs/plans/106_reproducao_limpa_metricas_test_v3_26-10-2026.md
 !docs/plans/96_estado_pos_freeze_e_prontidao_test_14-10-2026.md
 !docs/plans/97_relatorio_execucao_nested_25_train_freeze_v2_14-10-2026.md
 !docs/plans/98_plano_selecao_modos_lomo_no_rescue_v3_14-10-2026.md
@@ -81,7 +88,7 @@ experiments/goal_detection_pilot/outputs/candidates/*
 experiments/goal_detection_pilot/outputs/report_examples/*
 experiments/goal_detection_pilot/outputs/reports/*
 
-# Narrative reports and article-oriented analysis kept locally
+# Local research notes and generated analyses kept outside the repository snapshot.
 docs/relatorio-*.md
 docs/experiment_decisions.md
 docs/mini-software-validacao-geometrica.md
@@ -150,6 +157,8 @@ desktop/*.log
 
 # Entregas locais e artefatos visuais gerados para apresentação.
 Entrega 2/
+# The article is authored in Overleaf; keep local exports out of this repository.
+docs/TCC_Matheus_Wastchuk.tex
 docs/figuras/artigo/*.png
 docs/figuras/artigo/*.jpg
 docs/figuras/artigo/*.jpeg
@@ -268,4 +277,6 @@ experiments/ball/NESTED-TIME-BUDGET-*/nested_time_budget_policy_selection_v1.csv
 !experiments/ball/TIERED-WINDOW-VALIDATION-CONFIRMATION-V1/validation_candidate_scores_net_motion_v1.csv
 !experiments/ball/TIERED-WINDOW-VALIDATION-CONFIRMATION-V1/tiered_window_validation_selected_v1.csv
 docs/plans/92_relatorio_consolidado_implementacoes_aplicacao_13-10-2026.md
-docs/TCC_Matheus_Wastchuk.tex
+
+# Derived embedding excluded from the saved-metrics reproduction package.
+experiments/ball/TEST-V3-FINAL-EVALUATION-20261019/attempt_02/candidate_embeddings_test_v1.npy

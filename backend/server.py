@@ -36,6 +36,7 @@ app = FastAPI(title="Goal Event Review API")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 sessions: dict[str, dict[str, object]] = {}
 annotation_lock = threading.Lock()
+session_persist_lock = threading.Lock()
 telemetry_lock = threading.Lock()
 compilation_jobs: dict[str, dict[str, object]] = {}
 compilation_lock = threading.Lock()
@@ -74,8 +75,9 @@ class CompilationRequest(BaseModel):
 def persist_session(state: dict[str, object]) -> None:
     """Persiste estado operacional e retomada sem expor caminhos na API."""
     path = Path(state["workspace"]) / "session.json"
-    serializable = {key: value for key, value in state.items() if key != "_thread"}
-    write_json_atomic(path, serializable)
+    with session_persist_lock:
+        serializable = {key: value for key, value in state.items() if key not in {"_thread", "_cancel_event"}}
+        write_json_atomic(path, serializable)
 
 
 def restore_sessions() -> None:
@@ -90,6 +92,8 @@ def restore_sessions() -> None:
             state["workspace"] = str(workspace)
             state["output"] = str(workspace / "analysis")
             state.setdefault("video_mode", "clip")
+            state.setdefault("undo_history", [])
+            state["_cancel_event"] = threading.Event()
             renders_changed = False
             for segment_id, render_status in dict(state.get("renders", {})).items():
                 if render_status == "rendering":
@@ -98,7 +102,11 @@ def restore_sessions() -> None:
                     rendered = matching and (manifest.parent / matching.get("clip_filename", "")).is_file()
                     state["renders"][segment_id] = "ready" if rendered else "failed"
                     renders_changed = True
-            if state.get("status") == "running":
+            if state.get("status") == "cancelling":
+                shutil.rmtree(workspace / "analysis", ignore_errors=True)
+                state.update({"status": "cancelled", "stage": "Análise cancelada", "error": None})
+                persist_session(state)
+            elif state.get("status") in {"running", "starting"}:
                 state.update({"status": "interrupted", "stage": "Análise interrompida", "error": "O aplicativo foi fechado durante o processamento. Inicie uma nova análise para processar este vídeo novamente."})
                 persist_session(state)
             elif renders_changed:
@@ -337,11 +345,17 @@ def run_session(session_id: str, request: StartRequest) -> None:
     state = session_or_404(session_id)
     video = Path(request.video_path)
     output = Path(state["output"])
+    cancel_event = state["_cancel_event"]
     started = time.perf_counter()
     try:
         match_id = re.sub(r"[^a-zA-Z0-9_]+", "_", video.stem).strip("_") or "video"
 
+        def check_cancelled() -> None:
+            if cancel_event.is_set():
+                raise InterruptedError("Análise cancelada pelo usuário.")
+
         def progress(label: str, value: float) -> None:
+            check_cancelled()
             elapsed = time.perf_counter() - started
             percentage = max(0.0, min(float(value), 100.0))
             estimate = elapsed / percentage * 100.0 if percentage >= 1.0 else None
@@ -350,6 +364,7 @@ def run_session(session_id: str, request: StartRequest) -> None:
             print(f"[{time.strftime('%H:%M:%S')}] {label} ({percentage:.2f}%)", flush=True)
 
         models = model_paths()
+        check_cancelled()
         analyze_main([
             "--video-path", str(video), "--match-id", match_id, "--mode", request.mode,
             "--output", str(output), "--videos-dir", str(video.parent), "--device", "cuda:0",
@@ -359,10 +374,16 @@ def run_session(session_id: str, request: StartRequest) -> None:
             "--temporal-ranker", str(models["temporal_ranker"]),
             "--visual-verifier", str(models["visual_verifier"]),
             "--fusion-model", str(models["fusion_model"]),
-        ], progress)
-        clips_main(["--segments", str(output / "segments.csv"), "--video", str(video), "--output", str(output / "clips")], progress)
+        ], progress, check_cancelled)
+        check_cancelled()
+        clips_main(["--segments", str(output / "segments.csv"), "--video", str(video), "--output", str(output / "clips")], progress, check_cancelled)
+        check_cancelled()
         print(f"[{time.strftime('%H:%M:%S')}] Análise concluída.", flush=True)
         state.update({"stage": "Concluído", "progress": 100.0, "status": "completed", "elapsed": time.perf_counter() - started, "metrics": device_metrics()})
+        persist_session(state)
+    except InterruptedError:
+        shutil.rmtree(output, ignore_errors=True)
+        state.update({"status": "cancelled", "stage": "Análise cancelada", "error": None, "estimated_total": None, "elapsed": time.perf_counter() - started, "metrics": device_metrics()})
         persist_session(state)
     except Exception as error:
         print(f"[{time.strftime('%H:%M:%S')}] ERRO: {error}", flush=True)
@@ -402,6 +423,7 @@ def start(request: StartRequest) -> dict[str, str]:
         "mode_config_hash": config_hash, "mode_description": OPERATIONAL_MODE_CONFIG[request.mode], "model_hashes": model_hashes,
         "status": "running", "stage": "Iniciando análise", "progress": 0.0, "elapsed": 0.0,
         "estimated_total": None, "metrics": device_metrics(), "renders": {},
+        "undo_history": [], "_cancel_event": threading.Event(),
         "current_segment_id": None, "current_time": 0.0, "review_filter": "all", "auto_advance": False,
     }
     persist_session(sessions[session_id])
@@ -413,9 +435,26 @@ def start(request: StartRequest) -> dict[str, str]:
 def status(session_id: str) -> dict[str, object]:
     state = session_or_404(session_id)
     state["metrics"] = device_metrics()
-    visible = {key: value for key, value in state.items() if key not in {"output", "workspace", "video"}}
+    visible = {key: value for key, value in state.items() if key not in {"output", "workspace", "video", "_thread", "_cancel_event", "undo_history"}}
+    visible["can_undo"] = bool(state.get("undo_history", []))
     visible["video_available"] = Path(str(state.get("video", ""))).is_file()
     return visible
+
+
+@app.post("/sessions/{session_id}/cancel")
+def cancel_analysis(session_id: str) -> dict[str, object]:
+    state = session_or_404(session_id)
+    if state.get("status") == "cancelling":
+        return {"ok": True, "status": "cancelling"}
+    if state.get("status") not in {"running", "starting"}:
+        raise HTTPException(409, "Esta análise não está em processamento.")
+    cancel_event = state.get("_cancel_event")
+    if cancel_event is None:
+        raise HTTPException(409, "Não foi possível acessar o controle de cancelamento desta análise.")
+    cancel_event.set()
+    state.update({"status": "cancelling", "stage": "Cancelando análise"})
+    persist_session(state)
+    return {"ok": True, "status": "cancelling"}
 
 
 @app.get("/sessions")
@@ -579,9 +618,19 @@ def tag(session_id: str, segment_id: str, request: TagRequest) -> dict[str, obje
         rows, fields = load_annotation_rows(output / "clips" / "clips_manifest.csv", output / "clips" / "clip_annotations.csv")
         for row in rows:
             if row["segment_id"] == segment_id:
+                undo_action = None
                 if request.tag is not None:
+                    previous_label = row.get("human_label", "")
+                    previous_status = row.get("annotation_status", "pending")
                     row["human_label"] = request.tag
                     row["annotation_status"] = "completed"
+                    if (previous_label, previous_status) != (request.tag, "completed"):
+                        undo_action = {
+                            "segment_id": segment_id,
+                            "before": {"human_label": previous_label, "annotation_status": previous_status},
+                            "after": {"human_label": request.tag, "annotation_status": "completed"},
+                            "created_at": datetime.now(timezone.utc).isoformat(),
+                        }
                 if request.review_status is not None:
                     if request.review_status == "completed" and not (request.tag or row.get("human_label")):
                         raise HTTPException(400, "Uma revisão sem rótulo humano não pode ser marcada como concluída.")
@@ -591,8 +640,38 @@ def tag(session_id: str, segment_id: str, request: TagRequest) -> dict[str, obje
                 if request.notes is not None:
                     row["notes"] = request.notes
                 write_annotation_rows(output / "clips" / "clip_annotations.csv", fields, rows)
-                return {"ok": True, "clip_filename": row.get("clip_filename", ""), "render_status": "ready"}
+                if undo_action is not None:
+                    history = state.setdefault("undo_history", [])
+                    history.append(undo_action)
+                    persist_session(state)
+                return {"ok": True, "clip_filename": row.get("clip_filename", ""), "render_status": "ready", "can_undo": bool(state.get("undo_history", []))}
     raise HTTPException(404, "Clipe não encontrado.")
+
+
+@app.post("/sessions/{session_id}/undo")
+def undo_last_decision(session_id: str) -> dict[str, object]:
+    state = session_or_404(session_id)
+    with annotation_lock:
+        history = state.setdefault("undo_history", [])
+        if not history:
+            raise HTTPException(409, "Não há decisão recente para desfazer.")
+        action = history[-1]
+        segment_id = str(action.get("segment_id", ""))
+        output = Path(state["output"])
+        rows, fields = load_annotation_rows(output / "clips" / "clips_manifest.csv", output / "clips" / "clip_annotations.csv")
+        row = next((item for item in rows if item.get("segment_id") == segment_id), None)
+        if row is None:
+            raise HTTPException(404, "O clipe da última decisão não foi encontrado.")
+        before = action.get("before", {})
+        after = action.get("after", {})
+        current = {"human_label": row.get("human_label", ""), "annotation_status": row.get("annotation_status", "pending")}
+        if current != after:
+            raise HTTPException(409, "A decisão mudou depois da última ação; atualize a sessão antes de desfazer.")
+        row.update(before)
+        write_annotation_rows(output / "clips" / "clip_annotations.csv", fields, rows)
+        history.pop()
+        persist_session(state)
+        return {"ok": True, "segment_id": segment_id, "restored": before, "can_undo": bool(history)}
 
 
 @app.get("/sessions/{session_id}/export")
@@ -814,7 +893,7 @@ def source(session_id: str) -> FileResponse:
 @app.delete("/sessions/{session_id}")
 def close(session_id: str) -> dict[str, bool]:
     state = session_or_404(session_id)
-    if state.get("status") in {"running", "starting"}:
+    if state.get("status") in {"running", "starting", "cancelling"}:
         raise HTTPException(409, "Não é possível remover uma análise enquanto ela está processando.")
     for job_id, job in list(compilation_jobs.items()):
         if job.get("session_id") == session_id:

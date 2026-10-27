@@ -1,70 +1,40 @@
-# Matriz de Rastreabilidade
+# Rastreabilidade da pergunta, objetivos e evidências
 
-Data de criacao: 29/07/2026
+**Título oficial (mantido):** Detecção e Análise de Eventos em Vídeos de Futebol Utilizando Técnicas de Visão Computacional.
 
-## Objetivos especificos
+## Pergunta de pesquisa
 
-| ID | Objetivo especifico | Tarefas relacionadas | Evidencia esperada |
+Em partidas completas do corpus, quanto da cobertura dos timestamps de gols catalogados pode ser preservada por políticas fixas, selecionadas em TRAIN e aplicadas em TEST, sob diferentes tetos de minutos únicos de vídeo por partida?
+
+## Objetivo geral
+
+Desenvolver e avaliar um protótipo que minera e prioriza trechos potencialmente relacionados a gols em gravações completas de futebol, apoiando a inspeção humana e mensurando a cobertura temporal de eventos catalogados em relação ao volume de vídeo selecionado.
+
+## Matriz de rastreabilidade
+
+| Objetivo | Evidência principal | Conjunto/unidade | Situação e limite |
 |---|---|---|---|
-| OE-001 | Construir uma base organizada de videos de futebol amador para experimentos. | TCC-009, TCC-010, TCC-011, TCC-012, TCC-013 | `data/catalogo_videos.csv`, `data/metadata.csv`, `data/annotations/events.csv` |
-| OE-002 | Implementar um pipeline de leitura, validacao e processamento frame a frame. | TCC-014, TCC-035 | Modulos em `src/`, CLI em `app/cli`, relatorio de compatibilidade |
-| OE-003 | Detectar jogadores, bola e evidencias visuais nos clipes selecionados. | TCC-015, TCC-016, TCC-017, TCC-018 | Resultados estruturados e frames anotados em `outputs/frames` |
-| OE-004 | Rastrear a trajetoria da bola e relaciona-la com a regiao do gol. | TCC-019, TCC-020, TCC-021, TCC-022 | Arquivos de trajetoria, configuracoes de gol e relatorios |
-| OE-005 | Implementar e avaliar a abordagem heuristica de evento de gol. | TCC-007, TCC-023, TCC-024, TCC-025, TCC-031 | Definicao formal do evento, saidas da Abordagem A e metricas finais |
-| OE-006 | Implementar uma segunda abordagem comparavel, temporal ou hibrida. | TCC-026, TCC-027, TCC-028, TCC-029, TCC-032 | Saidas da Abordagem B e evidencias visuais |
-| OE-007 | Comparar cientificamente as abordagens e documentar limitacoes. | TCC-008, TCC-030, TCC-033, TCC-034, TCC-045 | `docs/protocolo-avaliacao.md`, `outputs/reports/comparacao_final.md` |
-| OE-008 | Entregar uma demonstracao reproduzivel para a banca. | TCC-035, TCC-036, TCC-037, TCC-038, TCC-040, TCC-041, TCC-048, TCC-049, TCC-051 | Interface, guia de instalacao, video, slides e pacote final |
-| OE-009 | Validar se a localizacao classica da estrutura do gol e viavel antes da migracao completa para partidas completas. | TCC-008A, TCC-009, TCC-010, TCC-011 | `docs/teste-piloto-localizacao-traves.md`, `experiments/goal_detection_pilot/REPORT.md` |
+| OE-01. Organizar um corpus de partidas completas com catálogos e divisão por partida. | Manifestos do corpus e tabela de corpus em `docs/TCC_Matheus_Wastchuk.tex`. | 42 partidas; 25 TRAIN, 8 VALIDATION, 9 TEST; 264 eventos catalogados. | Organizado; vídeos locais não acompanham a entrega por padrão. |
+| OE-02. Investigar detecção da estrutura do gol e da bola, incluindo falhas de identidade. | Relatórios de goal geometry, bola, tracking e auditorias no histórico. | Amostras e populações indicadas por cada experimento. | Investigado; detector/tracker não é tratado como confirmação automática de gol. |
+| OE-03. Gerar, agrupar e ranquear janelas candidatas. | Scripts e resultados em `experiments/ball/`; implementação local em `app/` e `src/events/`. | Grupos temporais e candidatos por partida. | Implementado para os fluxos registrados; versões experimentais e V4 operacional são distintas. |
+| OE-04. Estimar em TRAIN o compromisso entre seleção, cobertura e custo de vídeo. | Relatórios 95 e 99; Nested LOMO e seleção V3. | 25 partidas, 152 eventos avaliáveis; cobertura e minutos únicos por orçamento. | Executado; resultados LOMO de seleção não são estimativas independentes. |
+| OE-05. Avaliar políticas fixas em partidas TEST reservadas. | Protocolo congelado, manifests e `TEST-V3-FINAL-EVALUATION-20261019/metrics_v1/`. | 9 partidas, 57 timestamps; eventos cobertos e minutos únicos. | Executado uma vez; resultado descritivo, com exposição histórica de duas partidas e anotador único. |
+| OE-06. Disponibilizar ferramenta local para revisão humana e registro de decisões. | Aplicação Electron/React + FastAPI e matriz E2E em `docs/plans/application_e2e_matrix_2026-10-20.csv`. | 13 cenários E2E. | Undo persistente e cancelamento implementados; build/checagens focadas passaram; usuário confirmou os retestes manuais de E2E-06/07 em 25/10. |
+| OE-07. Documentar limites e preservar interpretação correta. | Artigo, relatórios, protocolos e matriz de requisitos. | Evidência separada por população e protocolo. | Em atualização final; sem alegação de precisão ou economia de tempo humano. |
+| OE-08. Preparar entrega reproduzível. | `docs/entrega_reprodutivel.md` e `docs/entrega_reprodutivel_manifesto_v1.json`. | Código, manifests, dependências, configurações, hashes e exclusões. | Plano e manifesto preliminar criados; snapshot final e pacote precisam ser materializados/verificados. |
+| OE-09. Avaliar exploratoriamente o fluxo humano assistido, se aprovado e viável. | Plano de piloto TRAIN-only em `docs/plans/104_plano_piloto_revisao_humana_train.md`. | Revisores, tempo ativo, eventos recuperados, falsos apontamentos e interação. | Condicional; não executado, depende de análise institucional e prazo. |
 
-## Requisitos obrigatorios
+## Interpretação da métrica principal
 
-| Requisito | Tarefa principal | Teste ou comprovacao | Evidencia |
-|---|---|---|---|
-| RF-001 | TCC-014, TCC-035 | Abrir video local valido pelo pipeline ou CLI. | Log de execucao |
-| RF-002 | TCC-014 | Executar com arquivo valido, inexistente e invalido. | Testes de validacao |
-| RF-003 | TCC-014 | Comparar metadados com OpenCV ou `ffprobe`. | Relatorio de compatibilidade |
-| RF-004 | TCC-014 | Conferir contagem de frames processados. | Log ou CSV de processamento |
-| RF-005 | TCC-015 | Revisar amostra de frames com jogadores detectados. | `outputs/frames` |
-| RF-006 | TCC-015, TCC-016, TCC-018 | Medir taxa de frames com bola detectada. | Relatorio baseline |
-| RF-007 | TCC-019 | Exportar trajetoria com frame, timestamp e centro da bola. | CSV/JSON de tracking |
-| RF-008 | TCC-020, TCC-021 | Carregar configuracao de poligono do gol. | Arquivos em `configs/` |
-| RF-018 | TCC-008A | Executar piloto em 3 partidas completas e medir localizacao do gol. | `experiments/goal_detection_pilot/REPORT.md` |
-| RF-019 | TCC-008A, TCC-020, TCC-021 | Gerar intervalos candidatos apos confirmacao temporal da estrutura do gol. | CSV/JSON de janelas candidatas |
-| RF-020 | TCC-007, TCC-008A, TCC-023, TCC-028 | Conferir casos sem condicao visual suficiente e retorno `NOT_EVALUABLE`. | Relatorio de avaliacao e erros |
-| RF-009 | TCC-007, TCC-023, TCC-024, TCC-025 | Rodar regras da Abordagem A em clipes anotados. | Definicao formal e relatorio da Abordagem A |
-| RF-010 | TCC-026, TCC-027, TCC-028, TCC-029 | Rodar Abordagem B no mesmo formato de saida. | Relatorio da Abordagem B |
-| RF-011 | TCC-025, TCC-029 | Conferir frame representativo para cada evento candidato. | `outputs/frames/approach_a`, `outputs/frames/approach_b` |
-| RF-012 | TCC-008, TCC-031, TCC-032, TCC-033 | Conferir metricas exportadas e calculos. | `outputs/reports` |
-| RF-013 | TCC-036, TCC-037, TCC-038 | Completar fluxo de demonstracao local. | Screenshots e video curto |
-| RNF-001 | TCC-004, TCC-040 | Executar instalacao e testes no Windows 11. | `docs/environment-check.md` |
-| RNF-002 | TCC-004, TCC-005 | Executar verificacao e inferencia em CPU. | `experiments/hardware-spike/relatorio.md` |
-| RNF-003 | TCC-014, TCC-035, TCC-037 | Simular erros de entrada e conferir mensagens. | Testes e logs |
-| RNF-004 | TCC-003, TCC-004, TCC-030, TCC-040 | Versionar dependencias, configuracoes e manifests. | Git, `requirements.txt`, documentos |
-| RNF-005 | TCC-020, TCC-021, TCC-024, TCC-041 | Validar uso de arquivos em `configs/`. | Configuracoes versionadas |
-| RNF-006 | TCC-011, TCC-014, TCC-038 | Executar somente com arquivos locais. | Checklist de demonstracao |
-| RNF-007 | TCC-008A, TCC-011, TCC-014 | Validar metadados de partidas completas e registrar taxa de amostragem. | `experiments/goal_detection_pilot/matches.csv` |
-| RNF-008 | TCC-001, TCC-030, TCC-051 | Conferir `git status` e `.gitignore` antes de commits. | Historico Git |
+Um evento catalogado é coberto quando seu timestamp humano congelado pertence a pelo menos um intervalo selecionado, usando inclusão fechada: início do intervalo ≤ timestamp ≤ fim do intervalo. A cobertura divide o número de timestamps avaliáveis cobertos pelo total de timestamps avaliáveis do protocolo. A avaliação final TEST usa tolerância adicional zero.
 
-## Metricas
+Cobertura do Candidate Pool utiliza todas as janelas antes do corte. Cobertura da shortlist utiliza somente as janelas entregues pela política. Nenhuma das duas medidas fornece, por si, precisão de detecção ou taxa de falsos positivos. Minutos únicos são a duração da união dos intervalos e não equivalem ao tempo humano para revisar.
 
-| Metrica | Experimento ou tarefa | Metodo de coleta | Evidencia |
-|---|---|---|---|
-| Precisao de evento | TCC-031, TCC-032, TCC-033 | Matriz de confusao contra `data/annotations/events.csv`. | Relatorio final |
-| Revocacao de evento | TCC-031, TCC-032, TCC-033 | Matriz de confusao contra `data/annotations/events.csv`. | Relatorio final |
-| F1-score de evento | TCC-031, TCC-032, TCC-033 | Media harmonica entre precisao e revocacao. | Relatorio final |
-| Taxa de frames com bola detectada | TCC-015, TCC-018 | Frames com deteccao de bola / frames processados. | Relatorio baseline |
-| Continuidade da trajetoria | TCC-019, TCC-031 | Percentual de frames sucessivos com posicao estimada. | CSV de tracking |
-| Interrupcoes de tracking | TCC-019, TCC-031 | Contagem de lacunas maiores que limite configurado. | CSV de tracking |
-| Tempo total | TCC-005, TCC-031, TCC-032 | Cronometragem da execucao por clipe e hardware. | Relatorios de experimento |
-| FPS de processamento | TCC-005, TCC-031, TCC-032 | Frames processados / tempo total. | Relatorios de experimento |
-| Uso aproximado de memoria | TCC-005, TCC-031, TCC-032 | Registro do sistema ou biblioteca de monitoramento. | Relatorio de hardware |
-| F1 de localizacao do gol | TCC-008A | Matriz de confusao frame a frame contra anotacao do piloto. | `experiments/goal_detection_pilot/REPORT.md` |
-| IoU medio da estrutura do gol | TCC-008A | Comparar bbox ou poligono automatico com anotacao manual. | `experiments/goal_detection_pilot/REPORT.md` |
-| Falsos candidatos por hora | TCC-008A | Executar trechos continuos e revisar candidatos manualmente. | `experiment_matrix.csv` e `REPORT.md` |
+## Hierarquia dos resultados
 
-## Checklist de aceite da TCC-003
-
-- Nenhum objetivo especifico ficou sem tarefa correspondente.
-- Nenhum requisito obrigatorio ficou sem teste ou comprovacao.
-- Nenhuma metrica ficou sem metodo de coleta.
-- A matriz deve ser atualizada quando novos requisitos, tarefas ou metricas forem alterados.
+1. **Nested LOMO TRAIN:** estimativa do procedimento de seleção em folds por partida.
+2. **Seleção LOMO TRAIN:** valores usados para escolher configurações; sujeitos a viés de seleção.
+3. **TEST V3:** cobertura descritiva de políticas fixas em timestamps congelados.
+4. **V4 VALIDATION:** evidência operacional histórica em conjunto consultado durante o desenvolvimento.
+5. **E2E da aplicação:** verificação funcional manual; não mede desempenho científico nem usabilidade geral.
+6. **Piloto com revisores:** futuro, exploratório e TRAIN-only, se aprovado.

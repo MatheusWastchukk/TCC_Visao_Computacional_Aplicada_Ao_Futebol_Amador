@@ -71,10 +71,10 @@ def main() -> int:
     inference_manifest_path = inference / "inference_manifest_test_v1.json"
     if not inference_manifest_path.is_file():
         raise FileNotFoundError(f"Inferência ainda não concluída: {inference_manifest_path}")
-    inference_manifest = json.loads(inference_manifest_path.read_text(encoding="utf-8"))
+    inference_manifest = json.loads(inference_manifest_path.read_text(encoding="utf-8-sig"))
     if inference_manifest.get("status") != "TEST_V3_INFERENCE_COMPLETE" or inference_manifest.get("catalog_loaded_by_inference") is not False:
         raise RuntimeError("Manifesto de inferência inválido ou que não garante separação do catálogo.")
-    freeze = json.loads(args.catalog_freeze.read_text(encoding="utf-8"))
+    freeze = json.loads(args.catalog_freeze.read_text(encoding="utf-8-sig"))
     if freeze.get("status") != "HUMAN_TEST_CATALOG_FROZEN":
         raise RuntimeError("Catálogo humano TEST não está congelado.")
     catalog_path = ROOT / freeze["catalog_path"]
