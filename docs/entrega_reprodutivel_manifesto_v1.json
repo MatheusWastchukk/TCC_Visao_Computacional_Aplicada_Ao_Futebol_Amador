@@ -7,9 +7,10 @@
     "base_commit": "65745a5553da7b7f1563b410e3651e268bccb228",
     "working_tree_clean": false,
     "current_documents_and_artifacts_match_commit": false,
-    "note": "Working tree remains dirty. A temporary validation snapshot passed npm install/build and metrics aggregation; it is not a release snapshot. No article assets are included.",
+    "note": "The inventory records the pre-release source snapshot captured from base commit 65745a5. The selected local source snapshot was committed as 2fddf5a; the package remains DRAFT_NOT_A_RELEASE and no distribution occurred.",
     "dirty_file_count": 33,
-    "inventory_note": "Inventory excludes this manifest and its detached checksum; ignored local article export and derived embedding are listed under not_included_by_default."
+    "inventory_note": "Inventory excludes this manifest and its detached checksum; ignored local article export and derived embedding are listed under not_included_by_default.",
+    "snapshot_commit": "2fddf5a"
   },
   "application": {
     "current_ui": "Electron/React + FastAPI, operational V4",
@@ -488,8 +489,8 @@
     {
       "path": "plano_tcc_jira.md",
       "git_status": "MODIFIED",
-      "size_bytes": 15026,
-      "sha256": "A124BE112786ACD2090779E0FEDB59D70BA07E9DBD9E42839E7B85D86CD57FD3",
+      "size_bytes": 15332,
+      "sha256": "9F63C6CF987D2A32FC8E41BCD4ECFA0B957D2578F48A648E879A8E3631D24F5F",
       "review_before_snapshot": true
     },
     {

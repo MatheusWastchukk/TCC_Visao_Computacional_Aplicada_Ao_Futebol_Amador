@@ -126,7 +126,7 @@ A matriz e o Relatório 103 agora registram os dois retestes manuais como aprova
 - [x] README e plano de reprodução delimitam o pacote a código, ambiente e evidências locais.
 - [x] Corrigido o manifesto JSON preliminar e registradas as versoes observadas do ambiente.
 - [ ] Instalar em ambiente limpo e confirmar a receita Python/ROCm documentada; ainda não executado.
-- [ ] Criar snapshot/commit local após auditoria seletiva de todos os arquivos pendentes.
+- [x] Criado snapshot/commit local seletivo após auditoria: `2fddf5a`; branch `main` ficou um commit à frente de `origin/main`; sem push.
 
 
 ### Revisão do repositório e ambiente (26/10/2026)
@@ -144,5 +144,6 @@ A matriz e o Relatório 103 agora registram os dois retestes manuais como aprova
 - [x] Snapshot temporário da árvore-fonte validado: `npm ci`, `npm ls --depth=0`, audit npm sem vulnerabilidades, build Vite e reprodução das métricas passaram. O snapshot exclui assets locais do artigo e não contém dados/pesos não versionados.
 - [x] Criada auditoria preliminar de licenças; confirmadas pendências do código autoral, dados/derivados, Ultralytics e ffmpeg-static. Ultralytics movido para o grupo Python opcional de experimentos.
 - [x] Inventario revisado: relatórios 94-106 e matriz E2E classificados como registros do projeto; seleção do subconjunto de distribuição permanece condicionada à revisão de direitos.
-- [ ] Instalar os grupos opcionais e a receita base em cópia limpa; isso ainda não foi feito.
-- [ ] Revisar autorizações/licenças, finalizar manifesto e criar snapshot/commit local após staging seletivo.
+- [ ] Instalar a receita Python/ROCm e os grupos opcionais numa cópia limpa; o snapshot validou somente desktop e reprodução de métricas.
+- [x] Criado commit local seletivo `2fddf5a`; nenhum vídeo, peso, cache, embedding, ambiente virtual ou arquivo do artigo foi incluído.
+- [ ] Confirmar licença do código e autorização para os CSVs derivados/dados externos; concluir a revisão de FFmpeg e atualizar o manifesto para release somente após essa decisão.
