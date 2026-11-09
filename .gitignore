@@ -8,6 +8,22 @@ __pycache__/
 .venv-rfdetr/
 .venv-dml/
 .venv-rocm/
+.venv-cpu/
+.venv-cuda/
+build/
+dist/
+# Binários, instaladores e arquivos de distribuição gerados localmente.
+*.exe
+*.dll
+*.msi
+*.msix
+*.7z
+*.zip
+*.tar
+*.tar.gz
+*.tar.xz
+*.whl
+*.dmp
 .rocm_cache/
 .tmp/
 venv/
