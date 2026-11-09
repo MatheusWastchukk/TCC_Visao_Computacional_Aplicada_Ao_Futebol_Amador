@@ -48,6 +48,16 @@ Esses resultados medem cobertura temporal de timestamps catalogados. Não medem 
 
 O aplicativo Electron atual depende de Node.js/npm, Python, PyTorch, modelos locais e FFmpeg. O ambiente de desenvolvimento foi configurado para Windows e GPU AMD/ROCm. O build Vite compila a interface; ele não empacota o ambiente Python, os pesos nem todo o runtime de FFmpeg.
 
+A preparação do pacote Windows/CPU está documentada em [docs/build_cpu.md](docs/build_cpu.md).
+O backend de linha de comando usa CPU por padrão. O build CPU reúne backend, modelos e FFmpeg em
+um pacote preliminar para teste; a validação em outro computador permanece separada
+da compilação local.
+
+O pacote completo 0.4.2 inclui os três ambientes e apresenta CPU, GPU NVIDIA e
+GPU AMD na abertura, com validação antes de iniciar a análise. Construção,
+preparação offline e limites de compatibilidade estão em
+[docs/processing_modes_042.md](docs/processing_modes_042.md).
+
 Há em `release/GoalEventReview/` uma saída antiga PyInstaller baseada em PySide6. Ela não corresponde ao aplicativo Electron V4 validado em outubro e não deve ser usada como prova de pacote portátil atual.
 
 Consulte `docs/entrega_reprodutivel.md` para preparar uma cópia do repositório. A escrita e compilação do artigo acontecem no Overleaf e não são etapas deste ambiente local.
