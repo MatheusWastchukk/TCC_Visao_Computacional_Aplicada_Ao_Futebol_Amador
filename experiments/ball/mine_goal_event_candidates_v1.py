@@ -140,11 +140,14 @@ def deduplicate_ball_predictions(
 def collect_hits(
     video: dict[str, str], videos_dir: Path, goal_model: YOLO, ball_model: YOLO, args: argparse.Namespace,
     progress: Callable[[int, int], None] | None = None,
+    diagnostics: dict[str, float | int] | None = None,
 ) -> list[Hit]:
     capture = cv2.VideoCapture(str(videos_dir / video["video_filename"]))
     if not capture.isOpened():
         raise FileNotFoundError(videos_dir / video["video_filename"])
     hits: list[Hit] = []
+    profile = {"video_read_seconds": 0.0, "goal_inference_seconds": 0.0,
+               "ball_inference_seconds": 0.0, "sampled_frames": 0, "ball_calls": 0}
     try:
         fps = float(capture.get(cv2.CAP_PROP_FPS) or 30.0)
         total_frames = max(1, int(capture.get(cv2.CAP_PROP_FRAME_COUNT) or 1))
@@ -153,7 +156,13 @@ def collect_hits(
         last_console_progress = -1
         frame_index = -1
         while True:
-            ok, frame = capture.read()
+            read_started = time.perf_counter()
+            if getattr(args, "sampled_decode", False):
+                ok = capture.grab()
+                frame = None
+            else:
+                ok, frame = capture.read()
+            profile["video_read_seconds"] += time.perf_counter() - read_started
             if not ok:
                 break
             frame_index += 1
@@ -166,17 +175,29 @@ def collect_hits(
                     last_console_progress = percent
             if frame_index % step:
                 continue
+            if getattr(args, "sampled_decode", False):
+                read_started = time.perf_counter()
+                ok, frame = capture.retrieve()
+                profile["video_read_seconds"] += time.perf_counter() - read_started
+                if not ok or frame is None:
+                    raise RuntimeError(f"Não foi possível recuperar o quadro {frame_index} do vídeo.")
+            profile["sampled_frames"] += 1
+            inference_started = time.perf_counter()
             goal_result = goal_model.predict(
                 source=frame, conf=args.goal_confidence, imgsz=args.goal_imgsz,
                 device=args.device, verbose=False,
             )[0]
+            profile["goal_inference_seconds"] += time.perf_counter() - inference_started
             goal_predictions = predictions(goal_result)
             if not goal_predictions:
                 continue
+            inference_started = time.perf_counter()
             ball_result = ball_model.predict(
                 source=frame, conf=args.ball_confidence, imgsz=args.ball_imgsz,
                 device=args.device, verbose=False,
             )[0]
+            profile["ball_inference_seconds"] += time.perf_counter() - inference_started
+            profile["ball_calls"] += 1
             ball_predictions = predictions(ball_result)
             if args.roi_imgsz is not None:
                 height, width = frame.shape[:2]
@@ -188,10 +209,13 @@ def collect_hits(
                 right = min(width, int(goal_box[2] + args.roi_lateral_goal_widths * goal_width))
                 bottom = min(height, int(goal_box[3] + args.roi_below_goal_heights * goal_height))
                 if right > left and bottom > top:
+                    inference_started = time.perf_counter()
                     crop_result = ball_model.predict(
                         source=frame[top:bottom, left:right], conf=args.ball_confidence,
                         imgsz=args.roi_imgsz, device=args.device, verbose=False,
                     )[0]
+                    profile["ball_inference_seconds"] += time.perf_counter() - inference_started
+                    profile["ball_calls"] += 1
                     crop_predictions = predictions(crop_result)
                     ball_predictions.extend((
                         ((box[0]+left, box[1]+top, box[2]+left, box[3]+top), confidence)
@@ -220,6 +244,8 @@ def collect_hits(
                 ))
     finally:
         capture.release()
+        if diagnostics is not None:
+            diagnostics.update(profile)
     return hits
 
 
@@ -304,6 +330,7 @@ def main(
     parser.add_argument("--clip-pre-seconds", type=float, default=10.0)
     parser.add_argument("--clip-post-seconds", type=float, default=20.0)
     parser.add_argument("--device", default="cpu")
+    parser.add_argument("--sampled-decode", action="store_true", help="Recupera imagens somente nos quadros amostrados, mantendo seus índices.")
     args = parser.parse_args(argv)
     if args.analysis_fps <= 0 or args.minimum_hits < 1 or args.max_candidates_per_match < 1:
         raise ValueError("analysis-fps, minimum-hits e max-candidates-per-match devem ser positivos.")
@@ -342,12 +369,14 @@ def main(
                     print(f"{video['match_id']}: {percent}% do vídeo analisado", flush=True)
                     last_console_progress[0] = percent
 
-        hits = collect_hits(video, args.videos_dir, goal_model, ball_model, args, report_frames)
+        diagnostics: dict[str, float | int] = {}
+        hits = collect_hits(video, args.videos_dir, goal_model, ball_model, args, report_frames, diagnostics)
         groups = group_hits(hits, args.merge_gap_seconds, args.minimum_hits)
         selected = select_diverse_groups(groups, args)
         summary_by_match[video["match_id"]] = {
             "hits": len(hits), "groups": len(groups), "selected": len(selected),
             "elapsed_seconds": round(time.perf_counter() - match_started, 3),
+            "runtime_profile": diagnostics,
         }
         for hit in hits:
             all_frame_rows.append({

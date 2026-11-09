@@ -67,6 +67,7 @@ def main(
     parser.add_argument("--ball-imgsz", type=int, default=960, help="Resolução da busca BALL global durante mineração.")
     parser.add_argument("--roi-imgsz", type=int, default=None, help="Ativa a ablação de crop BALL em alta resolução.")
     parser.add_argument("--device", default="cpu")
+    parser.add_argument("--sampled-decode", action="store_true", help="Evita recuperar imagens dos quadros descartados na mineração.")
     parser.add_argument("--encoder-weights", type=Path, help="Pesos locais do ResNet18 para execução sem download.")
     parser.add_argument("--resume", action="store_true", help="Retoma após mineração concluída sem repetir os hits já gerados.")
     parser.add_argument("--mode", choices=sorted(MODES), default="cobertura_reduzida")
@@ -116,6 +117,7 @@ def main(
                  "--max-candidates-per-match", "60", "--output", str(miner_output),
                  "--device", str(args.device)]
                 + (["--roi-imgsz", str(args.roi_imgsz)] if args.roi_imgsz is not None else [])
+                + (["--sampled-decode"] if args.sampled_decode else [])
                 + (["--video-path", str(args.video_path), "--video-id", args.match_id] if args.allow_arbitrary_video else []),
                 report if progress or cancel_check else None,
             )

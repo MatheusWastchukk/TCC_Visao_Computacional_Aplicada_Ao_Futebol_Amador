@@ -1,4 +1,4 @@
-﻿"""API local para o aplicativo Electron de análise de lances."""
+"""API local para o aplicativo Electron de análise de lances."""
 from __future__ import annotations
 
 import csv
@@ -18,7 +18,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import cv2
-import psutil
 import torch
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -29,8 +28,8 @@ from app.analyze_match import main as analyze_main
 from app.generate_segment_clips import main as clips_main
 from app.generate_segment_clips import FFMPEG, render_clip
 from app.review_storage import load_annotation_rows, read_csv, read_json, write_annotation_rows, write_json_atomic
-
 from app.runtime import encoder_weights_path, processing_device, resource_root, session_root
+from app.process_metrics import ProcessMetrics
 from app.version import VERSION
 
 ROOT = resource_root()
@@ -44,6 +43,7 @@ telemetry_lock = threading.Lock()
 compilation_jobs: dict[str, dict[str, object]] = {}
 compilation_lock = threading.Lock()
 gpu_utilization_supported: bool | None = None
+process_metrics = ProcessMetrics()
 
 
 class StartRequest(BaseModel):
@@ -166,29 +166,29 @@ def model_paths() -> dict[str, Path]:
 
 def device_metrics() -> dict[str, object]:
     global gpu_utilization_supported
-    process = psutil.Process(os.getpid())
     device = processing_device()
     metrics: dict[str, object] = {
         "processor": "GPU" if device.startswith("cuda") else "CPU",
-        "process_cpu_percent": round(process.cpu_percent(interval=None), 1),
-        "process_ram_mb": round(process.memory_info().rss / 1024**2, 1),
-        "process_ram_percent": round(process.memory_percent(), 2),
+        "processing_device": device,
+        **process_metrics.sample(),
         "cpu_name": platform.processor() or platform.uname().processor or "CPU do sistema",
+        "opencv_threads": cv2.getNumThreads(),
     }
-    if device.startswith("cuda"):
+    if metrics["processor"] == "GPU":
+        index = int(device.split(":")[1])
         try:
-            free_bytes, total_bytes = torch.cuda.mem_get_info(0)
+            free_bytes, total_bytes = torch.cuda.mem_get_info(index)
             used_bytes = total_bytes - free_bytes
             metrics.update({
-                "device_name": torch.cuda.get_device_name(0),
+                "device_name": torch.cuda.get_device_name(index),
                 "gpu_memory_used_mb": round(used_bytes / 1024**2, 1),
                 "gpu_memory_total_mb": round(total_bytes / 1024**2, 1),
                 "gpu_memory_percent": round(used_bytes / total_bytes * 100, 1),
-                "gpu_process_memory_mb": round(torch.cuda.memory_allocated(0) / 1024**2, 1),
+                "gpu_process_memory_mb": round(torch.cuda.memory_allocated(index) / 1024**2, 1),
             })
             if gpu_utilization_supported is not False:
                 try:
-                    metrics["gpu_utilization_percent"] = torch.cuda.utilization(0)
+                    metrics["gpu_utilization_percent"] = torch.cuda.utilization(index)
                     gpu_utilization_supported = True
                 except Exception:
                     gpu_utilization_supported = False
@@ -351,6 +351,10 @@ def run_session(session_id: str, request: StartRequest) -> None:
     output = Path(state["output"])
     cancel_event = state["_cancel_event"]
     started = time.perf_counter()
+    stage_started = started
+    current_stage = "startup"
+    state["stage_seconds"] = {}
+    state["stage_torch_threads"] = {}
     try:
         match_id = re.sub(r"[^a-zA-Z0-9_]+", "_", video.stem).strip("_") or "video"
 
@@ -359,7 +363,18 @@ def run_session(session_id: str, request: StartRequest) -> None:
                 raise InterruptedError("Análise cancelada pelo usuário.")
 
         def progress(label: str, value: float) -> None:
+            nonlocal stage_started, current_stage
             check_cancelled()
+            stage = ("mining" if label.startswith("Mineração") else
+                     "ranking" if label.startswith("Ranking") else
+                     "segments" if label.startswith(("União", "Segmentos")) else "clips")
+            if stage != current_stage:
+                now = time.perf_counter()
+                state["stage_torch_threads"][current_stage] = torch.get_num_threads()
+                timings = state["stage_seconds"]
+                timings[current_stage] = timings.get(current_stage, 0.0) + now - stage_started
+                current_stage, stage_started = stage, now
+            state["stage_torch_threads"][stage] = torch.get_num_threads()
             elapsed = time.perf_counter() - started
             percentage = max(0.0, min(float(value), 100.0))
             estimate = elapsed / percentage * 100.0 if percentage >= 1.0 else None
@@ -373,7 +388,7 @@ def run_session(session_id: str, request: StartRequest) -> None:
         analyze_main([
             "--video-path", str(video), "--match-id", match_id, "--mode", request.mode,
             "--output", str(output), "--videos-dir", str(video.parent), "--device", processing_device(),
-            "--allow-arbitrary-video", "--split-manifest", str(ROOT / "experiments/datasets/dataset_split_v1.csv"),
+            "--allow-arbitrary-video", "--sampled-decode", "--split-manifest", str(ROOT / "experiments/datasets/dataset_split_v1.csv"),
             "--goal-model", str(models["goal_detector"]),
             "--ball-model", str(models["ball_detector"]),
             "--temporal-ranker", str(models["temporal_ranker"]),
@@ -381,9 +396,12 @@ def run_session(session_id: str, request: StartRequest) -> None:
             "--fusion-model", str(models["fusion_model"]),
         ] + (["--encoder-weights", str(encoder_weights)] if encoder_weights is not None else []), progress, check_cancelled)
         check_cancelled()
+        progress("Gerando clipes H.264", 85)
         clips_main(["--segments", str(output / "segments.csv"), "--video", str(video), "--output", str(output / "clips")], progress, check_cancelled)
         check_cancelled()
         print(f"[{time.strftime('%H:%M:%S')}] Análise concluída.", flush=True)
+        timings = state["stage_seconds"]
+        timings[current_stage] = timings.get(current_stage, 0.0) + time.perf_counter() - stage_started
         state.update({"stage": "Concluído", "progress": 100.0, "status": "completed", "elapsed": time.perf_counter() - started, "metrics": device_metrics()})
         persist_session(state)
     except InterruptedError:
@@ -711,6 +729,10 @@ def export_review(session_id: str, format: str = Query(pattern="^(csv|json)$")) 
             "mode": state.get("mode"), "created_at": state.get("created_at"),
             "app_version": state.get("app_version"), "pipeline_version": state.get("pipeline_version"),
             "mode_config_hash": state.get("mode_config_hash"), "model_hashes": state.get("model_hashes", {}),
+            "processing_seconds": state.get("elapsed"),
+            "stage_seconds": state.get("stage_seconds", {}),
+            "stage_torch_threads": state.get("stage_torch_threads", {}),
+            "hardware": state.get("metrics", {}),
             "candidates": export_rows,
         })
         media_type = "application/json"
