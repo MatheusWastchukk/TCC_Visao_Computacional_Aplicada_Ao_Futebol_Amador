@@ -21,6 +21,11 @@
     "**/release/**",
     "**/desktop/node_modules/**",
     "**/desktop/dist/**",
-    "**/desktop/.vite/**"
-  ]
+    "**/desktop/.vite/**",
+    "**/build/**",
+    "**/dist/**",
+    "**/.tmp/**"
+  ],
+  "python-envs.workspaceSearchPaths": [],
+  "python.useEnvironmentsExtension": false
 }

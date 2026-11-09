@@ -1,4 +1,4 @@
-param([switch]$RebuildEngines)
+﻿param([switch]$RebuildEngines)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 function Invoke-Checked {
@@ -23,7 +23,8 @@ try {
     if (-not (Test-Path -LiteralPath 'build/tools/7zip/7zr.exe')) {
         Invoke-Checked '.venv-cpu/Scripts/python.exe' @('scripts/fetch_packaging_tools.py')
     }
-    Invoke-Checked '.venv-cpu/Scripts/python.exe' @('scripts/package_complete.py','--source','dist/complete/win-unpacked',
+    Invoke-Checked '.venv-cpu/Scripts/python.exe' @('scripts/run_guarded.py','--min-free-gb','3',
+      '--report','build/guard/package_042.json','--','.venv-cpu/Scripts/python.exe','scripts/package_complete.py','--source','dist/complete/win-unpacked',
       '--output',"dist/complete/GoalEventReview-$($package.version)-offline-x64.exe")
     Write-Host 'Pacote completo offline gerado. Os três componentes serão preparados apenas na primeira abertura.'
 } finally { Pop-Location }
