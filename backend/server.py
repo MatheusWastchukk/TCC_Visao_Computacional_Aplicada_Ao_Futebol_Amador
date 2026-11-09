@@ -30,8 +30,11 @@ from app.generate_segment_clips import main as clips_main
 from app.generate_segment_clips import FFMPEG, render_clip
 from app.review_storage import load_annotation_rows, read_csv, read_json, write_annotation_rows, write_json_atomic
 
-ROOT = Path(__file__).resolve().parents[1]
-SESSION_ROOT = ROOT / "outputs" / "review_app" / "sessions"
+from app.runtime import encoder_weights_path, processing_device, resource_root, session_root
+from app.version import VERSION
+
+ROOT = resource_root()
+SESSION_ROOT = session_root()
 app = FastAPI(title="Goal Event Review API")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 sessions: dict[str, dict[str, object]] = {}
@@ -164,14 +167,15 @@ def model_paths() -> dict[str, Path]:
 def device_metrics() -> dict[str, object]:
     global gpu_utilization_supported
     process = psutil.Process(os.getpid())
+    device = processing_device()
     metrics: dict[str, object] = {
-        "processor": "GPU" if torch.cuda.is_available() else "CPU",
+        "processor": "GPU" if device.startswith("cuda") else "CPU",
         "process_cpu_percent": round(process.cpu_percent(interval=None), 1),
         "process_ram_mb": round(process.memory_info().rss / 1024**2, 1),
         "process_ram_percent": round(process.memory_percent(), 2),
         "cpu_name": platform.processor() or platform.uname().processor or "CPU do sistema",
     }
-    if torch.cuda.is_available():
+    if device.startswith("cuda"):
         try:
             free_bytes, total_bytes = torch.cuda.mem_get_info(0)
             used_bytes = total_bytes - free_bytes
@@ -365,16 +369,17 @@ def run_session(session_id: str, request: StartRequest) -> None:
 
         models = model_paths()
         check_cancelled()
+        encoder_weights = encoder_weights_path()
         analyze_main([
             "--video-path", str(video), "--match-id", match_id, "--mode", request.mode,
-            "--output", str(output), "--videos-dir", str(video.parent), "--device", "cuda:0",
+            "--output", str(output), "--videos-dir", str(video.parent), "--device", processing_device(),
             "--allow-arbitrary-video", "--split-manifest", str(ROOT / "experiments/datasets/dataset_split_v1.csv"),
             "--goal-model", str(models["goal_detector"]),
             "--ball-model", str(models["ball_detector"]),
             "--temporal-ranker", str(models["temporal_ranker"]),
             "--visual-verifier", str(models["visual_verifier"]),
             "--fusion-model", str(models["fusion_model"]),
-        ], progress, check_cancelled)
+        ] + (["--encoder-weights", str(encoder_weights)] if encoder_weights is not None else []), progress, check_cancelled)
         check_cancelled()
         clips_main(["--segments", str(output / "segments.csv"), "--video", str(video), "--output", str(output / "clips")], progress, check_cancelled)
         check_cancelled()
@@ -393,7 +398,7 @@ def run_session(session_id: str, request: StartRequest) -> None:
 
 @app.get("/health")
 def health() -> dict[str, str]:
-    return {"status": "ok", "version": "0.4.0"}
+    return {"status": "ok", "version": VERSION}
 
 
 @app.post("/sessions")
@@ -417,7 +422,7 @@ def start(request: StartRequest) -> dict[str, str]:
     sessions[session_id] = {
         "workspace": str(workspace), "output": str(workspace / "analysis"), "video": request.video_path,
         "session_id": session_id, "video_name": Path(request.video_path).name, "mode": request.mode,
-        "created_at": datetime.now(timezone.utc).isoformat(), "app_version": "0.4.0", "pipeline_version": "V4",
+        "created_at": datetime.now(timezone.utc).isoformat(), "app_version": VERSION, "pipeline_version": "V4",
         "video_fps": video_fps if video_fps > 0 else None,
         "video_duration_seconds": video_duration,
         "mode_config_hash": config_hash, "mode_description": OPERATIONAL_MODE_CONFIG[request.mode], "model_hashes": model_hashes,

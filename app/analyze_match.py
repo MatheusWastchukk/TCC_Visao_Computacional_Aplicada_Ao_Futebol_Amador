@@ -67,6 +67,7 @@ def main(
     parser.add_argument("--ball-imgsz", type=int, default=960, help="Resolução da busca BALL global durante mineração.")
     parser.add_argument("--roi-imgsz", type=int, default=None, help="Ativa a ablação de crop BALL em alta resolução.")
     parser.add_argument("--device", default="cpu")
+    parser.add_argument("--encoder-weights", type=Path, help="Pesos locais do ResNet18 para execução sem download.")
     parser.add_argument("--resume", action="store_true", help="Retoma após mineração concluída sem repetir os hits já gerados.")
     parser.add_argument("--mode", choices=sorted(MODES), default="cobertura_reduzida")
     parser.add_argument("--output", type=Path, required=True)
@@ -125,7 +126,10 @@ def main(
         if not groups:
             raise RuntimeError("A mineração não produziu grupos temporais elegíveis.")
         temporal = select_wide_pool(groups, joblib.load(args.temporal_ranker))
-        visual = visual_scores(temporal, args.videos_dir, args.visual_verifier, cancel_check=cancel_check)
+        visual = visual_scores(
+            temporal, args.videos_dir, args.visual_verifier,
+            cancel_check=cancel_check, encoder_weights=args.encoder_weights,
+        )
         if cancel_check:
             cancel_check()
         candidates = fusion_scores(visual, args.fusion_model)

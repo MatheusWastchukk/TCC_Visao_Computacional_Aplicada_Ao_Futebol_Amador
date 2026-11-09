@@ -45,6 +45,7 @@ def read_clip_frames(video_path: Path, start: float, end: float, count: int = 8)
 def visual_scores(
     candidates: Iterable[dict[str, str]], videos_dir: Path, verifier_path: Path,
     torch_threads: int = 4, cancel_check: Callable[[], None] | None = None,
+    encoder_weights: Path | None = None,
 ) -> list[dict[str, str]]:
     """Aplica o verificador congelado como escore de reordenação, nunca como decisão binária."""
     rows = [dict(row) for row in candidates]
@@ -53,7 +54,13 @@ def visual_scores(
         raise ValueError("Contrato incompatível do verificador visual congelado.")
     torch.set_num_threads(torch_threads)
     transform = ResNet18_Weights.DEFAULT.transforms()
-    encoder = resnet18(weights=ResNet18_Weights.DEFAULT)
+    if encoder_weights is None:
+        encoder = resnet18(weights=ResNet18_Weights.DEFAULT)
+    else:
+        if not encoder_weights.is_file():
+            raise FileNotFoundError(f"Pesos locais do ResNet18 ausentes: {encoder_weights}")
+        encoder = resnet18(weights=None)
+        encoder.load_state_dict(torch.load(encoder_weights, map_location="cpu", weights_only=True))
     encoder.fc = torch.nn.Identity()
     encoder.eval()
     batches: list[torch.Tensor] = []

@@ -1,0 +1,3 @@
+# Ferramentas usadas apenas na construção e validação do pacote.
+pyinstaller==6.22.3
+pytest==8.3.5

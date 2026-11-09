@@ -2,6 +2,8 @@ const { app, BrowserWindow, dialog, ipcMain, Menu } = require('electron');
 const { spawn } = require('child_process');
 const http = require('http');
 const path = require('path');
+const { backendCommand } = require('./backend-command.cjs');
+const { version } = require('../package.json');
 
 let api;
 const activeDownloads = new Map();
@@ -12,7 +14,7 @@ function apiIsReady() {
       let body = '';
       response.on('data', (chunk) => { body += chunk; });
       response.on('end', () => {
-        try { resolve(response.statusCode === 200 && JSON.parse(body).version === '0.4.0'); }
+        try { resolve(response.statusCode === 200 && JSON.parse(body).version === version); }
         catch { resolve(false); }
       });
     });
@@ -91,7 +93,8 @@ app.commandLine.appendSwitch('disable-gpu');
 app.whenReady().then(async () => {
   Menu.setApplicationMenu(null);
   const root = path.join(__dirname, '..', '..');
-  api = spawn(path.join(root, '.venv-rocm', 'Scripts', 'python.exe'), ['-m', 'uvicorn', 'backend.server:app', '--port', '8765'], { cwd: root, windowsHide: true });
+  const command = backendCommand({ packaged: app.isPackaged, resourcesPath: process.resourcesPath, root, userData: app.getPath('userData') });
+  api = spawn(command.executable, command.args, { cwd: command.cwd, env: command.env, windowsHide: true });
   api.on('error', (error) => {
     api.spawnError = error;
     console.error(`[API] Não foi possível iniciar o processo Python: ${error.message}`);

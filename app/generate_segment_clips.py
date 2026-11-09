@@ -6,6 +6,7 @@ import csv
 import json
 import re
 import subprocess
+import sys
 import tempfile
 import time
 from collections.abc import Callable
@@ -13,8 +14,12 @@ from pathlib import Path
 
 import cv2
 
-ROOT = Path(__file__).resolve().parents[1]
-FFMPEG = ROOT / "desktop" / "node_modules" / "ffmpeg-static" / "ffmpeg.exe"
+if __package__ in {None, ""}:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from app.runtime import ffmpeg_path
+
+FFMPEG = ffmpeg_path()
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -47,7 +52,7 @@ def render_clip(
     if bounded_end <= bounded_start:
         raise ValueError("O clipe não possui duração dentro do vídeo.")
     if not FFMPEG.is_file():
-        raise RuntimeError("FFmpeg local não encontrado. Execute npm install na pasta desktop.")
+        raise RuntimeError(f"FFmpeg não encontrado: {FFMPEG}. Verifique a instalação do aplicativo.")
     if cancel_check:
         cancel_check()
     command = [
