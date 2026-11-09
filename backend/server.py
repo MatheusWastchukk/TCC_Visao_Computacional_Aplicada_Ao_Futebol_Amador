@@ -1,4 +1,4 @@
-"""API local para o aplicativo Electron de análise de lances."""
+﻿"""API local para o aplicativo Electron de análise de lances."""
 from __future__ import annotations
 
 import csv
@@ -170,6 +170,7 @@ def device_metrics() -> dict[str, object]:
     metrics: dict[str, object] = {
         "processor": "GPU" if device.startswith("cuda") else "CPU",
         "processing_device": device,
+        "processing_backend": os.environ.get("GOAL_REVIEW_ACCELERATOR", "cpu"),
         **process_metrics.sample(),
         "cpu_name": platform.processor() or platform.uname().processor or "CPU do sistema",
         "opencv_threads": cv2.getNumThreads(),
@@ -416,7 +417,9 @@ def run_session(session_id: str, request: StartRequest) -> None:
 
 @app.get("/health")
 def health() -> dict[str, str]:
-    return {"status": "ok", "version": VERSION}
+    return {"status": "ok", "version": VERSION,
+            "instance_id": os.environ.get("GOAL_REVIEW_INSTANCE_ID", ""),
+            "processing_backend": os.environ.get("GOAL_REVIEW_ACCELERATOR", "cpu")}
 
 
 @app.post("/sessions")
@@ -441,6 +444,7 @@ def start(request: StartRequest) -> dict[str, str]:
         "workspace": str(workspace), "output": str(workspace / "analysis"), "video": request.video_path,
         "session_id": session_id, "video_name": Path(request.video_path).name, "mode": request.mode,
         "created_at": datetime.now(timezone.utc).isoformat(), "app_version": VERSION, "pipeline_version": "V4",
+        "processing_backend": os.environ.get("GOAL_REVIEW_ACCELERATOR", "cpu"),
         "video_fps": video_fps if video_fps > 0 else None,
         "video_duration_seconds": video_duration,
         "mode_config_hash": config_hash, "mode_description": OPERATIONAL_MODE_CONFIG[request.mode], "model_hashes": model_hashes,
@@ -730,6 +734,7 @@ def export_review(session_id: str, format: str = Query(pattern="^(csv|json)$")) 
             "app_version": state.get("app_version"), "pipeline_version": state.get("pipeline_version"),
             "mode_config_hash": state.get("mode_config_hash"), "model_hashes": state.get("model_hashes", {}),
             "processing_seconds": state.get("elapsed"),
+            "processing_backend": state.get("processing_backend", "cpu"),
             "stage_seconds": state.get("stage_seconds", {}),
             "stage_torch_threads": state.get("stage_torch_threads", {}),
             "hardware": state.get("metrics", {}),

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Escolha o processamento — Goal Event Review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f5f0;color:#193638;font:16px system-ui,sans-serif}main{max-width:800px;margin:64px auto;padding:0 30px}small{color:#65797b;letter-spacing:.12em;font-size:11px}h1{font-size:30px;margin:12px 0}p{color:#52696a;line-height:1.6}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:32px 0}button{padding:25px 19px;text-align:left;border:1px solid #d9d5cb;background:white;border-radius:12px;color:inherit;cursor:pointer;font:inherit;min-height:156px}button:hover,button:focus-visible{border-color:#387f70;outline:2px solid #387f7040}button b{display:block;font-size:19px;margin-bottom:12px}button span{font-size:13px;line-height:1.5;display:block;color:#607374}button:disabled{cursor:wait;opacity:.55}#status{min-height:28px}#error{padding:16px;background:#fff0eb;border:1px solid #db9c86;border-radius:9px;color:#8a3523;line-height:1.6}#error:empty{display:none}.foot{font-size:13px}.busy:before{content:'◌ ';color:#387f70}@media(max-width:600px){main{margin-top:32px}.choices{grid-template-columns:1fr}button{min-height:100px}}
+</style>
+<main>
+<small>GOAL EVENT REVIEW</small>
+<h1>Como deseja processar os vídeos?</h1>
+<p>Escolha uma opção para esta sessão. A disponibilidade será verificada antes de abrir o aplicativo.</p>
+<div class="choices">
+<button data-mode="cpu"><b>CPU</b><span>Usa o processador do computador.</span></button>
+<button data-mode="nvidia"><b>GPU NVIDIA</b><span>Requer uma placa NVIDIA e driver compatíveis.</span></button>
+<button data-mode="amd"><b>GPU AMD</b><span>Requer uma placa AMD compatível com ROCm.</span></button>
+</div>
+<p id="status" role="status" aria-live="polite"></p>
+<div id="error" role="alert" aria-live="assertive"></div>
+<p class="foot">Se a opção escolhida estiver indisponível, você poderá selecionar outra.</p>
+</main>
+<script src="mode-selector.js"></script>
+</html>

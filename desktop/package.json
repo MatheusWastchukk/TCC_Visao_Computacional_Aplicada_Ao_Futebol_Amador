@@ -1,7 +1,7 @@
 {
   "name": "goal-event-review",
   "private": true,
-  "version": "0.4.1",
+  "version": "0.4.2",
   "main": "electron/main.cjs",
   "scripts": {
     "dev": "node electron/dev.cjs",
@@ -9,7 +9,7 @@
     "start": "npm run build && node electron/launch.cjs .",
     "pack:cpu": "electron-builder --config electron-builder.cjs --win --x64 --dir --publish never",
     "dist:cpu": "electron-builder --config electron-builder.cjs --win nsis --x64 --publish never",
-    "test:launcher": "node --test electron/backend-command.test.cjs"
+    "test:launcher": "node --test electron/backend-command.test.cjs electron/accelerators.test.cjs"
   },
   "dependencies": {},
   "devDependencies": {

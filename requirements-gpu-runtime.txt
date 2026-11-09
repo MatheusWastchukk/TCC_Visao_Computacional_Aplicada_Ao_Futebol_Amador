@@ -1,0 +1,15 @@
+# Python 3.12/Windows. Instale antes torch/torchvision do fornecedor escolhido.
+fastapi==0.128.8
+joblib==1.5.3
+matplotlib==3.11.1
+numpy==2.3.5
+opencv-python==5.0.0.93
+pandas==3.0.5
+Pillow==12.3.0
+psutil==7.2.2
+pydantic==2.13.5
+PyYAML==6.0.3
+scikit-learn==1.9.0
+tqdm==4.70.0
+uvicorn==0.40.0
+ultralytics==8.4.131

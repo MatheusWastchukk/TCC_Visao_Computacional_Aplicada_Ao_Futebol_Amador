@@ -3,6 +3,7 @@ from pathlib import Path
 import os
 
 from PyInstaller.utils.hooks import collect_data_files, collect_submodules, copy_metadata
+from PyInstaller.utils.hooks import collect_all
 
 os.environ["YOLO_AUTOINSTALL"] = "false"
 root = Path(SPECPATH).parent
@@ -23,6 +24,14 @@ hiddenimports = collect_submodules("ultralytics", filter=lambda name: not name.s
 hiddenimports += collect_submodules("sklearn", filter=lambda name: ".tests" not in name and not name.endswith(".conftest"))
 hiddenimports += ["uvicorn.logging", "uvicorn.loops.auto", "uvicorn.protocols.http.h11_impl", "uvicorn.lifespan.on"]
 binaries = []
+if os.environ.get("GOAL_REVIEW_BUILD_RUNTIME", "cpu") == "amd":
+    for package in ("_rocm_sdk_core", "_rocm_sdk_libraries_custom"):
+        sdk_data, sdk_binaries, sdk_imports = collect_all(package)
+        datas += sdk_data
+        binaries += sdk_binaries
+        hiddenimports += sdk_imports
+    for distribution in ("rocm-sdk-core", "rocm-sdk-devel", "rocm-sdk-libraries-custom"):
+        datas += copy_metadata(distribution)
 a = Analysis(
     [str(root / "backend/launcher.py")], pathex=[str(root)],
     binaries=binaries, datas=datas, hiddenimports=hiddenimports,

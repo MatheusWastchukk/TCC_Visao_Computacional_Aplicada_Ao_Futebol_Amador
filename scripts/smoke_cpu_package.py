@@ -99,7 +99,7 @@ def main() -> None:
         if not any(sample > 0 for sample in cpu_samples):
             raise RuntimeError("O indicador de CPU não registrou atividade durante a análise.")
         expected = "CPU" if args.mode == "cpu" else "GPU"
-        if not clips or state["metrics"]["processor"] != expected:
+        if not clips or state["metrics"]["processor"] != expected or state["processing_backend"] != args.mode:
             raise RuntimeError("O teste exige clipes gerados no modo de processamento escolhido.")
         first_id = clips[0]["segment_id"]
         media = request(route + f"/clips/{first_id}/media", raw=True)
@@ -124,6 +124,7 @@ def main() -> None:
             "video": str(video), "backend": str(backend), "session_id": session_id,
             "analysis_seconds": state["elapsed"], "clips": len(clips),
             "device": state["metrics"]["processor"], "media_bytes": len(media),
+            "processing_backend": state["processing_backend"],
             "exports": ["csv", "json", "html"], "session_restored": True,
             "max_backend_cpu_percent": max(cpu_samples),
             "stage_seconds": state.get("stage_seconds", {}),

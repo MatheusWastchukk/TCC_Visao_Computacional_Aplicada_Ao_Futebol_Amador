@@ -38,6 +38,17 @@ def processing_device() -> str:
     import torch
 
     requested = os.environ.get("GOAL_REVIEW_DEVICE", "cpu").strip().lower()
+    mode = os.environ.get("GOAL_REVIEW_ACCELERATOR")
+    if mode:
+        from app.accelerators import select_device
+
+        index = int(requested.split(":")[1]) if requested.startswith("cuda:") else None
+        device = select_device(mode, torch, index)
+        if mode != "cpu" and not requested.startswith("cuda:"):
+            raise ValueError("A GPU escolhida precisa ser validada antes de iniciar o aplicativo.")
+        if mode == "cpu" and requested != "cpu":
+            raise ValueError("A configuração CPU exige o dispositivo cpu.")
+        return device
     if requested == "auto":
         return "cuda:0" if torch.cuda.is_available() else "cpu"
     if requested == "cpu":
