@@ -1,0 +1,4 @@
+7-Zip 26.06, Copyright Igor Pavlov.
+Licenças: LICENSE.7zip.txt e COPYING.7zip.txt.
+Código-fonte da versão: https://github.com/ip7z/7zip/tree/26.06
+Projeto: https://www.7-zip.org/

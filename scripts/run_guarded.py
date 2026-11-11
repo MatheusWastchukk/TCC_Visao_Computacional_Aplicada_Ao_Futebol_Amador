@@ -39,7 +39,8 @@ def main() -> int:
             lock.close()
             return 2
     started = time.monotonic()
-    report = {'command': command, 'minimum_free_gb': None, 'status': 'starting'}
+    report = {'command': command, 'minimum_free_gb': None, 'status': 'starting',
+              'minimum_required_free_gb': args.min_free_gb}
     child = None
     job = None
 

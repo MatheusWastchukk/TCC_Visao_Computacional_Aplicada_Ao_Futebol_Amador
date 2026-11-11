@@ -1,0 +1,30 @@
+GOAL EVENT REVIEW 0.4.2 - PACOTE PARA TESTES
+
+1. Execute GoalEventReview-0.4.2-Setup-x64.exe e conclua a instalação.
+2. Abra Goal Event Review pelo menu Iniciar ou pelo atalho que escolheu criar.
+3. Escolha CPU, GPU NVIDIA ou GPU AMD. Se não souber qual usar, escolha CPU.
+   O aplicativo verifica a configuração antes de abrir. Se a GPU não estiver
+   disponível ou não for compatível, aparece um aviso e você pode escolher CPU.
+4. Escolha um vídeo local e inicie a análise. Ao concluir, revise os clipes.
+
+Os componentes CPU, NVIDIA e AMD já estão incluídos. Não é necessário instalar
+Python ou Node.js, nem baixar modelos. Drivers de GPU compatíveis precisam
+estar instalados no Windows. A marca da placa, sozinha, não garante suporte.
+Alvo validado: Windows 11 x64. O pacote de GPU NVIDIA ainda precisa de teste
+positivo em um computador com placa NVIDIA.
+
+Reserve aproximadamente 16 GB livres para a instalação. Os arquivos instalados
+ocupam cerca de 12 GB. O instalador pode levar alguns minutos para terminar.
+Nas próximas aberturas, os componentes já estarão instalados.
+
+Para relatar um problema, anote:
+- Modelo do processador e da placa de vídeo; quantidade de RAM; versão do Windows.
+- Modo escolhido: CPU, NVIDIA ou AMD.
+- Duração e resolução do vídeo, sem enviar o vídeo se não tiver autorização.
+- Texto ou captura do erro; etapa em que ocorreu.
+- Tempo previsto antes de processar e tempo efetivamente gasto, separadamente.
+- Se houve criação e reprodução dos clipes e exportação dos resultados.
+
+O programa propõe lances para revisão humana. Não confirma automaticamente gols.
+Para remover o programa, use Aplicativos instalados nas Configurações do Windows.
+As sessões e anotações do usuário ficam separadas da instalação e são preservadas.
