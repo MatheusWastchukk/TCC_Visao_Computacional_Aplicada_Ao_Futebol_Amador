@@ -1,0 +1,31 @@
+GOAL EVENT REVIEW 0.4.3 — INSTALADOR COM GPU OPCIONAL
+
+1. Execute GoalEventReview-0.4.3-Online-Setup-x64.exe.
+2. Escolha CPU, GPU NVIDIA ou GPU AMD durante a instalação.
+   CPU e modelos já estão incluídos e não exigem downloads adicionais.
+   NVIDIA baixa aproximadamente 2,59 GB; AMD, aproximadamente 2,19 GB.
+3. Os componentes GPU são software de terceiros, obtidos das fontes oficiais
+   PyTorch (download.pytorch.org / download-r2.pytorch.org) e AMD (repo.radeon.com).
+   A instalação mostra o progresso e verifica cada arquivo por SHA-256.
+   Os drivers de vídeo precisam estar instalados; este instalador não os altera.
+4. Abra Goal Event Review e escolha o modo de processamento instalado.
+   O aplicativo verifica a GPU e executa testes antes de abrir a análise.
+   Se a configuração falhar, leia o aviso e escolha CPU para continuar.
+5. Escolha um vídeo local, execute a análise e revise os clipes propostos.
+
+Reserve cerca de 3 GB livres para a base CPU ou 16 GB para instalar uma GPU,
+incluindo espaço temporário dos downloads. A instalação GPU precisa de internet;
+depois de concluída, a análise de vídeos locais funciona offline.
+
+Em caso de falha ou cancelamento do download, tente novamente ou volte e escolha
+CPU. A marca da placa, sozinha, não garante compatibilidade. A abertura em GPU
+NVIDIA ainda precisa de teste positivo em outro computador com essa placa.
+O alvo local de validação é Windows 11 x64.
+
+Para relatar problemas, anote CPU, GPU, RAM, Windows, modo escolhido, mensagem
+do erro e etapa em que ocorreu. Para a análise, informe duração e resolução
+do vídeo e registre o tempo previsto e o tempo efetivamente gasto separadamente.
+
+O programa sugere lances para revisão humana; não confirma gols automaticamente.
+Use Aplicativos instalados nas Configurações do Windows para desinstalar.
+Sessões e anotações ficam fora da pasta do programa e são preservadas.

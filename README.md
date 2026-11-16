@@ -61,6 +61,10 @@ preparação offline e limites de compatibilidade estão em
 O instalador completo para testes, com atalhos e desinstalador, é construído
 conforme [docs/instalador_windows_042.md](docs/instalador_windows_042.md).
 
+O instalador 0.4.3 de 404,5 MB, com downloads GPU oficiais durante a instalação,
+está descrito em [docs/instalador_online_043.md](docs/instalador_online_043.md),
+incluindo a validação local e os limites de compatibilidade.
+
 Há em `release/GoalEventReview/` uma saída antiga PyInstaller baseada em PySide6. Ela não corresponde ao aplicativo Electron V4 validado em outubro e não deve ser usada como prova de pacote portátil atual.
 
 Consulte `docs/entrega_reprodutivel.md` para preparar uma cópia do repositório. A escrita e compilação do artigo acontecem no Overleaf e não são etapas deste ambiente local.
