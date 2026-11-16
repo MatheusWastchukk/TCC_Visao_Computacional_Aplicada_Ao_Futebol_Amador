@@ -61,7 +61,7 @@ preparação offline e limites de compatibilidade estão em
 O instalador completo para testes, com atalhos e desinstalador, é construído
 conforme [docs/instalador_windows_042.md](docs/instalador_windows_042.md).
 
-O instalador 0.4.3 de 404,5 MB, com downloads GPU oficiais durante a instalação,
+O instalador 0.4.3 de 404,6 MB, com downloads GPU oficiais durante a instalação,
 está descrito em [docs/instalador_online_043.md](docs/instalador_online_043.md),
 incluindo a validação local e os limites de compatibilidade.
 

@@ -14,7 +14,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/build_online_ins
 
 Use `-Setup` também se for necessário preparar as dependências da base CPU. Com `dist/cpu/win-unpacked` já construído e correspondente à versão atual, omita `-RebuildBase`. A preparação do compilador reutiliza a receita existente do Inno Setup. Os builds são supervisionados com limite mínimo de 3 GiB de RAM disponível, sem tarefas pesadas simultâneas.
 
-A saída é `dist/online-installer/GoalEventReview-0.4.3-Online-Setup-x64.exe`, acompanhada de JSON, SHA-256 e `LEIA-ME-TESTE.txt`. A revisão validada tem **404.547.856 bytes (404,5 MB)**, abaixo da meta de 500 MB. O construtor recusa classificar o pacote como concluído se atingir 500.000.000 bytes. O instalador completo offline 0.4.2 permanece separado.
+A saída é `dist/online-installer/GoalEventReview-0.4.3-Online-Setup-x64.exe`, acompanhada de JSON, SHA-256 e `LEIA-ME-TESTE.txt`. A revisão com a correção do caminho AMD tem **404.563.341 bytes (404,6 MB)**, abaixo da meta de 500 MB. O construtor recusa classificar o pacote como concluído se atingir 500.000.000 bytes. O instalador completo offline 0.4.2 permanece separado.
 
 ## Instalação e remoção dos componentes
 
@@ -26,7 +26,7 @@ O instalador e o desinstalador capturam a saída do preparador no log do Inno Se
 
 Instalação silenciosa: `/GPU=cpu` (padrão), `/GPU=nvidia` ou `/GPU=amd`, além das opções usuais do Inno Setup. Selecionar GPU continua sujeito à verificação de hardware e aos downloads oficiais.
 
-## Validação local em 16/11/2026
+## Validação inicial em 16/11/2026
 
 O instalador final foi instalado em uma pasta isolada no Windows 11 x64. A instalação CPU sem downloads adicionais e a abertura da interface passaram. A instalação AMD baixou e verificou os seis arquivos oficiais, publicou o componente e abriu o aplicativo usando a Radeon RX 9060 XT local. A escolha de NVIDIA ausente foi recusada tanto pelo instalador final quanto pelo aplicativo.
 
@@ -38,4 +38,16 @@ O backend foi reconstruído reutilizando o arquivo de módulos já analisado e l
 
 O teste positivo NVIDIA e a instalação desta revisão em um computador limpo continuam pendentes. A validação AMD local não comprova suporte de todas as placas ou drivers. Este é um instalador para testes, sem assinatura digital própria ou publicação automática.
 
-Fontes: [instalação oficial AMD/ROCm 7.2.1](https://rocm.docs.amd.com/projects/radeon-ryzen/en/docs-7.2.1/docs/install/installrad/windows/install-pytorch.html), [versões oficiais PyTorch](https://pytorch.org/get-started/previous-versions/), [downloads com verificação SHA-256 no Inno Setup](https://jrsoftware.org/inno-setup/documentation/topic_isxfunc_downloadtemporaryfile.htm).
+## Correção validada do caminho AMD
+
+Após a instalação padrão, foi relatado `UNKNOWN: unknown error, stat` no alias `%TEMP%\ger\7ef6ffcee843`. A inspeção encontrou a junção apontando para o componente AMD instalado e os arquivos presentes. A causa de baixo nível não foi reproduzida de forma determinística; a validação antiga seguia a junção por `fs.realpathSync`, justamente a operação citada no erro.
+
+A correção usa `original-fs` no Electron, lê o destino da junção sem segui-la e compara os destinos pela API nativa `realpathSync.native`. Não remove nem recria pastas ocupadas por arquivos ou destinos diferentes. Três testes de regressão cobrem a falha simulada `UNKNOWN`, a reutilização da junção e a preservação de caminhos ocupados; os 11 testes Node passaram.
+
+A atualização local substituiu somente `Goal Event Review.exe` e `resources/app.asar`, com cópia de segurança em `build/repairs`. O backend, os modelos, o manifesto e os pacotes GPU já baixados foram preservados. O teste abriu em AMD o aplicativo instalado em `%LOCALAPPDATA%\Programs\Goal Event Review Online`, reutilizando a mesma junção reportada, com perfil de teste isolado e sem downloads. A validação de hardware e modelos passou, e a API informou `processing_backend=amd` e versão 0.4.3.
+
+O instalador foi reconstruído com esse mesmo pacote de interface, cujo conteúdo ASAR foi comparado com o fonte. O SHA-256 desta revisão é `c86e4106e0fff0daf3d50db0097ac1a82e952626e2735651afe013949d3eed9f`. A instalação completa com downloads e as análises de vídeo descritas acima pertencem à validação inicial; nesta correção, os novos testes cobrem a resolução de caminhos, o pacote de interface e a abertura AMD na instalação real. Os relatórios iniciais foram preservados em `validation-before-amd-path.json`, e o relatório atual identifica a correção `amd-junction-native-v1`.
+
+Uma tentativa com pouca RAM foi bloqueada antes de iniciar o empacotamento. Após liberar memória e fechar o aplicativo, a atualização local, o teste AMD e a geração do instalador passaram sob supervisão, mantendo o limite de 3 GiB. A versão permanece 0.4.3 para preservar o contrato com os componentes já instalados. Para atualizar outra instalação 0.4.3, feche o aplicativo e execute o instalador atualizado escolhendo CPU: essa opção atualiza a base e preserva o componente AMD existente, que pode ser escolhido na abertura do aplicativo.
+
+Fontes: [instalação oficial AMD/ROCm 7.2.1](https://rocm.docs.amd.com/projects/radeon-ryzen/en/docs-7.2.1/docs/install/installrad/windows/install-pytorch.html), [versões oficiais PyTorch](https://pytorch.org/get-started/previous-versions/), [downloads com verificação SHA-256 no Inno Setup](https://jrsoftware.org/inno-setup/documentation/topic_isxfunc_downloadtemporaryfile.htm), [APIs originais de arquivos no Electron](https://www.electronjs.org/docs/latest/tutorial/asar-archives).
