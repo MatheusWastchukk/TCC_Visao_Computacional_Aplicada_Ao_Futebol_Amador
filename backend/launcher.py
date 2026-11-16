@@ -9,6 +9,9 @@ import subprocess
 from pathlib import Path
 
 from app.version import VERSION
+from app.vendor_runtime import activate_vendor_runtime
+
+activate_vendor_runtime()
 
 # O aplicativo usa apenas dependências instaladas no build; nunca executa pip.
 os.environ["YOLO_AUTOINSTALL"] = "false"
@@ -61,7 +64,23 @@ def main() -> None:
     parser.add_argument("--expected-runtime", choices=("cpu", "nvidia", "amd"), default="cpu")
     parser.add_argument("--probe-device", choices=("cpu", "nvidia", "amd"), help="Valida a opção de processamento sem iniciar a API.")
     parser.add_argument("--probe-output", type=Path, help="Arquivo JSON com o resultado da validação.")
+    parser.add_argument("--install-runtime", choices=('nvidia', 'amd'), help="Prepara pacotes oficiais já baixados pelo instalador.")
+    parser.add_argument("--runtime-downloads", type=Path)
+    parser.add_argument("--gpu-root", type=Path)
+    parser.add_argument("--gpu-catalog", type=Path)
+    parser.add_argument("--remove-runtimes", action='store_true')
     args = parser.parse_args()
+    if args.install_runtime or args.remove_runtimes:
+        from app.gpu_packages import install_runtime, remove_runtimes
+        if args.gpu_root is None:
+            parser.error('Informe --gpu-root.')
+        if args.remove_runtimes:
+            remove_runtimes(args.gpu_root)
+        else:
+            if args.runtime_downloads is None or args.gpu_catalog is None:
+                parser.error('Informe os downloads e o catálogo de GPU.')
+            print(json.dumps(install_runtime(args.install_runtime, args.runtime_downloads, args.gpu_root, args.gpu_catalog)))
+        return
     if args.probe_device:
         result = probe_device(args.probe_device)
         if args.probe_output:

@@ -1,10 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 const { runtimePath } = require('./runtime-path.cjs');
+const { version } = require('../package.json');
 
 function backendCommand({ packaged, resourcesPath, root, userData, mode = 'cpu', device, env = process.env, exists = fs.existsSync }) {
   if (!['cpu', 'nvidia', 'amd'].includes(mode)) throw new Error('Opção de processamento inválida.');
   const childEnv = { ...env, PYTHONUTF8: '1', PYTHONUNBUFFERED: '1' };
+  delete childEnv.GOAL_REVIEW_VENDOR_ROOT;
   childEnv.GOAL_REVIEW_ACCELERATOR = mode;
   childEnv.GOAL_REVIEW_DEVICE = device || (mode === 'cpu' ? 'cpu' : 'cuda:0');
   if (packaged) childEnv.GOAL_REVIEW_DATA_DIR = path.join(userData, 'data');
@@ -12,6 +14,17 @@ function backendCommand({ packaged, resourcesPath, root, userData, mode = 'cpu',
   childEnv.MIOPEN_USER_DB_PATH = path.join(cache, 'miopen-db');
   childEnv.MIOPEN_CUSTOM_CACHE_DIR = path.join(cache, 'miopen-kernels');
   if (packaged) {
+    const descriptorPath = path.join(resourcesPath, 'gpu', mode, 'runtime.json');
+    if (mode !== 'cpu' && fs.existsSync(descriptorPath)) {
+      const descriptor = JSON.parse(fs.readFileSync(descriptorPath, 'utf8'));
+      if (descriptor.schema !== 1 || descriptor.mode !== mode || descriptor.app_version !== version ||
+          !/^payload-[a-f0-9]{16}$/.test(descriptor.folder)) {
+        throw new Error('O componente GPU precisa ser reinstalado para esta versão do aplicativo.');
+      }
+      const folder = path.join(path.dirname(descriptorPath), descriptor.folder);
+      childEnv.GOAL_REVIEW_VENDOR_ROOT = path.dirname(runtimePath(path.join(folder, 'runtime.marker'), mode));
+      return { executable: path.join(resourcesPath, 'backend', 'goal-review-api.exe'), args: [], cwd: userData, env: childEnv };
+    }
     const executable = mode === 'cpu'
       ? path.join(resourcesPath, 'backend', 'goal-review-api.exe')
       : [path.join(resourcesPath, 'engines', mode, 'goal-review-api.exe'), path.join(userData, 'engines', mode, 'goal-review-api.exe')]
