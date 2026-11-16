@@ -20,11 +20,13 @@ function probeDevice(command, mode, userData, timeoutMs = 180000, signal) {
   }
   const id = randomUUID();
   const output = path.join(folder, `device-${id}.json`);
-  const log = fs.createWriteStream(path.join(folder, `device-${id}.log`));
+  const logPath = path.join(folder, `device-${id}.log`);
+  const log = fs.createWriteStream(logPath);
   return new Promise((resolve) => {
     const child = spawn(command.executable, [...command.args, '--probe-device', mode, '--probe-output', output],
       { cwd: command.cwd, env: command.env, windowsHide: true });
     let settled = false;
+    let stderr = '';
     function finish(result) {
       if (settled) return;
       settled = true;
@@ -44,7 +46,7 @@ function probeDevice(command, mode, userData, timeoutMs = 180000, signal) {
     signal?.addEventListener('abort', onAbort, { once: true });
     if (signal?.aborted) onAbort();
     child.stdout?.on('data', (chunk) => log.write(chunk));
-    child.stderr?.on('data', (chunk) => log.write(chunk));
+    child.stderr?.on('data', (chunk) => { stderr = (stderr + chunk.toString()).slice(-6000); log.write(chunk); });
     child.on('error', (error) => finish({ ok: false, code: 'RUNTIME_START_FAILED', error: `Não foi possível iniciar o componente de processamento: ${error.message}` }));
     child.on('close', (code) => {
       try {
@@ -57,7 +59,11 @@ function probeDevice(command, mode, userData, timeoutMs = 180000, signal) {
           ? `Não foi possível validar ${MODES[mode]}. Verifique o componente e o driver. Detalhe: ${report.error}`
           : report.error || 'A configuração escolhida não passou na validação.' });
       } catch {
-        finish({ ok: false, code: 'PROBE_FAILED', error: 'O componente não concluiu a verificação. Verifique a instalação e o driver ou escolha CPU.' });
+        const blockedPath = /WinError\s+448|untrusted mount point|ponto de montagem não confiável/i.test(stderr);
+        finish({ ok: false, code: blockedPath ? 'RUNTIME_PATH_BLOCKED' : 'PROBE_FAILED', diagnostic_log: logPath,
+          error: blockedPath
+            ? 'O Windows bloqueou o caminho do componente GPU (erro 448). Atualize o aplicativo para a correção de caminhos ou escolha CPU. Os pacotes instalados foram preservados.'
+            : `O componente encerrou sem concluir a verificação (código ${code}). O diagnóstico foi salvo em ${logPath}. Escolha CPU ou consulte esse registro.` });
       }
     });
   });

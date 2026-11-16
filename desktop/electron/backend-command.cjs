@@ -22,7 +22,9 @@ function backendCommand({ packaged, resourcesPath, root, userData, mode = 'cpu',
         throw new Error('O componente GPU precisa ser reinstalado para esta versão do aplicativo.');
       }
       const folder = path.join(path.dirname(descriptorPath), descriptor.folder);
-      childEnv.GOAL_REVIEW_VENDOR_ROOT = path.dirname(runtimePath(path.join(folder, 'runtime.marker'), mode));
+      // O backend obtém o nome curto físico do NTFS. Junções criadas pelo
+      // usuário são bloqueadas quando o processo herda RedirectionGuard.
+      childEnv.GOAL_REVIEW_VENDOR_ROOT = folder;
       return { executable: path.join(resourcesPath, 'backend', 'goal-review-api.exe'), args: [], cwd: userData, env: childEnv };
     }
     const executable = mode === 'cpu'

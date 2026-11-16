@@ -14,13 +14,13 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/build_online_ins
 
 Use `-Setup` também se for necessário preparar as dependências da base CPU. Com `dist/cpu/win-unpacked` já construído e correspondente à versão atual, omita `-RebuildBase`. A preparação do compilador reutiliza a receita existente do Inno Setup. Os builds são supervisionados com limite mínimo de 3 GiB de RAM disponível, sem tarefas pesadas simultâneas.
 
-A saída é `dist/online-installer/GoalEventReview-0.4.3-Online-Setup-x64.exe`, acompanhada de JSON, SHA-256 e `LEIA-ME-TESTE.txt`. A revisão com a correção do caminho AMD tem **404.563.341 bytes (404,6 MB)**, abaixo da meta de 500 MB. O construtor recusa classificar o pacote como concluído se atingir 500.000.000 bytes. O instalador completo offline 0.4.2 permanece separado.
+A saída é `dist/online-installer/GoalEventReview-0.4.3-Online-Setup-x64.exe`, acompanhada de JSON, SHA-256 e `LEIA-ME-TESTE.txt`. A revisão com caminho físico AMD tem **404.586.839 bytes (404,6 MB)**, abaixo da meta de 500 MB. O construtor recusa classificar o pacote como concluído se atingir 500.000.000 bytes. O instalador completo offline 0.4.2 permanece separado.
 
 ## Instalação e remoção dos componentes
 
 O instalador baixa os arquivos para sua pasta temporária, com progresso e verificação SHA-256 pelo Inno Setup. O backend repete a verificação antes de extrair. Não há execução de pip, setup.py ou scripts recebidos pela rede. Os wheels e o módulo Python puro ROCm são extraídos com buffer limitado; caminhos externos e links são recusados.
 
-Cada modo usa uma pasta isolada, publicada somente após a extração completa. Os componentes GPU compartilham o backend e os modelos CPU, mas carregam seu próprio PyTorch/torchvision antes dos módulos CPU congelados. CPU continua usando as bibliotecas incluídas. No AMD, uma junção temporária oferece um caminho curto às bibliotecas nativas, como no pacote offline.
+Cada modo usa uma pasta isolada, publicada somente após a extração completa. Os componentes GPU compartilham o backend e os modelos CPU, mas carregam seu próprio PyTorch/torchvision antes dos módulos CPU congelados. CPU continua usando as bibliotecas incluídas. O backend obtém o nome curto físico NTFS do componente GPU com `GetShortPathNameW`, sem criar uma junção temporária nesse fluxo online.
 
 O instalador e o desinstalador capturam a saída do preparador no log do Inno Setup. O desinstalador chama o backend antes de remover seus arquivos. Apenas arquivos registrados dos componentes opcionais são removidos, com diretórios excluídos somente se vazios. Sessões, anotações e arquivos adicionais não são apagados recursivamente. A variante online usa um identificador e diretório próprios para os testes, preservando os arquivos da instalação offline anterior.
 
@@ -38,7 +38,7 @@ O backend foi reconstruído reutilizando o arquivo de módulos já analisado e l
 
 O teste positivo NVIDIA e a instalação desta revisão em um computador limpo continuam pendentes. A validação AMD local não comprova suporte de todas as placas ou drivers. Este é um instalador para testes, sem assinatura digital própria ou publicação automática.
 
-## Correção validada do caminho AMD
+## Primeira correção de caminhos — validação limitada
 
 Após a instalação padrão, foi relatado `UNKNOWN: unknown error, stat` no alias `%TEMP%\ger\7ef6ffcee843`. A inspeção encontrou a junção apontando para o componente AMD instalado e os arquivos presentes. A causa de baixo nível não foi reproduzida de forma determinística; a validação antiga seguia a junção por `fs.realpathSync`, justamente a operação citada no erro.
 
@@ -50,4 +50,18 @@ O instalador foi reconstruído com esse mesmo pacote de interface, cujo conteúd
 
 Uma tentativa com pouca RAM foi bloqueada antes de iniciar o empacotamento. Após liberar memória e fechar o aplicativo, a atualização local, o teste AMD e a geração do instalador passaram sob supervisão, mantendo o limite de 3 GiB. A versão permanece 0.4.3 para preservar o contrato com os componentes já instalados. Para atualizar outra instalação 0.4.3, feche o aplicativo e execute o instalador atualizado escolhendo CPU: essa opção atualiza a base e preserva o componente AMD existente, que pode ser escolhido na abertura do aplicativo.
 
-Fontes: [instalação oficial AMD/ROCm 7.2.1](https://rocm.docs.amd.com/projects/radeon-ryzen/en/docs-7.2.1/docs/install/installrad/windows/install-pytorch.html), [versões oficiais PyTorch](https://pytorch.org/get-started/previous-versions/), [downloads com verificação SHA-256 no Inno Setup](https://jrsoftware.org/inno-setup/documentation/topic_isxfunc_downloadtemporaryfile.htm), [APIs originais de arquivos no Electron](https://www.electronjs.org/docs/latest/tutorial/asar-archives).
+## Correção validada para RedirectionGuard
+
+Uma tentativa posterior registrou `WinError 448` no backend antes de gerar o JSON da verificação. A inspeção confirmou `EnforceRedirectionTrust=1` nos processos do aplicativo. Um processo de diagnóstico próprio com essa proteção ativa reproduziu a recusa da junção, enquanto o caminho físico curto NTFS foi acessível. A documentação do Inno Setup confirma que aplicativos abertos pelo instalador podem herdar essa proteção, inclusive com `PrivilegesRequired=lowest`.
+
+A correção anterior foi testada por um launcher separado, sem essa proteção herdada; portanto, não cobriu a condição que falhou na abertura após a instalação. A nova implementação passa o diretório físico do componente ao backend e usa `GetShortPathNameW` para obter seu nome curto NTFS, sem criar uma junção nesse fluxo. O instalador deixa de abrir o aplicativo automaticamente e orienta a abertura pelo menu Iniciar. Nenhuma política de segurança do Windows é desativada. Em volumes sem nomes 8.3, a API pode devolver o caminho completo; a verificação real da GPU continua obrigatória.
+
+O diagnóstico de um backend que encerra antes de produzir JSON agora distingue o bloqueio 448 de um possível problema de driver e informa o arquivo de log. Passaram 20 testes Python e 13 testes Node, incluindo um teste Python que habilita RedirectionGuard em um subprocesso e verifica o carregador pelo caminho físico.
+
+A instalação anterior já havia sido removida quando o reparo foi retomado. A base corrigida foi reinstalada no caminho original e os seis componentes AMD foram restaurados do cache local verificado, sem novos downloads. O teste abriu o aplicativo instalado com perfil isolado e aprovou alocação, multiplicação, convolução, NMS e os dois detectores. A API informou versão 0.4.3 e `processing_backend=amd`.
+
+O observador de processos confirmou `EnforceRedirectionTrust=1` tanto na interface quanto nos processos de verificação e API. Esse teste reproduz a condição de proteção que faltava na validação anterior. Nenhuma proteção do Windows foi desativada. Os registros ficam em `build/amd_protected_result.json`, `build/launcher_043_local-protected_amd` e `build/guard/amd_physical_*.json`.
+
+O instalador atual foi reconstruído com o novo backend e a nova interface. Seu SHA-256 é `40ebc53dd2d0d33f53bd0c2e28230016fc38158f7d778511edd4cf0137f45b21`. A análise complementar do trecho TRAIN sob essa proteção foi bloqueada antes de iniciar porque a RAM disponível caiu para cerca de 1,2 GiB; não é apresentada como concluída. As análises de vídeo da validação inicial permanecem como evidência separada. A abertura AMD e os testes de operações/modelos sob RedirectionGuard passaram antes dessa queda, com o supervisor mantendo o limite de 3 GiB.
+
+Fontes: [instalação oficial AMD/ROCm 7.2.1](https://rocm.docs.amd.com/projects/radeon-ryzen/en/docs-7.2.1/docs/install/installrad/windows/install-pytorch.html), [versões oficiais PyTorch](https://pytorch.org/get-started/previous-versions/), [downloads com verificação SHA-256 no Inno Setup](https://jrsoftware.org/inno-setup/documentation/topic_isxfunc_downloadtemporaryfile.htm), [APIs originais de arquivos no Electron](https://www.electronjs.org/docs/latest/tutorial/asar-archives), [herança do RedirectionGuard no Inno Setup](https://jrsoftware.org/inno-setup/documentation/topic_setup_redirectionguard.htm), [GetShortPathNameW](https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getshortpathnamew).

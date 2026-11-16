@@ -41,3 +41,18 @@ test('GPU baixada usa o backend compartilhado; CPU permanece independente', () =
     fs.rmSync(folder, { recursive: true });
   }
 });
+
+test('AMD baixada passa o diretório físico ao backend, sem junção temporária', () => {
+  const folder = fs.mkdtempSync(path.join(os.tmpdir(), 'ger-command-'));
+  try {
+    const mode = path.join(folder, 'gpu', 'amd'); fs.mkdirSync(mode, { recursive: true });
+    fs.writeFileSync(path.join(mode, 'runtime.json'), JSON.stringify({ schema: 1, mode: 'amd', app_version: version, folder: 'payload-0123456789abcdef' }));
+    const command = backendCommand({ packaged: true, resourcesPath: folder, userData: folder, mode: 'amd' });
+    assert.equal(command.env.GOAL_REVIEW_VENDOR_ROOT, path.join(mode, 'payload-0123456789abcdef'));
+    assert.equal(command.executable, path.join(folder, 'backend', 'goal-review-api.exe'));
+  } finally {
+    assert.equal(path.dirname(folder), os.tmpdir());
+    assert(path.basename(folder).startsWith('ger-command-'));
+    fs.rmSync(folder, { recursive: true });
+  }
+});

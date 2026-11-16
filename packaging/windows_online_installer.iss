@@ -37,8 +37,8 @@ Source: "{#CatalogSource}"; DestDir: "{app}\resources"; DestName: "gpu_catalog.j
 Name: "{group}\Goal Event Review"; Filename: "{app}\Goal Event Review.exe"; WorkingDir: "{app}"
 Name: "{autodesktop}\Goal Event Review"; Filename: "{app}\Goal Event Review.exe"; WorkingDir: "{app}"; Tasks: desktopicon
 
-[Run]
-Filename: "{app}\Goal Event Review.exe"; Description: "Iniciar Goal Event Review"; Flags: nowait postinstall skipifsilent
+[Messages]
+FinishedLabel=Instalação concluída. Abra o Goal Event Review pelo menu Iniciar para escolher CPU ou GPU.
 
 [Code]
 var
