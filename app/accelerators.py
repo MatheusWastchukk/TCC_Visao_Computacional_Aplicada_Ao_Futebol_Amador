@@ -48,6 +48,19 @@ def select_device(mode: str, torch_module=None, index: int | None = None) -> str
     selected = 0 if index is None else index
     if selected < 0 or selected >= torch_module.cuda.device_count():
         raise AcceleratorError("GPU_INDEX_UNAVAILABLE", "A GPU selecionada não está mais disponível. Abra o aplicativo novamente.")
+    if mode == "nvidia":
+        capability = torch_module.cuda.get_device_capability(selected)
+        cuda_version = tuple(int(part) for part in torch_module.version.cuda.split(".")[:2])
+        # As GPUs Blackwell de consumo exigem o pacote com suporte a sm_120.
+        if capability == (12, 0) and cuda_version < (12, 8):
+            name = torch_module.cuda.get_device_name(selected)
+            raise AcceleratorError(
+                "CUDA_ARCHITECTURE_UNSUPPORTED",
+                f"A {name} foi detectada, mas o componente NVIDIA deste aplicativo usa "
+                f"CUDA {torch_module.version.cuda} e não oferece suporte a essa arquitetura "
+                "(Blackwell, capacidade 12.0). Atualize o aplicativo e reinstale o componente "
+                "NVIDIA com CUDA 12.8 ou superior. Até lá, escolha CPU.",
+            )
     return f"cuda:{selected}"
 
 

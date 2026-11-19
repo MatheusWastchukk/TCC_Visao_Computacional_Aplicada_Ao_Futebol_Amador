@@ -21,10 +21,10 @@ class Links(HTMLParser):
 def main():
     modes = {'nvidia': [], 'amd': []}
     for package, version in [('torch', '2.9.1'), ('torchvision', '0.24.1')]:
-        index = f'https://download.pytorch.org/whl/cu126/{package}/'
+        index = f'https://download.pytorch.org/whl/cu128/{package}/'
         with urlopen(index, timeout=60) as response:
             links = Links(); links.feed(response.read().decode())
-        filename = f'{package}-{version}+cu126-cp312-cp312-win_amd64.whl'
+        filename = f'{package}-{version}+cu128-cp312-cp312-win_amd64.whl'
         link = next(urljoin(index, u) for u in links.urls if unquote(urlsplit(u).path).endswith('/'+filename))
         digest = urlsplit(link).fragment.removeprefix('sha256=')
         modes['nvidia'].append({'filename': filename, 'url': link.split('#')[0], 'sha256': digest})

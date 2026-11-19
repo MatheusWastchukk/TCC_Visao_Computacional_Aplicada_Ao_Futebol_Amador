@@ -2,7 +2,15 @@
 
 A versão online inclui aplicativo, modelos e processamento CPU. A instalação oferece CPU, NVIDIA ou AMD; somente o modo GPU escolhido baixa componentes adicionais. O instalador informa os fornecedores, domínios oficiais e tamanho aproximado antes do download. Os drivers de vídeo não são instalados nem alterados.
 
-O catálogo versionado em `packaging/gpu_catalog.json` fixa Python 3.12/Windows x64, URLs HTTPS, versões, tamanhos e SHA-256. NVIDIA usa PyTorch 2.9.1/CUDA 12.6 e torchvision 0.24.1 do índice oficial PyTorch. AMD usa as versões ROCm 7.2.1 indicadas na documentação oficial AMD. O catálogo atual corresponde a aproximadamente 2,59 GB de downloads NVIDIA ou 2,19 GB AMD. Esses downloads não fazem parte do tamanho do instalador base.
+O catálogo versionado em `packaging/gpu_catalog.json` fixa Python 3.12/Windows x64, URLs HTTPS, versões, tamanhos e SHA-256. NVIDIA usa PyTorch 2.9.1/CUDA 12.8 e torchvision 0.24.1 do índice oficial PyTorch. AMD usa as versões ROCm 7.2.1 indicadas na documentação oficial AMD. O catálogo atual corresponde a aproximadamente 2,87 GB de downloads NVIDIA ou 2,19 GB AMD. Esses downloads não fazem parte do tamanho do instalador base.
+
+## Correção NVIDIA em código — 19/11/2026
+
+Um computador com RTX 5060 Ti apresentou `no kernel image is available for execution on the device` com o componente anterior CUDA 12.6. A [tabela oficial NVIDIA](https://developer.nvidia.com/cuda/gpus) identifica essa placa como Blackwell, capacidade 12.0. O catálogo e a receita NVIDIA passaram a usar CUDA 12.8, disponível para Windows com as mesmas versões de [PyTorch e torchvision](https://pytorch.org/get-started/previous-versions/#v291). Os tamanhos foram consultados por HEAD e os hashes obtidos do índice oficial; os wheels não foram baixados nesta alteração. O catálogo AMD permaneceu idêntico.
+
+A seleção NVIDIA agora recusa antecipadamente uma GPU de capacidade 12.0 quando o componente carregado usa CUDA anterior a 12.8, com orientação para atualizar o aplicativo e reinstalar o componente NVIDIA. Com o componente novo, os testes reais de operações e modelos continuam obrigatórios antes da abertura.
+
+**Estado: alteração de código, sem novo build.** Os 20 testes leves de seleção e instalação de componentes passaram, incluindo a recusa de Blackwell com CUDA 12.6 e a continuidade da validação com CUDA 12.8 ou superior. O instalador de 404.586.839 bytes descrito abaixo ainda contém o catálogo anterior CUDA 12.6. A correção exige reconstruir a base/backend e o instalador, reinstalar o componente NVIDIA e testar no computador com RTX 5060 Ti. Não há validação positiva dessa placa nesta revisão. Os aproximadamente 2,87 GB são download opcional; o tamanho do novo instalador base ainda precisa ser medido.
 
 CPU funciona sem internet. Falha, cancelamento ou corrupção no download impede a preparação do componente GPU; o usuário pode tentar novamente ou voltar e escolher CPU. Antes do download, o instalador consulta os adaptadores Windows e recusa um fornecedor ausente. A abertura do aplicativo mantém a validação real de operações e modelos na GPU; detectar a marca da placa não comprova suporte do driver ou da arquitetura.
 

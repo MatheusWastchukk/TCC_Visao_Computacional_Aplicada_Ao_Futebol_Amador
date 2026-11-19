@@ -1,9 +1,14 @@
 GOAL EVENT REVIEW 0.4.3 — INSTALADOR COM GPU OPCIONAL
 
+ATENÇÃO: este guia acompanha a próxima reconstrução com CUDA 12.8.
+A alteração está somente no código; o instalador anterior usa CUDA 12.6
+e apresentou incompatibilidade com uma RTX 5060 Ti. O novo instalador e
+o funcionamento nessa placa ainda precisam de validação.
+
 1. Execute GoalEventReview-0.4.3-Online-Setup-x64.exe.
 2. Escolha CPU, GPU NVIDIA ou GPU AMD durante a instalação.
    CPU e modelos já estão incluídos e não exigem downloads adicionais.
-   NVIDIA baixa aproximadamente 2,59 GB; AMD, aproximadamente 2,19 GB.
+   NVIDIA baixa aproximadamente 2,87 GB; AMD, aproximadamente 2,19 GB.
 3. Os componentes GPU são software de terceiros, obtidos das fontes oficiais
    PyTorch (download.pytorch.org / download-r2.pytorch.org) e AMD (repo.radeon.com).
    A instalação mostra o progresso e verifica cada arquivo por SHA-256.
