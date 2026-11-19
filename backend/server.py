@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import csv
+import atexit
 import hashlib
 import html
 import json
@@ -30,6 +31,7 @@ from app.generate_segment_clips import FFMPEG, render_clip
 from app.review_storage import load_annotation_rows, read_csv, read_json, write_annotation_rows, write_json_atomic
 from app.runtime import encoder_weights_path, processing_device, resource_root, session_root
 from app.process_metrics import ProcessMetrics
+from app.windows_gpu_metrics import WindowsGpuMetrics
 from app.version import VERSION
 
 ROOT = resource_root()
@@ -44,6 +46,8 @@ compilation_jobs: dict[str, dict[str, object]] = {}
 compilation_lock = threading.Lock()
 gpu_utilization_supported: bool | None = None
 process_metrics = ProcessMetrics()
+windows_gpu_metrics = WindowsGpuMetrics()
+atexit.register(windows_gpu_metrics.close)
 
 
 class StartRequest(BaseModel):
@@ -187,13 +191,17 @@ def device_metrics() -> dict[str, object]:
                 "gpu_memory_percent": round(used_bytes / total_bytes * 100, 1),
                 "gpu_process_memory_mb": round(torch.cuda.memory_allocated(index) / 1024**2, 1),
             })
-            if gpu_utilization_supported is not False:
+            if os.name == 'nt':
+                metrics.update(windows_gpu_metrics.sample(metrics['device_name'], metrics['processing_backend']))
+            if (os.name != 'nt' or metrics.get('gpu_utilization_status') == 'unavailable') and gpu_utilization_supported is not False:
                 try:
                     metrics["gpu_utilization_percent"] = torch.cuda.utilization(index)
+                    metrics.update({'gpu_utilization_source': 'pytorch', 'gpu_utilization_status': 'available',
+                                    'gpu_utilization_scope': 'selected_device', 'gpu_utilization_error': None})
                     gpu_utilization_supported = True
                 except Exception:
                     gpu_utilization_supported = False
-            if gpu_utilization_supported is False:
+            if os.name != 'nt' and gpu_utilization_supported is False:
                 metrics["gpu_utilization_percent"] = None
         except Exception as error:
             metrics["gpu_metrics_error"] = str(error)
