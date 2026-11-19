@@ -37,6 +37,13 @@ button svg { width: 18px; height: 18px; stroke-width: 1.8; }
 .metrics > div + div { border-left: 1px solid #dfddd4; padding-left: 26px; }
 .dark .metrics > div + div { border-color: #31453d; }
 .metrics svg { width: 22px; color: #4e8b73; }.metrics b, .metrics small { display: block; }.metrics small { color: #71847c; font-size: 11px; }
+.processing-details { margin-bottom: 18px; }
+.processing-details > summary { cursor: pointer; padding: 12px 18px; border: 1px solid #dfddd4; border-radius: 10px; background: #fff; font-weight: 600; }
+.processing-details:not([open]) > .processing-details-content { display: none; }
+.processing-details .metrics { margin: 10px 0; }
+.metrics-explanation, .processing-audit { margin: 8px 18px; color: #71847c; font-size: 12px; }
+.dark .processing-details > summary { background: #1d2a25; border-color: #31453d; }
+.dark .metrics-explanation, .dark .processing-audit { color: #aec0b7; }
 .notice { border-radius: 8px; padding: 12px 14px; }
 .notice:not(.error) { background: #e8f1eb; color: #284137; border: 1px solid #bad2c2; }
 .error { background: #fbe3e3; color: #922f2f; border: 1px solid #e9aaaa; }
@@ -139,7 +146,7 @@ kbd { border: 1px solid #c9cec8; border-radius: 4px; padding: 1px 4px; font-size
 .shortcuts { margin: 14px 0 4px; color: #52635a; font-size: 12px; }
 .shortcuts p { line-height: 1.6; }
 .dark .shortcuts { color: #c3d1c9; }
-.focus-mode header, .focus-mode .setup, .focus-mode .metrics, .focus-mode .session-heading, .focus-mode aside, .focus-mode .shortcuts { display: none; }
+.focus-mode header, .focus-mode .setup, .focus-mode .metrics, .focus-mode .processing-details, .focus-mode .session-heading, .focus-mode aside, .focus-mode .shortcuts { display: none; }
 .focus-mode .workspace { grid-template-columns: 1fr; }
 .focus-mode .player video { max-height: 72vh; }
 .download-selected { white-space: nowrap; font-size: 12px; }
