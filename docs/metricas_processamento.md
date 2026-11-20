@@ -29,4 +29,8 @@ O PyTorch permanece como alternativa quando a leitura Windows está indisponíve
 
 Nenhum vídeo TRAIN/TEST foi processado para estes ajustes. Os resultados científicos congelados não foram modificados.
 
+## Empacotamento em 20/11/2026
+
+As alterações foram incluídas no novo instalador 0.4.3 de 404.628.895 bytes. A cópia empacotada abriu em CPU com perfil isolado e sessão fictícia, sem processar vídeo. A validação por navegador confirmou os detalhes fechados inicialmente, conteúdo oculto, rótulo “CPU da análise” e conteúdo visível após o clique; a captura de tela foi inspecionada. Os módulos de coleta/backend foram comparados com os fontes dentro do executável e os arquivos da interface com o ASAR. O teste real das métricas durante processamento AMD/NVIDIA nesta reconstrução permanece pendente. Evidências em `build/launcher_043_cpu_cpu`, `build/guard/release_20261120_*.json` e `dist/online-installer/validation.json`.
+
 Referências: [GPU no Gerenciador de Tarefas](https://devblogs.microsoft.com/directx/gpus-in-the-task-manager/), [PDH em inglês independente do idioma do Windows](https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhaddenglishcounterw), [leitura de contadores com múltiplas instâncias](https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetformattedcounterarrayw), [identificação de adaptadores DXGI](https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_adapter_desc).

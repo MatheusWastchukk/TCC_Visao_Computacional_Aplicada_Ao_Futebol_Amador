@@ -10,7 +10,19 @@ Um computador com RTX 5060 Ti apresentou `no kernel image is available for execu
 
 A seleção NVIDIA agora recusa antecipadamente uma GPU de capacidade 12.0 quando o componente carregado usa CUDA anterior a 12.8, com orientação para atualizar o aplicativo e reinstalar o componente NVIDIA. Com o componente novo, os testes reais de operações e modelos continuam obrigatórios antes da abertura.
 
-**Estado: alteração de código, sem novo build.** Os 20 testes leves de seleção e instalação de componentes passaram, incluindo a recusa de Blackwell com CUDA 12.6 e a continuidade da validação com CUDA 12.8 ou superior. O instalador de 404.586.839 bytes descrito abaixo ainda contém o catálogo anterior CUDA 12.6. A correção exige reconstruir a base/backend e o instalador, reinstalar o componente NVIDIA e testar no computador com RTX 5060 Ti. Não há validação positiva dessa placa nesta revisão. Os aproximadamente 2,87 GB são download opcional; o tamanho do novo instalador base ainda precisa ser medido.
+**Estado em 19/11: alteração de código, sem novo build naquela etapa.** Os 20 testes leves de seleção e instalação de componentes passaram, incluindo a recusa de Blackwell com CUDA 12.6 e a continuidade da validação com CUDA 12.8 ou superior. O instalador anterior de 404.586.839 bytes contém o catálogo CUDA 12.6. A reconstrução está registrada abaixo; não há validação positiva em RTX 5060 Ti nesta revisão.
+
+## Instalador reconstruído em 20/11/2026
+
+O novo artefato `dist/online-installer/GoalEventReview-0.4.3-Online-Setup-x64.exe` tem **404.628.895 bytes (404,6 MB)** e SHA-256 `75bf3a34019368b098d36b3b4e6d6b91a6c8c4ddaa089ee45f6414adc441defb`. Inclui o backend atualizado, a coleta WDDM, as métricas recolhidas nos detalhes e o catálogo NVIDIA CUDA 12.8. CPU continua offline; os downloads opcionais são 2.871.663.543 bytes NVIDIA e 2.190.543.312 bytes AMD.
+
+A reconstrução reutilizou as dependências CPU congeladas e recompilou os seis módulos alterados, conferidos contra os fontes no executável final. A interface foi compilada novamente e os 14 arquivos distribuídos da interface/launcher foram comparados com o ASAR. As etapas pesadas foram sequenciais e supervisionadas com limite mínimo de 3 GiB de RAM. O Electron já instalado no projeto foi reutilizado, sem download. Os pacotes GPU não foram baixados novamente.
+
+Passaram 26 testes Python, 13 testes Node e a validação real do backend CPU empacotado com operações e os dois detectores. O relatório desta revisão fica em `dist/online-installer/validation.json`, separado das evidências históricas. A revisão anterior do relatório foi preservada em `build/release_20261120/validation_previous.json`.
+
+A cópia empacotada abriu em CPU com perfil isolado e uma sessão fictícia, sem processar vídeo. A checagem confirmou métricas ocultas inicialmente e visíveis após expandir os detalhes; a captura de tela também foi inspecionada. NVIDIA ausente foi recusada antes da abertura. A pasta gerada pelo ambiente de build precisou receber leitura/execução para `ALL APPLICATION PACKAGES` para permitir o sandbox do Electron; nenhuma proteção foi desativada e a instalação do usuário não foi alterada.
+
+Para atualizar uma instalação que usa o pacote NVIDIA anterior, escolha NVIDIA novamente no instalador: isso baixa e prepara o componente CUDA 12.8. Instalar apenas CPU atualiza a base, mas preserva o componente NVIDIA antigo. A GTX 1650 (Turing) e a RTX 5060 Ti (Blackwell) estão nas arquiteturas contempladas pelo componente escolhido; abertura e processamento nessas placas ainda precisam de teste real com drivers compatíveis. A instalação/desinstalação completa e o teste AMD desta reconstrução também não foram repetidos; os resultados anteriores permanecem históricos.
 
 CPU funciona sem internet. Falha, cancelamento ou corrupção no download impede a preparação do componente GPU; o usuário pode tentar novamente ou voltar e escolher CPU. Antes do download, o instalador consulta os adaptadores Windows e recusa um fornecedor ausente. A abertura do aplicativo mantém a validação real de operações e modelos na GPU; detectar a marca da placa não comprova suporte do driver ou da arquitetura.
 
@@ -22,7 +34,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/build_online_ins
 
 Use `-Setup` também se for necessário preparar as dependências da base CPU. Com `dist/cpu/win-unpacked` já construído e correspondente à versão atual, omita `-RebuildBase`. A preparação do compilador reutiliza a receita existente do Inno Setup. Os builds são supervisionados com limite mínimo de 3 GiB de RAM disponível, sem tarefas pesadas simultâneas.
 
-A saída é `dist/online-installer/GoalEventReview-0.4.3-Online-Setup-x64.exe`, acompanhada de JSON, SHA-256 e `LEIA-ME-TESTE.txt`. A revisão com caminho físico AMD tem **404.586.839 bytes (404,6 MB)**, abaixo da meta de 500 MB. O construtor recusa classificar o pacote como concluído se atingir 500.000.000 bytes. O instalador completo offline 0.4.2 permanece separado.
+A saída é `dist/online-installer/GoalEventReview-0.4.3-Online-Setup-x64.exe`, acompanhada de JSON, SHA-256 e `LEIA-ME-TESTE.txt`. A revisão com caminho físico AMD de 16/11 tinha **404.586.839 bytes (404,6 MB)**; a reconstrução atual está descrita acima. O construtor recusa classificar o pacote como concluído se atingir 500.000.000 bytes. O instalador completo offline 0.4.2 permanece separado.
 
 ## Instalação e remoção dos componentes
 
