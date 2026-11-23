@@ -73,11 +73,3 @@ incluindo a validação local e os limites de compatibilidade.
 
 Os ajustes de uso da GPU AMD e do painel recolhível de métricas estão em
 [docs/metricas_processamento.md](docs/metricas_processamento.md), com o estado de validação e empacotamento.
-
-Há em `release/GoalEventReview/` uma saída antiga PyInstaller baseada em PySide6. Ela não corresponde ao aplicativo Electron V4 validado em outubro e não deve ser usada como prova de pacote portátil atual.
-
-Consulte `docs/entrega_reprodutivel.md` para preparar uma cópia do repositório. A escrita e compilação do artigo acontecem no Overleaf e não são etapas deste ambiente local.
-
-## Documentação de origem
-
-Requisitos e rastreabilidade antigos foram revisados para corresponder ao escopo final do TCC. Relatórios numerados de experimentos permanecem como histórico técnico; sua presença não significa que cada hipótese ou configuração tenha sido promovida ao sistema final.
