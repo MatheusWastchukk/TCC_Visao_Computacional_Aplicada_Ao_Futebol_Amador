@@ -1,12 +1,12 @@
 # Plano de reprodução do repositório e das evidências
 
-**Estado em 26/10/2026:** rota inicial escolhida para reproduzir as métricas congeladas; pacote final ainda não materializado e distribuição bloqueada por revisão de direitos/licenças pendente.
-**Commit base identificado:** `65745a5553da7b7f1563b410e3651e268bccb228` (HEAD atual; working tree dirty).
-**Árvore de trabalho:** contém alterações locais; o manifesto descreve este estado como rascunho e não como release.
+**Revisão documental:** 23/11/2026. A rota inicial continua sendo o recálculo das métricas congeladas; a identificação da versão e as instruções diretas estão no [guia de reprodução para a banca](guia_reproducao_banca.md).
+**Base de código conferida nesta revisão:** `265b95e5e35a6ab4816a00de7d0b2023c9a6303b`, com árvore limpa antes dos ajustes documentais de 23/11. Esses ajustes ainda precisam integrar o snapshot efetivamente entregue.
+**Estado do pacote:** o manifesto de 26/10 é um inventário histórico `DRAFT_NOT_A_RELEASE`, não um manifesto da árvore atual nem uma autorização de distribuição. A revisão de direitos/licenças e o manifesto final da cópia entregue permanecem pendentes.
 
 ## Objetivo
 
-O artigo do TCC é desenvolvido no Overleaf. Este plano cobre somente o repositório local, seu ambiente de execução e os artefatos de código/dados usados para reproduzir resultados; arquivos LaTeX, PDF, template e figuras do artigo não são requisitos deste pacote.
+O artigo do TCC é desenvolvido e compilado no Overleaf; há uma cópia local do fonte em `docs/TCC_Matheus_Wastchuk.tex`. Este plano cobre o repositório, seu ambiente de execução e os artefatos usados para reproduzir resultados. O recálculo das métricas não depende do LaTeX, PDF, template ou figuras; a conferência editorial depende do PDF final entregue.
 
 Entregar à banca uma cópia que permita compreender o código e reproduzir a interpretação dos resultados sem distribuir vídeos, pesos ou ambientes grandes sem autorização. Separar duas formas de reprodução:
 
@@ -15,7 +15,11 @@ Entregar à banca uma cópia que permita compreender o código e reproduzir a in
 
 A reexecução de TEST, se necessária apenas para reprodução, não poderá ser usada para retuning, comparação de políticas novas ou escolha de vencedor. A verificação em cópia mínima reproduz as métricas derivadas dos artefatos salvos; não valida a inferência completa nem uma instalação limpa do aplicativo.
 
-## Pacote legado encontrado
+## Aplicação atual e pacote legado
+
+A aplicação Electron/React + FastAPI declara versão `0.4.3` em `desktop/package.json`. Há receitas de empacotamento e instaladores documentados em [build CPU](build_cpu.md) e [instalador online 0.4.3](instalador_online_043.md). O segundo documento identifica por SHA-256 o instalador reconstruído em 20/11 e distingue as verificações dessa revisão dos testes históricos. A existência do build não demonstra compatibilidade universal nem valida os modos V4 pelo resultado TEST V3.
+
+A mineração V4 carregada dinamicamente importa Ultralytics, incluído em `requirements-cpu.txt`. A classificação de outubro como dependência exclusivamente experimental foi corrigida em novembro; consulte a [auditoria de licenças](auditoria_licencas_pacote.md).
 
 Existe uma saída PyInstaller antiga em `release/GoalEventReview/`, construída em 17/09/2026 pelo `release/GoalEventReview.spec`. O spec usa PySide6 e o ponto de entrada `app/desktop_review_app.py`, além de incluir caminhos absolutos deste computador e pesos/modelos da arquitetura anterior. A interface validada em outubro é Electron/React + FastAPI. Portanto, a pasta de release não é evidência de que a aplicação atual esteja empacotada ou validada como executável portátil. **Não distribuir o build legado como entrega atual** sem auditar versão, conteúdo e funcionamento; o manifesto de entrega o registra como artefato legado excluído.
 
@@ -46,7 +50,7 @@ Existe uma saída PyInstaller antiga em `release/GoalEventReview/`, construída 
 - Ambientes virtuais, caches ROCm/MIOpen, outputs regeneráveis, sessões locais do Electron, logs pessoais e artefatos temporários.
 - Embeddings ou outras matrizes grandes; incluir somente se forem necessários à reprodução escolhida e se houver autorização.
 - O build PyInstaller legado em `release/GoalEventReview/`, que não corresponde à aplicação Electron V4 validada em E2E.
-- Instalador portátil atual da aplicação Electron: não há configuração electron-builder confirmada. O build Vite não empacota Python, pesos, ambiente ROCm nem toda a cadeia de FFmpeg.
+- Instaladores e runtimes da aplicação Electron não integram automaticamente a cópia de código/métricas. As receitas atuais usam electron-builder e empacotamento do backend; a seleção do instalador deve registrar versão, SHA-256, componentes incluídos e os limites de validação documentados. O build Vite isolado compila somente a interface.
 
 Para cada item excluído, registrar nome ou categoria, motivo e instrução de obtenção/acesso quando disponível. Não prometer que a aplicação funciona em máquina limpa ou em CPU sem GPU sem executar essa verificação.
 
@@ -61,10 +65,10 @@ Para cada item excluído, registrar nome ou categoria, motivo e instrução de o
 
 ## Manifesto preliminar
 
-O manifesto registra hashes dos códigos de dependências e evidências congeladas. Ele descreve um inventário preliminar do repositório, não um pacote final nem arquivos do Overleaf.
+`entrega_reprodutivel_manifesto_v1.json` e seu checksum registram o inventário preliminar de 26/10, baseado em `65745a5`, com snapshot identificado como `2fddf5a`. Foram preservados como evidência histórica; seus hashes e descrições de dependências não representam a árvore de novembro. Para a rota atual de métricas, use o [guia da banca](guia_reproducao_banca.md). O manifesto final da cópia entregue ainda deve ser gerado sobre os arquivos efetivamente selecionados.
 
 ## Pendências antes de gerar o pacote
-- [x] Reconciliar `requirements.txt` e `pyproject.toml` com o ambiente Python/ROCm observado; registrar a instalação ROCm. Ultralytics foi movido para o grupo experimental opcional por não ser importado pelo aplicativo V4.
+- [x] Corrigir a classificação de Ultralytics: é dependência efetiva da mineração V4 carregada dinamicamente e consta de `requirements-cpu.txt`; as receitas e os limites de ambiente estão em `ambiente_reproducao.md`, `build_cpu.md` e `instalador_online_043.md`.
 - [ ] Consolidar o estado atual do Git em snapshot auditado, preservando mudanças locais pertinentes.
 - [ ] Confirmar licença do código do projeto e autorizações para os CSVs derivados, pesos e cada vídeo/dado externo.
 - [x] Escolher métricas congeladas como rota inicial e reproduzir o cálculo em cópia temporária mínima, sem retuning de TEST.
@@ -77,7 +81,7 @@ O manifesto registra hashes dos códigos de dependências e evidências congelad
 
 ## Auditoria preliminar de licenças e direitos
 
-Os achados e limites estão em [`auditoria_licencas_pacote.md`](auditoria_licencas_pacote.md). Não há licença de distribuição do próprio projeto no checkout. Vídeos, pesos, dados externos e artefatos derivados de TEST seguem excluídos até comprovar autorização. A remoção de Ultralytics da receita base reduz o escopo dessa dependência para scripts experimentais, mas não autoriza distribuir esses scripts, pesos ou derivados.
+Os achados e limites estão em [`auditoria_licencas_pacote.md`](auditoria_licencas_pacote.md). A auditoria registra pendências de licença do código autoral e de autorização para vídeos, pesos e derivados TEST. Ultralytics integra a mineração V4 e deve ser considerado na revisão da distribuição da aplicação. Builds e testes locais não encerram essa revisão. A presença de uma entrada no guia de reprodução não autoriza sua redistribuição.
 ## Risco conhecido
 
-O estado atual não é um pacote portátil validado da aplicação Electron. O backend operacional foi construído em ambiente local Windows/AMD e há dependência de pesos e executáveis externos. Há uma saída antiga PyInstaller baseada em PySide6, mas ela não corresponde ao fluxo E2E atual. Se não houver tempo para teste limpo, a entrega deve ser descrita como pacote de código e artefatos para reprodução em ambiente compatível, sem alegar executável independente.
+A reprodução das métricas salvas, a reexecução da inferência e a instalação da aplicação são verificações distintas. Há empacotamento CPU e instalador 0.4.3 documentados, com testes e limites específicos por revisão; não se deve extrapolá-los para outro hardware ou para todos os componentes GPU. A saída antiga PySide6 permanece excluída. Descreva a entrega conforme o conteúdo efetivamente fornecido e mantenha explícitas as pendências de ambiente e distribuição.

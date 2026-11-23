@@ -21,6 +21,12 @@ Resultados V3 em TEST: FAST_V3 cobriu 45/57 timestamps (78,95%) com média de 27
 
 Esses resultados medem cobertura temporal de timestamps catalogados. Não medem precisão de detecção de gols, taxa de falsos positivos ou tempo humano de revisão. As políticas experimentais V3 são distintas dos modos operacionais V4 da aplicação.
 
+## Versão e reprodução para a banca
+
+O [guia de reprodução para a banca](docs/guia_reproducao_banca.md), revisado em 23/11/2026, identifica a base de código, a aplicação `0.4.3` e as políticas experimentais V3.
+
+Para reproduzir as tabelas finais TEST, o guia lista as sete entradas necessárias, o comando Python e as quatro saídas esperadas. A rota recalcula métricas a partir de candidatos e catálogo congelados, sem vídeos, pesos ou nova inferência. O manifesto preliminar de outubro é histórico e não identifica o pacote atual. A inclusão dos dados derivados na entrega continua sujeita às autorizações registradas no plano de reprodução.
+
 ## Estrutura
 
 - `app/`: aplicação e ferramentas de análise/revisão.
